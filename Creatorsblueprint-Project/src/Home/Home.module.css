@@ -193,3 +193,228 @@
    
     color: #5B5959;
 }
+
+
+
+
+
+/*row 2*/
+
+
+.homeContainer .row2{
+    grid-area: -1/1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    
+
+}
+
+
+
+.homeContainer .row2 .title{
+    
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 11rem auto;
+    justify-items: center;
+}
+
+
+.homeContainer .row2 .title h1{
+   
+    font-size: 7rem;
+    font-weight: 400;
+
+}
+
+
+.homeContainer .row2 .title p{
+    text-align: center;
+    align-items: center;
+    width: 70%;
+
+    font-size: 2rem;
+    font-weight: 300;
+    color: #656565;
+}
+
+
+
+.homeContainer .row2 .paymentPlanContainer{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 4.5rem 24rem 5rem auto;
+    width: 40%;
+}
+
+
+
+.homeContainer .row2 .paymentPlanContainer .header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+
+
+.homeContainer .row2 .paymentPlanContainer .header .title2{
+    line-height: 10px;
+}
+
+
+.homeContainer .row2 .paymentPlanContainer .header .title2 h1{
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+
+.homeContainer .row2 .paymentPlanContainer .header .title2 p{
+    
+    font-weight: 300;
+}
+
+
+.homeContainer .row2 .paymentPlanContainer .header .highlight p{
+    color: white;
+    background: #D61CDA;
+    background: linear-gradient(56deg, rgba(214, 28, 218, 1) 0%, rgba(103, 17, 105, 1) 100%);
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    padding-left: 1.7rem;
+    padding-right: 1.7rem;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px #D61CDA;
+}
+
+
+
+.homeContainer .row2 .paymentPlanContainer .desc .title3 h1{
+    font-size: 1rem;
+    color: #403F3F;
+    font-weight: 400;
+    
+}
+
+
+
+
+.homeContainer .row2 .paymentPlanContainer .desc .content .item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+}
+
+
+.homeContainer .row2 .paymentPlanContainer .desc .content .item i{
+    color: #09F7F9;
+}
+
+
+
+
+.homeContainer .row2 .paymentPlanContainer .perfect{
+   
+    width: 100%;
+    text-align: center;
+
+
+}
+
+
+.homeContainer .row2 .paymentPlanContainer .perfect p{
+    border-radius: 15px;
+    border: 1px solid #090D3A;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    padding-left: 1.7rem;
+    padding-right: 1.7rem;
+}
+
+
+
+
+.homeContainer .row2 .paymentPlanContainer .priceContainer{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+
+}
+
+
+.homeContainer .row2 .paymentPlanContainer .priceContainer .cost{
+    display: flex;
+    flex-direction: row;
+    justify-items: start;
+    gap: 3px;
+}
+
+
+.homeContainer .row2 .paymentPlanContainer .priceContainer .cost h1{
+    
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3rem;
+    height: fit-content;
+    margin: 0;
+
+}
+
+
+
+.homeContainer .row2 .paymentPlanContainer .priceContainer .cost p{
+    color: #A5A5A5;
+    font-weight: 300;
+   
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+
+}
+
+
+
+.homeContainer .row2 .paymentPlanContainer .paymentButton{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+}
+
+
+
+
+.homeContainer .row2 .paymentPlanContainer .paymentButton button{
+
+     border: none;
+    border-radius:25px;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 8.4rem;
+    padding-right: 8.4rem;
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.3rem;
+   
+    background: #09F7F9;
+    background: linear-gradient(56deg, rgba(9, 247, 249, 1) 0%, rgba(26, 144, 218, 1) 100%);
+    
+    transition: 0.3s ease-in-out;
+    position: relative;
+    transform: translateY(0);
+
+
+}
+
+
+
+.homeContainer .row2 .paymentPlanContainer .paymentButton button:hover{
+    transform: translateY(-2px);
+    cursor: pointer;
+
+}
+
+
