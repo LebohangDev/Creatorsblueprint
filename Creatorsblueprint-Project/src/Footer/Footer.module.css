@@ -7,14 +7,14 @@
     justify-items: center;
     max-width: 1400px;
     width: 100%;
-    
+    border-top: 2px solid #D7D7D7;
     margin: 0 auto;
 
 }
 
 .footerContainer .footerHeader{
     display: grid;
-    grid-template-columns: 6rem auto auto;
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
     margin-top: 4rem;
     width: 90%;

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Home from './Home/Home.jsx';
 import Footer from './Footer/Footer.jsx';
 import Nav from './Nav/Nav.jsx';
+import Testimonials from './Testimonials/Testimonials.jsx';
 
 
 
@@ -21,10 +22,14 @@ function App() {
 
     <div className="content">
 
-      <div className={setActive === 'Home' ? 'activeSection' : 'notActiveSection'}>
+      <div className={active === 'Home' ? 'activeSection' : 'notActiveSection'}>
         <Home/>
 
       </div>
+      <div className={active === 'Testimonials' ? 'activeSection' : 'notActiveSection'}>
+        <Testimonials/>
+      </div>
+      
       
     </div>
 

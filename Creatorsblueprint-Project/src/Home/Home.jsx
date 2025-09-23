@@ -258,46 +258,56 @@ function Home(){
 
                     <div className={styles.compareTable}>
                         <table>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Done-For-You</th>
-                                <th>Learn to Do What We Do</th>
-                            </tr>
-                            <tr>
-                                <td>Goal</td>
-                                <td>Simple start</td>
-                                <td>Scale & Grow</td>
-                            </tr>
-                            <tr>
-                                <td>Products</td>
-                                <td>1 Product</td>
-                                <td>Unlimited Products</td>
-                            </tr>
-                            <tr>
-                                <td>Website</td>
-                                <td>1 Website Built</td>
-                                <td>Full Website, Edits Included</td>
-                            </tr>
-                            <tr>
-                                <td>Payments</td>
-                                <td>Integrated for You</td>
-                                <td>Learn to Set Up PayPal, Stripe, etc.</td>
-                            </tr>
-                            <tr>
-                                <td>Payments</td>
-                                <td>Integrated for You</td>
-                                <td>Learn to Set Up PayPal, Stripe, etc.</td>
-                            </tr>
-                            <tr>
-                                <td>Monetization</td>
-                                <td>We implement the strategy</td>
-                                <td>You learn the exact strategies we use</td>
-                            </tr>
-                            <tr>
-                                <td>Support</td>
-                                <td>Launch Support</td>
-                                <td>Ongoing Monthly Support (with systems & templates)</td>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>Done-For-You</th>
+                                    <th>Learn to Do What We Do</th>
+                                </tr>
+
+
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Goal</td>
+                                    <td>Simple start</td>
+                                    <td>Scale & Grow</td>
+                                </tr>
+                                <tr>
+                                    <td>Products</td>
+                                    <td>1 Product</td>
+                                    <td>Unlimited Products</td>
+                                </tr>
+                                <tr>
+                                    <td>Website</td>
+                                    <td>1 Website Built</td>
+                                    <td>Full Website, Edits Included</td>
+                                </tr>
+                                <tr>
+                                    <td>Payments</td>
+                                    <td>Integrated for You</td>
+                                    <td>Learn to Set Up PayPal, Stripe, etc.</td>
+                                </tr>
+                                <tr>
+                                    <td>Payments</td>
+                                    <td>Integrated for You</td>
+                                    <td>Learn to Set Up PayPal, Stripe, etc.</td>
+                                </tr>
+                                <tr>
+                                    <td>Monetization</td>
+                                    <td>We implement the strategy</td>
+                                    <td>You learn the exact strategies we use</td>
+                                </tr>
+                                <tr>
+                                    <td>Support</td>
+                                    <td>Launch Support</td>
+                                    <td>Ongoing Monthly Support (with systems & templates)</td>
+                                </tr>
+
+
+                            </tbody>
+   
+                            
 
                         </table>
                         

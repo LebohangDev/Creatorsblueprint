@@ -1,0 +1,174 @@
+
+
+.testiContainer{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+
+
+}
+
+
+.testiContainer .title h1{
+    font-size: 4rem;
+    font-weight: 400;
+    letter-spacing: -4px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+
+.testiContainer .title h1 span{
+    color: #09F7F9;
+
+}
+
+
+.testiContainer .title p{
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #656565;
+}
+
+
+.testiContainer .reviewsContainer{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+
+
+
+
+.testiContainer .reviewsContainer .review{
+   
+    
+    border-radius: 12px;
+    background: linear-gradient(56deg, #09F7F9, #1A90DA);
+    display: inline-block;
+    padding: 2px;
+    box-shadow: 1px 1px 10px #8cfdffae;
+    transition: 0.3s ease-in-out;
+    transform: translateY(0);
+}
+
+
+.testiContainer .reviewsContainer .review:hover{
+     box-shadow: 0 0 5px #09F7F9, 0 0 10px #1a90da96;
+     transform: translateY(-2px);
+
+}
+
+
+.testiContainer .reviewsContainer .review .content{
+    display: grid;
+    grid-template-columns: 10rem auto;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    border-radius: 10px;            
+    background: white;               
+    padding: 10px;       
+       
+    pointer-events: none;   
+}
+
+
+.testiContainer .reviewsContainer .review .content .reviewHeader{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 7rem 1.2rem auto;
+    align-items: start;
+    justify-items: center;
+
+}
+
+
+.testiContainer .reviewsContainer .review .content .reviewHeader .reviewIMG{
+    width: 100%;
+    height: 100%;
+}
+
+
+.testiContainer .reviewsContainer .review .content .reviewHeader .reviewIMG .imgContent{
+    border-radius: 100px;
+    background: linear-gradient(56deg, #09F7F9, #1A90DA);
+    display: inline-block;
+    padding: 2.4px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+
+.testiContainer .reviewsContainer .review .content .reviewHeader .reviewIMG img{
+    width: 7rem;
+    height: 7rem;
+    object-fit: cover;
+    border-radius: 100px;
+    background: white;               
+    pointer-events: none; 
+    
+}
+
+
+.testiContainer .reviewsContainer .review .content .reviewHeader .userName h1{
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+
+
+.testiContainer .reviewsContainer .review .content .reviewHeader .socialHandle p{
+    font-size: 0.9rem;
+    background-color: transparent;
+    background: linear-gradient(56deg, rgba(9, 247, 249, 1) 0%, rgba(26, 144, 218, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; /* fallback */
+    color: transparent;
+}
+
+
+
+.testiContainer .reviewsContainer .review .content .reviewContent{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 7rem auto;
+    justify-items: end;
+    align-items: center;
+
+}
+
+
+.testiContainer .reviewsContainer .review .content .reviewContent p{
+    line-height: 30px;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+
+
+.testiContainer .reviewsContainer .review .content .reviewContent .ratingContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 1px;
+}
+
+
+
+.testiContainer .reviewsContainer .review .content .reviewContent .ratingContainer i{
+    color: #FFEA00;
+}
+    
+
+
+
+
+
+
+

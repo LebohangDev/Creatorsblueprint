@@ -73,9 +73,9 @@ footer{
 
 
 .activeSection{
-  display: grid;
+  display: block;
 }
 
-.noActiveSecton{
+.notActiveSection{
   display: none;
 }

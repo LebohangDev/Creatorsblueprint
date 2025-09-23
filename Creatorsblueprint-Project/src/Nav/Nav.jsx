@@ -27,8 +27,8 @@ function Nav({active, setActive}){
 
                 </div>
 
-                 <div className={styles.FAQ}>
-                    <button onClick={ (e) => {e.preventDefault(); setActive('Testimonial')}}>TESTIMONIALS</button>
+                 <div className={styles.button}>
+                    <button onClick={ (e) => {e.preventDefault(); setActive('Testimonials')}}>TESTIMONIALS</button>
 
                 </div>            
 
