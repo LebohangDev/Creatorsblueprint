@@ -33,9 +33,12 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
+    max-width: 1400px;
     width: 100%;
     align-items: center;
     margin: 0 auto;
+    margin-top: 0.8rem;
+  
     
     
 }

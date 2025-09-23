@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Home from './Home/Home.jsx';
+import Footer from './Footer/Footer.jsx';
 import Nav from './Nav/Nav.jsx';
 
 
@@ -32,7 +33,7 @@ function App() {
 
     <footer>
 
-      <p>footer</p>
+      <Footer/>
 
     </footer>
       

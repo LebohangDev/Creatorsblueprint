@@ -9,7 +9,7 @@ function Nav({active, setActive}){
 
         <div className={styles.NavContainer}>
             <div className={styles.navLogo}>
-                <img src="Images/CB_logo2.png" alt="" />
+                <img src="Images/CB_Logos/CB_logo2.png" alt="" />
             </div>
 
             <div className={styles.navLinks}>
