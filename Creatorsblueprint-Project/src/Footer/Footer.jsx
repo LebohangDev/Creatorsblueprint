@@ -2,7 +2,7 @@
 import styles from "./Footer.module.css";
 
 
-function Footer(){
+function Footer({setActive}){
     return(
         <>
 
@@ -20,9 +20,9 @@ function Footer(){
                     </div>
                 </div>
                 <div className={styles.additonalLinks}>
-                    <p>Privacy</p>
-                    <p>Terms</p>
-                    <p>FAQ</p>
+                    <p onClick={(e) =>{ e.preventDefault(); setActive('Privacy')}}>Privacy</p>
+                    <p onClick={(e) =>{ e.preventDefault(); setActive('Terms')}}>Terms</p>
+                    <p onClick={(e) =>{ e.preventDefault(); setActive('FAQ')}}>FAQ</p>
 
                 </div>
             </div>

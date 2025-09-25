@@ -1,0 +1,103 @@
+
+
+
+.privacyContainer{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    max-width: 1400px;
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 30px;
+    background: linear-gradient(56deg, #09F7F9, #1A90DA);
+    padding: 2px;
+    box-shadow: 1px 1px 10px #8cfdff6d;
+    transition: 0.3s ease-in-out;
+    transform: translateY(0);
+
+    
+
+
+}
+
+.privacyContainer .privacyContent{
+    display: grid;
+    grid-area: 1/-1;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10rem auto;
+    justify-items: center;
+    border-radius: 30px;            
+    background: white;               
+    padding: 10px;       
+    margin: 0 auto;
+       
+    pointer-events: none
+
+}
+
+
+.privacyContainer .privacyContent .header{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3.5rem auto auto;
+    text-align: center;
+
+}
+
+
+
+.privacyContainer .privacyContent .header i{
+    font-size: 3.5rem;
+    background-color: transparent;
+    background: linear-gradient(56deg, rgba(9, 247, 249, 1) 0%, rgba(26, 144, 218, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; /* fallback */
+    color: transparent;
+    
+}
+
+
+.privacyContainer .privacyContent .header h1{
+    font-size: 3rem;
+    margin: 0;
+    font-weight: 400;
+}
+
+
+
+.privacyContainer .privacyContent .header h1 span{
+    background-color: transparent;
+    background: linear-gradient(56deg, rgba(9, 247, 249, 1) 0%, rgba(26, 144, 218, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; /* fallback */
+    color: transparent;
+
+}
+
+
+
+.privacyContainer .privacyContent .header p{
+    font-size: 1rem;
+    font-weight: 300;
+    color: #656565;
+}
+
+
+
+.privacyContainer .privacyContent .content{
+    text-align: left;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    
+}
+
+
+.privacyContainer .privacyContent .content p{
+    font-size: 1rem;
+    color: #363636;
+    font-weight: 300;
+    line-height: 20px;
+}

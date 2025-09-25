@@ -79,3 +79,8 @@ footer{
 .notActiveSection{
   display: none;
 }
+
+footer{
+  background-color: white;
+   border-top: 2px solid #D7D7D7;
+}
