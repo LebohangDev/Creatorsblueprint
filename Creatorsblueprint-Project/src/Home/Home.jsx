@@ -1,7 +1,12 @@
 
 import styles from './Home.module.css';
+import {loadStripe} from "@stripe/stripe-js";
 
 function Home({setActive}){
+
+    
+    
+
 
     const services = [
         {
@@ -20,13 +25,36 @@ function Home({setActive}){
             description: "We don't just build; we strategize. We create a clear roadmap for your launch and long-term income growth."
         }
     ];
-    const courses = [
+  
+    const plans = [
+        {   
+            image: "Images/Course_Images/side-view-woman-with-photo-camera.jpg",
+            title: "Done-For-You",
+            description: "Your full system to grow, scale, and earn more — faster.",
+            highlight: "Best Choice",
+            included: [
+
+                "Premium, Detailed Website (Multiple Tabs, Unlimited Edits)",
+
+                "Payment Gateway Setup (PayPal / Stripe)",
+                "Unlimited Digital Products (Ebooks, Templates, Courses)",
+
+                "Complete Monetization Strategy",
+                "Monthly 1-on-1 Strategy Calls",
+                "Ongoing Launch Support",
+                "Domain Included (Setup + Connection)"
+            ],
+            perfectFor: "Creators who want to scale their income with a complete, professional system.",
+            price: 599,
+            billingCycle: "per month",
+            billed: "billed Monthly"
+        }, 
         {
             image: "Images/Course_Images/side-view-woman-with-photo-camera.jpg",
             title: "Learn to Do What We Do",
             description:
-                "Instead of hiring us to manage everything for you, this course gives you the insider knowledge and tools to take full control. We’ll walk you through the exact methods, strategies, and systems we use for our done-for-you clients.",
-            whatsIncluded: [
+                "A course that give you the skills",
+            included: [
                 "Website Building – Build a multi-page, professional site with ease.",
                 "Payment Setup – Add PayPal, Stripe, and more to accept payments.",
                 "Digital Products – Sell ebooks, templates, and courses.",
@@ -35,7 +63,9 @@ function Home({setActive}){
                 "Launch Guide – Follow a step-by-step roadmap to launch.",
                 "Domain Setup – Register and connect your domain hassle-free."
             ],
-            price: 599
+            price: 599,
+            billingCycle: "per year",
+            billed: "billed yearly"
         }
     ];
     const forYou = [
@@ -61,6 +91,24 @@ function Home({setActive}){
             description: "You want a clean, professional brand presence with your own website, products, and payments, fully done for you."
         }
     ];
+
+
+    const stripePromise = loadStripe("pk_test_51SCIvpHkCRMiEDly8nqofxKALnRj4xv6xpyYYiCkuhRcKRsGeHMpwWDaGsZmBLTHePhnTtZjMxNm8QIRsf08W79i00K9J6hY89")
+
+    async function handleCheckout(planChoice){
+        const res = await fetch("http://localhost:3000/api/create-checkout-session", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(planChoice),
+        });
+
+        const data = await res.json();
+        console.log("Session response:", data);
+
+        // redirect to stripe checkout
+        const stripe = await stripePromise;
+        stripe.redirectToCheckout({ sessionId: data.id})
+    }
 
 
     
@@ -116,89 +164,67 @@ function Home({setActive}){
                         <p>Manage, track, and optimize your digital assets with a plan built for your needs.</p>
                     </div>
 
-                    <div className={styles.paymentPlanContainer}>
-                        <div className={styles.header}>
-                            <div className={styles.title2}>
-                                <h1>Done-For-You</h1>
-                                <p>Your full system to grow, scale, and earn more — faster.</p>
-
-                            </div>
-
-                            <div className={styles.highlight}>
-                                <p>Best Choice</p>
-
-                            </div>
-                        
-                        
+                   
+                        <div className={styles.paymentPlans}>
+                            {plans.map((plan, index) => (
+                                <div key={index} className={styles.paymentPlanContainer}>
+                                    <div className={styles.header}>
+                                        <div className={styles.title2}>
+                                            <h1>{plan.title}</h1>
+                                            <p>{plan.description}</p>
+                                        </div>
+                                        
+                                        <div className={styles.highlight}>
+                                            <p>{plan.highlight}</p>
+                                        </div>
+                                    </div>
+                                    <div className={styles.desc}>
+                                        <div className={styles.title3}>
+                                            <h1>What's Included:</h1>
+                                        </div>
+                                        <div className={styles.content}>
+                                            {plan.included.map((item, i) => (
+                                                <div key={i} className={styles.item}>
+                                                    <i className="ri-check-line"></i>
+                                                    <p>{item}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    
+                                    <div className={styles.perfect}>
+                                        <p>Perfect for: {plan.perfectFor}</p>
+                                    </div>
+                                    
+                                    <div className={styles.priceContainer}>
+                                        
+                                        <div className={styles.cost}>
+                                            <h1>${plan.price}</h1>
+                                            <p>/{plan.billingCycle}</p>
+                                        </div>
+                                        
+                                        <div className={styles.billed}>
+                                            <p>{plan.billed}</p>
+                                        </div>
+                                    </div>
+                                    <div className={styles.paymentButton}>
+                                        <button onClick={(e) => { e.preventDefault(); handleCheckout(plans)}}>Upgrade</button>
+                                    </div>
+                                </div>
+                                
+                            ))}
                         </div>
+                   
+                  
 
-                        <div className={styles.desc}>
-                            <div className={styles.title3}>
-                                <h1>What's Included:</h1>
-                            </div>
-
-                            <div className={styles.content}>
-                                <div className={styles.item}>
-                                    <i className="ri-check-line"></i>
-                                    <p>Premium, Detailed Website (Multiple Tabs, Unlimited Edits)</p>
-                                </div>
-                            
-                                <div className={styles.item}>
-                                    <i className="ri-check-line"></i>
-                                    <p>Payment Gateway Setup (PayPal / Stripe)</p>
-                                </div>
-                                <div className={styles.item}>
-                                    <i className="ri-check-line"></i>
-                                    <p>Unlimited Digital Products (Ebooks, Templates, Courses)</p>
-                                </div>
-                                <div className={styles.item}>
-                                    <i className="ri-check-line"></i>
-                                    <p>Complete Monetization Strategy</p>
-                                </div>
-                                <div className={styles.item}>
-                                    <i className="ri-check-line"></i>
-                                    <p>Monthly 1-on-1 Strategy Calls</p>
-                                </div>
-                                <div className={styles.item}>
-                                    <i className="ri-check-line"></i>
-                                    <p>Ongoing Launch Support</p>
-                                </div>
-                                <div className={styles.item}>
-                                    <i className="ri-check-line"></i>
-                                    <p>Domain Included (Setup + Connection)</p>
-                                </div>
-                            
-                            </div>
-
-                        
-                        </div>
-                        <div className={styles.perfect}>
-                            <p>Perfect for: Creators who want to scale their income with a complete, professional system.</p>
-                        </div>
-                        <div className={styles.priceContainer}>
-                            <div className={styles.cost}>
-                                <h1>$5.99</h1>
-                                <p>/per month</p>
-
-                            </div>
-
-                            <div className={styles.billed}>
-                                <p>billeld yearly</p>
-                            </div>
-                        </div>
-
-                        <div className={styles.paymentButton}>
-                            <button onClick={(e) =>{e.preventDefault(); setActive('Payment')}}>Upgrade</button>
-                        </div>
-
-
-                    </div>
+                    
                     
                 </div>
 
                 
 
             </div>
+            {/*
             <div className={styles.row3}>
                 <div className={styles.row3Content}>
                     <div className={styles.title}>
@@ -235,7 +261,7 @@ function Home({setActive}){
                                 </div>
 
                                 <div className={styles.courseButton}>
-                                    <button onClick={(e) =>{e.preventDefault(); setActive('Payment')}}>Purchase</button>
+                                    <button onClick={(e) =>{e.preventDefault(); handleCheckout();}}>Purchase</button>
                                 </div>
 
                             </div>
@@ -248,6 +274,7 @@ function Home({setActive}){
                 
 
             </div>
+            */}
 
             <div className={styles.row4}>
 

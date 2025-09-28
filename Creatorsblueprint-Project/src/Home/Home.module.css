@@ -221,10 +221,11 @@
 }
 
 
+
 .homeContainer .row2 .row2Content{
      display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto;
     justify-items: center;
     max-width: 1400px;
     margin: 0 auto;
@@ -240,6 +241,8 @@
     grid-template-rows: 10rem auto;
     justify-items: center;
     pointer-events: none;
+    grid-row: 1;
+    
 }
 
 
@@ -263,14 +266,45 @@
 }
 
 
+.homeContainer .row2 .paymentPlans{
+    display: flex;
+    flex-direction: row;
+    
+    width: 80%;
+    height: 100%;
+    gap: 2rem;
+    grid-row: 2;
+}
 
-.homeContainer .row2 .paymentPlanContainer{
+
+
+
+
+
+.homeContainer .row2 .paymentPlanContainer:nth-child(1){
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 4.5rem 24rem 5rem auto;
-    width: 40%;
-    height: 100%;
-    padding: 1rem;
+    grid-template-rows: 4.5rem 24rem 7rem  auto;
+    width: 100%;
+    height: 92%;
+    padding: 2rem;
+    grid-column: 1;
+    background-color: #e2ffff;
+    border-radius: 25px;
+    
+}
+
+
+.homeContainer .row2 .paymentPlanContainer:nth-child(2){
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 4.5rem 24rem 7rem  auto;
+    width: 100%;
+    height: 92%;
+    padding: 2rem;
+    grid-column: 1;
+    background-color: #F9F9FF;
+    border-radius: 25px;
     
 }
 
@@ -304,6 +338,13 @@
 }
 
 
+
+
+.homeContainer .row2 .paymentPlanContainer:nth-child(2) .header .highlight{
+    display: none;
+}
+
+
 .homeContainer .row2 .paymentPlanContainer .header .highlight p{
     color: white;
     background: #D61CDA;
@@ -316,6 +357,8 @@
     box-shadow: 2px 2px 10px #D61CDA;
     pointer-events: none;
 }
+
+
 
 
 
@@ -429,8 +472,8 @@
     padding-right: 8.4rem;
     text-align: center;
     color: #ffffff;
-    font-size: 1.3rem;
-   
+    font-size: 1.1rem;
+   height: fit-content;
     background: #09F7F9;
     background: linear-gradient(56deg, rgba(9, 247, 249, 1) 0%, rgba(26, 144, 218, 1) 100%);
     
@@ -448,6 +491,202 @@
     cursor: pointer;
 
 }
+
+
+
+
+
+.homeContainer .row2 .courseContainer{
+   
+    width: 100%;
+    height: 100%;
+    grid-column: 2;
+}
+
+
+.homeContainer .row2 .courseContainer .course{
+     display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 22rem 10rem 20rem auto;
+    border-radius: 25px;
+    background-color: white;
+    
+    height: fit-content;
+}
+
+
+
+.homeContainer .row2 .courseContainer .course .courseIMG{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+   
+    
+}
+
+
+
+.homeContainer .row2 .courseContainer .course .courseIMG img{
+    width: 100%;
+    
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+}
+
+
+
+.homeContainer .row2 .courseContainer .course .courseHeader{
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+    padding: 1rem;
+    
+}
+
+
+.homeContainer .row2 .courseContainer .course .courseHeader  h1{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    margin-bottom: 0;
+     font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.homeContainer .row2 .courseContainer .course .courseHeader  p{
+    
+    font-weight: 300;
+    color: #ADADAD;
+    margin-top: 0.4rem;
+    font-size: 1rem;
+    line-height: 25px;
+}
+
+
+
+
+.homeContainer .row2 .courseContainer .course .included{
+    padding: 1rem;
+    pointer-events: none;
+}
+
+
+
+
+.homeContainer .row2 .courseContainer .included  h1{
+    font-size: 0.8rem;
+    color: #403F3F;
+    font-weight: 400;
+    
+}
+
+
+
+
+.homeContainer .row2 .courseContainer .included .item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8rem;
+}
+
+
+.homeContainer .row2 .courseContainer .included .item i{
+    color: #09F7F9;
+}
+
+
+
+
+
+
+.homeContainer .row2 .courseContainer .priceContainer{
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    pointer-events: none;
+
+}
+
+
+
+
+.homeContainer .row2 .courseContainer .priceContainer h1{
+    
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2.5rem;
+    height: fit-content;
+    margin: 0;
+
+}
+
+
+
+.homeContainer .row2 .courseContainer .priceContainer p{
+    color: #D61CDA;
+    font-weight: 300;
+   
+    letter-spacing: 1px;
+    font-size: 1rem;
+
+}
+
+
+
+.homeContainer .row2 .courseContainer .courseButton{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+}
+
+
+
+
+.homeContainer .row2 .courseContainer .courseButton button{
+
+     border: none;
+    border-radius:25px;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 8.4rem;
+    padding-right: 8.4rem;
+    text-align: center;
+    color: #ffffff;
+    font-size: 1rem;
+   
+    background: #09F7F9;
+    background: linear-gradient(56deg, rgba(9, 247, 249, 1) 0%, rgba(26, 144, 218, 1) 100%);
+    
+    transition: 0.3s ease-in-out;
+    position: relative;
+    transform: translateY(0);
+
+
+}
+
+
+
+.homeContainer .row2 .courseContainer .courseButton button:hover{
+    transform: translateY(-2px);
+    cursor: pointer;
+
+}
+
+
+.homeContainer .row2 .courseContainer .course .courseButton{
+    padding: 1rem;
+}
+
+
+
 
 
 
