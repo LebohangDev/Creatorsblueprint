@@ -1,0 +1,204 @@
+
+.faqContainer{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    max-width: 1400px;
+    width: 100%;
+   
+    margin: 0 auto;
+    
+
+}
+
+
+.faqContainer .title{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+}
+
+
+.faqContainer .title h1{
+    font-size: 3.5rem;
+    font-weight: 400;
+    margin: 0;
+   
+    
+
+
+}
+    
+.faqContainer .title h1 span{
+    color:#09F7F9;
+    
+}
+
+  
+.faqContainer .title p{
+    font-size: 1.1rem;
+    width: 55%;
+    font-weight: 300;
+    text-align: center;
+    color: #656565;
+    line-height: 25px;
+}
+
+
+ 
+.faqContainer .title p span{
+    color:#09F7F9;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+
+
+
+.faqContainer .FAQS{
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    justify-items: center;
+    width: 100%;
+}
+
+
+.faqContainer .FAQS .FAQ{
+    padding: 2rem;
+    border-radius: 25px;
+    border: none;
+    width: 70%;
+    background-color: #F7F7F7;
+    transition: 0.1s ease-in-out;
+    
+    
+}
+
+
+
+
+.faqContainer .FAQS .FAQ:hover{
+    cursor: pointer;
+
+}
+
+
+
+
+.faqContainer .FAQS .FAQ .header{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: 12px;
+}
+
+.faqContainer .FAQS .FAQ .header i{
+    font-size: 2rem;
+    padding-top: 1rem;
+}
+
+
+
+
+
+.faqContainer .FAQS .FAQ .header .content{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3rem auto;
+    gap: 4px;
+    pointer-events: none;
+    
+}
+
+
+.faqContainer .FAQS .FAQ .header .content h1{
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+
+
+
+.faqContainer .FAQS .FAQ .header .content .activeDesc{
+    display: block;
+    
+    
+}
+
+
+
+
+
+/*not the currently clicked FAQ*/
+
+
+
+.faqContainer .FAQS .notFAQ{
+    background-color: white;
+     padding: 2rem;
+    border-radius: 25px;
+    border: none;
+    width: 70%;
+    transition: 0.1s ease-in-out;
+   
+    
+}
+
+
+.faqContainer .FAQS .notFAQ:hover{
+   
+    cursor: pointer;
+    background-color: #F7F7F7;
+
+}
+
+
+
+
+.faqContainer .FAQS .notFAQ .header{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: 12px;
+}
+
+.faqContainer .FAQS .notFAQ .header i{
+    font-size: 2rem;
+    padding-top: 1rem;
+}
+
+
+
+
+
+.faqContainer .FAQS .notFAQ .header .content{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3rem auto;
+    pointer-events: none;
+    
+}
+
+
+.faqContainer .FAQS .notFAQ .header .content h1{
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+
+
+
+.faqContainer .FAQS .notFAQ .header .content .notActiveDesc{
+    font-size: 1rem;
+    line-height: 20px;
+    
+    display: none;
+}
+

@@ -3,6 +3,8 @@ import Home from './Home/Home.jsx';
 import Footer from './Footer/Footer.jsx';
 import Privacy from './Privacy/Privacy.jsx';
 import Terms from './Terms/Terms.jsx';
+import FAQ from './FAQ/FAQ.JSX';
+import Payment from './Payment/Payment.jsx';
 import Nav from './Nav/Nav.jsx';
 import Testimonials from './Testimonials/Testimonials.jsx';
 
@@ -33,7 +35,7 @@ function App() {
     <div className="content">
 
       <div className={active === 'Home' ? 'activeSection' : 'notActiveSection'}>
-        <Home/>
+        <Home setActive={setActive}/>
 
       </div>
       <div className={active === 'Testimonials' ? 'activeSection' : 'notActiveSection'}>
@@ -46,6 +48,13 @@ function App() {
 
        <div className={active === 'Terms' ? 'activeSection' : 'notActiveSection'}>
         <Terms/>
+      </div>
+
+       <div className={active === 'FAQ' ? 'activeSection' : 'notActiveSection'}>
+        <FAQ/>
+      </div>
+      <div className={active === 'Payment' ? 'activeSection' : 'notActiveSection'}>
+        <Payment/>
       </div>
       
       

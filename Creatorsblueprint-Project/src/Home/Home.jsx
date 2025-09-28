@@ -1,7 +1,7 @@
 
 import styles from './Home.module.css';
 
-function Home(){
+function Home({setActive}){
 
     const services = [
         {
@@ -188,7 +188,7 @@ function Home(){
                         </div>
 
                         <div className={styles.paymentButton}>
-                            <button>Upgrade</button>
+                            <button onClick={(e) =>{e.preventDefault(); setActive('Payment')}}>Upgrade</button>
                         </div>
 
 
@@ -235,7 +235,7 @@ function Home(){
                                 </div>
 
                                 <div className={styles.courseButton}>
-                                    <button>Purchase</button>
+                                    <button onClick={(e) =>{e.preventDefault(); setActive('Payment')}}>Purchase</button>
                                 </div>
 
                             </div>
