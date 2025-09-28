@@ -45,7 +45,7 @@ function Home({setActive}){
                 "Domain Included (Setup + Connection)"
             ],
             perfectFor: "Creators who want to scale their income with a complete, professional system.",
-            price: 599,
+            price: 5.99,
             billingCycle: "per month",
             billed: "billed Monthly"
         }, 
@@ -63,9 +63,10 @@ function Home({setActive}){
                 "Launch Guide – Follow a step-by-step roadmap to launch.",
                 "Domain Setup – Register and connect your domain hassle-free."
             ],
+             perfectFor: "Creators who want to learn our system and grow their income independently.",
             price: 599,
-            billingCycle: "per year",
-            billed: "billed yearly"
+            billingCycle: "paid once",
+            billed: "One Time Payment"
         }
     ];
     const forYou = [
@@ -208,7 +209,7 @@ function Home({setActive}){
                                         </div>
                                     </div>
                                     <div className={styles.paymentButton}>
-                                        <button onClick={(e) => { e.preventDefault(); handleCheckout(plans)}}>Upgrade</button>
+                                        <button onClick={(e) => { e.preventDefault(); handleCheckout(plan)}}>Upgrade</button>
                                     </div>
                                 </div>
                                 

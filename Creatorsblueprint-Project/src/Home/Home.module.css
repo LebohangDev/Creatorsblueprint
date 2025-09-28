@@ -489,6 +489,19 @@
 .homeContainer .row2 .paymentPlanContainer .paymentButton button:hover{
     transform: translateY(-2px);
     cursor: pointer;
+     background: #09F7F9;
+    background: linear-gradient(56deg, rgb(7, 178, 181) 0%, rgb(22, 119, 180) 100%);
+
+}
+
+
+
+
+.homeContainer .row2 .paymentPlanContainer .paymentButton button:active{
+    transform: translateY(-2px);
+    cursor: pointer;
+     background: #09F7F9;
+    background: linear-gradient(56deg, rgb(6, 151, 153) 0%, rgb(18, 100, 150) 100%);
 
 }
 
