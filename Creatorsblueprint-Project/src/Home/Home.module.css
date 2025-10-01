@@ -118,7 +118,14 @@
     grid-column: 1 / -1; 
     grid-row: 2;
     margin: 2rem;
+    justify-items: center;
     gap: 4rem;
+    width: 100%;
+    scroll-snap-type: x mandatory;
+    overflow: hidden;
+    
+    scrollbar-width: none;
+
     
 }
 
@@ -131,6 +138,7 @@
     padding: 2.4px;
     box-shadow: 1px 1px 10px #8cfdff;
     transition: box-shadow 0.3s ease-in-out;
+     
    
 }
 
@@ -198,6 +206,45 @@
     line-height: 30px;
    
     color: #5B5959;
+}
+
+.homeContainer .row1 .paginationContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+   
+    width: 100%;
+    grid-column: 1 / -1; 
+    grid-row: 3;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    
+}
+
+.homeContainer .row1 .paginationContainer .backgroundContainer{
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 15px;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.2rem;
+
+}
+
+
+.homeContainer .row1 .paginationContainer span{
+    padding: 0.4rem;
+    background-color: rgb(234, 234, 234);
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+}
+
+
+.homeContainer .row1 .paginationContainer .dotActive{
+     background-color: #acacac;
 }
 
 
@@ -1252,5 +1299,89 @@
 .homeContainer .row6 .row6Content .cardContainer .cardButton button:hover{
     transform: translateY(-2px);
     cursor: pointer;
+
+}
+
+
+
+@media (max-width: 767px) {
+    .homeContainer{
+       
+        grid-template-columns: minmax(0, 100%);
+        max-width: 576px ;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .homeContainer .row1{
+        grid-template-columns: minmax(0, 100%);
+        grid-template-rows: 22rem 20rem auto;
+    }
+
+    
+    
+
+ 
+    .homeContainer .row1 .title h1{
+        text-align: center;
+        font-size: 6rem;
+        line-height: 60px;
+        margin-bottom: 0rem;
+        
+    }
+    
+    .homeContainer .row1 .title h1 span{
+        display: block;
+        
+        height: 4rem;
+    }
+    .homeContainer .row1 .title p{
+        line-height: 40px;
+        text-align: center;
+        font-size: 4rem;
+        margin-top: 0.9rem;
+        
+    }
+
+    
+    .homeContainer .row1 .desc{
+        grid-area: 2/1;
+    }
+
+     
+    .homeContainer .row1 .desc p{
+        font-size: 1.3rem ;
+        text-align: center;
+    }
+
+     
+    .homeContainer .row1 .desc .buttons{
+        justify-content: center;
+
+    }
+
+    
+    .homeContainer .row1 .servicesContainer{
+        justify-items: center;
+        margin: 0;
+        gap: 2rem;
+        padding: 1rem;
+        grid-row: 3;
+    }
+
+    
+    
+    .homeContainer .row1 .service{
+        width: 30rem;
+    }
+
+    
+.homeContainer .row1 .paginationContainer{
+    grid-row: 4;
+    
+}
+
+
+
 
 }

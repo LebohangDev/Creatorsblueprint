@@ -84,3 +84,29 @@ footer{
   background-color: white;
    border-top: 2px solid #D7D7D7;
 }
+
+
+
+
+
+
+
+@media (max-width: 767px) {
+  
+  :root{
+    font-size: 65%;
+    
+    
+  }
+  #root{
+    grid-template-rows: 3rem 1fr auto;
+  }
+
+ 
+ 
+
+ 
+  
+
+  
+}

@@ -101,3 +101,37 @@
     
 
 }
+
+.hamburgerContainer{
+    display: none;
+        
+}
+
+
+
+@media (max-width: 767px) {
+    .NavContainer{
+        display: none;
+    }
+    .hamburgerContainer{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        justify-items: end;
+        width: 95%;
+        align-items: center;
+        margin: 0 auto;
+        
+
+    }
+
+    .hamburgerContainer .navLogo img{
+        width: 20rem;
+    }
+
+    .hamburgerContainer i{
+        font-size: 2.8rem;
+        margin-bottom: 3rem;
+    }
+  
+}

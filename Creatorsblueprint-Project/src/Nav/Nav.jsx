@@ -35,6 +35,18 @@ function Nav({active, setActive}){
             </div>
 
         </div>
+        <div className={styles.hamburgerContainer}>
+            <div className={styles.navLogo}>
+                <img src="Images/CB_Logos/CB_logo2.png" alt="" />
+            </div>
+            <i className="ri-menu-line"></i>
+
+
+            <div className={styles.hamburgerMenu}>
+
+            </div>
+
+        </div>
 
 
 

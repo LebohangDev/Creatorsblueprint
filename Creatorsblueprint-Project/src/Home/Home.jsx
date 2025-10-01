@@ -1,8 +1,58 @@
 
+import { useEffect, useRef, useState } from 'react';
 import styles from './Home.module.css';
 import {loadStripe} from "@stripe/stripe-js";
+import {AnimatePresence, motion} from 'framer-motion';
 
-function Home({setActive}){
+function Home(){
+
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const  containerRef = useRef(null);
+    const containerItemRef = useRef(null);
+
+    function getService(){
+        setCurrentIndex(c => (c + 1) % services.length) // updater fucntion to update current index and reset at max total of services 
+    
+        if(containerItemRef && containerItemRef.current){
+            containerItemRef.current = services[currentIndex]; // set containerItemRef of current index item
+        }
+    }
+
+    
+    // handle service container scrolling
+    function scrollContainer(){
+
+        
+       
+        if (containerRef.current && containerItemRef.current) {
+            // scroll only the container
+            containerRef.current.scrollTo({
+                left: containerItemRef.current.offsetLeft - containerRef.current.offsetLeft, // offsetLeft gives the distance in pixels from the left edge of the parent container to the left edge of the element itself.
+                behavior: "smooth",
+            });
+        }
+        
+    }
+
+    useEffect(() =>{
+
+        const interval = setInterval(()=>{
+            scrollContainer();
+            getService();
+           
+
+        }, 5000)
+
+
+        return () => {
+            clearInterval(interval)
+        }
+
+        
+
+
+
+    }, [currentIndex])
 
     
     
@@ -94,7 +144,7 @@ function Home({setActive}){
     ];
 
 
-    const stripePromise = loadStripe("pk_test_51SCIvpHkCRMiEDly8nqofxKALnRj4xv6xpyYYiCkuhRcKRsGeHMpwWDaGsZmBLTHePhnTtZjMxNm8QIRsf08W79i00K9J6hY89")
+    /*const stripePromise = loadStripe("pk_test_51SCIvpHkCRMiEDly8nqofxKALnRj4xv6xpyYYiCkuhRcKRsGeHMpwWDaGsZmBLTHePhnTtZjMxNm8QIRsf08W79i00K9J6hY89")
 
     async function handleCheckout(planChoice){
         const res = await fetch("http://localhost:3000/api/create-checkout-session", {
@@ -109,7 +159,7 @@ function Home({setActive}){
         // redirect to stripe checkout
         const stripe = await stripePromise;
         stripe.redirectToCheckout({ sessionId: data.id})
-    }
+    }*/
 
 
     
@@ -121,7 +171,7 @@ function Home({setActive}){
 
             <div className={styles.row1}>
                 <div className={styles.title}>
-                    <h1>Your Follwers ≠ Income</h1>
+                    <h1>Your Follwers<span>≠</span>Income</h1>
                     <p>Lets Fix That.</p>
                 </div>
 
@@ -135,9 +185,10 @@ function Home({setActive}){
                     
                 </div>
 
-                <div className={styles.servicesContainer}>
+                <div className={styles.servicesContainer} ref={containerRef}>
                     {services.map((s, index)=>(
-                        <div className={styles.service} key={index}>
+                        { /*reintilaize currentItemRef based on currentindex and set the others as null because ref will only point to last item in the loop*/},
+                        <div className={styles.service} ref={index === currentIndex ? containerItemRef : null}  key={index}>
                             <div className={styles.content}>
                                 <div className={styles.icon}>
                                     <i className={s.icon}></i>
@@ -154,6 +205,16 @@ function Home({setActive}){
                             
                         </div>
                     ))}
+                </div>
+                <div className={styles.paginationContainer}>
+                    <div className={styles.backgroundContainer}>
+                        {Array.from({length:services.length}).map((_, index) => (
+                            <span key={index} className={index === currentIndex ? styles.dotActive : styles.dot}></span>
+                        
+                        ))}
+
+                    </div>
+                    
                 </div>
             </div>
 
