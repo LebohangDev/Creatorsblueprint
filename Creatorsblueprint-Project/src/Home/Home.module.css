@@ -122,8 +122,10 @@
     gap: 4rem;
     width: 100%;
     scroll-snap-type: x mandatory;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: scroll;
     
+    scroll-behavior: smooth;
     scrollbar-width: none;
 
     

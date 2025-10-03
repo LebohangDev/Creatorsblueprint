@@ -8,51 +8,34 @@ function Home(){
 
     const [currentIndex, setCurrentIndex] = useState(0)
     const  containerRef = useRef(null);
-    const containerItemRef = useRef(null);
+    
 
     function getService(){
-        setCurrentIndex(c => (c + 1) % services.length) // updater fucntion to update current index and reset at max total of services 
+        
     
-        if(containerItemRef && containerItemRef.current){
-            containerItemRef.current = services[currentIndex]; // set containerItemRef of current index item
-        }
+      
     }
 
     
-    // handle service container scrolling
-    function scrollContainer(){
+    
 
-        
-       
-        if (containerRef.current && containerItemRef.current) {
-            // scroll only the container
-            containerRef.current.scrollTo({
-                left: containerItemRef.current.offsetLeft - containerRef.current.offsetLeft, // offsetLeft gives the distance in pixels from the left edge of the parent container to the left edge of the element itself.
-                behavior: "smooth",
-            });
-        }
-        
-    }
+    // interval just updates the index
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex(c => (c + 1) % services.length);
+    }, 5000);
 
-    useEffect(() =>{
+        return () => clearInterval(interval);
+    }, []);
 
-        const interval = setInterval(()=>{
-            scrollContainer();
-            getService();
-           
-
-        }, 5000)
-
-
-        return () => {
-            clearInterval(interval)
-        }
-
-        
-
-
-
-    }, [currentIndex])
+    // scroll whenever currentIndex changes
+    useEffect(() => {
+        const containerItemRef = containerRef.current.children[currentIndex];
+        containerRef.current.scrollTo({
+            left: containerItemRef.offsetLeft - containerRef.current.offsetLeft,
+            behavior: "smooth",
+        });
+    }, [currentIndex]);
 
     
     
@@ -188,7 +171,7 @@ function Home(){
                 <div className={styles.servicesContainer} ref={containerRef}>
                     {services.map((s, index)=>(
                         { /*reintilaize currentItemRef based on currentindex and set the others as null because ref will only point to last item in the loop*/},
-                        <div className={styles.service} ref={index === currentIndex ? containerItemRef : null}  key={index}>
+                        <div className={styles.service}   key={index}>
                             <div className={styles.content}>
                                 <div className={styles.icon}>
                                     <i className={s.icon}></i>
@@ -208,7 +191,7 @@ function Home(){
                 </div>
                 <div className={styles.paginationContainer}>
                     <div className={styles.backgroundContainer}>
-                        {Array.from({length:services.length}).map((_, index) => (
+                        {services.map((_, index) => (
                             <span key={index} className={index === currentIndex ? styles.dotActive : styles.dot}></span>
                         
                         ))}
