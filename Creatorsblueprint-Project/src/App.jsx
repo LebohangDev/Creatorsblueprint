@@ -13,6 +13,7 @@ import Testimonials from './Testimonials/Testimonials.jsx';
 function App() {
 
   const [active, setActive] = useState('Home');
+  const [menuActive, setMenuActive] = useState (false)
 
   useEffect( () =>{
 
@@ -28,7 +29,7 @@ function App() {
 
     <header>
 
-      <Nav active={active} setActive={setActive}/>
+      <Nav active={active} setActive={setActive} menuActive={menuActive} setMenuActive={setMenuActive}/>
 
     </header>
 

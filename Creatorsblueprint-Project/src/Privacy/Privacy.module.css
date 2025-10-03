@@ -23,7 +23,7 @@
 
 .privacyContainer .privacyContent{
     display: grid;
-    grid-area: 1/-1;
+    
     grid-template-columns: 1fr;
     grid-template-rows: 10rem auto;
     justify-items: center;
@@ -100,4 +100,18 @@
     color: #363636;
     font-weight: 300;
     line-height: 20px;
+}
+
+
+
+
+@media (max-width: 767px) {
+    .privacyContainer{
+        grid-template-columns: minmax(0, 100%);
+        max-width: 576px;
+        width: 90%;
+        margin-top: 5rem;
+    }
+
+    
 }

@@ -169,7 +169,108 @@
 
 
 
+@media (max-width: 767px) {
+
+    
+    .testiContainer{
+        margin-top: 5rem;
+        max-width: 576px;
+        grid-template-columns: minmax(0, 100%);
+        grid-template-rows: 8rem auto;
+    }
+
+    .testiContainer .reviewsContainer{
+        width: 90%;
+
+    }
+
+    
+    .testiContainer .title h1{
+        font-size: 3rem;
+        text-align: center;
+        letter-spacing: 0;
+    }
+
+    
+    .testiContainer .title p{
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    
+    .testiContainer .reviewsContainer .review .content .reviewContent{
+        grid-template-rows: 10rem auto;
+
+    }
 
 
+    
+    .testiContainer .reviewsContainer .review .content .reviewContent p {
+        line-height: 17px;
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+     
+    
+
+
+
+
+}
+
+
+
+@media (min-width: 768px) and (max-width: 1180px) and (orientation: landscape) {
+
+    .testiContainer .reviewsContainer .review .content .reviewContent p {
+        line-height: 17px;
+        font-size: 1rem;
+        margin: 0;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 834px) and (orientation: portrait) {
+    .testiContainer{
+       
+        width: 90%;
+        grid-template-columns: minmax(0, 100%);
+        grid-template-rows: 8rem auto;
+    }
+
+    .testiContainer .reviewsContainer{
+        width: 90%;
+
+    }
+
+    
+    .testiContainer .title h1{
+        font-size: 4rem;
+        text-align: center;
+        letter-spacing: 0;
+    }
+
+    
+    .testiContainer .title p{
+        text-align: center;
+        font-size: 1.3rem;
+    }
+
+    
+    .testiContainer .reviewsContainer .review .content .reviewContent{
+        grid-template-rows: 10rem auto;
+
+    }
+
+
+    
+    .testiContainer .reviewsContainer .review .content .reviewContent p {
+        line-height: 27px;
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+}
 
 

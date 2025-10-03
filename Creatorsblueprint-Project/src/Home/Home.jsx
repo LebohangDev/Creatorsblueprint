@@ -171,7 +171,7 @@ function Home(){
 
             <div className={styles.row1}>
                 <div className={styles.title}>
-                    <h1>Your Follwers<span>≠</span>Income</h1>
+                    <h1><span>Your</span> Follwers<span>≠</span>Income</h1>
                     <p>Lets Fix That.</p>
                 </div>
 

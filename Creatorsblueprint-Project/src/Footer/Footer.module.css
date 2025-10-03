@@ -108,3 +108,25 @@
 }
 
 
+
+@media (max-width: 767px) {
+    .footerContainer{
+        grid-template-columns: minmax(0, 100%);
+        width: 90%;
+        max-width: 576px;
+    }
+
+    .footerContainer .footerHeader{
+        grid-template-columns: 1fr;
+       
+
+    }
+
+    
+    .footerContainer .footerHeader .logo {
+        width: 12rem;
+    }
+    
+
+}
+

@@ -1198,7 +1198,7 @@
     grid-area: -1/1;
     grid-row: 6;
     height: 100%;
-    background-color: #EAFDFF;
+    /*background-color: #EAFDFF;*/
     margin-top: 3rem;
     
    
@@ -1308,14 +1308,15 @@
     .homeContainer{
        
         grid-template-columns: minmax(0, 100%);
-        max-width: 576px ;
+        
         width: 100%;
         margin: 0 auto;
     }
 
     .homeContainer .row1{
         grid-template-columns: minmax(0, 100%);
-        grid-template-rows: 22rem 20rem auto;
+        grid-template-rows: 25rem 20rem auto;
+        max-width: 576px ;
     }
 
     
@@ -1324,7 +1325,7 @@
  
     .homeContainer .row1 .title h1{
         text-align: center;
-        font-size: 6rem;
+        font-size: 5rem;
         line-height: 60px;
         margin-bottom: 0rem;
         
@@ -1360,6 +1361,13 @@
 
     }
 
+     
+    .homeContainer .row1 .desc .buttons button{
+        font-size: 1.1rem;
+    }
+
+
+
     
     .homeContainer .row1 .servicesContainer{
         justify-items: center;
@@ -1376,12 +1384,464 @@
     }
 
     
-.homeContainer .row1 .paginationContainer{
-    grid-row: 4;
+    .homeContainer .row1 .paginationContainer{
+        grid-row: 4;
     
+    }
+    
+
+    
+    .homeContainer .row2 .row2Content{
+        grid-template-columns: minmax(0, 100%);
+        grid-template-rows: 14rem auto;
+        width: 90%;
+        max-width: 576px ;
+
+
+        
+
+    }
+    
+    .homeContainer .row2 .row2Content .title h1{
+        font-size: 3.6rem;
+        text-align: center;
+
+
+    }
+
+    
+    .homeContainer .row2 .row2Content .title p{
+        font-size: 1.4rem;
+    }
+
+    
+    
+    .homeContainer .row2 .row2Content .paymentPlans{
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    
+    .homeContainer .row2 .row2Content .paymentPlans .paymentPlanContainer:nth-child(1){
+        grid-template-rows: 6rem 24rem 7rem auto;
+    }
+
+       
+    .homeContainer .row2 .row2Content .paymentPlans .paymentPlanContainer:nth-child(2){
+         grid-template-rows: 6.2rem 26rem 7rem auto;
+
+        
+    }
+
+    
+    .homeContainer .row2 .row2Content .paymentPlans .paymentPlanContainer .header .highlight p{
+        white-space: nowrap;
+        padding-left: 1.4rem;
+        padding-right: 1.4rem
+    }
+
+    
+    .homeContainer .row4{
+        margin-top: 4rem;
+    }
+
+
+    
+    .homeContainer .row4 .row4Content{
+        grid-template-columns: minmax(0, 100%);
+        width: 90%;
+        max-width: 576px ;
+    }
+
+    
+    .homeContainer .row4 .row4Content .title{
+        text-align: center;
+    }
+
+    
+    .homeContainer .row4 .row4Content .title h1{
+        font-size:2.5rem;
+    }
+
+    
+    .homeContainer .row4 .row4Content .compareTable{
+       
+        width: 100%;
+        justify-items: center;
+    }
+    
+    .homeContainer .row4 .compareTable table{
+   
+        width: 100%;
+    }
+
+    .homeContainer .row4 .compareTable table td, th {
+    
+        padding: 16px ;
+   
+        font-size: 1rem;
+    }
+
+
+    
+    .homeContainer .row5 .row5Content{
+        grid-template-columns: minmax(0, 100%);
+        max-width: 576px;
+        grid-template-rows: 9rem auto;
+        width: 90%;
+
+    }
+
+    
+    .homeContainer .row5 .row5Content .title h1{
+        text-align: center;
+        font-size: 2.5rem;
+    }
+
+    
+    .homeContainer .row5 .row5Content .infoCardContainers{
+        width: 100%;
+    }
+
+    
+    
+
+
+
+    
+    .homeContainer .row6 .row6Content{
+        grid-template-columns: minmax(0, 100%);
+        max-width: 576px;
+        width: 90%;
+    }
+
+    
+    .homeContainer .row6 .row6Content .cardContainer{
+        grid-template-columns: minmax(0, 100%);
+        justify-items: center;
+        
+    }
+    
+    .homeContainer .row6 .row6Content .cardContainer .cardContent{
+        text-align: center;
+
+    }
+
+    
+    .homeContainer .row6 .row6Content .cardContainer .cardContent h1{
+        font-size: 2rem;
+
+    }
+
+    
+    .homeContainer .row6 .row6Content .cardContainer .cardContent p{
+        font-size: 1rem;
+    }
+
+
+
+
+
+
+
 }
 
 
 
 
+@media (min-width: 768px) and (max-width: 1180px) and (orientation: landscape) {
+     .homeContainer{
+       
+      
+        
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .homeContainer .row1{
+        
+        width: 90%;
+        max-width: 1180px ;
+        
+        
+    }
+
+    
+    .homeContainer .row1 .title{
+        line-height: 30px;
+    }
+
+    
+    .homeContainer .row1 .title h1{
+        font-size: 7rem;
+       
+    }
+
+    
+    .homeContainer .row1 .title p{
+        font-size: 6rem;
+    }
+
+    
+
+    
+    .homeContainer .row1 .desc .buttons button{
+        font-size: 1rem ;
+        white-space: nowrap;
+    }
+
+
+    
+    .homeContainer .row1 .servicesContainer{
+        gap: 3rem;
+    }
+
+    
+    .homeContainer .row1 .servicesContainer .service .content{
+        padding: 30px ;
+    }
+
+    
+    .homeContainer .row1 .servicesContainer .service .content .title h1{
+        font-size: 1.6rem;
+
+    
+    }
+
+    
+   
+
 }
+
+
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+
+     .homeContainer{
+       
+        grid-template-columns: minmax(0, 100%);
+        
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .homeContainer .row1{
+        grid-template-columns: minmax(0, 100%);
+        grid-template-rows: 25rem 20rem auto;
+        
+    }
+
+
+
+    
+    
+
+ 
+    .homeContainer .row1 .title h1{
+        text-align: center;
+        font-size: 8rem;
+        letter-spacing: 4px;
+        line-height: 100px;
+        margin-bottom: 0rem;
+        
+    }
+    
+   
+    .homeContainer .row1 .title p{
+        line-height: 40px;
+        text-align: center;
+        font-size: 6rem;
+        margin-top: 0.9rem;
+        
+    }
+
+    
+    .homeContainer .row1 .desc{
+        grid-area: 2/1;
+    }
+
+     
+    .homeContainer .row1 .desc p{
+        font-size: 1.7rem ;
+        text-align: center;
+    }
+
+     
+    .homeContainer .row1 .desc .buttons{
+        justify-content: center;
+
+    }
+
+     
+    .homeContainer .row1 .desc .buttons button{
+        font-size: 1.3rem;
+    }
+
+
+
+    
+    .homeContainer .row1 .servicesContainer{
+        justify-items: center;
+        margin: 0;
+        gap: 2rem;
+        padding: 1rem;
+        grid-row: 3;
+    }
+
+    
+    
+    .homeContainer .row1 .service{
+        width: 30rem;
+    }
+
+    
+    .homeContainer .row1 .service .content .title h1{
+        font-size: 1.5rem;
+    }
+
+    
+    .homeContainer .row1 .service .content .desc p{
+        font-size: 1.2rem;
+    }
+
+    
+    .homeContainer .row1 .paginationContainer{
+        grid-row: 4;
+    
+    }
+    
+
+    
+    .homeContainer .row2 .row2Content{
+        grid-template-columns: minmax(0, 100%);
+        grid-template-rows: 14rem auto;
+        width: 90%;
+        max-width: 576px ;
+
+
+        
+
+    }
+
+    
+    .homeContainer .row2 .row2Content .title{
+        grid-template-rows: 7rem;
+
+    }
+    
+    .homeContainer .row2 .row2Content .title h1{
+        font-size: 4.5rem;
+        text-align: center;
+
+
+    }
+
+    
+    .homeContainer .row2 .row2Content .title p{
+        font-size: 2rem;
+    }
+
+    
+    
+    .homeContainer .row2 .row2Content .paymentPlans{
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    
+    .homeContainer .row2 .row2Content .paymentPlans .paymentPlanContainer:nth-child(1){
+        grid-template-rows: 6rem 24rem 7rem auto;
+    }
+
+       
+    .homeContainer .row2 .row2Content .paymentPlans .paymentPlanContainer:nth-child(2){
+         grid-template-rows: 6.2rem 26rem 7rem auto;
+
+        
+    }
+
+    
+    .homeContainer .row2 .row2Content .paymentPlans .paymentPlanContainer .header .highlight p{
+        white-space: nowrap;
+        padding-left: 1.4rem;
+        padding-right: 1.4rem
+    }
+
+    
+    .homeContainer .row4{
+        margin-top: 4rem;
+    }
+
+
+    
+    .homeContainer .row4 .row4Content{
+        grid-template-columns: minmax(0, 100%);
+        width: 90%;
+        
+       
+    }
+
+    
+    .homeContainer .row4 .row4Content .title{
+        text-align: center;
+    }
+
+    
+    .homeContainer .row4 .row4Content .title h1{
+        font-size:2.5rem;
+    }
+
+    
+    .homeContainer .row4 .row4Content .compareTable{
+       
+        width: 100%;
+        justify-items: center;
+    }
+    
+    .homeContainer .row4 .compareTable table{
+   
+        width: 100%;
+    }
+
+    .homeContainer .row4 .compareTable table td, th {
+    
+        padding: 16px 70px ;
+   
+        font-size: 1rem;
+    }
+
+
+    
+    .homeContainer .row5 .row5Content{
+        grid-template-columns: minmax(0, 100%);
+       
+        grid-template-rows: 9rem auto;
+        width: 90%;
+
+    }
+
+    
+    .homeContainer .row5 .row5Content .title h1{
+        text-align: center;
+        font-size: 2.5rem;
+    }
+
+    
+    .homeContainer .row5 .row5Content .infoCardContainers{
+        width: 100%;
+    }
+
+}
+
+
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
+     .homeContainer .row1{
+        grid-template-columns: minmax(0, 100%);
+        grid-template-rows: 17rem 20rem auto;
+        
+    }
+}
+
+

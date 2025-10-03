@@ -28,7 +28,7 @@ function FAQ(){
             "answer": "Yes. If you don’t make at least one sale after launching your system with us, we’ll refund you 100% of your investment."
         },
         {
-            "question": "What exactly is included in the $599 package?",
+            "question": "What is included in the $599 package?",
             "answer": [
                 "A professional website",
                 "DM automation system (auto-replies + lead capture)",

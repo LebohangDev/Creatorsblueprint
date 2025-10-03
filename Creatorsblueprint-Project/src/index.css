@@ -56,10 +56,15 @@ body {
 
 header{
   grid-row: 1;
+  height: fit-content;
+  
+  
 }
 
 .content{
   grid-row: 2;
+  position: relative;
+  z-index: 50;
   
 }
 
@@ -109,4 +114,29 @@ footer{
   
 
   
+}
+
+
+
+@media (min-width: 768px) and (max-width: 1180px) and (orientation: landscape) {
+  
+  :root{
+    font-size: 65%;
+    
+    
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+
+  :root{
+    font-size: 75%;
+    
+    
+  }
+  #root{
+     gap: 0%;
+  }
+   
 }
