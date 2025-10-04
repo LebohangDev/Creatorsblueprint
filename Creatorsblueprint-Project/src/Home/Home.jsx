@@ -8,14 +8,8 @@ function Home(){
 
     const [currentIndex, setCurrentIndex] = useState(0)
     const  containerRef = useRef(null);
-    
 
-    function getService(){
-        
-    
-      
-    }
-
+   
     
     
 
@@ -78,7 +72,7 @@ function Home(){
                 "Domain Included (Setup + Connection)"
             ],
             perfectFor: "Creators who want to scale their income with a complete, professional system.",
-            price: 5.99,
+            amount: 5.99,
             billingCycle: "per month",
             billed: "billed Monthly"
         }, 
@@ -97,7 +91,7 @@ function Home(){
                 "Domain Setup – Register and connect your domain hassle-free."
             ],
              perfectFor: "Creators who want to learn our system and grow their income independently.",
-            price: 599,
+            amount: 599.99,
             billingCycle: "paid once",
             billed: "One Time Payment"
         }
@@ -143,6 +137,47 @@ function Home(){
         const stripe = await stripePromise;
         stripe.redirectToCheckout({ sessionId: data.id})
     }*/
+
+
+        
+        // pass the selected plan from user
+    async function handleZinnaPayment(planChoice){
+        try{
+
+            const res = await fetch('http://localhost:3000/api/create-payment-intent', {
+                method: 'POST',
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(planChoice),
+                
+            });
+            console.log(planChoice);
+
+            const data = await res.json()
+            window.location.href = data.redirect_url;
+            
+            console.log("redirect url:", data.redirect_url)
+                       
+            
+
+        }catch(e){
+            console.error("failed to send request to create payment session for user:", e)
+            
+                    
+
+        }
+
+                
+            
+        
+    
+      
+    }
+
+   
+    
+
+   
+
 
 
     
@@ -244,7 +279,7 @@ function Home(){
                                     <div className={styles.priceContainer}>
                                         
                                         <div className={styles.cost}>
-                                            <h1>${plan.price}</h1>
+                                            <h1>${plan.amount}</h1>
                                             <p>/{plan.billingCycle}</p>
                                         </div>
                                         
@@ -253,7 +288,7 @@ function Home(){
                                         </div>
                                     </div>
                                     <div className={styles.paymentButton}>
-                                        <button onClick={(e) => { e.preventDefault(); handleCheckout(plan)}}>Upgrade</button>
+                                        <button onClick={(e) => { e.preventDefault(); handleZinnaPayment(plan)}}>Purchase</button>
                                     </div>
                                 </div>
                                 

@@ -44,8 +44,7 @@ function Nav({active, setActive, menuActive, setMenuActive}){
     
         const interval = setInterval(() =>{
             changeLanguage()
-            console.log(lang)
-            console.log(currentIndex)
+          
                 
     
         }, 4000)
