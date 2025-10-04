@@ -4,16 +4,19 @@ import Footer from './Footer/Footer.jsx';
 import Privacy from './Privacy/Privacy.jsx';
 import Terms from './Terms/Terms.jsx';
 import FAQ from './FAQ/FAQ.JSX';
-import Payment from './Payment/Payment.jsx';
+
 import Nav from './Nav/Nav.jsx';
 import Testimonials from './Testimonials/Testimonials.jsx';
+import PaymentSuccess from "./Pages/PaymentSuccess.jsx";
+import PaymentCancel from "./Pages/PaymentCancel.jsx";
 
 
 
 function App() {
 
   const [active, setActive] = useState('Home');
-  const [menuActive, setMenuActive] = useState (false)
+   const [paymentActive, setPaymentActive] = useState('')
+  const [menuActive, setMenuActive] = useState (true)
 
   useEffect( () =>{
 
@@ -22,10 +25,20 @@ function App() {
 
   }, [active])
 
+  useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+  const payment = params.get("payment");
+  if (payment === "success") setPaymentActive("PaymentSuccess");
+  if (payment === "cancel") setPaymentActive("PaymentCancel");
+}, []);
+
   
 
   return (
+
+    
     <>
+   
 
     <header>
 
@@ -54,8 +67,13 @@ function App() {
        <div className={active === 'FAQ' ? 'activeSection' : 'notActiveSection'}>
         <FAQ/>
       </div>
-      <div className={active === 'Payment' ? 'activeSection' : 'notActiveSection'}>
-        <Payment/>
+
+      <div className={paymentActive === 'PaymentSuccess' ? 'activeSection' : 'notActiveSection'}>
+        <PaymentSuccess setPaymentActive= {setPaymentActive}/>
+      </div>
+
+      <div className={paymentActive === 'PaymentCancel' ? 'activeSection' : 'notActiveSection'}>
+        <PaymentCancel setPaymentActive = {setPaymentActive} />
       </div>
       
       

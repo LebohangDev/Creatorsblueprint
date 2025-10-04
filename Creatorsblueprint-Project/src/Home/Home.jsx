@@ -144,7 +144,7 @@ function Home(){
     async function handleZinnaPayment(planChoice){
         try{
 
-            const res = await fetch('https://creatorsblueprintbackend.onrender.com/api/create-payment-intent', {
+            const res = await fetch('http://localhost:3000/api/create-payment-intent', {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(planChoice),
