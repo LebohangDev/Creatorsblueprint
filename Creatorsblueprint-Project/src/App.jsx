@@ -38,6 +38,13 @@ function App() {
 
     
     <>
+    <div className={paymentActive === 'PaymentSuccess' ? 'activeSection' : 'notActiveSection'}>
+        <PaymentSuccess setPaymentActive= {setPaymentActive}/>
+      </div>
+
+      <div className={paymentActive === 'PaymentCancel' ? 'activeSection' : 'notActiveSection'}>
+        <PaymentCancel setPaymentActive = {setPaymentActive} />
+      </div>
    
 
     <header>
@@ -68,13 +75,7 @@ function App() {
         <FAQ/>
       </div>
 
-      <div className={paymentActive === 'PaymentSuccess' ? 'activeSection' : 'notActiveSection'}>
-        <PaymentSuccess setPaymentActive= {setPaymentActive}/>
-      </div>
-
-      <div className={paymentActive === 'PaymentCancel' ? 'activeSection' : 'notActiveSection'}>
-        <PaymentCancel setPaymentActive = {setPaymentActive} />
-      </div>
+      
       
       
     </div>
