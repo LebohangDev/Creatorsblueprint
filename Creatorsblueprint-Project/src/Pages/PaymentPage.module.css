@@ -20,7 +20,7 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   text-align: center;
   max-width: 400px;
-  width: 90%;
+  width: 60%;
   position: relative;
   z-index: 1000;
   animation: fadeInScale 0.3s ease-in-out;
@@ -33,7 +33,7 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   text-align: center;
   max-width: 400px;
-  width: 90%;
+  width: 60%;
   animation: fadeInScale 0.3s ease-in-out;
 }
 
@@ -52,7 +52,22 @@
 .card h1 {
   color: #f44336; /* red for cancel */
   margin-bottom: 1rem;
+  font-style: 2rem;
+  font-weight: 400;
 }
+
+
+.card p{
+  color: rgb(188, 188, 188);
+
+}
+
+
+.cardSuccess p{
+  color: rgb(188, 188, 188);
+
+}
+  
 
 
 .cardSuccess h1 {
@@ -62,33 +77,3 @@
 
 
 
-
-@media (max-width: 767px) {
-  /* Overlay to cover the whole screen */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* semi-transparent dark background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
- z-index: 999999;
-}
-
-.card {
-  background: #fff;
-  padding: 2rem 3rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
-  position: relative;
-  z-index: 1000;
-  animation: fadeInScale 0.3s ease-in-out;
-}
-
-}

@@ -11,6 +11,7 @@ export default function PaymentCancel({ setPaymentActive }) {
     <div className={styles.overlay}>
       <div className={styles.card}>
         <h1>Payment Cancelled</h1>
+        <p>Automatically Closing Message</p>
       </div>
     </div>
   );
