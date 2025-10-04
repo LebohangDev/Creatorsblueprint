@@ -70,7 +70,7 @@ function Nav({active, setActive, menuActive, setMenuActive}){
                         
                 </div>
                 <div className={styles.link2}>
-                    <p onClick={ (e) => {e.preventDefault(); setActive('Home'); document.getElementById('What').scrollIntoView({behavior: "smooth"})}}>WHAT WE DO</p>
+                    <p onClick={ (e) => {e.preventDefault(); setActive('Home'); document.getElementById('what').scrollIntoView({behavior: "smooth"})}}>WHAT WE DO</p>
                         
                 </div>
 

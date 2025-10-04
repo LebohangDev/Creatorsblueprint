@@ -203,7 +203,7 @@ function Home(){
                     
                 </div>
 
-                <div className={styles.servicesContainer} id='What' ref={containerRef}>
+                <div className={styles.servicesContainer} id='what' ref={containerRef}>
                     {services.map((s, index)=>(
                         { /*reintilaize currentItemRef based on currentindex and set the others as null because ref will only point to last item in the loop*/},
                         <div className={styles.service}   key={index}>
