@@ -66,11 +66,11 @@ function Nav({active, setActive, menuActive, setMenuActive}){
 
             <div className={styles.navLinks}>
                 <div className={styles.link1}>
-                    <p onClick={ (e) => {e.preventDefault(); setActive('Home')}}>WHY US?</p>
+                    <p onClick={ (e) => {e.preventDefault(); setActive('Home'); document.getElementById('Why_us').scrollIntoView({behavior: "smooth"})}}>WHY US?</p>
                         
                 </div>
                 <div className={styles.link2}>
-                    <p onClick={ (e) => {e.preventDefault(); setActive('Home')}}>WHAT WE DO</p>
+                    <p onClick={ (e) => {e.preventDefault(); setActive('Home'); document.getElementById('What').scrollIntoView({behavior: "smooth"})}}>WHAT WE DO</p>
                         
                 </div>
 
@@ -132,7 +132,7 @@ function Nav({active, setActive, menuActive, setMenuActive}){
 
                 <div className={styles.navLinks}>
                     <div className={styles.link1}>
-                        <p onClick={ (e) => {e.preventDefault(); setActive('Home')}}>WHY US?</p>
+                        <p onClick={(e) => {e.preventDefault(); setActive('Home'); document.getElementById('Why_us').scrollIntoView({behavior: "smooth"})}}>WHY US?</p>
                         
                     </div>
                     <div className={styles.link2}>
@@ -159,9 +159,9 @@ function Nav({active, setActive, menuActive, setMenuActive}){
                         <div className={styles.media}>
                             <h1>Media</h1>
                             <div className={styles.socialIcons}>
-                                <i class="ri-instagram-line"></i>
-                                <i class="ri-facebook-fill"></i>
-                                <i class="ri-whatsapp-line"></i>
+                                <i onClick={() => window.open("https://www.instagram.com/creatorsblueprint.io?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", "_blank")} className="ri-instagram-line"></i>
+                                <i onClick={() => window.open("https://www.facebook.com/profile.php?id=61580392831846", "_blank")} className="ri-facebook-fill"></i>
+                                <i onClick={() => window.open("https://wa.link/creatorsblueprint", "_blank")} className="ri-whatsapp-line"></i>
                             </div>
                         </div>
                         <div className={styles.additonalLinks}>

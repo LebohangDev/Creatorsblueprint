@@ -196,14 +196,14 @@ function Home(){
                 <div className={styles.desc}>
                     <p>We build <span>done-for-you</span> systems that turn your followers into a reliable income stream through <span>digital Products.</span></p>
                     <div className={styles.buttons}>
-                        <button>Get Started <i className="ri-arrow-right-double-line"></i></button>
-                        <button>Book Free Consultation <i class="ri-phone-line"></i></button>
+                        <button onClick={(e) => {e.preventDefault(); document.getElementById('payments').scrollIntoView({behavior: "smooth"})}}>Get Started <i className="ri-arrow-right-double-line"></i></button>
+                        <button onClick={() => window.open("https://wa.link/creatorsblueprint", "_blank")}>Book Free Consultation <i class="ri-phone-line"></i></button>
 
                     </div>
                     
                 </div>
 
-                <div className={styles.servicesContainer} ref={containerRef}>
+                <div className={styles.servicesContainer} id='What' ref={containerRef}>
                     {services.map((s, index)=>(
                         { /*reintilaize currentItemRef based on currentindex and set the others as null because ref will only point to last item in the loop*/},
                         <div className={styles.service}   key={index}>
@@ -238,14 +238,14 @@ function Home(){
 
             <div className={styles.row2}>
 
-                <div className={styles.row2Content}>
+                <div className={styles.row2Content} id='payments'>
                     <div className={styles.title}>
                         <h1>Your Plan, Done-for-You</h1>
                         <p>Manage, track, and optimize your digital assets with a plan built for your needs.</p>
                     </div>
 
                    
-                        <div className={styles.paymentPlans}>
+                        <div className={styles.paymentPlans} >
                             {plans.map((plan, index) => (
                                 <div key={index} className={styles.paymentPlanContainer}>
                                     <div className={styles.header}>
@@ -427,10 +427,10 @@ function Home(){
 
             </div>
 
-
+            
             <div className={styles.row5}>
                 <div className={styles.row5Content}>
-                     <div className={styles.title}>
+                     <div id='Why_us' className={styles.title}>
                         <h1>This is for <span>you</span> If...</h1>
                     </div>
 
@@ -457,7 +457,7 @@ function Home(){
                             <p>Let's talk. Schedule a free, no-obligation consultation to discuss how we can build your income streams.</p>
                         </div>
                         <div className={styles.cardButton}>
-                            <button>Book Free Consultation <i class="ri-phone-line"></i></button>
+                            <button onClick={() => window.open("https://wa.link/creatorsblueprint", "_blank")}>Book Free Consultation <i class="ri-phone-line"></i></button>
                         </div>
                     </div>
                 </div>

@@ -14,9 +14,9 @@ function Footer({setActive}){
                 <div className={styles.media}>
                     <h1>Media</h1>
                     <div className={styles.socialIcons}>
-                        <i class="ri-instagram-line"></i>
+                        <i onClick={() => window.open("https://www.instagram.com/creatorsblueprint.io?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", "_blank")} class="ri-instagram-line"></i>
                         <i class="ri-facebook-fill"></i>
-                        <i class="ri-whatsapp-line"></i>
+                        <i onClick={() => window.open("https://wa.link/creatorsblueprint", "_blank")} class="ri-whatsapp-line"></i>
                     </div>
                 </div>
                 <div className={styles.additonalLinks}>
