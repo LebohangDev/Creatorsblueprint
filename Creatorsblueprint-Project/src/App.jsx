@@ -15,12 +15,14 @@ import PaymentCancel from "./Pages/PaymentCancel.jsx";
 function App() {
 
   const [active, setActive] = useState('Home');
-   const [paymentActive, setPaymentActive] = useState('')
-  const [menuActive, setMenuActive] = useState (true)
+  const [paymentActive, setPaymentActive] = useState('')
+  const [menuActive, setMenuActive] = useState (false)
+  const [root, setRoot] = useState(null);
 
   useEffect( () =>{
 
     const container =  document.getElementById('root')
+    setRoot(container)
     container.scrollTo(0, 0)
 
   }, [active])
@@ -56,7 +58,7 @@ function App() {
     <div className="content">
 
       <div className={active === 'Home' ? 'activeSection' : 'notActiveSection'}>
-        <Home setActive={setActive}/>
+        <Home setActive={setActive} root={root}/>
 
       </div>
       <div className={active === 'Testimonials' ? 'activeSection' : 'notActiveSection'}>

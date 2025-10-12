@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@100..900&display=swap');
 
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+    
+}
+
+
 
 :root {
   font-size: 90%;
@@ -82,6 +93,8 @@ footer{
 
 .activeSection{
   display: block;
+  animation: fadeIn 0.5s ease-in-out;
+
 }
 
 .notActiveSection{

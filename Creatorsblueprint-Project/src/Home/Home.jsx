@@ -17,7 +17,7 @@ function Home(){
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex(c => (c + 1) % services.length);
-    }, 5000);
+    }, 3000);
 
         return () => clearInterval(interval);
     }, []);
@@ -173,6 +173,8 @@ function Home(){
       
     }
 
+   const isMobile = window.innerWidth < 768;
+
    
     
 
@@ -189,8 +191,13 @@ function Home(){
 
             <div className={styles.row1}>
                 <div className={styles.title}>
-                    <h1><span>Your</span> Follwers<span>≠</span>Income</h1>
+                    <h1>Your Followers <span>≠</span> Income</h1>
                     <p>Lets Fix That.</p>
+                </div>
+                <div className={styles.titleMobile}>
+                    <h1>Creators Blueprint.</h1>
+                    <p>TURN FOLLOWERS INTO <span>INCOME</span></p>
+
                 </div>
 
                 <div className={styles.desc}>
@@ -202,11 +209,55 @@ function Home(){
                     </div>
                     
                 </div>
+                
+                
 
-                <div className={styles.servicesContainer} id='what' ref={containerRef}>
+               
+            </div>
+            <motion.div
+            initial={{ opacity: 0 }}               // visible on load
+            whileInView={{ opacity: 1 }}           // fade out when scrolled past
+            viewport={{ once: true, amount: 0.1 }} // only trigger once, as soon as it leaves
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className={styles.scrollForMore}
+            >
+                 <p>Scroll</p>
+                <i className="ri-arrow-down-circle-fill"></i>
+
+
+            </motion.div>
+           
+               
+        
+
+            <motion.div
+            
+            initial={{ opacity: 0}}
+            whileInView={{ opacity: 1}}
+            viewport={{ amount: isMobile ? 0.9 : 0.9, once: true,  }}
+            transition={{ delay: 0.3,}}
+            className={styles.videoContainer}
+            >
+               
+                <video src="Video/Beats.mp4" autoPlay muted loop playsInline controlsList="noDownload noFullscreen noRemoteplayback" disablePictureInPicture ></video>
+                
+                    
+            </motion.div>
+
+            
+
+            <div className={styles.row2}>
+                 <div className={styles.servicesContainer} id='what' ref={containerRef}>
                     {services.map((s, index)=>(
                         { /*reintilaize currentItemRef based on currentindex and set the others as null because ref will only point to last item in the loop*/},
-                        <div className={styles.service}   key={index}>
+                        <motion.div
+                        key={index}
+                        initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : -30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ amount: isMobile ? 0 : 0.9 , once: true }}
+                        transition={{ delay: index * 0.2,}}
+                        className={styles.service}
+                        >
                             <div className={styles.content}>
                                 <div className={styles.icon}>
                                     <i className={s.icon}></i>
@@ -220,8 +271,11 @@ function Home(){
                                 </div>
 
                             </div>
-                            
-                        </div>
+
+
+
+                        </motion.div>
+                      
                     ))}
                 </div>
                 <div className={styles.paginationContainer}>
@@ -234,72 +288,8 @@ function Home(){
                     </div>
                     
                 </div>
-            </div>
 
-            <div className={styles.row2}>
-
-                <div className={styles.row2Content} id='payments'>
-                    <div className={styles.title}>
-                        <h1>Your Plan, Done-for-You</h1>
-                        <p>Manage, track, and optimize your digital assets with a plan built for your needs.</p>
-                    </div>
-
-                   
-                        <div className={styles.paymentPlans} >
-                            {plans.map((plan, index) => (
-                                <div key={index} className={styles.paymentPlanContainer}>
-                                    <div className={styles.header}>
-                                        <div className={styles.title2}>
-                                            <h1>{plan.title}</h1>
-                                            <p>{plan.description}</p>
-                                        </div>
-                                        
-                                        <div className={styles.highlight}>
-                                            <p>{plan.highlight}</p>
-                                        </div>
-                                    </div>
-                                    <div className={styles.desc}>
-                                        <div className={styles.title3}>
-                                            <h1>What's Included:</h1>
-                                        </div>
-                                        <div className={styles.content}>
-                                            {plan.included.map((item, i) => (
-                                                <div key={i} className={styles.item}>
-                                                    <i className="ri-check-line"></i>
-                                                    <p>{item}</p>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                    
-                                    <div className={styles.perfect}>
-                                        <p>Perfect for: {plan.perfectFor}</p>
-                                    </div>
-                                    
-                                    <div className={styles.priceContainer}>
-                                        
-                                        <div className={styles.cost}>
-                                            <h1>${plan.amount}</h1>
-                                            <p>/{plan.billingCycle}</p>
-                                        </div>
-                                        
-                                        <div className={styles.billed}>
-                                            <p>{plan.billed}</p>
-                                        </div>
-                                    </div>
-                                    <div className={styles.paymentButton}>
-                                        <button onClick={(e) => { e.preventDefault(); handleZinnaPayment(plan)}}>Purchase</button>
-                                    </div>
-                                </div>
-                                
-                            ))}
-                        </div>
-                   
-                  
-
-                    
-                    
-                </div>
+                
 
                 
 
@@ -358,7 +348,116 @@ function Home(){
 
             <div className={styles.row4}>
 
-                <div className={styles.row4Content}>
+                <div className={styles.row4Content} id='payments'>
+                    <div className={styles.title}>
+                         <motion.div
+            
+                        initial={{ opacity: 0, y: -30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ amount: 0.4, once: true }}
+                        transition={{ delay: 0.3,}}
+                       
+                        >
+                            <h1>Your Plan, Done-for-You</h1>
+
+
+                        </motion.div>
+                         <motion.div
+            
+                        initial={{ opacity: 0, y: -30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ amount: 0.4, once: true }}
+                        transition={{ delay: 0.3,}}
+                       
+                        >
+                            <p>Manage, track, and optimize your digital assets with a plan built for your needs.</p>
+
+
+                        </motion.div>
+                       
+                        
+                    </div>
+
+                   
+                        <div className={styles.paymentPlans}>
+                            {plans.map((plan, index) => (
+                                
+                                    <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: -30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ amount: 0.9, once: true }}
+                                    transition={{ delay: index * 0.2,}}
+                                    className={styles.paymentPlanContainer}
+                                    >
+                                        <div className={styles.header}>
+                                            <div className={styles.title2}>
+                                                <h1>{plan.title}</h1>
+                                                <p>{plan.description}</p>
+                                            </div>
+                                        
+                                            <div className={styles.highlight}>
+                                                <p>{plan.highlight}</p>
+                                            </div>
+                                        </div>
+                                        <div className={styles.desc}>
+                                            <div className={styles.title3}>
+                                                <h1>What's Included:</h1>
+                                            </div>
+                                            <div className={styles.content}>
+                                                {plan.included.map((item, i) => (
+                                                    <div key={i} className={styles.item}>
+                                                        <i className="ri-check-line"></i>
+                                                        <p>{item}</p>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    
+                                        <div className={styles.perfect}>
+                                            <p>Perfect for: {plan.perfectFor}</p>
+                                        </div>
+                                    
+                                        <div className={styles.priceContainer}>
+                                        
+                                            <div className={styles.cost}>
+                                                <h1>${plan.amount}</h1>
+                                                <p>/{plan.billingCycle}</p>
+                                            </div>
+                                        
+                                            <div className={styles.billed}>
+                                                <p>{plan.billed}</p>
+                                            </div>
+                                        </div>
+                                        <div className={styles.paymentButton}>
+                                            <button onClick={(e) => { e.preventDefault(); handleZinnaPayment(plan)}}>Purchase</button>
+                                        </div>
+
+
+                                        
+                                    </motion.div>
+                                    
+                                
+                                
+                            ))}
+                        </div>
+                   
+                  
+
+                    
+                    
+                </div>
+
+                
+
+                
+
+            </div>
+
+            
+            <div className={styles.row5}>
+
+                <div className={styles.row5Content}>
                     <div className={styles.title}>
                         <h1>Which One’s Right For <span>You?</span></h1>
                     </div>
@@ -395,11 +494,7 @@ function Home(){
                                     <td>Integrated for You</td>
                                     <td>Learn to Set Up PayPal, Stripe, etc.</td>
                                 </tr>
-                                <tr>
-                                    <td>Payments</td>
-                                    <td>Integrated for You</td>
-                                    <td>Learn to Set Up PayPal, Stripe, etc.</td>
-                                </tr>
+                               
                                 <tr>
                                     <td>Monetization</td>
                                     <td>We implement the strategy</td>
@@ -422,35 +517,46 @@ function Home(){
                     </div>
                     
                 </div>
-
                 
-
             </div>
-
-            
-            <div className={styles.row5}>
-                <div className={styles.row5Content}>
+            <div className={styles.row6}>
+                <div className={styles.row6Content}>
                      <div id='Why_us' className={styles.title}>
                         <h1>This is for <span>you</span> If...</h1>
                     </div>
 
                     <div className={styles.infoCardContainers}>
                         {forYou.map((FY, index) =>(
-                            <div className={styles.card} key={index}>
+
+                            <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: -10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ amount: 0.6, once: true }}
+                            transition={{ delay: index * 0.2,}}
+                            className={styles.card}
+                            
+                            >
                                 <div className={styles.icon}>
                                     <i className={FY.icon}></i>
                                 </div>
                                 <div className={styles.text}>
                                     <p>{FY.description}</p>
                                 </div>
-                            </div>
+
+
+                            </motion.div>
+                           
+                                
+                            
                         ))}
                     </div>
 
                 </div>
+                
             </div>
-            <div className={styles.row6}>
-                <div className={styles.row6Content}>
+            <div className={styles.row7}>
+                <div className={styles.row7Content}>
                     <div className={styles.cardContainer}>
                         <div className={styles.cardContent}>
                             <h1>Ready to <span>monetize?</span></h1>

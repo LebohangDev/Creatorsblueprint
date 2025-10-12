@@ -76,7 +76,7 @@ function FAQ(){
             <div className={styles.title}>
                 
                 <h1>Frequently Asked <span>Questions</span></h1>
-                <p>These are the most commonly asked questions about Creatorsblueprint. Cant Find What you’re looking for? <span>Chat to our friendly team!</span></p>
+                <p>These are the most commonly asked questions about Creatorsblueprint. Cant Find What you’re looking for? <span onClick={() => window.open("https://wa.link/creatorsblueprint", "_blank")}>Chat to our friendly team!</span></p>
             </div>
             <div className={styles.FAQS}>
                 {faqItems.map((FI, index) =>(
@@ -84,6 +84,11 @@ function FAQ(){
                         <motion.div
                         className={faqIndex === index ? styles.FAQ : styles.notFAQ}  onClick={(e) =>{ e.preventDefault(); changeActiveFAQ(index)}}
                         key={index}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1}}
+                        viewport={{ amount: 0.1, once: false }}
+                        transition={{ delay: index * 0.1,}}
+                        
                         
                         style={{ height: index === faqIndex ? "100px" : "40px" }}
 

@@ -53,6 +53,13 @@ function Nav({active, setActive, menuActive, setMenuActive}){
     
     }, [currentIndex])
 
+
+    // Variants for open and closed states
+    const menuVariants = {
+        closed: { opacity: 0, x: 60, transition: { duration: 0.2 } },
+        open: { opacity: 1, x: 0, transition: { duration: 0.2 } },
+    };
+
     
 
     return(
@@ -94,89 +101,107 @@ function Nav({active, setActive, menuActive, setMenuActive}){
             <i className="ri-more-2-fill" onClick={(e) =>{e.preventDefault(); setMenuActive(true)}}></i>
 
 
-            <div className={ menuActive === true ? styles.hamburgerMenuActive : styles.hamburgerMenuClosed}>
-                <div className={styles.menuHeader}>
-                    <div className={styles.title}>
-                         {/*handles the mounting and unmounting of the animation */}
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                        //it ensures that every new 'langauge' is treated as a seperate component allowing ti to trigger the exit/enter animation
-                        key={lang}
-                        initial={{opacity: 0}}
-                        animate ={{opacity: 1}}
-                        exit={{opacity: 0}}>
-                            <p>{lang}</p>
+            <AnimatePresence mode="wait">
+                <motion.div
+                key={menuActive}
+                variants={menuVariants}
+                initial="closed"
+                animate="open"
+                exit="closed"
+                className={ menuActive === true ? styles.hamburgerMenuActive : styles.hamburgerMenuClosed}
+                >
+                    <div className={styles.menuHeader}>
+                        <div className={styles.title}>
+                            {/*handles the mounting and unmounting of the animation */}
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    //it ensures that every new 'langauge' is treated as a seperate component allowing ti to trigger the exit/enter animation
+                                    key={lang}
+                                    initial={{opacity: 0}}
+                                    animate ={{opacity: 1}}
+                                    exit={{opacity: 0}}>
+                                        <p>{lang}</p>
                         
 
 
-                        </motion.div>
+                                </motion.div>
 
 
-                    </AnimatePresence>
-                        <div className={styles.logo}>
-                            <img src="Images/CB_Logos/CB_logo2.png" alt="" />
+                            </AnimatePresence>
+                            <div className={styles.logo}>
+                                <img src="Images/CB_Logos/CB_logo2.png" alt="" />
+                            </div>
+
                         </div>
 
-                    </div>
-
                     
                     
 
-                    <div className={styles.close}>
+                        <div className={styles.close}>
                         
-                        <i className="ri-close-line" onClick={(e) =>{e.preventDefault(); setMenuActive(false)}}></i>
+                            <i className="ri-close-line" onClick={(e) =>{e.preventDefault(); setMenuActive(false)}}></i>
                         
 
-                    </div>
-                </div>
-
-                <div className={styles.navLinks}>
-                    <div className={styles.link1}>
-                        <p onClick={(e) => {e.preventDefault(); setActive('Home'); document.getElementById('Why_us').scrollIntoView({behavior: "smooth"})}}>WHY US?</p>
-                        
-                    </div>
-                    <div className={styles.link2}>
-                        <p onClick={ (e) => {e.preventDefault(); setActive('Home'); document.getElementById('what').scrollIntoView({behavior: "smooth"})}}>WHAT WE DO</p>
-                        
+                        </div>
                     </div>
 
-                    <div className={styles.FAQ}>
-                        <p onClick={ (e) => {e.preventDefault(); setActive('FAQ')}}>FAQ</p>
+                    <div className={styles.navLinks}>
+                        <div className={styles.link1}>
+                            <p onClick={(e) => {e.preventDefault(); setActive('Home'); document.getElementById('Why_us').scrollIntoView({behavior: "smooth"})}}>WHY US?</p>
+                        
+                        </div>
+                        <div className={styles.link2}>
+                            <p onClick={ (e) => {e.preventDefault(); setActive('Home'); document.getElementById('what').scrollIntoView({behavior: "smooth"})}}>WHAT WE DO</p>
+                        
+                        </div>
+
+                        <div className={styles.FAQ}>
+                            <p onClick={ (e) => {e.preventDefault(); setActive('FAQ')}}>FAQ</p>
+
+                        </div>
+
+                        <div className={styles.button}>
+                            <button onClick={ (e) => {e.preventDefault(); setActive('Testimonials')}}>TESTIMONIALS</button>
+ 
+                        </div>            
 
                     </div>
 
-                    <div className={styles.button}>
-                        <button onClick={ (e) => {e.preventDefault(); setActive('Testimonials')}}>TESTIMONIALS</button>
 
-                    </div>            
-
-                </div>
-
-
-                <div className={styles.menuFooter}>
-                    <div className={styles.footerHeader}>
+                    <div className={styles.menuFooter}>
+                        <div className={styles.footerHeader}>
                         
-                        <div className={styles.media}>
-                            <h1>Media</h1>
-                            <div className={styles.socialIcons}>
-                                <i onClick={() => window.open("https://www.instagram.com/creatorsblueprint.io?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", "_blank")} className="ri-instagram-line"></i>
-                                <i onClick={() => window.open("https://www.facebook.com/profile.php?id=61580392831846", "_blank")} className="ri-facebook-fill"></i>
-                                <i onClick={() => window.open("https://wa.link/creatorsblueprint", "_blank")} className="ri-whatsapp-line"></i>
+                            <div className={styles.media}>
+                                <h1>Media</h1>
+                                <div className={styles.socialIcons}>
+                                    <i onClick={() => window.open("https://www.instagram.com/creatorsblueprint.io?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", "_blank")} className="ri-instagram-line"></i>
+                                    <i onClick={() => window.open("https://www.facebook.com/profile.php?id=61580392831846", "_blank")} className="ri-facebook-fill"></i>
+                                    <i onClick={() => window.open("https://wa.link/creatorsblueprint", "_blank")} className="ri-whatsapp-line"></i>
+                                </div>
+                            </div>
+                            <div className={styles.additonalLinks}>
+                                <p onClick={(e) =>{ e.preventDefault(); setActive('Privacy')}}>Privacy</p>
+                                <p onClick={(e) =>{ e.preventDefault(); setActive('Terms')}}>Terms</p>
+                                <p onClick={(e) =>{ e.preventDefault(); setActive('FAQ')}}>FAQ</p>
+                    
                             </div>
                         </div>
-                        <div className={styles.additonalLinks}>
-                            <p onClick={(e) =>{ e.preventDefault(); setActive('Privacy')}}>Privacy</p>
-                            <p onClick={(e) =>{ e.preventDefault(); setActive('Terms')}}>Terms</p>
-                            <p onClick={(e) =>{ e.preventDefault(); setActive('FAQ')}}>FAQ</p>
                     
-                         </div>
                     </div>
-                    
-                </div>
 
-            </div>
+
+                    
+                            
+                </motion.div>
+
+
+            </AnimatePresence>
+           
+            
 
         </div>
+
+       
 
 
 

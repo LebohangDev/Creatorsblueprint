@@ -1,4 +1,6 @@
 import styles from './Testimonials.module.css';
+import {AnimatePresence, motion} from 'framer-motion';
+
 
 function Testimonials(){
 
@@ -44,7 +46,15 @@ function Testimonials(){
             <div className={styles.reviewsContainer}>
                 
                 {reviews.map((r, index) =>(
-                    <div className={styles.review} key={index}>
+
+                    <motion.div
+                    key={index}
+                    initial={{ opacity: 0}}
+                    whileInView={{ opacity: 1}}
+                    viewport={{ amount: 0.1, once: false }}
+                    transition={{ delay: index * 0.1,}}
+                    className={styles.review}
+                    >
                         <div className={styles.content}>
                             <div className={styles.reviewHeader}>
                                 <div className={styles.reviewIMG}>
@@ -67,16 +77,28 @@ function Testimonials(){
                                 <p>"{r.description}"</p>
                                 <div className={styles.ratingContainer}>
                                     {Array.from({length: r.rating}).map((_, i)=>(
+                                       
+                                        
+                                        
                                         <i className="ri-star-fill" key={i}></i>
                                     ))}
                                 </div>
                             </div>
 
                         </div>
+
+
+
+
+
+
+                    </motion.div>
+                    
+                        
                         
                         
 
-                    </div>
+                    
                 ))}
             </div>
         </div>

@@ -1,9 +1,49 @@
 
+@keyframes fadeInTop {
+   0%{
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+}
+
+@keyframes fadeInLeft {
+   0%{
+        opacity: 0;
+        transform: translateX(-4px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+
+}
+
+
+@keyframes fadeIn {
+   0%{
+        opacity: 0;
+       
+    }
+    100%{
+        opacity: 1;
+        
+    }
+
+}
+
+
+
 
 .homeContainer{
     display: grid;
     grid-template-columns: minmax(0, 100%);
-    grid-template-rows: auto;
+    grid-template-rows: 15rem auto;
+    gap: 2rem;
 
    
     
@@ -11,11 +51,12 @@
 
 .homeContainer .row1{
     display: grid;
-    grid-template-columns: 65rem auto;
+    grid-template-columns: 65rem 30rem auto;
     grid-template-rows: 1fr;
     max-width: 1400px;
     width: 90%;
     margin: 0 auto;
+    
     
 
 }
@@ -25,18 +66,38 @@
     grid-area: 1/1;
     line-height: 0.7rem;
     pointer-events: none;
+    
+    
+
+}
+.homeContainer .row1 .titleMobile{
+    display: none;
 }
 
 
 .homeContainer .row1 .title h1{
-    font-size: 7rem;
+    font-size: 6.7rem;
     font-weight: 100;
+    animation: fadeInTop 0.3s forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+    
 }
+
+.homeContainer .row1 .title span{
+    font-size: 6rem;
+    
+}
+
 
 .homeContainer .row1 .title p{
     font-size: 7rem;
     font-weight: 500;
     color: #090D3A;
+    animation: fadeIn 0.3s forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+  
 }
 
 
@@ -50,6 +111,9 @@
     font-size: 1.4rem;
     font-weight: 500;
     line-height: 30px;
+    animation: fadeIn 0.3s forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
     
 }
 
@@ -93,6 +157,9 @@
     background: #09F7F9;
     background: linear-gradient(56deg, rgba(9, 247, 249, 1) 0%, rgba(26, 144, 218, 1) 100%);
     box-shadow: 2px 2px 10px #09F7F9;
+    animation: fadeInLeft 0.3s forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
     
 }
 
@@ -106,25 +173,95 @@
     -webkit-text-fill-color: transparent;
     background-clip: text; /* fallback */
     color: transparent;
+    animation: fadeInLeft 0.3s forwards;
+    animation-delay: 0.7s;
+    opacity: 0;
+}
+
+
+
+.homeContainer .scrollForMore{
+    position: absolute;
+    right: 47%;
+    top: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+   
+
+}
+
+.homeContainer .scrollForMore p{
+    font-size: 1.4rem;
+    color: #bbbbbb;
+    letter-spacing: 1px;
+}
+
+
+.homeContainer .scrollForMore i{
+    font-size: 1.4rem;
+    color: rgb(192, 192, 192);
+    margin-bottom: 4px;
+}
+.homeContainer .videoContainer{
+    width: 100%;
+    height: 100%;
+    grid-row: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    max-height: 700px;
+    overflow: hidden;
+    
+}
+
+.homeContainer .videoContainer video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border: none;
+    border-radius: 20px;
+    position: relative;
+    z-index: 10;
+    pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+    
 }
 
 
 
 
-.homeContainer .row1 .servicesContainer{
+
+.homeContainer .row2{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    margin: 0 auto;
+    max-width: 1400px;
+    justify-items: center;
+
+}
+
+
+.homeContainer .row2 .servicesContainer{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
-    grid-column: 1 / -1; 
-    grid-row: 2;
-    margin: 2rem;
+
+    grid-row: 3;
+    margin: auto 0;
+    height: fit-content;
     justify-items: center;
     gap: 4rem;
     width: 100%;
-    scroll-snap-type: x mandatory;
+    
     overflow-y: hidden;
     overflow-x: scroll;
-    
     scroll-behavior: smooth;
     scrollbar-width: none;
 
@@ -132,12 +269,14 @@
 }
 
 
-.homeContainer .row1 .servicesContainer .service{
+.homeContainer .row2 .servicesContainer .service{
     
     border-radius: 12px;
     background: linear-gradient(56deg, #09F7F9, #1A90DA);
     display: inline-block;
     padding: 2.4px;
+   
+    
     box-shadow: 1px 1px 10px #8cfdff;
     transition: box-shadow 0.3s ease-in-out;
      
@@ -146,13 +285,13 @@
 
 
 
-.homeContainer .row1 .servicesContainer .service:hover{
+.homeContainer .row2 .servicesContainer .service:hover{
     box-shadow: 0 0 5px #09F7F9, 0 0 10px #1A90DA;
 }
 
 
 
-.homeContainer .row1 .servicesContainer .service .content{
+.homeContainer .row2 .servicesContainer .service .content{
 
     display: grid;
     grid-template-columns: 1fr;
@@ -165,21 +304,21 @@
     pointer-events: none;        
 }
 
-.homeContainer .row1 .servicesContainer .service .icon{
+.homeContainer .row2 .servicesContainer .service .icon{
    grid-area: 1/1;
 }
 
-.homeContainer .row1 .servicesContainer .service .title{
+.homeContainer .row2 .servicesContainer .service .title{
     grid-area: 2/1;
 }
 
-.homeContainer .row1 .servicesContainer .service .desc{
+.homeContainer .row2 .servicesContainer .service .desc{
     grid-area: 3/1;
 }
 
 
 
-.homeContainer .row1 .servicesContainer .service .icon i{
+.homeContainer .row2 .servicesContainer .service .icon i{
     background: #09F7F9;
     background: linear-gradient(56deg, rgba(9, 247, 249, 1) 0%, rgba(26, 144, 218, 1) 100%);
     padding: 1rem;
@@ -193,8 +332,8 @@
 
 
 
-.homeContainer .row1 .servicesContainer .service .title h1{
-    font-size: 1.8rem;
+.homeContainer .row2 .servicesContainer .service .title h1{
+    font-size: 1.5rem;
     text-align: center;
     line-height: 30px;
     font-weight: 500;
@@ -202,28 +341,28 @@
 }
 
 
-.homeContainer .row1 .servicesContainer .service .desc p{
-    font-size: 1.4rem;
+.homeContainer .row2 .servicesContainer .service .desc p{
+    font-size: 1.2rem;
     text-align: center;
     line-height: 30px;
    
     color: #5B5959;
 }
 
-.homeContainer .row1 .paginationContainer{
+.homeContainer .row2 .paginationContainer{
     display: flex;
     flex-direction: row;
     justify-content: center;
    
     width: 100%;
     grid-column: 1 / -1; 
-    grid-row: 3;
+    grid-row: 4;
     margin-top: 2rem;
     margin-bottom: 3rem;
     
 }
 
-.homeContainer .row1 .paginationContainer .backgroundContainer{
+.homeContainer .row2 .paginationContainer .backgroundContainer{
     background-color: #f4f4f4;
     padding: 1rem;
     border-radius: 15px;
@@ -236,7 +375,7 @@
 }
 
 
-.homeContainer .row1 .paginationContainer span{
+.homeContainer .row2 .paginationContainer span{
     padding: 0.4rem;
     background-color: rgb(234, 234, 234);
     width: 1px;
@@ -245,7 +384,7 @@
 }
 
 
-.homeContainer .row1 .paginationContainer .dotActive{
+.homeContainer .row2 .paginationContainer .dotActive{
      background-color: #acacac;
 }
 
@@ -256,9 +395,9 @@
 /*row 2*/
 
 
-.homeContainer .row2{
+.homeContainer .row4{
     grid-area: -1/1;
-    grid-row: 2;
+    grid-row: 4;
     height: 105%;
     position: relative;
     z-index: 2;
@@ -271,7 +410,7 @@
 
 
 
-.homeContainer .row2 .row2Content{
+.homeContainer .row4 .row4Content{
      display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
@@ -283,7 +422,7 @@
 
 
 
-.homeContainer .row2 .title{
+.homeContainer .row4 .title{
     
     display: grid;
     grid-template-columns: 1fr;
@@ -295,7 +434,7 @@
 }
 
 
-.homeContainer .row2 .title h1{
+.homeContainer .row4 .title h1{
    
     font-size: 7rem;
     font-weight: 400;
@@ -304,10 +443,10 @@
 }
 
 
-.homeContainer .row2 .title p{
+.homeContainer .row4 .title p{
     text-align: center;
     align-items: center;
-    width: 70%;
+    width: 40rem;
 
     font-size: 2rem;
     font-weight: 300;
@@ -315,7 +454,7 @@
 }
 
 
-.homeContainer .row2 .paymentPlans{
+.homeContainer .row4 .paymentPlans{
     display: flex;
     flex-direction: row;
     
@@ -330,7 +469,7 @@
 
 
 
-.homeContainer .row2 .paymentPlanContainer:nth-child(1){
+.homeContainer .row4 .paymentPlanContainer:nth-child(1){
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 4.5rem 24rem 7rem  auto;
@@ -344,7 +483,7 @@
 }
 
 
-.homeContainer .row2 .paymentPlanContainer:nth-child(2){
+.homeContainer .row4 .paymentPlanContainer:nth-child(2){
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 4.5rem 24rem 7rem  auto;
@@ -359,7 +498,7 @@
 
 
 
-.homeContainer .row2 .paymentPlanContainer .header{
+.homeContainer .row4 .paymentPlanContainer .header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -369,19 +508,19 @@
 
 
 
-.homeContainer .row2 .paymentPlanContainer .header .title2{
+.homeContainer .row4 .paymentPlanContainer .header .title2{
     line-height: 10px;
     
 }
 
 
-.homeContainer .row2 .paymentPlanContainer .header .title2 h1{
+.homeContainer .row4 .paymentPlanContainer .header .title2 h1{
     font-size: 2rem;
     font-weight: 400;
 }
 
 
-.homeContainer .row2 .paymentPlanContainer .header .title2 p{
+.homeContainer .row4 .paymentPlanContainer .header .title2 p{
     
     font-weight: 300;
 }
@@ -389,12 +528,12 @@
 
 
 
-.homeContainer .row2 .paymentPlanContainer:nth-child(2) .header .highlight{
+.homeContainer .row4 .paymentPlanContainer:nth-child(2) .header .highlight{
     display: none;
 }
 
 
-.homeContainer .row2 .paymentPlanContainer .header .highlight p{
+.homeContainer .row4 .paymentPlanContainer .header .highlight p{
     color: white;
     background: #D61CDA;
     background: linear-gradient(56deg, rgba(214, 28, 218, 1) 0%, rgba(103, 17, 105, 1) 100%);
@@ -411,7 +550,7 @@
 
 
 
-.homeContainer .row2 .paymentPlanContainer .desc .title3 h1{
+.homeContainer .row4 .paymentPlanContainer .desc .title3 h1{
     font-size: 1rem;
     color: #403F3F;
     font-weight: 400;
@@ -422,7 +561,7 @@
 
 
 
-.homeContainer .row2 .paymentPlanContainer .desc .content .item{
+.homeContainer .row4 .paymentPlanContainer .desc .content .item{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -431,14 +570,14 @@
 }
 
 
-.homeContainer .row2 .paymentPlanContainer .desc .content .item i{
+.homeContainer .row4 .paymentPlanContainer .desc .content .item i{
     color: #09F7F9;
 }
 
 
 
 
-.homeContainer .row2 .paymentPlanContainer .perfect{
+.homeContainer .row4 .paymentPlanContainer .perfect{
    
     width: 100%;
     text-align: center;
@@ -448,7 +587,7 @@
 }
 
 
-.homeContainer .row2 .paymentPlanContainer .perfect p{
+.homeContainer .row4 .paymentPlanContainer .perfect p{
     border-radius: 15px;
     border: 1px solid #090D3A;
     padding-top: 0.8rem;
@@ -460,7 +599,7 @@
 
 
 
-.homeContainer .row2 .paymentPlanContainer .priceContainer{
+.homeContainer .row4 .paymentPlanContainer .priceContainer{
    display: flex;
    flex-direction: row;
    justify-content: space-between;
@@ -469,7 +608,7 @@
 }
 
 
-.homeContainer .row2 .paymentPlanContainer .priceContainer .cost{
+.homeContainer .row4 .paymentPlanContainer .priceContainer .cost{
     display: flex;
     flex-direction: row;
     justify-items: start;
@@ -477,7 +616,7 @@
 }
 
 
-.homeContainer .row2 .paymentPlanContainer .priceContainer .cost h1{
+.homeContainer .row4 .paymentPlanContainer .priceContainer .cost h1{
     
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
@@ -490,7 +629,7 @@
 
 
 
-.homeContainer .row2 .paymentPlanContainer .priceContainer .cost p{
+.homeContainer .row4 .paymentPlanContainer .priceContainer .cost p{
     color: #A5A5A5;
     font-weight: 300;
    
@@ -501,7 +640,7 @@
 
 
 
-.homeContainer .row2 .paymentPlanContainer .paymentButton{
+.homeContainer .row4 .paymentPlanContainer .paymentButton{
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -511,7 +650,7 @@
 
 
 
-.homeContainer .row2 .paymentPlanContainer .paymentButton button{
+.homeContainer .row4 .paymentPlanContainer .paymentButton button{
 
      border: none;
     border-radius:25px;
@@ -535,7 +674,7 @@
 
 
 
-.homeContainer .row2 .paymentPlanContainer .paymentButton button:hover{
+.homeContainer .row4 .paymentPlanContainer .paymentButton button:hover{
     transform: translateY(-2px);
     cursor: pointer;
      background: #09F7F9;
@@ -546,7 +685,7 @@
 
 
 
-.homeContainer .row2 .paymentPlanContainer .paymentButton button:active{
+.homeContainer .row4 .paymentPlanContainer .paymentButton button:active{
     transform: translateY(-2px);
     cursor: pointer;
      background: #09F7F9;
@@ -558,7 +697,7 @@
 
 
 
-.homeContainer .row2 .courseContainer{
+.homeContainer .row4 .courseContainer{
    
     width: 100%;
     height: 100%;
@@ -566,7 +705,7 @@
 }
 
 
-.homeContainer .row2 .courseContainer .course{
+.homeContainer .row4 .courseContainer .course{
      display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 22rem 10rem 20rem auto;
@@ -578,7 +717,7 @@
 
 
 
-.homeContainer .row2 .courseContainer .course .courseIMG{
+.homeContainer .row4 .courseContainer .course .courseIMG{
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -589,7 +728,7 @@
 
 
 
-.homeContainer .row2 .courseContainer .course .courseIMG img{
+.homeContainer .row4 .courseContainer .course .courseIMG img{
     width: 100%;
     
     border-top-right-radius: 25px;
@@ -598,7 +737,7 @@
 
 
 
-.homeContainer .row2 .courseContainer .course .courseHeader{
+.homeContainer .row4 .courseContainer .course .courseHeader{
     display: flex;
     flex-direction: column;
     pointer-events: none;
@@ -607,7 +746,7 @@
 }
 
 
-.homeContainer .row2 .courseContainer .course .courseHeader  h1{
+.homeContainer .row4 .courseContainer .course .courseHeader  h1{
     font-size: 1.5rem;
     font-weight: 500;
     margin-top: 1rem;
@@ -618,7 +757,7 @@
 }
 
 
-.homeContainer .row2 .courseContainer .course .courseHeader  p{
+.homeContainer .row4 .courseContainer .course .courseHeader  p{
     
     font-weight: 300;
     color: #ADADAD;
@@ -630,7 +769,7 @@
 
 
 
-.homeContainer .row2 .courseContainer .course .included{
+.homeContainer .row4 .courseContainer .course .included{
     padding: 1rem;
     pointer-events: none;
 }
@@ -638,7 +777,7 @@
 
 
 
-.homeContainer .row2 .courseContainer .included  h1{
+.homeContainer .row4 .courseContainer .included  h1{
     font-size: 0.8rem;
     color: #403F3F;
     font-weight: 400;
@@ -648,7 +787,7 @@
 
 
 
-.homeContainer .row2 .courseContainer .included .item{
+.homeContainer .row4 .courseContainer .included .item{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -657,7 +796,7 @@
 }
 
 
-.homeContainer .row2 .courseContainer .included .item i{
+.homeContainer .row4 .courseContainer .included .item i{
     color: #09F7F9;
 }
 
@@ -666,7 +805,7 @@
 
 
 
-.homeContainer .row2 .courseContainer .priceContainer{
+.homeContainer .row4 .courseContainer .priceContainer{
     padding: 1rem;
     display: flex;
     flex-direction: row;
@@ -678,7 +817,7 @@
 
 
 
-.homeContainer .row2 .courseContainer .priceContainer h1{
+.homeContainer .row4 .courseContainer .priceContainer h1{
     
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
@@ -691,7 +830,7 @@
 
 
 
-.homeContainer .row2 .courseContainer .priceContainer p{
+.homeContainer .row4 .courseContainer .priceContainer p{
     color: #D61CDA;
     font-weight: 300;
    
@@ -702,7 +841,7 @@
 
 
 
-.homeContainer .row2 .courseContainer .courseButton{
+.homeContainer .row4 .courseContainer .courseButton{
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -712,7 +851,7 @@
 
 
 
-.homeContainer .row2 .courseContainer .courseButton button{
+.homeContainer .row4 .courseContainer .courseButton button{
 
      border: none;
     border-radius:25px;
@@ -736,14 +875,14 @@
 
 
 
-.homeContainer .row2 .courseContainer .courseButton button:hover{
+.homeContainer .row4 .courseContainer .courseButton button:hover{
     transform: translateY(-2px);
     cursor: pointer;
 
 }
 
 
-.homeContainer .row2 .courseContainer .course .courseButton{
+.homeContainer .row4 .courseContainer .course .courseButton{
     padding: 1rem;
 }
 
@@ -752,7 +891,7 @@
 
 
 
-/*row 3*/
+/*
 
 
 .homeContainer .row3{
@@ -999,15 +1138,15 @@
 }
 
 
-
+*/
 
 
 /*row 4*/
 
 
-.homeContainer .row4{
+.homeContainer .row5{
     grid-area: -1/1;
-    grid-row: 4;
+    grid-row: 5;
     height: 105%;
     pointer-events: none;
     
@@ -1019,7 +1158,7 @@
 }
 
 
-.homeContainer .row4 .row4Content{
+.homeContainer .row5 .row5Content{
      display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -1030,7 +1169,7 @@
 
 
 
-.homeContainer .row4 .title{
+.homeContainer .row5 .title{
     
     display: grid;
     grid-template-columns: 1fr;
@@ -1039,7 +1178,7 @@
 }
 
 
-.homeContainer .row4 .title h1{
+.homeContainer .row5 .title h1{
    
     font-size: 3rem;
     font-weight: 400;
@@ -1048,12 +1187,12 @@
 }
 
 
-.homeContainer .row4 .title h1 span{
+.homeContainer .row5 .title h1 span{
     color: #09F7F9;
 }
 
 
-.homeContainer .row4 .compareTable{
+.homeContainer .row5 .compareTable{
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -1061,14 +1200,14 @@
 }
 
 
-.homeContainer .row4 .compareTable table{
+.homeContainer .row5 .compareTable table{
     text-align: left;
     border-collapse: collapse;
     width: 90%;
     
 }
 
-.homeContainer .row4 .compareTable table td, th {
+.homeContainer .row5 .compareTable table td, th {
     border-top: 1px solid #B9B9B9;
     padding: 16px 70px;
     font-weight: 400;
@@ -1076,7 +1215,7 @@
 }
 
 
-.homeContainer .row4 .compareTable table th:nth-child(2), th:nth-child(3)  {
+.homeContainer .row5 .compareTable table th:nth-child(2), th:nth-child(3)  {
     font-weight: 400;
     background-color: transparent;
     background: linear-gradient(56deg, rgba(9, 247, 249, 1) 0%, rgba(26, 144, 218, 1) 100%);
@@ -1095,9 +1234,9 @@
 /*row 5*/
 
 
-.homeContainer .row5{
+.homeContainer .row6{
     grid-area: -1/1;
-    grid-row: 5;
+    grid-row: 6;
     height: 105%;
     
    
@@ -1108,7 +1247,7 @@
 }
 
 
-.homeContainer .row5 .row5Content{
+.homeContainer .row6 .row6Content{
      display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -1121,7 +1260,7 @@
 
 
 
-.homeContainer .row5 .title{
+.homeContainer .row6 .title{
     
     display: grid;
     grid-template-columns: 1fr;
@@ -1131,7 +1270,7 @@
 }
 
 
-.homeContainer .row5 .title h1{
+.homeContainer .row6 .title h1{
    
     font-size: 5rem;
     font-weight: 400;
@@ -1140,13 +1279,13 @@
 }
 
 
-.homeContainer .row5 .title h1 span{
+.homeContainer .row6 .title h1 span{
     color: #09F7F9;
 }
 
 
 
-.homeContainer .row5 .infoCardContainers{
+.homeContainer .row6 .infoCardContainers{
     width: 90%;
     
     display: flex;
@@ -1156,7 +1295,7 @@
 
 
 
-.homeContainer .row5 .infoCardContainers .card{
+.homeContainer .row6 .infoCardContainers .card{
     padding: 1rem;
     border-radius: 10px;
     background-color: #D2FFFF;
@@ -1169,12 +1308,12 @@
 }
 
 
-.homeContainer .row5 .infoCardContainers .card:hover{
+.homeContainer .row6 .infoCardContainers .card:hover{
     transform: translateY(-4px);
 }
 
 
-.homeContainer .row5 .infoCardContainers .card .icon i{
+.homeContainer .row6 .infoCardContainers .card .icon i{
     background: #09F7F9;
     background: linear-gradient(56deg, rgba(9, 247, 249, 1) 0%, rgba(26, 144, 218, 1) 100%);
     padding: 0.6rem;
@@ -1185,7 +1324,7 @@
 }
 
 
-.homeContainer .row5 .infoCardContainers .card .text p{
+.homeContainer .row6 .infoCardContainers .card .text p{
     font-size: 1.1rem;
     pointer-events: none;
 }
@@ -1196,9 +1335,9 @@
 /*row 6*/
 
 
-.homeContainer .row6{
+.homeContainer .row7{
     grid-area: -1/1;
-    grid-row: 6;
+    grid-row: 7;
     height: 100%;
     /*background-color: #EAFDFF;*/
     margin-top: 3rem;
@@ -1211,7 +1350,7 @@
 }
 
 
-.homeContainer .row6 .row6Content{
+.homeContainer .row7 .row7Content{
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -1224,7 +1363,7 @@
 }
 
 
-.homeContainer .row6 .row6Content .cardContainer{
+.homeContainer .row7 .row7Content .cardContainer{
     display: grid;
     grid-template-columns: 25rem auto;
     grid-template-rows: 1fr;
@@ -1241,13 +1380,13 @@
 }
 
 
-.homeContainer .row6 .row6Content .cardContainer .cardContent{
+.homeContainer .row7 .row7Content .cardContainer .cardContent{
     pointer-events: none;
     
 }
 
 
-.homeContainer .row6 .row6Content .cardContainer .cardContent h1{
+.homeContainer .row7 .row7Content .cardContainer .cardContent h1{
     font-size: 2.8rem;
     font-weight: 400;
     margin-bottom: 0;
@@ -1255,7 +1394,7 @@
 }
 
 
-.homeContainer .row6 .row6Content .cardContainer .cardContent h1 span{
+.homeContainer .row7 .row7Content .cardContainer .cardContent h1 span{
     background-color: transparent;
     background: linear-gradient(56deg, rgba(9, 247, 249, 1) 0%, rgba(26, 144, 218, 1) 100%);
     -webkit-background-clip: text;
@@ -1265,7 +1404,7 @@
 }
 
 
-.homeContainer .row6 .row6Content .cardContainer .cardContent p{
+.homeContainer .row7 .row7Content .cardContainer .cardContent p{
     margin-top: 0.5rem;
     width: 100%;
     line-height: 25px;
@@ -1275,7 +1414,7 @@
 
 
 
-.homeContainer .row6 .row6Content .cardContainer .cardButton button{
+.homeContainer .row7 .row7Content .cardContainer .cardButton button{
     border: 1px solid #282D69;
     border-radius: 15px;
     padding-top: 0.8rem;
@@ -1298,7 +1437,7 @@
 
 
 
-.homeContainer .row6 .row6Content .cardContainer .cardButton button:hover{
+.homeContainer .row7 .row7Content .cardContainer .cardButton button:hover{
     transform: translateY(-2px);
     cursor: pointer;
 
@@ -1310,6 +1449,7 @@
     .homeContainer{
        
         grid-template-columns: minmax(0, 100%);
+        grid-template-rows: 25rem auto auto auto;
         
         width: 100%;
         margin: 0 auto;
@@ -1317,8 +1457,15 @@
 
     .homeContainer .row1{
         grid-template-columns: minmax(0, 100%);
-        grid-template-rows: 25rem 20rem auto;
+        grid-template-rows: 10rem 20rem auto;
         max-width: 576px ;
+        height: 100%;
+        margin-bottom: 1000rem;
+    }
+
+    
+    .homeContainer .row1 .title{
+        display: none;
     }
 
     
@@ -1327,28 +1474,57 @@
  
     .homeContainer .row1 .title h1{
         text-align: center;
-        font-size: 5rem;
-        line-height: 60px;
+        font-size: 10rem;
+        line-height: 80px;
         margin-bottom: 0rem;
+        font-weight: 300;
         
     }
     
-    .homeContainer .row1 .title h1 span{
+   
+    
+  
+        
+        
+    
+    .homeContainer .row1 .titleMobile{
+         grid-area: 1/1;
+         text-align: center;
+        line-height: 1.7rem;
+        pointer-events: none;
         display: block;
+        margin-top: 5rem;
+        width: 100%;
         
-        height: 4rem;
     }
-    .homeContainer .row1 .title p{
-        line-height: 40px;
-        text-align: center;
+
+     
+    .homeContainer .row1 .titleMobile h1{
         font-size: 4rem;
-        margin-top: 0.9rem;
-        
+        white-space: nowrap;
+        width: 100%;
+        margin: 0;
+        color: #090D3A;
+        font-weight: 600;
+    }
+
+     
+    .homeContainer .row1 .titleMobile p{
+        font-size: 1.3rem;
+        font-weight: 200;
+        color: #636363;
+        letter-spacing: 1px;
+
+    }
+     
+    .homeContainer .row1 .titleMobile p span{
+        color: #006FFF;
     }
 
     
     .homeContainer .row1 .desc{
         grid-area: 2/1;
+        
     }
 
      
@@ -1367,35 +1543,86 @@
     .homeContainer .row1 .desc .buttons button{
         font-size: 1.1rem;
     }
+    
+    .homeContainer .scrollForMore{
+       right: 42%;
+       top: 10%;
+    }
+    .homeContainer .scrollForMore p{
+        font-size: 1.7rem;
+    }
+    .homeContainer .scrollForMore i{
+        font-size: 1.7rem;
+    }
+    
+    .homeContainer .videoContainer{
+        grid-area: 4/1;
+        width: 90%;
+        height: 160%;
+        
+        max-width: 576px ;
+        
+        
+    }
+
+    
+    .homeContainer .videoContainer video{
+        height: 40rem;
+    }
+
+    
+    .homeContainer .row2{
+        grid-area: 5/1;
+        width: 90%;
+        max-width: 576px;
+    }
 
 
 
     
-    .homeContainer .row1 .servicesContainer{
+    .homeContainer .row2 .servicesContainer{
         justify-items: center;
         margin: 0;
         gap: 2rem;
         padding: 1rem;
-        grid-row: 3;
+        gap: 3rem;
+
+        
     }
 
     
     
-    .homeContainer .row1 .service{
-        width: 30rem;
+    .homeContainer .row2 .service{
+        width: 28rem;
     }
 
     
-    .homeContainer .row1 .paginationContainer{
-        grid-row: 4;
+    .homeContainer .row2 .paginationContainer{
+       grid-area: 6/1;
     
     }
+
+    .homeContainer .row4{
+        grid-area: 7/1;
+    }
+    
+    .homeContainer .row5{
+        grid-area: 8/1;
+    }
+     
+    .homeContainer .row6{
+        grid-area: 9/1;
+    }
+    .homeContainer .row7{
+        grid-area: 10/1;
+    }
+    
     
 
     
-    .homeContainer .row2 .row2Content{
+    .homeContainer .row4 .row4Content{
         grid-template-columns: minmax(0, 100%);
-        grid-template-rows: 14rem auto;
+        grid-template-rows: 8rem auto;
         width: 90%;
         max-width: 576px ;
 
@@ -1403,82 +1630,91 @@
         
 
     }
+
+     
+    .homeContainer .row4 .row4Content .title{
+        grid-template-rows: 6rem auto;
+        
+    }
+
+   
     
-    .homeContainer .row2 .row2Content .title h1{
-        font-size: 3.6rem;
+    .homeContainer .row4 .row4Content .title h1{
+        font-size: 3rem;
         text-align: center;
 
 
     }
 
     
-    .homeContainer .row2 .row2Content .title p{
-        font-size: 1.4rem;
+    .homeContainer .row4 .row4Content .title p{
+        font-size: 1.1rem;
+        width: 25rem;
     }
 
     
     
-    .homeContainer .row2 .row2Content .paymentPlans{
+    .homeContainer .row4 .row4Content .paymentPlans{
         flex-direction: column;
         align-items: center;
 
     }
 
     
-    .homeContainer .row2 .row2Content .paymentPlans .paymentPlanContainer:nth-child(1){
+    .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer:nth-child(1){
         grid-template-rows: 6rem 24rem 7rem auto;
     }
 
        
-    .homeContainer .row2 .row2Content .paymentPlans .paymentPlanContainer:nth-child(2){
+    .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer:nth-child(2){
          grid-template-rows: 6.2rem 26rem 7rem auto;
 
         
     }
 
     
-    .homeContainer .row2 .row2Content .paymentPlans .paymentPlanContainer .header .highlight p{
+    .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer .header .highlight p{
         white-space: nowrap;
         padding-left: 1.4rem;
         padding-right: 1.4rem
     }
 
     
-    .homeContainer .row4{
+    .homeContainer .row5{
         margin-top: 4rem;
     }
 
 
     
-    .homeContainer .row4 .row4Content{
+    .homeContainer .row5 .row5Content{
         grid-template-columns: minmax(0, 100%);
         width: 90%;
         max-width: 576px ;
     }
 
     
-    .homeContainer .row4 .row4Content .title{
+    .homeContainer .row5 .row5Content .title{
         text-align: center;
     }
 
     
-    .homeContainer .row4 .row4Content .title h1{
+    .homeContainer .row5 .row5Content .title h1{
         font-size:2.5rem;
     }
 
     
-    .homeContainer .row4 .row4Content .compareTable{
+    .homeContainer .row5 .row5Content .compareTable{
        
         width: 100%;
         justify-items: center;
     }
     
-    .homeContainer .row4 .compareTable table{
+    .homeContainer .row5 .compareTable table{
    
         width: 100%;
     }
 
-    .homeContainer .row4 .compareTable table td, th {
+    .homeContainer .row5 .compareTable table td, th {
     
         padding: 16px ;
    
@@ -1487,7 +1723,7 @@
 
 
     
-    .homeContainer .row5 .row5Content{
+    .homeContainer .row6 .row6Content{
         grid-template-columns: minmax(0, 100%);
         max-width: 576px;
         grid-template-rows: 9rem auto;
@@ -1496,13 +1732,13 @@
     }
 
     
-    .homeContainer .row5 .row5Content .title h1{
+    .homeContainer .row6 .row6Content .title h1{
         text-align: center;
         font-size: 2.5rem;
     }
 
     
-    .homeContainer .row5 .row5Content .infoCardContainers{
+    .homeContainer .row6 .row6Content .infoCardContainers{
         width: 100%;
     }
 
@@ -1512,32 +1748,32 @@
 
 
     
-    .homeContainer .row6 .row6Content{
+    .homeContainer .row7 .row7Content{
         grid-template-columns: minmax(0, 100%);
         max-width: 576px;
         width: 90%;
     }
 
     
-    .homeContainer .row6 .row6Content .cardContainer{
+    .homeContainer .row7 .row7Content .cardContainer{
         grid-template-columns: minmax(0, 100%);
         justify-items: center;
         
     }
     
-    .homeContainer .row6 .row6Content .cardContainer .cardContent{
+    .homeContainer .row7 .row7Content .cardContainer .cardContent{
         text-align: center;
 
     }
 
     
-    .homeContainer .row6 .row6Content .cardContainer .cardContent h1{
+    .homeContainer .row7 .row7Content .cardContainer .cardContent h1{
         font-size: 2rem;
 
     }
 
     
-    .homeContainer .row6 .row6Content .cardContainer .cardContent p{
+    .homeContainer .row7 .row7Content .cardContainer .cardContent p{
         font-size: 1rem;
     }
 
@@ -1595,17 +1831,17 @@
 
 
     
-    .homeContainer .row1 .servicesContainer{
+    .homeContainer .row2 .servicesContainer{
         gap: 3rem;
     }
 
     
-    .homeContainer .row1 .servicesContainer .service .content{
+    .homeContainer .row2 .servicesContainer .service .content{
         padding: 30px ;
     }
 
     
-    .homeContainer .row1 .servicesContainer .service .content .title h1{
+    .homeContainer .row2 .servicesContainer .service .content .title h1{
         font-size: 1.6rem;
 
     
@@ -1683,7 +1919,7 @@
 
 
     
-    .homeContainer .row1 .servicesContainer{
+    .homeContainer .row2 .servicesContainer{
         justify-items: center;
         margin: 0;
         gap: 2rem;
@@ -1693,29 +1929,29 @@
 
     
     
-    .homeContainer .row1 .service{
+    .homeContainer .row2 .service{
         width: 30rem;
     }
 
     
-    .homeContainer .row1 .service .content .title h1{
+    .homeContainer .row2 .service .content .title h1{
         font-size: 1.5rem;
     }
 
     
-    .homeContainer .row1 .service .content .desc p{
+    .homeContainer .row2 .service .content .desc p{
         font-size: 1.2rem;
     }
 
     
-    .homeContainer .row1 .paginationContainer{
+    .homeContainer .row2 .paginationContainer{
         grid-row: 4;
     
     }
     
 
     
-    .homeContainer .row2 .row2Content{
+    .homeContainer .row4 .row4Content{
         grid-template-columns: minmax(0, 100%);
         grid-template-rows: 14rem auto;
         width: 90%;
@@ -1727,12 +1963,12 @@
     }
 
     
-    .homeContainer .row2 .row2Content .title{
+    .homeContainer .row4 .row4Content .title{
         grid-template-rows: 7rem;
 
     }
     
-    .homeContainer .row2 .row2Content .title h1{
+    .homeContainer .row4 .row4Content .title h1{
         font-size: 4.5rem;
         text-align: center;
 
@@ -1740,45 +1976,45 @@
     }
 
     
-    .homeContainer .row2 .row2Content .title p{
+    .homeContainer .row4 .row4Content .title p{
         font-size: 2rem;
     }
 
     
     
-    .homeContainer .row2 .row2Content .paymentPlans{
+    .homeContainer .row4 .row4Content .paymentPlans{
         flex-direction: column;
         align-items: center;
 
     }
 
     
-    .homeContainer .row2 .row2Content .paymentPlans .paymentPlanContainer:nth-child(1){
+    .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer:nth-child(1){
         grid-template-rows: 6rem 24rem 7rem auto;
     }
 
        
-    .homeContainer .row2 .row2Content .paymentPlans .paymentPlanContainer:nth-child(2){
+    .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer:nth-child(2){
          grid-template-rows: 6.2rem 26rem 7rem auto;
 
         
     }
 
     
-    .homeContainer .row2 .row2Content .paymentPlans .paymentPlanContainer .header .highlight p{
+    .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer .header .highlight p{
         white-space: nowrap;
         padding-left: 1.4rem;
         padding-right: 1.4rem
     }
 
     
-    .homeContainer .row4{
+    .homeContainer .row5{
         margin-top: 4rem;
     }
 
 
     
-    .homeContainer .row4 .row4Content{
+    .homeContainer .row5 .row5Content{
         grid-template-columns: minmax(0, 100%);
         width: 90%;
         
@@ -1786,28 +2022,28 @@
     }
 
     
-    .homeContainer .row4 .row4Content .title{
+    .homeContainer .row5 .row5Content .title{
         text-align: center;
     }
 
     
-    .homeContainer .row4 .row4Content .title h1{
+    .homeContainer .row5 .row5Content .title h1{
         font-size:2.5rem;
     }
 
     
-    .homeContainer .row4 .row4Content .compareTable{
+    .homeContainer .row5 .row5Content .compareTable{
        
         width: 100%;
         justify-items: center;
     }
     
-    .homeContainer .row4 .compareTable table{
+    .homeContainer .row5 .compareTable table{
    
         width: 100%;
     }
 
-    .homeContainer .row4 .compareTable table td, th {
+    .homeContainer .row5 .compareTable table td, th {
     
         padding: 16px 70px ;
    
@@ -1816,7 +2052,7 @@
 
 
     
-    .homeContainer .row5 .row5Content{
+    .homeContainer .row6 .row6Content{
         grid-template-columns: minmax(0, 100%);
        
         grid-template-rows: 9rem auto;
@@ -1825,13 +2061,13 @@
     }
 
     
-    .homeContainer .row5 .row5Content .title h1{
+    .homeContainer .row6 .row6Content .title h1{
         text-align: center;
         font-size: 2.5rem;
     }
 
     
-    .homeContainer .row5 .row5Content .infoCardContainers{
+    .homeContainer .row6 .row6Content .infoCardContainers{
         width: 100%;
     }
 
