@@ -234,7 +234,7 @@ function Home(){
             
             initial={{ opacity: 0}}
             whileInView={{ opacity: 1}}
-            viewport={{ amount: isMobile ? 0.9 : 0.9, once: true,  }}
+            viewport={{ amount: isMobile ? 0.9 : 0.6, once: true,  }}
             transition={{ delay: 0.3,}}
             className={styles.videoContainer}
             >
