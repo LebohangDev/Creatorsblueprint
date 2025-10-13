@@ -8,6 +8,8 @@ function Home(){
 
     const [currentIndex, setCurrentIndex] = useState(0)
     const  containerRef = useRef(null);
+    const videoRef = useRef(null);
+    const scrollMoreRef = useRef('null')
 
    
     
@@ -175,6 +177,29 @@ function Home(){
 
    const isMobile = window.innerWidth < 768;
 
+   useEffect(() =>{
+    const container =  document.getElementById('root')
+    const video = videoRef.current
+    const scrollMore = scrollMoreRef.current
+    const handleScroll = (event) => {
+        console.log("scroll event detected on container:", event.target)
+        
+            
+            scrollMore.style.display='none';
+            video.style.opacity=1;
+
+        
+
+    }
+
+    container.addEventListener('scroll', handleScroll)
+
+    return () =>{
+        container.removeEventListener('scroll', handleScroll)
+    }
+
+   }, []);
+
    
     
 
@@ -218,7 +243,8 @@ function Home(){
             initial={{ opacity: 0 }}               // visible on load
             whileInView={{ opacity: 1 }}           // fade out when scrolled past
             viewport={{ once: true, amount: 0.1 }} // only trigger once, as soon as it leaves
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            ref={scrollMoreRef}
             className={styles.scrollForMore}
             >
                  <p>Scroll</p>
@@ -230,19 +256,18 @@ function Home(){
                
         
 
-            <motion.div
             
-            initial={{ opacity: 0}}
-            whileInView={{ opacity: 1}}
-            viewport={{ amount: isMobile ? 0.9 : 0.9, once: true,  }}
-            transition={{ delay: 0.3,}}
-            className={styles.videoContainer}
-            >
-               
+            <div className={styles.videoContainer} ref={videoRef}>
+                
                 <video src="Video/Beats.mp4" autoPlay muted loop playsInline controlsList="noDownload noFullscreen noRemoteplayback" disablePictureInPicture ></video>
+
+            </div>
+            
+               
+                
                 
                     
-            </motion.div>
+            
 
             
 
@@ -530,8 +555,8 @@ function Home(){
 
                             <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: -10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, translateY: -10 }}
+                            whileInView={{ opacity: 1, translateY: 0 }}
                             viewport={{ amount: 0.6, once: true }}
                             transition={{ delay: index * 0.2,}}
                             className={styles.card}

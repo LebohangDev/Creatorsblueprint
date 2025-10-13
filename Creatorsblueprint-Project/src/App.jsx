@@ -17,12 +17,12 @@ function App() {
   const [active, setActive] = useState('Home');
   const [paymentActive, setPaymentActive] = useState('')
   const [menuActive, setMenuActive] = useState (false)
-  const [root, setRoot] = useState(null);
+  
 
   useEffect( () =>{
 
     const container =  document.getElementById('root')
-    setRoot(container)
+    
     container.scrollTo(0, 0)
 
   }, [active])

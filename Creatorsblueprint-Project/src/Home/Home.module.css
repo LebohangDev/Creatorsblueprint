@@ -188,6 +188,7 @@
     flex-direction: row;
     align-items: center;
     gap: 4px;
+     
    
 
 }
@@ -212,6 +213,8 @@
     margin: 0 auto;
     max-height: 700px;
     overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
     
 }
 
@@ -1449,7 +1452,7 @@
     .homeContainer{
        
         grid-template-columns: minmax(0, 100%);
-        grid-template-rows: 25rem auto auto auto;
+        grid-template-rows: 20rem auto auto auto;
         
         width: 100%;
         margin: 0 auto;
@@ -1457,7 +1460,7 @@
 
     .homeContainer .row1{
         grid-template-columns: minmax(0, 100%);
-        grid-template-rows: 10rem 20rem auto;
+        grid-template-rows: 7rem 20rem auto;
         max-width: 576px ;
         height: 100%;
         margin-bottom: 1000rem;
@@ -1495,6 +1498,7 @@
         display: block;
         margin-top: 5rem;
         width: 100%;
+        animation: none;
         
     }
 
@@ -1506,6 +1510,7 @@
         margin: 0;
         color: #090D3A;
         font-weight: 600;
+        animation: fadeInTop 0.3s ease-in-out;
     }
 
      
@@ -1514,6 +1519,9 @@
         font-weight: 200;
         color: #636363;
         letter-spacing: 1px;
+        opacity: 0;
+        animation: fadeInTop 0.3s forwards;
+        animation-delay: 0.3s;
 
     }
      
