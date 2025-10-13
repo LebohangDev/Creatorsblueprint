@@ -1798,12 +1798,15 @@
         
         width: 100%;
         margin: 0 auto;
+        grid-template-rows: 20rem auto;
     }
 
     .homeContainer .row1{
         
         width: 90%;
         max-width: 1180px ;
+        grid-area: 1/1;
+        grid-template-columns: 60rem auto;
         
         
     }
@@ -1815,7 +1818,7 @@
 
     
     .homeContainer .row1 .title h1{
-        font-size: 7rem;
+        font-size: 6rem;
        
     }
 
@@ -1830,6 +1833,29 @@
     .homeContainer .row1 .desc .buttons button{
         font-size: 1rem ;
         white-space: nowrap;
+    }
+
+    .homeContainer .videoContainer{
+        grid-area: 2/1;
+    
+        height: 100%;
+        width: 90%;
+        max-width: 1180px ;
+       
+        
+    }
+
+    
+    .homeContainer .videoContainer video{
+        height: 60rem;
+        
+        
+    }
+
+    
+    .homeContainer .row2{
+        grid-area: 3/1;
+        width: 90%;
     }
 
 
@@ -1849,6 +1875,18 @@
 
     
     }
+    
+    .homeContainer .row4 .title{
+        grid-template-rows: 7rem;
+    }
+
+    .homeContainer .row4 .title h1{
+        font-size: 5rem;
+    }
+
+    .homeContainer .row6 .title h1{
+        font-size: 3.7rem;
+    }
 
     
    
@@ -1862,7 +1900,7 @@
      .homeContainer{
        
         grid-template-columns: minmax(0, 100%);
-        
+        grid-template-rows: 40rem auto;
         width: 100%;
         margin: 0 auto;
     }
@@ -1870,6 +1908,7 @@
     .homeContainer .row1{
         grid-template-columns: minmax(0, 100%);
         grid-template-rows: 25rem 20rem auto;
+        grid-area: 1/1;
         
     }
 
@@ -1917,6 +1956,22 @@
      
     .homeContainer .row1 .desc .buttons button{
         font-size: 1.3rem;
+    }
+
+    .homeContainer .videoContainer{
+        grid-area: 2/1;
+    
+        height: 100%;
+        width: 90%;
+        max-width: 1180px ;
+       
+        
+    }
+
+    
+    .homeContainer .row2{
+        grid-area: 3/1 ;
+        width: 90%;
     }
 
 
@@ -2074,15 +2129,38 @@
         width: 100%;
     }
 
+    
+    .homeContainer .row7 .cardContainer{
+        margin-top: 0;
+        margin-bottom: 2rem;
+
+    }
+
+
 }
 
 
 @media (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
      .homeContainer .row1{
         grid-template-columns: minmax(0, 100%);
-        grid-template-rows: 17rem 20rem auto;
+        grid-template-rows: 25rem 20rem auto;
         
     }
+  
+}
+
+
+@media (min-width: 1366px) and (max-width: 1400px) and (orientation: landscape) {
+     .homeContainer .videoContainer{
+        grid-area: 2/1;
+    
+        height: 100%;
+        width: 90%;
+        max-width: 1180px ;
+       
+        
+    }
+
 }
 
 

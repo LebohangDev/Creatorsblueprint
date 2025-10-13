@@ -279,7 +279,7 @@ function Home(){
                         key={index}
                         initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : -30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ amount: isMobile ? 0 : 0.9 , once: true }}
+                        viewport={{ amount: isMobile ? 0 : 0.8 , once: true }}
                         transition={{ delay: index * 0.2,}}
                         className={styles.service}
                         >
