@@ -1306,14 +1306,9 @@
     flex-direction: row;
     align-items: center;
     gap: 12px;
-    transform: translateY(0);
-    transition: 0.3s ease-in-out;
+    
 }
 
-
-.homeContainer .row6 .infoCardContainers .card:hover{
-    transform: translateY(-4px);
-}
 
 
 .homeContainer .row6 .infoCardContainers .card .icon i{
