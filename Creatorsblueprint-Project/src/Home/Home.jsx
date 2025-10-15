@@ -118,7 +118,7 @@ const plans = [
             image: "Images/Course_Images/side-view-woman-with-photo-camera.jpg",
             title: "The Full System Setup",
             description: "Complete done-for-you system to grow and earn effortlessly.",
-            highlight: "best Choice",
+            highlight: "best choice",
             included: [
                 "Custom Multi-Page Website designed to convert followers into clients.",
                 "Tailored Digital Product Creation based on your audience and engagement.",
