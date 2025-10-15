@@ -14,13 +14,13 @@ function Privacy(){
                         <p> 
                             1. Introduction 
                             <br />
-                            Welcome to CreatorsBlueprint ("we," "our," or "us"). We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website www.creatorsblueprint.net.
+                            Welcome to CreatorsBlueprint. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website www.creatorsblueprint.net.
                         </p>
                         <p>
                             2. Information We Collect
                             <br />
 
-                            We may collect personal information that you voluntarily provide to us when you fill out a contact form, such as your name, email address, phone number, and social media handles (Instagram, TikTok). We use this information solely to respond to your inquiry and provide you with our services.
+                            We may collect personal information that you voluntarily provide to us when you fill out a contact form, such as your name, email address, phone number, and social media handles. We use this information solely to respond to your inquiry and provide you with our services.
                         </p>
                         <p>
                             3. Use of Your Information

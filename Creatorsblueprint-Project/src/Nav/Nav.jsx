@@ -4,7 +4,7 @@ import styles from "./Nav.module.css";
 import { AnimatePresence, motion} from "framer-motion";
 
 
-function Nav({active, setActive, menuActive, setMenuActive}){
+function Nav({setActive, menuActive, setMenuActive}){
 
     const [lang, setLang] = useState('Hello');
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -98,7 +98,7 @@ function Nav({active, setActive, menuActive, setMenuActive}){
             <div className={styles.navLogo}>
                 <img src="Images/CB_Logos/CB_logo2.png" alt="" />
             </div>
-            <i className="ri-more-2-fill" onClick={(e) =>{e.preventDefault(); setMenuActive(true)}}></i>
+            <i className="ri-menu-line" onClick={(e) =>{e.preventDefault(); setMenuActive(true)}}></i>
 
 
             <AnimatePresence mode="wait">

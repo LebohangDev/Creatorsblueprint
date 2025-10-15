@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { AnimatePresence, motion} from "framer-motion";
 import Home from './Home/Home.jsx';
 import Footer from './Footer/Footer.jsx';
 import Privacy from './Privacy/Privacy.jsx';
@@ -7,8 +8,9 @@ import FAQ from './FAQ/FAQ.JSX';
 
 import Nav from './Nav/Nav.jsx';
 import Testimonials from './Testimonials/Testimonials.jsx';
-import PaymentSuccess from "./Pages/PaymentSuccess.jsx";
-import PaymentCancel from "./Pages/PaymentCancel.jsx";
+import PaymentSuccess from "./paymentPopups/PaymentSuccess.jsx";
+import PaymentCancel from "./paymentPopups/PaymentCancel.jsx";
+
 
 
 
@@ -16,7 +18,8 @@ function App() {
 
   const [active, setActive] = useState('Home');
   const [paymentActive, setPaymentActive] = useState('')
-  const [menuActive, setMenuActive] = useState (false)
+  const [menuActive, setMenuActive] = useState(false)
+  const [navActive, setNavActive] = useState(true)
   
 
   useEffect( () =>{
@@ -28,11 +31,18 @@ function App() {
   }, [active])
 
   useEffect(() => {
-  const params = new URLSearchParams(window.location.search);
-  const payment = params.get("payment");
-  if (payment === "success") setPaymentActive("PaymentSuccess");
-  if (payment === "cancel") setPaymentActive("PaymentCancel");
-}, []);
+    const params = new URLSearchParams(window.location.search);
+    const payment = params.get("payment");
+    if (payment === "success") setPaymentActive("PaymentSuccess");
+    if (payment === "cancel") setPaymentActive("PaymentCancel");
+  }, []);
+
+
+   // Variants for open and closed states
+    const menuVariants = {
+        closed: { opacity: 0, y: -60, transition: { duration: 0.2 } },
+        open: { opacity: 1, y: 0, transition: { duration: 0.2 } },
+    };
 
   
 
@@ -40,25 +50,43 @@ function App() {
 
     
     <>
-    <div className={paymentActive === 'PaymentSuccess' ? 'activeSection' : 'notActiveSection'}>
-        <PaymentSuccess setPaymentActive= {setPaymentActive}/>
-      </div>
 
-      <div className={paymentActive === 'PaymentCancel' ? 'activeSection' : 'notActiveSection'}>
-        <PaymentCancel setPaymentActive = {setPaymentActive} />
-      </div>
+
+    <AnimatePresence mode="wait">
+      <motion.div
+      key={navActive}
+      variants={menuVariants}
+      initial="closed"
+      animate="open"
+      exit="closed"
+      className={ navActive === true ? 'navActive' : 'notNavActive'}
+      >
+        <Nav active={active} setActive={setActive} menuActive={menuActive} setMenuActive={setMenuActive}/>
+
+      </motion.div>
+
+    </AnimatePresence>
+    
+
+
    
 
-    <header>
 
-      <Nav active={active} setActive={setActive} menuActive={menuActive} setMenuActive={setMenuActive}/>
+    <div className={paymentActive === 'PaymentSuccess' ? 'activeSection' : 'notActiveSection'}>
+        <PaymentSuccess setPaymentActive= {setPaymentActive}/>
+    </div>
 
-    </header>
+    <div className={paymentActive === 'PaymentCancel' ? 'activeSection' : 'notActiveSection'}>
+      <PaymentCancel setPaymentActive = {setPaymentActive} />
+    </div>
+   
+
+    
 
     <div className="content">
 
       <div className={active === 'Home' ? 'activeSection' : 'notActiveSection'}>
-        <Home setActive={setActive} root={root}/>
+        <Home setNavActive={setNavActive}/>
 
       </div>
       <div className={active === 'Testimonials' ? 'activeSection' : 'notActiveSection'}>
@@ -94,5 +122,7 @@ function App() {
     </>
   )
 }
+
+
 
 export default App

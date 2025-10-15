@@ -4,7 +4,7 @@ import styles from './Home.module.css';
 import {loadStripe} from "@stripe/stripe-js";
 import {AnimatePresence, motion} from 'framer-motion';
 
-function Home(){
+function Home({setNavActive}){
 
     const [currentIndex, setCurrentIndex] = useState(0)
     const  containerRef = useRef(null);
@@ -19,10 +19,13 @@ function Home(){
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex(c => (c + 1) % services.length);
-    }, 3000);
+    }, 6000);
 
         return () => clearInterval(interval);
     }, []);
+
+
+
 
     // scroll whenever currentIndex changes
     useEffect(() => {
@@ -33,6 +36,51 @@ function Home(){
         });
     }, [currentIndex]);
 
+
+
+    useEffect(() =>{
+        const container =  document.getElementById('root')
+        
+        const video = videoRef.current
+        const scrollMore = scrollMoreRef.current
+        let lastScrollTop = 0;
+        const handleScroll = (event) => {
+
+        
+
+        
+            if(event.target.scrollTop < lastScrollTop) {
+                console.log("scroll top detected on container:", event.target)
+                setNavActive(true)
+
+
+            }
+            else if(event.target.scrollTop > lastScrollTop){
+                console.log("scroll down detected on container:", event.target)
+                scrollMore.style.display='none';
+                video.style.opacity=1;
+                setNavActive(false)
+
+            }
+        
+             lastScrollTop = event.target.scrollTop;
+            
+            
+        }
+
+        
+  
+        
+       
+
+        container.addEventListener('scroll', handleScroll)
+
+        return () =>{
+            container.removeEventListener('scroll', handleScroll)
+        }
+
+    }, []);
+
     
     
 
@@ -41,62 +89,67 @@ function Home(){
         {
             icon: "ri-file-list-3-line",
             title: "Digital Product Creation",
-            description: "We turn your knowledge into high-value digital assets like ebooks, guides, and templates that your audience will love."
+            description:"We turn your knowledge into high-value digital assets like ebooks, guides, and templates that your audience will love.",
         },
         {
             icon: "ri-code-s-slash-line",
             title: "Professional Website & Funnels",
-            description: "You get a stunning, high-converting website that acts as your 24/7 sales machine, complete with payment integration."
+            description: "You get a stunning, high-converting website that acts as your 24/7 sales machine, complete with payment integration.",
         },
         {
             icon: "ri-money-dollar-circle-line",
             title: "Monetization Strategy",
-            description: "We don't just build; we strategize. We create a clear roadmap for your launch and long-term income growth."
-        }
+            description: "We don't just build; we strategize. We create a clear roadmap for your launch and long-term income growth.",
+        },
+        {
+            icon: "ri-community-line",
+            title: "Brand & Audience Growth",
+            description: "We help you grow an engaged audience through content strategy, storytelling, and consistent branding across platforms.",
+        },
+        {
+            icon: "ri-bar-chart-box-line",
+            title: "Analytics & Optimization",
+            description: "We track performance, interpret data, and continuously optimize your systems to boost conversions and audience engagement.",
+        },
     ];
   
-    const plans = [
-        {   
-            image: "Images/Course_Images/side-view-woman-with-photo-camera.jpg",
-            title: "Done-For-You",
-            description: "Your full system to grow, scale, and earn more — faster.",
-            highlight: "Best Choice",
-            included: [
-
-                "Premium, Detailed Website (Multiple Tabs, Unlimited Edits)",
-
-                "Payment Gateway Setup (PayPal / Stripe)",
-                "Unlimited Digital Products (Ebooks, Templates, Courses)",
-
-                "Complete Monetization Strategy",
-                "Monthly 1-on-1 Strategy Calls",
-                "Ongoing Launch Support",
-                "Domain Included (Setup + Connection)"
-            ],
-            perfectFor: "Creators who want to scale their income with a complete, professional system.",
-            amount: 5.99,
-            billingCycle: "per month",
-            billed: "billed Monthly"
-        }, 
+const plans = [
         {
             image: "Images/Course_Images/side-view-woman-with-photo-camera.jpg",
-            title: "Learn to Do What We Do",
-            description:
-                "A course that give you the skills",
+            title: "The Full System Setup",
+            description: "Complete done-for-you system to grow and earn effortlessly.",
+            highlight: "best Choice",
             included: [
-                "Website Building – Build a multi-page, professional site with ease.",
-                "Payment Setup – Add PayPal, Stripe, and more to accept payments.",
-                "Digital Products – Sell ebooks, templates, and courses.",
-                "Monetization – Use proven methods to grow recurring revenue.",
-                "Strategy Systems – Plan, track, and optimize like a pro.",
-                "Launch Guide – Follow a step-by-step roadmap to launch.",
-                "Domain Setup – Register and connect your domain hassle-free."
+                "Custom Multi-Page Website designed to convert followers into clients.",
+                "Tailored Digital Product Creation based on your audience and engagement.",
+                "Payment Gateway Integration via PayPal, Stripe, or Ziina.",
+                "Auto-Messaging System to handle DMs and sales 24/7.",
+                "Full System Setup & Optimization for seamless automation.",
+                "15-Day Guarantee — full refund if no sale in first 15 days.",
             ],
-             perfectFor: "Creators who want to learn our system and grow their income independently.",
-            amount: 599.99,
+            perfectFor: "Creators ready to monetize their audience with a fully automated system.",
+            amount: 599.0,
             billingCycle: "paid once",
-            billed: "One Time Payment"
-        }
+            billed: "One-Time Payment",
+        },
+        {
+            image: "Images/Course_Images/side-view-woman-with-photo-camera.jpg",
+            title: "The Partnership Model",
+            description:"We build and launch your system at no upfront cost; revenue is shared.",
+            highlight: "Revenue Share — 50/50",
+            included: [
+                "Multi-Page Website optimized for conversions.",
+                "Custom Digital Product or Course tailored to your audience.",
+                "Payment Gateway Setup (PayPal / Stripe / Ziina) included.",
+                "Full Automation of DMs, sales replies, and follow-ups.",
+                "Ongoing Performance Monitoring and Optimization.",
+               "Shared Success — we only profit when you do.",
+            ],
+            perfectFor:"Influencers with engagement but limited startup capital seeking a shared-profit model.",
+            amount: 0,
+            billingCycle: "revenue share",
+            billed: "50/50 Partnership",
+        },
     ];
     const forYou = [
 
@@ -177,28 +230,7 @@ function Home(){
 
    const isMobile = window.innerWidth < 768;
 
-   useEffect(() =>{
-    const container =  document.getElementById('root')
-    const video = videoRef.current
-    const scrollMore = scrollMoreRef.current
-    const handleScroll = (event) => {
-        console.log("scroll event detected on container:", event.target)
-        
-            
-            scrollMore.style.display='none';
-            video.style.opacity=1;
-
-        
-
-    }
-
-    container.addEventListener('scroll', handleScroll)
-
-    return () =>{
-        container.removeEventListener('scroll', handleScroll)
-    }
-
-   }, []);
+   
 
    
     
@@ -492,53 +524,48 @@ function Home(){
                             <thead>
                                 <tr>
                                     <th>Feature</th>
-                                    <th>Done-For-You</th>
-                                    <th>Learn to Do What We Do</th>
+                                    <th>The Full System Setup</th>
+                                    <th>The Partnership Model</th>
                                 </tr>
-
-
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>Goal</td>
-                                    <td>Simple start</td>
-                                    <td>Scale & Grow</td>
+                                    <td>Complete done-for-you system for fast monetization</td>
+                                    <td>Launch your system with no upfront cost; revenue is shared</td>
                                 </tr>
                                 <tr>
                                     <td>Products</td>
-                                    <td>1 Product</td>
-                                    <td>Unlimited Products</td>
+                                    <td>Tailored digital product(s) created for your audience</td>
+                                    <td>Custom digital product or course based on audience insights</td>
                                 </tr>
                                 <tr>
                                     <td>Website</td>
-                                    <td>1 Website Built</td>
-                                    <td>Full Website, Edits Included</td>
+                                    <td>Custom multi-page website built & optimized for conversions</td>
+                                    <td>Multi-page website designed for conversions</td>
                                 </tr>
                                 <tr>
                                     <td>Payments</td>
-                                    <td>Integrated for You</td>
-                                    <td>Learn to Set Up PayPal, Stripe, etc.</td>
+                                    <td>Integrated via PayPal, Stripe, or Ziina</td>
+                                    <td>Learn & set up payment gateways (PayPal / Stripe / Ziina)</td>
                                 </tr>
-                               
                                 <tr>
-                                    <td>Monetization</td>
-                                    <td>We implement the strategy</td>
-                                    <td>You learn the exact strategies we use</td>
+                                    <td>Automation</td>
+                                    <td>Auto-messaging system & automated sales follow-ups</td>
+                                    <td>Full automation support (DMs, replies, follow-ups)</td>
                                 </tr>
                                 <tr>
                                     <td>Support</td>
-                                    <td>Launch Support</td>
-                                    <td>Ongoing Monthly Support (with systems & templates)</td>
+                                    <td>15-Day Guarantee + launch setup support</td>
+                                    <td>Ongoing monitoring & optimization; partnership support</td>
                                 </tr>
-
-
+                                <tr>
+                                    <td>Cost</td>
+                                    <td>$599 One-Time</td>
+                                    <td>$0 upfront — 50/50 revenue share</td>
+                                </tr>
                             </tbody>
-   
-                            
-
                         </table>
-                        
-
                     </div>
                     
                 </div>

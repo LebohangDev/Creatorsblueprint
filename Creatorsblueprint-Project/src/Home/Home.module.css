@@ -253,8 +253,9 @@
 
 .homeContainer .row2 .servicesContainer{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr;
+    flex-wrap: nowrap;
 
     grid-row: 3;
     margin: auto 0;
@@ -262,7 +263,7 @@
     justify-items: center;
     gap: 4rem;
     width: 100%;
-    
+    grid-auto-flow: column;
     overflow-y: hidden;
     overflow-x: scroll;
     scroll-behavior: smooth;
@@ -276,10 +277,10 @@
     
     border-radius: 12px;
     background: linear-gradient(56deg, #09F7F9, #1A90DA);
-    display: inline-block;
+   
     padding: 2.4px;
    
-    
+    width: 30rem;
     box-shadow: 1px 1px 10px #8cfdff;
     transition: box-shadow 0.3s ease-in-out;
      
@@ -1597,6 +1598,7 @@
     
     .homeContainer .row2 .service{
         width: 28rem;
+        transition: none;
     }
 
     
@@ -1682,6 +1684,12 @@
         padding-right: 1.4rem
     }
 
+    
+    
+    .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer .header .title h1{
+        font-size: 1rem;
+
+    }
     
     .homeContainer .row5{
         margin-top: 4rem;
@@ -1791,7 +1799,7 @@
 
 
 
-@media (min-width: 768px) and (max-width: 1180px) and (orientation: landscape) {
+@media (min-width: 768px) and (max-width: 1280px) and (orientation: landscape) {
      .homeContainer{
        
       
@@ -1806,7 +1814,7 @@
         width: 90%;
         max-width: 1180px ;
         grid-area: 1/1;
-        grid-template-columns: 60rem auto;
+        grid-template-columns: 55rem auto;
         
         
     }
@@ -1818,7 +1826,7 @@
 
     
     .homeContainer .row1 .title h1{
-        font-size: 6rem;
+        font-size: 5.6rem;
        
     }
 
@@ -1895,7 +1903,7 @@
 
 
 
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+@media (min-width: 768px) and (max-width: 1280px) and (orientation: portrait) {
 
      .homeContainer{
        
@@ -2156,9 +2164,31 @@
     
         height: 100%;
         width: 90%;
-        max-width: 1180px ;
+       
        
         
+    }
+    
+    .homeContainer .row1{
+   
+        grid-template-columns: 55rem 30rem auto;
+  
+    
+    
+
+    }
+
+    .homeContainer .row1 .title h1{
+        font-size: 5.6rem;
+    }
+
+    
+    .homeContainer .row1 .title p{
+        font-size: 6rem;
+    }
+
+    .homeContainer .row2{
+        width: 90%;
     }
 
 }

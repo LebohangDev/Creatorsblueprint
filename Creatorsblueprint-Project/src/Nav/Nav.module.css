@@ -118,12 +118,19 @@
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 1fr;
         justify-items: end;
-        width: 95%;
+        width: 90%;
         align-items: center;
         margin: 0 auto;
         
         
 
+    }
+
+    
+    .hamburgerContainer .navLogo{
+        position: relative;
+        top: 10%;
+        
     }
 
     .hamburgerContainer .navLogo img{
@@ -132,7 +139,7 @@
 
     .hamburgerContainer i{
         font-size: 2.8rem;
-        margin-bottom: 3rem;
+        margin-bottom: 1rem;
         color: #6d6d6d;
     }
 
@@ -390,6 +397,20 @@
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
 
     .NavContainer{
+   
+        max-width: 1180px;
+        width: 90%;
+   
+  
+    
+    
+    }
+}
+
+
+
+@media (min-width: 1366px) and (max-width: 1400px) and (orientation: landscape) {
+     .NavContainer{
    
         max-width: 1180px;
         width: 90%;

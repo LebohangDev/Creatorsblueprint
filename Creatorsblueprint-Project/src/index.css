@@ -67,11 +67,20 @@ body {
 
 /*sections*/
 
-header{
+.navActive{
   grid-row: 1;
   height: fit-content;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1000;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   
-  
+}
+.notNavActive{
+  display: none;
 }
 
 .content{
@@ -122,6 +131,15 @@ footer{
   #root{
     grid-template-rows: 3rem 1fr auto;
   }
+
+  
+.navActive{
+  
+  border-bottom-right-radius: 0px;
+  
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  
+}
 
  
  
