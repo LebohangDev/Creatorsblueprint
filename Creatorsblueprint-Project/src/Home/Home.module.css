@@ -218,6 +218,8 @@
     
 }
 
+
+
 .homeContainer .videoContainer video{
     height: 100%;
     width: 100%;
@@ -227,13 +229,52 @@
     position: relative;
     z-index: 10;
     pointer-events: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-  appearance: none;
+   user-select: none;
+   -webkit-user-select: none;
+   -webkit-touch-callout: none;
+   appearance: none;
   -webkit-appearance: none;
   outline: none;
+
     
+}
+
+
+.homeContainer .videoContainer .button{
+    position: relative;
+    padding-left: 2rem;
+    padding-top: 2rem;
+    top: -98%;
+  
+}
+
+
+.homeContainer .videoContainer .button i{
+    position: relative;
+    z-index: 10000;
+    font-size: 1.2rem;
+    padding: 1rem;
+    
+    border-radius: 100px;
+    background-color: #3e3e3e;
+    color: white;
+   
+
+   
+}
+
+
+.homeContainer .videoContainer .button i:hover{
+    cursor: pointer;
+}
+
+
+
+
+
+
+.homeContainer .videoContainer .button .muted2{
+    display: none;
 }
 
 
@@ -1575,6 +1616,17 @@
     }
 
     
+    .homeContainer .videoContainer .button{
+        position: relative;
+        padding-left: 2rem;
+        padding-top: 2rem;
+        top: -60%;
+  
+    }
+
+    
+
+    
     .homeContainer .row2{
         grid-area: 5/1;
         width: 90%;
@@ -1858,6 +1910,15 @@
         height: 60rem;
         
         
+    }
+
+    
+    .homeContainer .videoContainer .button{
+        position: relative;
+        padding-left: 2rem;
+        padding-top: 2rem;
+        top: -92%;
+  
     }
 
     

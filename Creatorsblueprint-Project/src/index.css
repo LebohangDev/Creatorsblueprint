@@ -133,6 +133,12 @@ footer{
   }
 
   
+  .navActive{
+    height: 8rem;
+
+  }
+
+  
 .navActive{
   
   border-bottom-right-radius: 0px;

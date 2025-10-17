@@ -7,7 +7,9 @@ import {AnimatePresence, motion} from 'framer-motion';
 function Home({setNavActive}){
 
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [muted, setMuted] = useState(true)
     const  containerRef = useRef(null);
+    const videoContainerRef = useRef(null);
     const videoRef = useRef(null);
     const scrollMoreRef = useRef('null')
 
@@ -41,10 +43,15 @@ function Home({setNavActive}){
     useEffect(() =>{
         const container =  document.getElementById('root')
         
-        const video = videoRef.current
+        const video = videoContainerRef.current
         const scrollMore = scrollMoreRef.current
         let lastScrollTop = 0;
+        const scrollThreshold = 10;
         const handleScroll = (event) => {
+
+        
+            //  Ignore tiny scroll movements (mobile bounce)
+            if (Math.abs(scrollTop - lastScrollTop) < scrollThreshold) return;
 
         
 
@@ -81,6 +88,16 @@ function Home({setNavActive}){
 
     }, []);
 
+    function handleVideoMute(){
+        const  video = videoRef.current
+
+        if(muted === true){
+            video.muted = false
+        }else{
+            video.muted = true
+        }
+    }
+
     
     
 
@@ -113,7 +130,7 @@ function Home({setNavActive}){
         },
     ];
   
-const plans = [
+    const plans = [
         {
             image: "Images/Course_Images/side-view-woman-with-photo-camera.jpg",
             title: "The Full System Setup",
@@ -146,7 +163,7 @@ const plans = [
                "Shared Success — we only profit when you do.",
             ],
             perfectFor:"Influencers with engagement but limited startup capital seeking a shared-profit model.",
-            amount: 0,
+            amount: 5.99,
             billingCycle: "revenue share",
             billed: "50/50 Partnership",
         },
@@ -289,9 +306,19 @@ const plans = [
         
 
             
-            <div className={styles.videoContainer} ref={videoRef}>
+            <div className={styles.videoContainer} ref={videoContainerRef}>
                 
-                <video src="Video/Beats.mp4" autoPlay muted loop playsInline controlsList="noDownload noFullscreen noRemoteplayback" disablePictureInPicture ></video>
+                <video ref={videoRef} src="Video/website_video.mp4" autoPlay muted loop playsInline controlsList="noDownload noFullscreen noRemoteplayback" disablePictureInPicture >
+                
+                </video>
+                <div className={styles.button}>
+                    
+                    <i className={muted === true ? "ri-volume-mute-fill"  : "ri-volume-down-fill"} onClick={(e) =>{ e.preventDefault(); handleVideoMute(); muted === true ? setMuted(false) : setMuted(true)}}></i>
+                   
+
+                </div>
+                
+
 
             </div>
             
