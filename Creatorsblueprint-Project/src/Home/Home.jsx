@@ -50,8 +50,7 @@ function Home({setNavActive}){
         const handleScroll = (event) => {
 
         
-            //  Ignore tiny scroll movements (mobile bounce)
-            if (Math.abs(scrollTop - lastScrollTop) < scrollThreshold) return;
+            
 
         
 
