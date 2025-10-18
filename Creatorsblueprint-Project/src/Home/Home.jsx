@@ -41,35 +41,31 @@ function Home({setNavActive}){
 
 
     useEffect(() =>{
+        
         const container =  document.getElementById('root')
         
         const video = videoContainerRef.current
         const scrollMore = scrollMoreRef.current
         let lastScrollTop = 0;
-        const scrollThreshold = 10;
         const handleScroll = (event) => {
 
-        
-            
 
-        
-
-        
-            if(event.target.scrollTop < lastScrollTop) {
-                console.log("scroll top detected on container:", event.target)
-                setNavActive(true)
-
-
+            // Video and scrollMore effects always run
+            if (event.target.scrollTop > lastScrollTop) {
+                scrollMore.style.display = 'none';
+                video.style.opacity = 1;
             }
-            else if(event.target.scrollTop > lastScrollTop){
-                console.log("scroll down detected on container:", event.target)
-                scrollMore.style.display='none';
-                video.style.opacity=1;
-                setNavActive(false)
 
+            // Nav hide/show only on desktop
+            if (window.innerWidth >= 1024) { // desktop only
+                if (event.target.scrollTop < lastScrollTop) {
+                    setNavActive(true); // scrolling up → show nav
+                } else if (event.target.scrollTop > lastScrollTop) {
+                    setNavActive(false); // scrolling down → hide nav
+                }
             }
         
-             lastScrollTop = event.target.scrollTop;
+                lastScrollTop = event.target.scrollTop;
             
             
         }
@@ -147,6 +143,7 @@ function Home({setNavActive}){
             amount: 599.0,
             billingCycle: "paid once",
             billed: "One-Time Payment",
+            button: "purchase"
         },
         {
             image: "Images/Course_Images/side-view-woman-with-photo-camera.jpg",
@@ -162,9 +159,10 @@ function Home({setNavActive}){
                "Shared Success — we only profit when you do.",
             ],
             perfectFor:"Influencers with engagement but limited startup capital seeking a shared-profit model.",
-            amount: 5.99,
+            amount: 0,
             billingCycle: "revenue share",
             billed: "50/50 Partnership",
+            button: "Contact"
         },
     ];
     const forYou = [
@@ -337,7 +335,7 @@ function Home({setNavActive}){
                         key={index}
                         initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : -30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ amount: isMobile ? 0 : 0.8 , once: true }}
+                        viewport={{ amount: isMobile ? 0 : 0.6 , once: true }}
                         transition={{ delay: index * 0.2,}}
                         className={styles.service}
                         >
@@ -513,7 +511,7 @@ function Home({setNavActive}){
                                             </div>
                                         </div>
                                         <div className={styles.paymentButton}>
-                                            <button onClick={(e) => { e.preventDefault(); handleZinnaPayment(plan)}}>Purchase</button>
+                                            <button onClick={(e) => { e.preventDefault(); plan.amount === 599.0 ? handleZinnaPayment(plan) : window.open("https://wa.link/creatorsblueprint", "_blank")}}>{plan.button}</button>
                                         </div>
 
 
