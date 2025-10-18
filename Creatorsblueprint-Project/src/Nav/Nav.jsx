@@ -68,7 +68,7 @@ function Nav({setActive, menuActive, setMenuActive}){
 
         <div className={styles.NavContainer}>
             <div className={styles.navLogo}>
-                <img src="Images/CB_Logos/CB_logo2.png" alt="" />
+                <img src="Images/CB_Logos/CB_logo2.png" onClick={ (e) => {e.preventDefault(); setActive('Home');}} alt=""  />
             </div>
 
             <div className={styles.navLinks}>
@@ -96,7 +96,7 @@ function Nav({setActive, menuActive, setMenuActive}){
         </div>
         <div className={styles.hamburgerContainer}>
             <div className={styles.navLogo}>
-                <img src="Images/CB_Logos/CB_logo2.png" alt="" />
+                <img src="Images/CB_Logos/CB_logo2.png" onClick={ (e) => {e.preventDefault(); setActive('Home');}} alt="" />
             </div>
             <i className="ri-menu-line" onClick={(e) =>{e.preventDefault(); setMenuActive(true)}}></i>
 
