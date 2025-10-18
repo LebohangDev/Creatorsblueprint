@@ -143,13 +143,13 @@ function Home({setNavActive}){
             amount: 599.0,
             billingCycle: "paid once",
             billed: "One-Time Payment",
-            button: "purchase"
+            button: "Get Started!"
         },
         {
             image: "Images/Course_Images/side-view-woman-with-photo-camera.jpg",
             title: "The Partnership Model",
             description:"We build and launch your system at no upfront cost; revenue is shared.",
-            highlight: "Revenue Share — 50/50",
+            highlight: "Limted Spots!",
             included: [
                 "Multi-Page Website optimized for conversions.",
                 "Custom Digital Product or Course tailored to your audience.",
@@ -162,7 +162,7 @@ function Home({setNavActive}){
             amount: 0,
             billingCycle: "revenue share",
             billed: "50/50 Partnership",
-            button: "Contact"
+            button: "Get In Touch!"
         },
     ];
     const forYou = [

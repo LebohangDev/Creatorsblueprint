@@ -546,6 +546,7 @@
 .homeContainer .row4 .paymentPlanContainer .header{
     display: flex;
     flex-direction: row;
+    gap: 12px;
     justify-content: space-between;
     pointer-events: none;
     
@@ -560,7 +561,7 @@
 
 
 .homeContainer .row4 .paymentPlanContainer .header .title2 h1{
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-weight: 400;
 }
 
@@ -574,7 +575,7 @@
 
 
 .homeContainer .row4 .paymentPlanContainer:nth-child(2) .header .highlight{
-    display: none;
+    
 }
 
 
