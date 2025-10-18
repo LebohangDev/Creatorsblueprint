@@ -598,7 +598,7 @@ function Home({setNavActive}){
             <div className={styles.row6}>
                 <div className={styles.row6Content}>
                      <div id='Why_us' className={styles.title}>
-                        <h1>This is for <span>you</span> If...</h1>
+                        <h1>This is for <span>you</span> if...</h1>
                     </div>
 
                     <div className={styles.infoCardContainers}>
