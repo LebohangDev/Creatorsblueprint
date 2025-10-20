@@ -574,7 +574,9 @@
 
 
 
-.homeContainer .row4 .paymentPlanContainer:nth-child(2) .header .highlight{
+.homeContainer .row4 .paymentPlanContainer:nth-child(2) .header .highlight p{
+    white-space: nowrap;
+
     
 }
 
