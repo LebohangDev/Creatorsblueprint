@@ -80,6 +80,10 @@ function Nav({setActive, menuActive, setMenuActive}){
                     <p onClick={ (e) => {e.preventDefault(); setActive('Home'); document.getElementById('what').scrollIntoView({behavior: "smooth"})}}>WHAT WE DO</p>
                         
                 </div>
+                <div className={styles.product}>
+                    <p  onClick={(e) => {e.preventDefault(); window.open('https://blueprintcreator.gumroad.com/l/xaghx')}}>Product</p>
+                        
+                </div>
 
                 <div className={styles.FAQ}>
                     <p onClick={ (e) => {e.preventDefault(); setActive('FAQ')}}>FAQ</p>
@@ -152,6 +156,10 @@ function Nav({setActive, menuActive, setMenuActive}){
                         </div>
                         <div className={styles.link2}>
                             <p onClick={ (e) => {e.preventDefault(); setActive('Home'); document.getElementById('what').scrollIntoView({behavior: "smooth"})}}>WHAT WE DO</p>
+                        
+                        </div>
+                        <div className={styles.product}>
+                            <p onClick={(e) => {e.preventDefault(); window.open('https://blueprintcreator.gumroad.com/l/xaghx')}}>Product</p>
                         
                         </div>
 
