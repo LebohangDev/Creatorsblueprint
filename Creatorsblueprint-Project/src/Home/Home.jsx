@@ -140,7 +140,7 @@ function Home({setNavActive}){
                 "15-Day Guarantee — full refund if no sale in first 15 days.",
             ],
             perfectFor: "Creators ready to monetize their audience with a fully automated system.",
-            amount: 5,
+            amount: 599.0,
             billingCycle: "paid once",
             billed: "One-Time Payment",
             button: "Get Started!"
@@ -502,7 +502,7 @@ function Home({setNavActive}){
                                         <div className={styles.priceContainer}>
                                         
                                             <div className={styles.cost}>
-                                                <h1>{plan.amount} AED</h1>
+                                                <h1>${plan.amount}</h1>
                                                 <p>/{plan.billingCycle}</p>
                                             </div>
                                         
@@ -511,7 +511,7 @@ function Home({setNavActive}){
                                             </div>
                                         </div>
                                         <div className={styles.paymentButton}>
-                                            <button onClick={(e) => { e.preventDefault(); plan.amount === 5 ? handleZinnaPayment(plan) : window.open("https://wa.link/creatorsblueprint", "_blank")}}>{plan.button}</button>
+                                            <button onClick={(e) => { e.preventDefault(); plan.amount === 599.0 ? handleZinnaPayment(plan) : window.open("https://wa.link/creatorsblueprint", "_blank")}}>{plan.button}</button>
                                         </div>
 
 
