@@ -6,7 +6,7 @@ export default defineConfig({
   base: '/Creatorsblueprint/test/',
   plugins: [react()],
   server:{
-    
+
     proxy:{
       '/api': {
         target: 'http://localhost:3000',
