@@ -140,7 +140,7 @@ function Home({setNavActive}){
                 "15-Day Guarantee — full refund if no sale in first 15 days.",
             ],
             perfectFor: "Creators ready to monetize their audience with a fully automated system.",
-            amount: 599,
+            amount: 5,
             billingCycle: "paid once",
             billed: "One-Time Payment",
             button: "Get Started!"
