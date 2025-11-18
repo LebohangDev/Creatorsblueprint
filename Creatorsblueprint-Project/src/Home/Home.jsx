@@ -105,7 +105,7 @@ function Home({setNavActive}){
         },
         {
             icon: "ri-code-s-slash-line",
-            title: "Professional Website & Funnels",
+            title: "Professional Websites",
             description: "You get a stunning, high-converting website that acts as your 24/7 sales machine, complete with payment integration.",
         },
         {
@@ -136,7 +136,6 @@ function Home({setNavActive}){
                 "Tailored Digital Product Creation based on your audience and engagement.",
                 "Payment Gateway Integration via PayPal, Stripe, or Ziina.",
                 "Auto-Messaging System to handle DMs and sales 24/7.",
-                "Full System Setup & Optimization for seamless automation.",
                 "15-Day Guarantee — full refund if no sale in first 15 days.",
             ],
             perfectFor: "Creators ready to monetize their audience with a fully automated system.",
@@ -328,21 +327,22 @@ function Home({setNavActive}){
             
 
             <div className={styles.row2}>
-                 <div className={styles.servicesContainer} id='what' ref={containerRef}>
-                    {services.map((s, index)=>(
-                        { /*reintilaize currentItemRef based on currentindex and set the others as null because ref will only point to last item in the loop*/},
-                        <motion.div
-                        key={index}
-                        initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : -30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ amount: isMobile ? 0 : 0.6 , once: true }}
-                        transition={{ delay: index * 0.2,}}
-                        className={styles.service}
-                        >
+                <motion.div
+                className={styles.servicesContainer}
+                id="what"
+                ref={containerRef}
+                initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : -40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ amount: isMobile ? 0 : 0.5, once: true }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                    {services.map((s, index) => (
+                        <div key={index} className={styles.service}>
                             <div className={styles.content}>
                                 <div className={styles.icon}>
                                     <i className={s.icon}></i>
                                 </div>
+
                                 <div className={styles.title}>
                                     <h1>{s.title}</h1>
                                 </div>
@@ -350,15 +350,10 @@ function Home({setNavActive}){
                                 <div className={styles.desc}>
                                     <p>{s.description}</p>
                                 </div>
-
                             </div>
-
-
-
-                        </motion.div>
-                      
+                        </div>
                     ))}
-                </div>
+                </motion.div>
                 <div className={styles.paginationContainer}>
                     <div className={styles.backgroundContainer}>
                         {services.map((_, index) => (

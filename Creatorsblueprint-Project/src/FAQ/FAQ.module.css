@@ -44,7 +44,7 @@
     width: 55%;
     font-weight: 300;
     text-align: center;
-    color: #656565;
+    color: #e5e5e5;
     line-height: 25px;
 }
 
@@ -75,7 +75,7 @@
     border-radius: 25px;
     border: none;
     width: 70%;
-    background-color: #F7F7F7;
+    background-color: #354072;
     transition: 0.1s ease-in-out;
     
     
@@ -119,8 +119,8 @@
 
 
 .faqContainer .FAQS .FAQ .header .content h1{
-    font-size: 2rem;
-    font-weight: 400;
+    font-size: 1.6rem;
+    font-weight: 300;
 }
 
 
@@ -141,7 +141,7 @@
 
 
 .faqContainer .FAQS .notFAQ{
-    background-color: white;
+    background-color: #1E2253;
      padding: 2rem;
     border-radius: 25px;
     border: none;
@@ -155,7 +155,7 @@
 .faqContainer .FAQS .notFAQ:hover{
    
     cursor: pointer;
-    background-color: #F7F7F7;
+    background-color: #354072;
 
 }
 
@@ -188,8 +188,8 @@
 
 
 .faqContainer .FAQS .notFAQ .header .content h1{
-    font-size: 2rem;
-    font-weight: 400;
+    font-size: 1.6rem;
+    font-weight: 200;
 }
 
 

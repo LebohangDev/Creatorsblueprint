@@ -44,6 +44,7 @@
     grid-template-columns: minmax(0, 100%);
     grid-template-rows: 15rem auto;
     gap: 2rem;
+    
 
    
     
@@ -92,8 +93,8 @@
 
 .homeContainer .row1 .title p{
     font-size: 7rem;
-    font-weight: 500;
-    color: #090D3A;
+    font-weight: 400;
+    color: #ffffff;
     animation: fadeIn 0.3s forwards;
     animation-delay: 0.5s;
     opacity: 0;
@@ -195,14 +196,14 @@
 
 .homeContainer .scrollForMore p{
     font-size: 1.4rem;
-    color: #bbbbbb;
+    color: #ffffff;
     letter-spacing: 1px;
 }
 
 
 .homeContainer .scrollForMore i{
     font-size: 1.4rem;
-    color: rgb(192, 192, 192);
+    color: rgb(255, 255, 255);
     margin-bottom: 4px;
 }
 .homeContainer .videoContainer{
@@ -297,6 +298,7 @@
     grid-template-columns: auto;
     grid-template-rows: 1fr;
     flex-wrap: nowrap;
+    
 
     grid-row: 3;
     margin: auto 0;
@@ -304,6 +306,8 @@
     justify-items: center;
     gap: 4rem;
     width: 100%;
+    align-items: center;
+    height: 25rem;
     grid-auto-flow: column;
     overflow-y: hidden;
     overflow-x: scroll;
@@ -321,8 +325,9 @@
    
     padding: 2.4px;
    
-    width: 30rem;
-    box-shadow: 1px 1px 10px #8cfdff;
+    width: 26rem;
+    height: fit-content;
+    box-shadow: 1px 1px 5px #66b7b9ad;
     transition: box-shadow 0.3s ease-in-out;
      
    
@@ -343,9 +348,9 @@
     grid-template-rows: 3rem 2.7rem auto;
     justify-items: center;
     border-radius: 10px;            
-    background: white;               
+    background: #090D3A;               
     padding: 40px;       
-    height: 20rem;    
+    height: 17rem;    
     pointer-events: none;        
 }
 
@@ -369,7 +374,7 @@
     padding: 1rem;
     border-radius: 100px;
     color: white;
-    font-size: 1.8rem;
+    font-size: 2rem;
     
 }
 
@@ -378,20 +383,21 @@
 
 
 .homeContainer .row2 .servicesContainer .service .title h1{
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     text-align: center;
     line-height: 30px;
     font-weight: 500;
-    color: #3B3A3A;
+    color: white;
 }
 
 
 .homeContainer .row2 .servicesContainer .service .desc p{
     font-size: 1.2rem;
     text-align: center;
-    line-height: 30px;
+    line-height: 35px;
+    font-weight: 300;
    
-    color: #5B5959;
+    color: #D2D2D2;
 }
 
 .homeContainer .row2 .paginationContainer{
@@ -408,9 +414,10 @@
 }
 
 .homeContainer .row2 .paginationContainer .backgroundContainer{
-    background-color: #f4f4f4;
+    
     padding: 1rem;
     border-radius: 15px;
+
     border: none;
     display: flex;
     flex-direction: row;
@@ -422,7 +429,7 @@
 
 .homeContainer .row2 .paginationContainer span{
     padding: 0.4rem;
-    background-color: rgb(234, 234, 234);
+    background-color: #131b77;
     width: 1px;
     height: 1px;
     border-radius: 50%;
@@ -430,7 +437,7 @@
 
 
 .homeContainer .row2 .paginationContainer .dotActive{
-     background-color: #acacac;
+     background-color: #1c29b6;
 }
 
 
@@ -446,7 +453,7 @@
     height: 105%;
     position: relative;
     z-index: 2;
-    background-color: #F9F9FF;
+    background-color: #1E2253;
     
     
     
@@ -495,7 +502,7 @@
 
     font-size: 2rem;
     font-weight: 300;
-    color: #656565;
+    color: #E8E8E8;
 }
 
 
@@ -517,12 +524,12 @@
 .homeContainer .row4 .paymentPlanContainer:nth-child(1){
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 4.5rem 24rem 7rem  auto;
+    grid-template-rows: 5rem 24rem 7rem auto;
     width: 100%;
     height: 92%;
     padding: 2rem;
     grid-column: 1;
-    background-color: #e2ffff;
+    background-color: #3effff35;
     border-radius: 25px;
     
 }
@@ -531,12 +538,12 @@
 .homeContainer .row4 .paymentPlanContainer:nth-child(2){
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 4.5rem 24rem 7rem  auto;
+    grid-template-rows: 5rem 24rem 7rem  auto;
     width: 100%;
     height: 92%;
     padding: 2rem;
     grid-column: 1;
-    background-color: #F9F9FF;
+   
     border-radius: 25px;
     
 }
@@ -569,6 +576,7 @@
 .homeContainer .row4 .paymentPlanContainer .header .title2 p{
     
     font-weight: 300;
+    line-height: 14px;
 }
 
 
@@ -600,7 +608,7 @@
 
 .homeContainer .row4 .paymentPlanContainer .desc .title3 h1{
     font-size: 1rem;
-    color: #403F3F;
+    color: #DDDDDD;
     font-weight: 400;
     pointer-events: none;
     
@@ -623,6 +631,11 @@
 }
 
 
+.homeContainer .row4 .paymentPlanContainer .desc .content .item p{
+    font-size: 1.1rem;
+}
+
+
 
 
 .homeContainer .row4 .paymentPlanContainer .perfect{
@@ -637,7 +650,7 @@
 
 .homeContainer .row4 .paymentPlanContainer .perfect p{
     border-radius: 15px;
-    border: 1px solid #090D3A;
+    border: 1px solid #E6E6E6;
     padding-top: 0.8rem;
     padding-bottom: 0.8rem;
     padding-left: 1.7rem;
@@ -678,7 +691,7 @@
 
 
 .homeContainer .row4 .paymentPlanContainer .priceContainer .cost p{
-    color: #A5A5A5;
+    color: #e0dfdf;
     font-weight: 300;
    
     letter-spacing: 1px;
@@ -742,6 +755,8 @@
 }
 
 
+
+/*
 
 
 
@@ -937,7 +952,7 @@
 
 
 
-
+*/
 
 /*
 
@@ -1258,7 +1273,7 @@
 .homeContainer .row5 .compareTable table td, th {
     border-top: 1px solid #B9B9B9;
     padding: 16px 70px;
-    font-weight: 400;
+    font-weight: 200;
     font-size: 1.5rem;
 }
 
@@ -1346,7 +1361,7 @@
 .homeContainer .row6 .infoCardContainers .card{
     padding: 1rem;
     border-radius: 10px;
-    background-color: #D2FFFF;
+    background-color: #465495;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1417,7 +1432,7 @@
     padding-bottom: 2rem;
     border-radius: 17px;
     margin-top: 3rem;
-    background-color: #090D3A;
+    background-color: #1E2253;
     color: white;
     
 }
@@ -1492,7 +1507,7 @@
     .homeContainer{
        
         grid-template-columns: minmax(0, 100%);
-        grid-template-rows: 20rem auto auto auto;
+        grid-template-rows: 24rem auto auto auto;
         
         width: 100%;
         margin: 0 auto;
@@ -1500,7 +1515,7 @@
 
     .homeContainer .row1{
         grid-template-columns: minmax(0, 100%);
-        grid-template-rows: 7rem 20rem auto;
+        grid-template-rows: 10rem 20rem auto;
         max-width: 576px ;
         height: 100%;
         margin-bottom: 1000rem;
@@ -1548,8 +1563,8 @@
         white-space: nowrap;
         width: 100%;
         margin: 0;
-        color: #090D3A;
-        font-weight: 600;
+        color: #ffffff;
+        font-weight: 500;
         animation: fadeInTop 0.3s ease-in-out;
     }
 
@@ -1557,7 +1572,7 @@
     .homeContainer .row1 .titleMobile p{
         font-size: 1.3rem;
         font-weight: 200;
-        color: #636363;
+        color: #ffffff;
         letter-spacing: 1px;
         opacity: 0;
         animation: fadeInTop 0.3s forwards;
@@ -1577,7 +1592,8 @@
 
      
     .homeContainer .row1 .desc p{
-        font-size: 1.3rem ;
+        font-size: 1.4rem ;
+        font-weight: 300;
         text-align: center;
     }
 
@@ -1589,7 +1605,8 @@
 
      
     .homeContainer .row1 .desc .buttons button{
-        font-size: 1.1rem;
+        font-size: 1.3rem;
+        font-weight: 300;
     }
     
     .homeContainer .scrollForMore{
@@ -1651,9 +1668,29 @@
 
     
     
-    .homeContainer .row2 .service{
-        width: 28rem;
+    .homeContainer .row2 .servicesContainer .service{
+        width: 27rem;
+        text-align: center;
         transition: none;
+    }
+
+    
+    .homeContainer .row2 .servicesContainer .service .content{
+        padding: 0;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    
+    .homeContainer .row2 .servicesContainer .service .content .title h1{
+        white-space: nowrap;
+    }
+
+    
+    .homeContainer .row2 .servicesContainer .service .content .desc p{
+        line-height: 30px;
     }
 
     
@@ -1722,13 +1759,17 @@
 
     
     .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer:nth-child(1){
-        grid-template-rows: 6rem 24rem 7rem auto;
+        grid-template-rows: 8rem 24rem 7rem auto;
     }
 
        
     .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer:nth-child(2){
-         grid-template-rows: 6.2rem 26rem 7rem auto;
+         grid-template-rows: 9rem 26rem 7rem auto;
 
+        
+    }
+    
+    .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer .header{
         
     }
 
@@ -1743,7 +1784,18 @@
     
     .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer .header .title h1{
         font-size: 1rem;
+        
 
+    }
+    
+    .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer .header .title2 h1{
+        line-height: 20px;
+      
+
+    }
+    
+    .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer .header .title2 p{
+        
     }
     
     .homeContainer .row5{
@@ -1784,7 +1836,8 @@
     
         padding: 16px ;
    
-        font-size: 1rem;
+        font-size: 1.2rem;
+        line-height: 30px;
     }
 
 
@@ -1806,6 +1859,11 @@
     
     .homeContainer .row6 .row6Content .infoCardContainers{
         width: 100%;
+    }
+
+    
+    .homeContainer .row6 .row6Content .infoCardContainers .card .text p{
+        font-weight: 300;
     }
 
     

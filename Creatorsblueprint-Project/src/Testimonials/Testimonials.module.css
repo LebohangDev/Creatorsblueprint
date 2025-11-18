@@ -68,7 +68,7 @@
     text-align: center;
     margin-top: 1rem;
     font-size: 1.2rem;
-    color: #656565;
+    color: #e5e5e5;
 }
 
 
@@ -90,7 +90,7 @@
     background: linear-gradient(56deg, #09F7F9, #1A90DA);
     display: inline-block;
     padding: 2px;
-    box-shadow: 1px 1px 10px #8cfdffae;
+    box-shadow: 1px 1px 10px #8cfdff53;
    
    
 }
@@ -109,7 +109,7 @@
     grid-template-rows: 1fr;
     justify-items: center;
     border-radius: 10px;            
-    background: white;               
+    background-color: #1E2253;               
     padding: 10px;       
        
     pointer-events: none;   

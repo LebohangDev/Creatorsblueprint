@@ -34,7 +34,7 @@
 
 
 .footerContainer .footerHeader .logo img{
-    width: 15rem;
+    width: 20rem;
     object-fit: cover;
 }
 
@@ -63,7 +63,7 @@
 
 .footerContainer .footerHeader .media .socialIcons i{
     font-size: 1.4rem;
-    color: #D8D8D8;
+    color: #ededed;
     cursor: pointer;
     transition: 0.3s ease-in-out;
 }
@@ -85,7 +85,7 @@
 
 
 .footerContainer .footerHeader .additonalLinks p{
-    color: #BABABA;
+    color: #ededed;
     font-size: 1rem;
     transition: 0.3s ease-in-out;
 }
@@ -124,7 +124,11 @@
 
     
     .footerContainer .footerHeader .logo {
-        width: 12rem;
+        width: 19rem;
+    }
+
+    .footerContainer .copyright p{
+        text-align: center;
     }
     
 

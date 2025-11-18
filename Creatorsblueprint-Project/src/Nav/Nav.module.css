@@ -4,7 +4,7 @@
     font-weight: 400;
     font-style: normal;
     font-size: 1.2rem;
-    color: #B6B6B6;
+    color: #ffffff;
     transition: 0.2s ease-in-out;
     
 }
@@ -29,7 +29,7 @@
     width: 100%;
     align-items: center;
     margin: 0 auto;
-    margin-top: 0.8rem;
+
   
     
     
@@ -46,7 +46,7 @@
 
 
 .NavContainer .navLogo img{
-    width: 15rem;
+    width: 20rem;
     
 }
 
@@ -121,29 +121,29 @@
     
     .hamburgerContainer .navLogo{
         position: relative;
-        top: 10%;
+      right: 20%;
         
     }
 
     .hamburgerContainer .navLogo img{
-        width: 20rem;
+        width: 25rem;
     }
 
     .hamburgerContainer i{
         font-size: 2.8rem;
         margin-bottom: 1rem;
-        color: #6d6d6d;
+        color: #ffffff;
     }
 
     
     .hamburgerContainer .hamburgerMenuActive{
         width: 60%;
         height: 100%;
-        background: rgba(255, 255, 255);
+        background: #1E2253;
        
         
-        border: 1px solid rgb(238, 238, 238); 
-        box-shadow: 4px 4px 20px rgb(220, 220, 220);
+        border: 1px solid #171a3f; 
+        box-shadow: 4px 4px 20px #1E2253;
         border-bottom-left-radius: 25px;
         border-top-left-radius: 25px;
         position: fixed;
@@ -179,15 +179,14 @@
     }
 
     
-    .hamburgerContainer .hamburgerMenuActive .logo{
-        width: 12rem;
-        height: 5rem;
-    }
+   
 
 
     .hamburgerContainer .hamburgerMenuActive  .logo img{
-        width: 15rem;
+        width: 20rem;
         object-fit: cover;
+        position: relative;
+        right: 50px;
     }
 
 
@@ -195,7 +194,7 @@
     .hamburgerContainer .hamburgerMenuActive .menuHeader .title p{
         font-size: 1.5rem;
         font-weight: 600;
-        color: rgb(74, 74, 74);
+        color: rgb(255, 255, 255);
         margin: 0;
         top: -25%;
         left: 7%;
@@ -234,7 +233,7 @@
        font-size: 1.7rem;
         margin: 0;
         
-        color: #c7c7c7;
+        color: #e5e4e4;
         transition: 0.2s ease-in-out;
     
     }

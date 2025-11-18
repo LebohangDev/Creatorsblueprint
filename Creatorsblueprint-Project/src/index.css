@@ -18,7 +18,9 @@
   font-optical-sizing: auto;
   font-style: normal;
   overflow: hidden ;
-  
+  background: #0B1048;
+  background: linear-gradient(174deg, rgba(11, 16, 72, 1) 0%, rgba(9, 13, 58, 1) 100%);
+  color: white;
   
   
   
@@ -72,7 +74,8 @@ body {
   height: fit-content;
   position: sticky;
   top: 0;
-  background-color: white;
+  background-color: #090D3A;
+  height: 8rem;
   z-index: 1000;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
@@ -91,9 +94,7 @@ body {
   
 }
 
-footer{
-  grid-row: 3;
-}
+
 
 
 
@@ -111,8 +112,9 @@ footer{
 }
 
 footer{
-  background-color: white;
-   border-top: 2px solid #D7D7D7;
+  grid-row: 3;
+  border-top: 2px solid #D7D7D7;
+  background-color: #090D3A;
 }
 
 
@@ -122,6 +124,44 @@ footer{
 
 
 @media (max-width: 767px) {
+  
+  :root{
+    font-size: 75%;
+    
+    
+  }
+  #root{
+    grid-template-rows: 3rem 1fr auto;
+  }
+
+  
+  .navActive{
+    height: 10rem;
+
+  }
+  
+
+  
+.navActive{
+  
+  border-bottom-right-radius: 0px;
+  
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  
+}
+
+ 
+ 
+
+ 
+  
+
+  
+}
+
+
+
+@media (max-width: 380px) {
   
   :root{
     font-size: 65%;
@@ -134,7 +174,7 @@ footer{
 
   
   .navActive{
-    height: 8rem;
+    height: 10rem;
 
   }
   

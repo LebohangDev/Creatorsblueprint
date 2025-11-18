@@ -9,7 +9,7 @@
     border-radius: 30px;
     background: linear-gradient(56deg, #09F7F9, #1A90DA);
     padding: 2px;
-    box-shadow: 1px 1px 10px #8cfdff6d;
+    box-shadow: 1px 1px 10px #8cfdff26;
     transition: 0.3s ease-in-out;
     transform: translateY(0);
 }
@@ -21,7 +21,7 @@
     grid-template-rows: 10rem auto;
     justify-items: center;
     border-radius: 30px;            
-    background: white;               
+    background-color: #1E2253;               
     padding: 10px;       
     margin: 0 auto;       
     pointer-events: none;
@@ -62,7 +62,7 @@
 .termsContainer .termsContent .header p {
     font-size: 1rem;
     font-weight: 300;
-    color: #656565;
+    color: #d9d9d9;
 }
 
 .termsContainer .termsContent .content {
@@ -73,7 +73,7 @@
 
 .termsContainer .termsContent .content p {
     font-size: 1rem;
-    color: #363636;
+    color: #ffffff;
     font-weight: 300;
     line-height: 20px;
 }
