@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@100..900&display=swap');
 
 @keyframes fadeIn {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-    
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
 }
 
 
@@ -17,18 +18,70 @@
   font-family: "League Spartan", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-  overflow: hidden ;
-  background: #0B1048;
-  background: linear-gradient(174deg, rgba(11, 16, 72, 1) 0%, rgba(9, 13, 58, 1) 100%);
-  color: white;
-  
-  
-  
-  
-  
-  
+  overflow: hidden;
+  background: var(--bg-primary);
+  background: linear-gradient(174deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  color: var(--text-primary);
+
+  /* Dark Mode Colors (Default) */
+  --bg-primary: #0B1048;
+  --bg-secondary: #1E2253;
+  --bg-tertiary: #3effff35;
+  --bg-card-primary: #465495;
+  --bg-card-secondary: #1E2253;
+  --bg-card-tertiary: #465495;
+  --bg-card-hover: #354072;
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #E8E8E8;
+  --text-muted: #D2D2D2;
+
+  --accent-cyan: #09F7F9;
+  --accent-blue: #1A90DA;
+  --accent-purple: #D61CDA;
+
+  --border-color: #D7D7D7;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+
+  --success-color: #4CAF50;
+  --error-color: #FF4D4D;
+  --warning-color: #FFA726;
+  --page-tracker-primary: #131b77;
+  --page-tracker-secondary: #1c29b6;
 }
 
+/* Light Mode Colors */
+:root[data-theme="light"] {
+  background: var(--bg-primary);
+
+  color: var(--text-primary);
+
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F9F9FF;
+  --bg-tertiary: #3effff36;
+  --bg-card-primary: #D2FFFF;
+  --bg-card-secondary: #ffffff;
+  --bg-card-tertiary: #F7F7F7;
+  --bg-card-hover: #e8e8e8;
+  --text-primary: #1A1A2E;
+  --text-secondary: #3B3A3A;
+  --text-tertiary: #939292;
+  --text-tertiary2: #090D3A;
+  --text-muted: #718096;
+
+  --accent-cyan: #09F7F9;
+  --accent-blue: #3B82F6;
+  --accent-purple: #D61CDA;
+
+  --border-color: #090D3A;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+
+  --success-color: #38A169;
+  --error-color: #E53E3E;
+  --warning-color: #ED8936;
+  --page-tracker-primary: #e4e4e4;
+  --page-tracker-secondary: #b7b7b7;
+}
 
 
 
@@ -36,15 +89,15 @@
 body {
   margin: 0;
   overflow: hidden;
- 
-  
-  
+
+
+
 }
 
-#root{
+#root {
 
   display: grid;
-  grid-template-columns:minmax(0, 100%);
+  grid-template-columns: minmax(0, 100%);
   grid-template-rows: 6rem 1fr auto;
   gap: 5%;
   width: 100%;
@@ -56,9 +109,9 @@ body {
   scroll-behavior: smooth;
   scrollbar-width: none;
   z-index: 1;
-  
 
-  
+
+
 
 
 }
@@ -69,155 +122,117 @@ body {
 
 /*sections*/
 
-.navActive{
+.navActive {
   grid-row: 1;
   height: fit-content;
   position: sticky;
   top: 0;
-  background-color: #090D3A;
-  height: 8rem;
+  background-color: var(--bg-primary);
+  height: 6rem;
   z-index: 1000;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
 }
-.notNavActive{
+
+.notNavActive {
   display: none;
 }
 
-.content{
+.content {
   grid-row: 2;
   position: relative;
   z-index: 50;
-  
-  
-}
 
+
+}
 
 
 
 
 /*active section logic*/
 
-
-.activeSection{
+.activeSection {
   display: block;
   animation: fadeIn 0.5s ease-in-out;
 
 }
 
-.notActiveSection{
+.notActiveSection {
   display: none;
 }
 
-footer{
+footer {
   grid-row: 3;
   border-top: 2px solid #D7D7D7;
-  background-color: #090D3A;
+  background-color: var(--bg-primary);
 }
-
-
-
-
-
-
 
 @media (max-width: 767px) {
-  
-  :root{
+
+  :root {
     font-size: 75%;
-    
-    
+
   }
-  #root{
+
+  #root {
     grid-template-rows: 3rem 1fr auto;
   }
 
-  
-  .navActive{
-    height: 10rem;
+
+
+  .navActive {
+
+    border-bottom-right-radius: 0px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    height: 8rem;
 
   }
-  
 
-  
-.navActive{
-  
-  border-bottom-right-radius: 0px;
-  
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-  
 }
-
- 
- 
-
- 
-  
-
-  
-}
-
-
 
 @media (max-width: 380px) {
-  
-  :root{
+
+  :root {
     font-size: 65%;
-    
-    
+
   }
-  #root{
+
+  #root {
     grid-template-rows: 3rem 1fr auto;
   }
 
-  
-  .navActive{
-    height: 10rem;
+
+
+  .navActive {
+
+    border-bottom-right-radius: 0px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    height: 8rem;
 
   }
-  
 
-  
-.navActive{
-  
-  border-bottom-right-radius: 0px;
-  
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-  
 }
-
- 
- 
-
- 
-  
-
-  
-}
-
-
 
 @media (min-width: 768px) and (max-width: 1180px) and (orientation: landscape) {
-  
-  :root{
+
+  :root {
     font-size: 65%;
-    
-    
+
   }
 }
-
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
 
-  :root{
+  :root {
     font-size: 75%;
-    
-    
+
   }
-  #root{
-     gap: 0%;
+
+  #root {
+    gap: 0%;
   }
-   
+
 }

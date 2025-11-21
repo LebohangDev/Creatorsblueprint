@@ -1,19 +1,17 @@
-
-
-.footerContainer{
+.footerContainer {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     justify-items: center;
     max-width: 1400px;
     width: 100%;
-   
+
     margin: 0 auto;
-    
+
 
 }
 
-.footerContainer .footerHeader{
+.footerContainer .footerHeader {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
@@ -27,26 +25,26 @@
 }
 
 
-.footerContainer .footerHeader .logo{
+.footerContainer .footerHeader .logo {
     width: 100%;
     height: 100%;
 }
 
 
-.footerContainer .footerHeader .logo img{
+.footerContainer .footerHeader .logo img {
     width: 20rem;
     object-fit: cover;
 }
 
 
-.footerContainer .footerHeader .media{
+.footerContainer .footerHeader .media {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 
-.footerContainer .footerHeader .media h1{
+.footerContainer .footerHeader .media h1 {
     font-weight: 400;
     font-size: 1.3rem;
     pointer-events: none;
@@ -54,27 +52,27 @@
 }
 
 
-.footerContainer .footerHeader .media .socialIcons{
+.footerContainer .footerHeader .media .socialIcons {
     display: flex;
     flex-direction: row;
     gap: 8px;
 }
 
 
-.footerContainer .footerHeader .media .socialIcons i{
+.footerContainer .footerHeader .media .socialIcons i {
     font-size: 1.4rem;
-    color: #ededed;
+    color: var(--text-tertiary);
     cursor: pointer;
     transition: 0.3s ease-in-out;
 }
 
 
-.footerContainer .footerHeader .media .socialIcons i:hover{
+.footerContainer .footerHeader .media .socialIcons i:hover {
     color: #bdbdbd;
 }
 
 
-.footerContainer .footerHeader .additonalLinks{
+.footerContainer .footerHeader .additonalLinks {
     display: flex;
     flex-direction: row;
     gap: 8px;
@@ -84,24 +82,24 @@
 }
 
 
-.footerContainer .footerHeader .additonalLinks p{
-    color: #ededed;
+.footerContainer .footerHeader .additonalLinks p {
+    color: var(--text-tertiary);
     font-size: 1rem;
     transition: 0.3s ease-in-out;
 }
 
 
-.footerContainer .footerHeader .additonalLinks p:hover{
+.footerContainer .footerHeader .additonalLinks p:hover {
     color: #a4a4a4;
     cursor: pointer;
-    
+
 }
 
 
 
-.footerContainer .copyright{
+.footerContainer .copyright {
     padding-top: 2rem;
-    color: #BABABA;
+    color: var(--text-tertiary);
     pointer-events: none;
 
 
@@ -110,27 +108,26 @@
 
 
 @media (max-width: 767px) {
-    .footerContainer{
+    .footerContainer {
         grid-template-columns: minmax(0, 100%);
         width: 90%;
         max-width: 576px;
     }
 
-    .footerContainer .footerHeader{
+    .footerContainer .footerHeader {
         grid-template-columns: 1fr;
-       
+
 
     }
 
-    
+
     .footerContainer .footerHeader .logo {
         width: 19rem;
     }
 
-    .footerContainer .copyright p{
+    .footerContainer .copyright p {
         text-align: center;
     }
-    
+
 
 }
-

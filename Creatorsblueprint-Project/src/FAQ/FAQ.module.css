@@ -1,57 +1,56 @@
-
-.faqContainer{
+.faqContainer {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     justify-items: center;
     max-width: 1400px;
     width: 100%;
-   
+
     margin: 0 auto;
-    
+
 
 }
 
 
-.faqContainer .title{
+.faqContainer .title {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    
+
+
 }
 
 
-.faqContainer .title h1{
+.faqContainer .title h1 {
     font-size: 3.5rem;
     font-weight: 400;
     margin: 0;
-   
-    
+
+
 
 
 }
-    
-.faqContainer .title h1 span{
-    color:#09F7F9;
-    
+
+.faqContainer .title h1 span {
+    color: #09F7F9;
+
 }
 
-  
-.faqContainer .title p{
+
+.faqContainer .title p {
     font-size: 1.1rem;
     width: 55%;
     font-weight: 300;
     text-align: center;
-    color: #e5e5e5;
+    color: var(--text-tertiary);
     line-height: 25px;
 }
 
 
- 
-.faqContainer .title p span{
-    color:#09F7F9;
+
+.faqContainer .title p span {
+    color: #09F7F9;
     text-decoration: underline;
     cursor: pointer;
 }
@@ -60,7 +59,7 @@
 
 
 
-.faqContainer .FAQS{
+.faqContainer .FAQS {
     display: grid;
     gap: 12px;
     grid-template-columns: 1fr;
@@ -70,21 +69,21 @@
 }
 
 
-.faqContainer .FAQS .FAQ{
+.faqContainer .FAQS .FAQ {
     padding: 2rem;
     border-radius: 25px;
     border: none;
     width: 70%;
-    background-color: #354072;
+    background-color: var(--bg-card-tertiary);
     transition: 0.1s ease-in-out;
-    
-    
+
+
 }
 
 
 
 
-.faqContainer .FAQS .FAQ:hover{
+.faqContainer .FAQS .FAQ:hover {
     cursor: pointer;
 
 }
@@ -92,33 +91,33 @@
 
 
 
-.faqContainer .FAQS .FAQ .header{
+.faqContainer .FAQS .FAQ .header {
     display: flex;
     flex-direction: row;
     align-items: start;
     gap: 12px;
 }
 
-.faqContainer .FAQS .FAQ .header i{
+.faqContainer .FAQS .FAQ .header i {
     font-size: 2rem;
-    padding-top: 1rem;
+    padding-top: 0.6rem;
 }
 
 
 
 
 
-.faqContainer .FAQS .FAQ .header .content{
+.faqContainer .FAQS .FAQ .header .content {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 3rem auto;
     gap: 4px;
     pointer-events: none;
-    
+
 }
 
 
-.faqContainer .FAQS .FAQ .header .content h1{
+.faqContainer .FAQS .FAQ .header .content h1 {
     font-size: 1.6rem;
     font-weight: 300;
 }
@@ -126,10 +125,10 @@
 
 
 
-.faqContainer .FAQS .FAQ .header .content .activeDesc{
+.faqContainer .FAQS .FAQ .header .content .activeDesc {
     display: block;
-    
-    
+
+
 }
 
 
@@ -140,54 +139,54 @@
 
 
 
-.faqContainer .FAQS .notFAQ{
-    background-color: #1E2253;
-     padding: 2rem;
+.faqContainer .FAQS .notFAQ {
+    background-color: var(--bg-card-secondary);
+    padding: 2rem;
     border-radius: 25px;
     border: none;
     width: 70%;
-    
-   
-    
+
+
+
 }
 
 
-.faqContainer .FAQS .notFAQ:hover{
-   
+.faqContainer .FAQS .notFAQ:hover {
+
     cursor: pointer;
-    background-color: #354072;
+    background-color: var(--bg-card-hover);
 
 }
 
 
 
 
-.faqContainer .FAQS .notFAQ .header{
+.faqContainer .FAQS .notFAQ .header {
     display: flex;
     flex-direction: row;
     align-items: start;
     gap: 12px;
 }
 
-.faqContainer .FAQS .notFAQ .header i{
+.faqContainer .FAQS .notFAQ .header i {
     font-size: 2rem;
-    padding-top: 1rem;
+    padding-top: 0.6rem;
 }
 
 
 
 
 
-.faqContainer .FAQS .notFAQ .header .content{
+.faqContainer .FAQS .notFAQ .header .content {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 3rem auto;
     pointer-events: none;
-    
+
 }
 
 
-.faqContainer .FAQS .notFAQ .header .content h1{
+.faqContainer .FAQS .notFAQ .header .content h1 {
     font-size: 1.6rem;
     font-weight: 200;
 }
@@ -195,10 +194,10 @@
 
 
 
-.faqContainer .FAQS .notFAQ .header .content .notActiveDesc{
+.faqContainer .FAQS .notFAQ .header .content .notActiveDesc {
     font-size: 1rem;
     line-height: 20px;
-    
+
     display: none;
 }
 
@@ -206,7 +205,7 @@
 
 
 @media (max-width: 767px) {
-    .faqContainer{
+    .faqContainer {
         grid-template-columns: minmax(0, 100%);
         max-width: 576px;
         grid-template-rows: 16rem auto;
@@ -214,73 +213,71 @@
         margin-top: 5rem;
     }
 
-    .faqContainer .title h1{
-        font-size: 3rem ;
+    .faqContainer .title h1 {
+        font-size: 3rem;
     }
 
-    
-    .faqContainer .title p{
+
+    .faqContainer .title p {
         width: 90%;
     }
 
-    
-    .faqContainer .FAQS{
+
+    .faqContainer .FAQS {
         grid-template-columns: minmax(0, 100%);
-        
+
 
     }
 
-    
-    .faqContainer .FAQS .FAQ{
+
+    .faqContainer .FAQS .FAQ {
         width: 90%;
         padding-bottom: 0.5rem;
 
-        
+
 
     }
 
-    
-    .faqContainer .FAQS .FAQ .header i{
+
+    .faqContainer .FAQS .FAQ .header i {
         padding-top: 0.4rem;
     }
 
-    
-    .faqContainer .FAQS .FAQ .header .content{
+
+    .faqContainer .FAQS .FAQ .header .content {
         grid-template-columns: minmax(0, 100%);
         grid-template-rows: 3rem auto;
-      
+
     }
 
-    
-    .faqContainer .FAQS .FAQ .header .content h1{
+
+    .faqContainer .FAQS .FAQ .header .content h1 {
         height: fit-content;
         margin-bottom: 0;
-        font-size: 1.3rem ;
+        font-size: 1.3rem;
     }
 
-    
-    .faqContainer .FAQS .FAQ .header .content p{
+
+    .faqContainer .FAQS .FAQ .header .content p {
         margin-top: 4px;
         line-height: 12px;
 
 
     }
-    .faqContainer .FAQS .notFAQ{
+
+    .faqContainer .FAQS .notFAQ {
         width: 90%;
 
     }
-    
-    .faqContainer .FAQS .notFAQ .header i{
+
+    .faqContainer .FAQS .notFAQ .header i {
         padding-top: 0.4rem;
     }
 
-    .faqContainer .FAQS .notFAQ .header .content h1{
-        font-size: 1.3rem ;
+    .faqContainer .FAQS .notFAQ .header .content h1 {
+        font-size: 1.3rem;
 
     }
 
 
 }
-
-
-

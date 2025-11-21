@@ -1,9 +1,10 @@
 @keyframes fadeInTop {
-   0%{
+    0% {
         opacity: 0;
         transform: translateY(-8px);
     }
-    100%{
+
+    100% {
         opacity: 1;
         transform: translateY(0px);
     }
@@ -11,11 +12,12 @@
 }
 
 @keyframes fadeInLeft {
-   0%{
+    0% {
         opacity: 0;
         transform: translateX(-4px);
     }
-    100%{
+
+    100% {
         opacity: 1;
         transform: translateX(0px);
     }
@@ -24,18 +26,19 @@
 
 
 @keyframes fadeIn {
-   0%{
+    0% {
         opacity: 0;
-       
+
     }
-    100%{
+
+    100% {
         opacity: 1;
-        
+
     }
 
 }
 
-.testiContainer{
+.testiContainer {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -43,13 +46,13 @@
     max-width: 1400px;
     width: 100%;
     margin: 0 auto;
-    
+
 
 
 }
 
 
-.testiContainer .title h1{
+.testiContainer .title h1 {
     font-size: 4rem;
     font-weight: 400;
     letter-spacing: -4px;
@@ -58,21 +61,21 @@
 }
 
 
-.testiContainer .title h1 span{
+.testiContainer .title h1 span {
     color: #09F7F9;
 
 }
 
 
-.testiContainer .title p{
+.testiContainer .title p {
     text-align: center;
     margin-top: 1rem;
     font-size: 1.2rem;
-    color: #e5e5e5;
+    color: var(--text-tertiary);
 }
 
 
-.testiContainer .reviewsContainer{
+.testiContainer .reviewsContainer {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -83,40 +86,40 @@
 
 
 
-.testiContainer .reviewsContainer .review{
-   
-    
+.testiContainer .reviewsContainer .review {
+
+
     border-radius: 12px;
     background: linear-gradient(56deg, #09F7F9, #1A90DA);
     display: inline-block;
     padding: 2px;
     box-shadow: 1px 1px 10px #8cfdff53;
-   
-   
-}
 
-
-.testiContainer .reviewsContainer .review:hover{
-     box-shadow: 0 0 5px #09F7F9, 0 0 10px #1a90da96;
-    
 
 }
 
 
-.testiContainer .reviewsContainer .review .content{
+.testiContainer .reviewsContainer .review:hover {
+    box-shadow: 0 0 5px #09F7F9, 0 0 10px #1a90da96;
+
+
+}
+
+
+.testiContainer .reviewsContainer .review .content {
     display: grid;
     grid-template-columns: 10rem auto;
     grid-template-rows: 1fr;
     justify-items: center;
-    border-radius: 10px;            
-    background-color: #1E2253;               
-    padding: 10px;       
-       
-    pointer-events: none;   
+    border-radius: 10px;
+    background-color: var(--bg-primary);
+    padding: 10px;
+
+    pointer-events: none;
 }
 
 
-.testiContainer .reviewsContainer .review .content .reviewHeader{
+.testiContainer .reviewsContainer .review .content .reviewHeader {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 7rem 1.2rem auto;
@@ -126,13 +129,13 @@
 }
 
 
-.testiContainer .reviewsContainer .review .content .reviewHeader .reviewIMG{
+.testiContainer .reviewsContainer .review .content .reviewHeader .reviewIMG {
     width: 100%;
     height: 100%;
 }
 
 
-.testiContainer .reviewsContainer .review .content .reviewHeader .reviewIMG .imgContent{
+.testiContainer .reviewsContainer .review .content .reviewHeader .reviewIMG .imgContent {
     border-radius: 100px;
     background: linear-gradient(56deg, #09F7F9, #1A90DA);
     display: inline-block;
@@ -141,37 +144,38 @@
 }
 
 
-.testiContainer .reviewsContainer .review .content .reviewHeader .reviewIMG img{
+.testiContainer .reviewsContainer .review .content .reviewHeader .reviewIMG img {
     width: 7rem;
     height: 7rem;
     object-fit: cover;
     border-radius: 100px;
-    background: white;               
-    pointer-events: none; 
-    
+    background: white;
+    pointer-events: none;
+
 }
 
 
-.testiContainer .reviewsContainer .review .content .reviewHeader .userName h1{
+.testiContainer .reviewsContainer .review .content .reviewHeader .userName h1 {
     font-size: 1.2rem;
     font-weight: 400;
 }
 
 
 
-.testiContainer .reviewsContainer .review .content .reviewHeader .socialHandle p{
+.testiContainer .reviewsContainer .review .content .reviewHeader .socialHandle p {
     font-size: 0.9rem;
     background-color: transparent;
     background: linear-gradient(56deg, rgba(9, 247, 249, 1) 0%, rgba(26, 144, 218, 1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text; /* fallback */
+    background-clip: text;
+    /* fallback */
     color: transparent;
 }
 
 
 
-.testiContainer .reviewsContainer .review .content .reviewContent{
+.testiContainer .reviewsContainer .review .content .reviewContent {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 7rem auto;
@@ -181,7 +185,7 @@
 }
 
 
-.testiContainer .reviewsContainer .review .content .reviewContent p{
+.testiContainer .reviewsContainer .review .content .reviewContent p {
     line-height: 30px;
     font-weight: 400;
     font-size: 1rem;
@@ -189,7 +193,7 @@
 
 
 
-.testiContainer .reviewsContainer .review .content .reviewContent .ratingContainer{
+.testiContainer .reviewsContainer .review .content .reviewContent .ratingContainer {
     display: flex;
     flex-direction: row;
     gap: 1px;
@@ -197,57 +201,57 @@
 
 
 
-.testiContainer .reviewsContainer .review .content .reviewContent .ratingContainer i{
+.testiContainer .reviewsContainer .review .content .reviewContent .ratingContainer i {
     color: #FFEA00;
 }
-    
+
 
 
 
 @media (max-width: 767px) {
 
-    
-    .testiContainer{
+
+    .testiContainer {
         margin-top: 5rem;
         max-width: 576px;
         grid-template-columns: minmax(0, 100%);
         grid-template-rows: 8rem auto;
     }
 
-    .testiContainer .reviewsContainer{
+    .testiContainer .reviewsContainer {
         width: 90%;
 
     }
 
-    
-    .testiContainer .title h1{
+
+    .testiContainer .title h1 {
         font-size: 3rem;
         text-align: center;
         letter-spacing: 0;
     }
 
-    
-    .testiContainer .title p{
+
+    .testiContainer .title p {
         text-align: center;
         font-size: 1rem;
     }
 
-    
-    .testiContainer .reviewsContainer .review .content .reviewContent{
+
+    .testiContainer .reviewsContainer .review .content .reviewContent {
         grid-template-rows: 10rem auto;
 
     }
 
 
-    
+
     .testiContainer .reviewsContainer .review .content .reviewContent p {
         line-height: 17px;
         font-size: 0.9rem;
         margin: 0;
     }
 
-     
-    
+
+
 
 
 
@@ -267,39 +271,39 @@
 
 
 @media (min-width: 768px) and (max-width: 834px) and (orientation: portrait) {
-    .testiContainer{
-       
+    .testiContainer {
+
         width: 90%;
         grid-template-columns: minmax(0, 100%);
         grid-template-rows: 8rem auto;
     }
 
-    .testiContainer .reviewsContainer{
+    .testiContainer .reviewsContainer {
         width: 90%;
 
     }
 
-    
-    .testiContainer .title h1{
+
+    .testiContainer .title h1 {
         font-size: 4rem;
         text-align: center;
         letter-spacing: 0;
     }
 
-    
-    .testiContainer .title p{
+
+    .testiContainer .title p {
         text-align: center;
         font-size: 1.3rem;
     }
 
-    
-    .testiContainer .reviewsContainer .review .content .reviewContent{
+
+    .testiContainer .reviewsContainer .review .content .reviewContent {
         grid-template-rows: 10rem auto;
 
     }
 
 
-    
+
     .testiContainer .reviewsContainer .review .content .reviewContent p {
         line-height: 27px;
         font-size: 1.2rem;
@@ -307,5 +311,3 @@
     }
 
 }
-
-
