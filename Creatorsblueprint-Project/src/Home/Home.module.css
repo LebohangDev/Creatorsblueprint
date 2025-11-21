@@ -200,14 +200,14 @@
 
 .homeContainer .scrollForMore p {
     font-size: 1.4rem;
-    color: #ffffff;
+    color: var(--text-tertiary);
     letter-spacing: 1px;
 }
 
 
 .homeContainer .scrollForMore i {
     font-size: 1.4rem;
-    color: rgb(255, 255, 255);
+    color: var(--text-tertiary);
     margin-bottom: 4px;
 }
 
@@ -1573,7 +1573,7 @@ th:nth-child(3) {
         white-space: nowrap;
         width: 100%;
         margin: 0;
-        color: #ffffff;
+        color: var(--text-primary);
         font-weight: 500;
         animation: fadeInTop 0.3s ease-in-out;
     }
@@ -1582,7 +1582,7 @@ th:nth-child(3) {
     .homeContainer .row1 .titleMobile p {
         font-size: 1.3rem;
         font-weight: 200;
-        color: #ffffff;
+        color: var(--text-primary);
         letter-spacing: 1px;
         opacity: 0;
         animation: fadeInTop 0.3s forwards;
@@ -1782,8 +1782,6 @@ th:nth-child(3) {
 
     }
 
-    .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer .header {}
-
 
     .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer .header .highlight p {
         white-space: nowrap;
@@ -1805,7 +1803,6 @@ th:nth-child(3) {
 
     }
 
-    .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer .header .title2 p {}
 
     .homeContainer .row5 {
         margin-top: 4rem;

@@ -1,8 +1,15 @@
 
 import { motion } from 'framer-motion';
 import styles from './ThemeToggle.module.css';
+import { useEffect } from 'react';
 
 function ThemeToggle({ theme, setTheme }) {
+
+    // run theme change on first render 
+    useEffect(() => {
+        toggleTheme();
+
+    }, []);
 
 
     const toggleTheme = () => {
