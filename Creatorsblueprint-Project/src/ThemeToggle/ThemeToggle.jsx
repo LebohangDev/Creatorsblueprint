@@ -1,23 +1,16 @@
-import { useState, useEffect } from 'react';
+
 import { motion } from 'framer-motion';
 import styles from './ThemeToggle.module.css';
 
 function ThemeToggle({ theme, setTheme }) {
 
 
-    useEffect(() => {
-        // Check localStorage for saved theme
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        setTheme(savedTheme);
-
-    }, []);
-
     const toggleTheme = () => {
         const newTheme = theme === 'dark' ? 'light' : 'dark';
         setTheme(newTheme);
-        // creating attribute data-theme on html with the savedtheme from local storage 
+        // creating attribute data-theme on html with the current theme 
         document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
+
     };
 
     return (
