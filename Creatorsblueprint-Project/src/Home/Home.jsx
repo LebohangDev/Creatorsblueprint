@@ -1,27 +1,27 @@
 
 import { useEffect, useRef, useState } from 'react';
 import styles from './Home.module.css';
-import {loadStripe} from "@stripe/stripe-js";
-import {AnimatePresence, motion} from 'framer-motion';
+import { loadStripe } from "@stripe/stripe-js";
+import { AnimatePresence, motion } from 'framer-motion';
 
-function Home({setNavActive}){
+function Home({ setNavActive }) {
 
     const [currentIndex, setCurrentIndex] = useState(0)
     const [muted, setMuted] = useState(true)
-    const  containerRef = useRef(null);
+    const containerRef = useRef(null);
     const videoContainerRef = useRef(null);
     const videoRef = useRef(null);
     const scrollMoreRef = useRef('null')
 
-   
-    
-    
+
+
+
 
     // interval just updates the index
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex(c => (c + 1) % services.length);
-    }, 6000);
+        }, 6000);
 
         return () => clearInterval(interval);
     }, []);
@@ -40,10 +40,10 @@ function Home({setNavActive}){
 
 
 
-    useEffect(() =>{
-        
-        const container =  document.getElementById('root')
-        
+    useEffect(() => {
+
+        const container = document.getElementById('root')
+
         const video = videoContainerRef.current
         const scrollMore = scrollMoreRef.current
         let lastScrollTop = 0;
@@ -64,44 +64,44 @@ function Home({setNavActive}){
                     setNavActive(false); // scrolling down → hide nav
                 }
             }
-        
-                lastScrollTop = event.target.scrollTop;
-            
-            
+
+            lastScrollTop = event.target.scrollTop;
+
+
         }
 
-        
-  
-        
-       
+
+
+
+
 
         container.addEventListener('scroll', handleScroll)
 
-        return () =>{
+        return () => {
             container.removeEventListener('scroll', handleScroll)
         }
 
     }, []);
 
-    function handleVideoMute(){
-        const  video = videoRef.current
+    function handleVideoMute() {
+        const video = videoRef.current
 
-        if(muted === true){
+        if (muted === true) {
             video.muted = false
-        }else{
+        } else {
             video.muted = true
         }
     }
 
-    
-    
+
+
 
 
     const services = [
         {
             icon: "ri-file-list-3-line",
             title: "Digital Product Creation",
-            description:"We turn your knowledge into high-value digital assets like ebooks, guides, and templates that your audience will love.",
+            description: "We turn your knowledge into high-value digital assets like ebooks, guides, and templates that your audience will love.",
         },
         {
             icon: "ri-code-s-slash-line",
@@ -124,7 +124,7 @@ function Home({setNavActive}){
             description: "We track performance, interpret data, and continuously optimize your systems to boost conversions and audience engagement.",
         },
     ];
-  
+
     const plans = [
         {
             image: "Images/Course_Images/side-view-woman-with-photo-camera.jpg",
@@ -144,6 +144,7 @@ function Home({setNavActive}){
             billed: "One-Time Payment",
             button: "Get Started!"
         },
+        /*
         {
             image: "Images/Course_Images/side-view-woman-with-photo-camera.jpg",
             title: "The Partnership Model",
@@ -162,7 +163,7 @@ function Home({setNavActive}){
             billingCycle: "revenue share",
             billed: "50/50 Partnership",
             button: "Get In Touch!"
-        },
+        },*/
     ];
     const forYou = [
 
@@ -207,170 +208,170 @@ function Home({setNavActive}){
     }*/
 
 
-        
-        // pass the selected plan from user
-    async function handleZinnaPayment(planChoice){
-        try{
+
+    // pass the selected plan from user
+    async function handleZinnaPayment(planChoice) {
+        try {
 
             const res = await fetch('https://creatorsblueprintbackend.onrender.com/api/create-payment-intent', {
                 method: 'POST',
-                headers: {"Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(planChoice),
-                
+
             });
             console.log(planChoice);
 
             const data = await res.json()
             window.location.href = data.redirect_url;
-            
-            console.log("redirect url:", data.redirect_url)
-                       
-            
 
-        }catch(e){
+            console.log("redirect url:", data.redirect_url)
+
+
+
+        } catch (e) {
             console.error("failed to send request to create payment session for user:", e)
-            
-                    
+
+
 
         }
 
-                
-            
-        
-    
-      
+
+
+
+
+
     }
 
-   const isMobile = window.innerWidth < 768;
-
-   
-
-   
-    
-
-   
+    const isMobile = window.innerWidth < 768;
 
 
 
-    
 
-    return(
+
+
+
+
+
+
+
+
+    return (
         <>
 
-        <div className={styles.homeContainer}>
+            <div className={styles.homeContainer}>
 
-            <div className={styles.row1}>
-                <div className={styles.title}>
-                    <h1>Your Followers <span>≠</span> Income</h1>
-                    <p>Lets Fix That.</p>
-                </div>
-                <div className={styles.titleMobile}>
-                    <h1>Creators Blueprint.</h1>
-                    <p>TURN FOLLOWERS INTO <span>INCOME</span></p>
-
-                </div>
-
-                <div className={styles.desc}>
-                    <p>We build <span>done-for-you</span> systems that turn your followers into a reliable income stream through <span>digital Products.</span></p>
-                    <div className={styles.buttons}>
-                        <button onClick={(e) => {e.preventDefault(); document.getElementById('payments').scrollIntoView({behavior: "smooth"})}}>Get Started <i className="ri-arrow-right-double-line"></i></button>
-                        <button onClick={() => window.open("https://wa.link/creatorsblueprint", "_blank")}>Book Free Consultation <i class="ri-phone-line"></i></button>
+                <div className={styles.row1}>
+                    <div className={styles.title}>
+                        <h1>Your Followers <span>≠</span> Income</h1>
+                        <p>Lets Fix That.</p>
+                    </div>
+                    <div className={styles.titleMobile}>
+                        <h1>Creators Blueprint.</h1>
+                        <p>TURN FOLLOWERS INTO <span>INCOME</span></p>
 
                     </div>
-                    
-                </div>
-                
-                
 
-               
-            </div>
-            <motion.div
-            initial={{ opacity: 0 }}               // visible on load
-            whileInView={{ opacity: 1 }}           // fade out when scrolled past
-            viewport={{ once: true, amount: 0.1 }} // only trigger once, as soon as it leaves
-            transition={{ duration: 0.8, delay: 1 }}
-            ref={scrollMoreRef}
-            className={styles.scrollForMore}
-            >
-                 <p>Scroll</p>
-                <i className="ri-arrow-down-circle-fill"></i>
+                    <div className={styles.desc}>
+                        <p>We build <span>done-for-you</span> systems that turn your followers into a reliable income stream through <span>digital Products.</span></p>
+                        <div className={styles.buttons}>
+                            <button onClick={(e) => { e.preventDefault(); document.getElementById('payments').scrollIntoView({ behavior: "smooth" }) }}>Get Started <i className="ri-arrow-right-double-line"></i></button>
+                            <button onClick={() => window.open("https://wa.link/creatorsblueprint", "_blank")}>Book Free Consultation <i class="ri-phone-line"></i></button>
+
+                        </div>
+
+                    </div>
 
 
-            </motion.div>
-           
-               
-        
 
-            
-            <div className={styles.videoContainer} ref={videoContainerRef}>
-                
-                <video ref={videoRef} src="Video/website_video.mp4" autoPlay muted loop playsInline controlsList="noDownload noFullscreen noRemoteplayback" disablePictureInPicture >
-                
-                </video>
-                <div className={styles.button}>
-                    
-                    <i className={muted === true ? "ri-volume-mute-fill"  : "ri-volume-down-fill"} onClick={(e) =>{ e.preventDefault(); handleVideoMute(); muted === true ? setMuted(false) : setMuted(true)}}></i>
-                   
 
                 </div>
-                
-
-
-            </div>
-            
-               
-                
-                
-                    
-            
-
-            
-
-            <div className={styles.row2}>
                 <motion.div
-                className={styles.servicesContainer}
-                id="what"
-                ref={containerRef}
-                initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : -40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ amount: isMobile ? 0 : 0.5, once: true }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                    initial={{ opacity: 0 }}               // visible on load
+                    whileInView={{ opacity: 1 }}           // fade out when scrolled past
+                    viewport={{ once: true, amount: 0.1 }} // only trigger once, as soon as it leaves
+                    transition={{ duration: 0.8, delay: 1 }}
+                    ref={scrollMoreRef}
+                    className={styles.scrollForMore}
                 >
-                    {services.map((s, index) => (
-                        <div key={index} className={styles.service}>
-                            <div className={styles.content}>
-                                <div className={styles.icon}>
-                                    <i className={s.icon}></i>
-                                </div>
+                    <p>Scroll</p>
+                    <i className="ri-arrow-down-circle-fill"></i>
 
-                                <div className={styles.title}>
-                                    <h1>{s.title}</h1>
-                                </div>
 
-                                <div className={styles.desc}>
-                                    <p>{s.description}</p>
+                </motion.div>
+
+
+
+
+
+                <div className={styles.videoContainer} ref={videoContainerRef}>
+
+                    <video ref={videoRef} src="Video/website_video.mp4" autoPlay muted loop playsInline controlsList="noDownload noFullscreen noRemoteplayback" disablePictureInPicture >
+
+                    </video>
+                    <div className={styles.button}>
+
+                        <i className={muted === true ? "ri-volume-mute-fill" : "ri-volume-down-fill"} onClick={(e) => { e.preventDefault(); handleVideoMute(); muted === true ? setMuted(false) : setMuted(true) }}></i>
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <div className={styles.row2}>
+                    <motion.div
+                        className={styles.servicesContainer}
+                        id="what"
+                        ref={containerRef}
+                        initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : -40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ amount: isMobile ? 0 : 0.5, once: true }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                    >
+                        {services.map((s, index) => (
+                            <div key={index} className={styles.service}>
+                                <div className={styles.content}>
+                                    <div className={styles.icon}>
+                                        <i className={s.icon}></i>
+                                    </div>
+
+                                    <div className={styles.title}>
+                                        <h1>{s.title}</h1>
+                                    </div>
+
+                                    <div className={styles.desc}>
+                                        <p>{s.description}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                </motion.div>
-                <div className={styles.paginationContainer}>
-                    <div className={styles.backgroundContainer}>
-                        {services.map((_, index) => (
-                            <span key={index} className={index === currentIndex ? styles.dotActive : styles.dot}></span>
-                        
                         ))}
+                    </motion.div>
+                    <div className={styles.paginationContainer}>
+                        <div className={styles.backgroundContainer}>
+                            {services.map((_, index) => (
+                                <span key={index} className={index === currentIndex ? styles.dotActive : styles.dot}></span>
+
+                            ))}
+
+                        </div>
 
                     </div>
-                    
+
+
+
+
+
                 </div>
-
-                
-
-                
-
-            </div>
-            {/*
+                {/*
             <div className={styles.row3}>
                 <div className={styles.row3Content}>
                     <div className={styles.title}>
@@ -422,225 +423,225 @@ function Home({setNavActive}){
             </div>
             */}
 
-            <div className={styles.row4}>
+                <div className={styles.row4}>
 
-                <div className={styles.row4Content} id='payments'>
-                    <div className={styles.title}>
-                         <motion.div
-            
-                        initial={{ opacity: 0, y: -30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ amount: 0.4, once: true }}
-                        transition={{ delay: 0.3,}}
-                       
-                        >
-                            <h1>Your Plan, Done-for-You</h1>
+                    <div className={styles.row4Content} id='payments'>
+                        <div className={styles.title}>
+                            <motion.div
 
+                                initial={{ opacity: 0, y: -30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ amount: 0.4, once: true }}
+                                transition={{ delay: 0.3, }}
 
-                        </motion.div>
-                         <motion.div
-            
-                        initial={{ opacity: 0, y: -30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ amount: 0.4, once: true }}
-                        transition={{ delay: 0.3,}}
-                       
-                        >
-                            <p>Manage, track, and optimize your digital assets with a plan built for your needs.</p>
+                            >
+                                <h1>Your Plan, Done-for-You</h1>
 
 
-                        </motion.div>
-                       
-                        
-                    </div>
+                            </motion.div>
+                            <motion.div
 
-                   
+                                initial={{ opacity: 0, y: -30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ amount: 0.4, once: true }}
+                                transition={{ delay: 0.3, }}
+
+                            >
+                                <p>Manage, track, and optimize your digital assets with a plan built for your needs.</p>
+
+
+                            </motion.div>
+
+
+                        </div>
+
+
                         <div className={styles.paymentPlans}>
                             {plans.map((plan, index) => (
-                                
-                                    <motion.div
+
+                                <motion.div
                                     key={index}
                                     initial={{ opacity: 0, y: -30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ amount: 0.9, once: true }}
-                                    transition={{ delay: index * 0.2,}}
+                                    transition={{ delay: index * 0.2, }}
                                     className={styles.paymentPlanContainer}
-                                    >
-                                        <div className={styles.header}>
-                                            <div className={styles.title2}>
-                                                <h1>{plan.title}</h1>
-                                                <p>{plan.description}</p>
-                                            </div>
-                                        
-                                            <div className={styles.highlight}>
-                                                <p>{plan.highlight}</p>
-                                            </div>
-                                        </div>
-                                        <div className={styles.desc}>
-                                            <div className={styles.title3}>
-                                                <h1>What's Included:</h1>
-                                            </div>
-                                            <div className={styles.content}>
-                                                {plan.included.map((item, i) => (
-                                                    <div key={i} className={styles.item}>
-                                                        <i className="ri-check-line"></i>
-                                                        <p>{item}</p>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    
-                                        <div className={styles.perfect}>
-                                            <p>Perfect for: {plan.perfectFor}</p>
-                                        </div>
-                                    
-                                        <div className={styles.priceContainer}>
-                                        
-                                            <div className={styles.cost}>
-                                                <h1>${plan.amount}</h1>
-                                                <p>/{plan.billingCycle}</p>
-                                            </div>
-                                        
-                                            <div className={styles.billed}>
-                                                <p>{plan.billed}</p>
-                                            </div>
-                                        </div>
-                                        <div className={styles.paymentButton}>
-                                            <button onClick={(e) => { e.preventDefault(); plan.amount === 799 ? handleZinnaPayment(plan) : window.open("https://wa.link/creatorsblueprint", "_blank")}}>{plan.button}</button>
+                                >
+                                    <div className={styles.header}>
+                                        <div className={styles.title2}>
+                                            <h1>{plan.title}</h1>
+                                            <p>{plan.description}</p>
                                         </div>
 
+                                        <div className={styles.highlight}>
+                                            <p>{plan.highlight}</p>
+                                        </div>
+                                    </div>
+                                    <div className={styles.desc}>
+                                        <div className={styles.title3}>
+                                            <h1>What's Included:</h1>
+                                        </div>
+                                        <div className={styles.content}>
+                                            {plan.included.map((item, i) => (
+                                                <div key={i} className={styles.item}>
+                                                    <i className="ri-check-line"></i>
+                                                    <p>{item}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
 
-                                    </motion.div>
-                                    
-                                
-                                
+                                    <div className={styles.perfect}>
+                                        <p>Perfect for: {plan.perfectFor}</p>
+                                    </div>
+
+                                    <div className={styles.priceContainer}>
+
+                                        <div className={styles.cost}>
+                                            <h1>${plan.amount}</h1>
+                                            <p>/{plan.billingCycle}</p>
+                                        </div>
+
+                                        <div className={styles.billed}>
+                                            <p>{plan.billed}</p>
+                                        </div>
+                                    </div>
+                                    <div className={styles.paymentButton}>
+                                        <button onClick={(e) => { e.preventDefault(); plan.amount === 799 ? handleZinnaPayment(plan) : window.open("https://wa.link/creatorsblueprint", "_blank") }}>{plan.button}</button>
+                                    </div>
+
+
+                                </motion.div>
+
+
+
                             ))}
                         </div>
-                   
-                  
 
-                    
-                    
+
+
+
+
+                    </div>
+
+
+
+
+
                 </div>
 
-                
 
-                
+                <div className={styles.row5}>
 
-            </div>
-
-            
-            <div className={styles.row5}>
-
-                <div className={styles.row5Content}>
-                    <div className={styles.title}>
-                        <h1>Which One’s Right For <span>You?</span></h1>
-                    </div>
-
-                    <div className={styles.compareTable}>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Feature</th>
-                                    <th>The Full System Setup</th>
-                                    <th>The Partnership Model</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Goal</td>
-                                    <td>Complete done-for-you system for fast monetization</td>
-                                    <td>Launch your system with no upfront cost; revenue is shared</td>
-                                </tr>
-                                <tr>
-                                    <td>Products</td>
-                                    <td>Tailored digital product(s) created for your audience</td>
-                                    <td>Custom digital product or course based on audience insights</td>
-                                </tr>
-                                <tr>
-                                    <td>Website</td>
-                                    <td>Custom multi-page website built & optimized for conversions</td>
-                                    <td>Multi-page website designed for conversions</td>
-                                </tr>
-                                <tr>
-                                    <td>Payments</td>
-                                    <td>Integrated via PayPal, Stripe, or Ziina</td>
-                                    <td>Learn & set up payment gateways (PayPal / Stripe / Ziina)</td>
-                                </tr>
-                                <tr>
-                                    <td>Automation</td>
-                                    <td>Auto-messaging system & automated sales follow-ups</td>
-                                    <td>Full automation support (DMs, replies, follow-ups)</td>
-                                </tr>
-                                <tr>
-                                    <td>Support</td>
-                                    <td>15-Day Guarantee + launch setup support</td>
-                                    <td>Ongoing monitoring & optimization; partnership support</td>
-                                </tr>
-                                <tr>
-                                    <td>Cost</td>
-                                    <td>$599 One-Time</td>
-                                    <td>$0 upfront — 50/50 revenue share</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                </div>
-                
-            </div>
-            <div className={styles.row6}>
-                <div className={styles.row6Content}>
-                     <div id='Why_us' className={styles.title}>
-                        <h1>This is for <span>you</span> if...</h1>
-                    </div>
-
-                    <div className={styles.infoCardContainers}>
-                        {forYou.map((FY, index) =>(
-
-                            <motion.div
-                            key={index}
-                            initial={{ opacity: 0, translateY: -10 }}
-                            whileInView={{ opacity: 1, translateY: 0 }}
-                            viewport={{ amount: 0.6, once: true }}
-                            transition={{ delay: index * 0.2,}}
-                            className={styles.card}
-                            
-                            >
-                                <div className={styles.icon}>
-                                    <i className={FY.icon}></i>
-                                </div>
-                                <div className={styles.text}>
-                                    <p>{FY.description}</p>
-                                </div>
-
-
-                            </motion.div>
-                           
-                                
-                            
-                        ))}
-                    </div>
-
-                </div>
-                
-            </div>
-            <div className={styles.row7}>
-                <div className={styles.row7Content}>
-                    <div className={styles.cardContainer}>
-                        <div className={styles.cardContent}>
-                            <h1>Ready to <span>monetize?</span></h1>
-                            <p>Let's talk. Schedule a free, no-obligation consultation to discuss how we can build your income streams.</p>
+                    <div className={styles.row5Content}>
+                        <div className={styles.title}>
+                            <h1>Which One’s Right For <span>You?</span></h1>
                         </div>
-                        <div className={styles.cardButton}>
-                            <button onClick={() => window.open("https://wa.link/creatorsblueprint", "_blank")}>Book Free Consultation <i class="ri-phone-line"></i></button>
+
+                        <div className={styles.compareTable}>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th>The Full System Setup</th>
+                                        <th>The Partnership Model</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Goal</td>
+                                        <td>Complete done-for-you system for fast monetization</td>
+                                        <td>Launch your system with no upfront cost; revenue is shared</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Products</td>
+                                        <td>Tailored digital product(s) created for your audience</td>
+                                        <td>Custom digital product or course based on audience insights</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Website</td>
+                                        <td>Custom multi-page website built & optimized for conversions</td>
+                                        <td>Multi-page website designed for conversions</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Payments</td>
+                                        <td>Integrated via PayPal, Stripe, or Ziina</td>
+                                        <td>Learn & set up payment gateways (PayPal / Stripe / Ziina)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Automation</td>
+                                        <td>Auto-messaging system & automated sales follow-ups</td>
+                                        <td>Full automation support (DMs, replies, follow-ups)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Support</td>
+                                        <td>15-Day Guarantee + launch setup support</td>
+                                        <td>Ongoing monitoring & optimization; partnership support</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cost</td>
+                                        <td>$599 One-Time</td>
+                                        <td>$0 upfront — 50/50 revenue share</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div className={styles.row6}>
+                    <div className={styles.row6Content}>
+                        <div id='Why_us' className={styles.title}>
+                            <h1>This is for <span>you</span> if...</h1>
+                        </div>
+
+                        <div className={styles.infoCardContainers}>
+                            {forYou.map((FY, index) => (
+
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, translateY: -10 }}
+                                    whileInView={{ opacity: 1, translateY: 0 }}
+                                    viewport={{ amount: 0.6, once: true }}
+                                    transition={{ delay: index * 0.2, }}
+                                    className={styles.card}
+
+                                >
+                                    <div className={styles.icon}>
+                                        <i className={FY.icon}></i>
+                                    </div>
+                                    <div className={styles.text}>
+                                        <p>{FY.description}</p>
+                                    </div>
+
+
+                                </motion.div>
+
+
+
+                            ))}
+                        </div>
+
+                    </div>
+
+                </div>
+                <div className={styles.row7}>
+                    <div className={styles.row7Content}>
+                        <div className={styles.cardContainer}>
+                            <div className={styles.cardContent}>
+                                <h1>Ready to <span>monetize?</span></h1>
+                                <p>Let's talk. Schedule a free, no-obligation consultation to discuss how we can build your income streams.</p>
+                            </div>
+                            <div className={styles.cardButton}>
+                                <button onClick={() => window.open("https://wa.link/creatorsblueprint", "_blank")}>Book Free Consultation <i class="ri-phone-line"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
-        </div>
-        
         </>
     )
 }
