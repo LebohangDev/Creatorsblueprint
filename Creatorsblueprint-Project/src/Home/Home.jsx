@@ -640,7 +640,7 @@ function Home({ setNavActive }) {
                     </div>
                 </div>
 
-            </div>
+            </div >
 
         </>
     )

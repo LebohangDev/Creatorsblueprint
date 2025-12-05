@@ -4,7 +4,7 @@
     grid-template-rows: 1fr;
     justify-items: center;
     max-width: 1400px;
-    width: 50%;
+    width: 37%;
     margin: 0 auto;
     border-radius: 30px;
     background: linear-gradient(56deg, #09F7F9, #1A90DA);
@@ -16,14 +16,14 @@
 
 .termsContainer .termsContent {
     display: grid;
-   
+
     grid-template-columns: 1fr;
     grid-template-rows: 10rem auto;
     justify-items: center;
-    border-radius: 30px;            
-    background-color: #1E2253;               
-    padding: 10px;       
-    margin: 0 auto;       
+    border-radius: 30px;
+    background-color: var(--bg-primary);
+    padding: 10px;
+    margin: 0 auto;
     pointer-events: none;
 }
 
@@ -40,7 +40,8 @@
     background: linear-gradient(56deg, rgba(9, 247, 249, 1) 0%, rgba(26, 144, 218, 1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text; /* fallback */
+    background-clip: text;
+    /* fallback */
     color: transparent;
 }
 
@@ -55,14 +56,15 @@
     background: linear-gradient(56deg, rgba(9, 247, 249, 1) 0%, rgba(26, 144, 218, 1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text; /* fallback */
+    background-clip: text;
+    /* fallback */
     color: transparent;
 }
 
 .termsContainer .termsContent .header p {
     font-size: 1rem;
     font-weight: 300;
-    color: #d9d9d9;
+    color: var(--text-tertiary);
 }
 
 .termsContainer .termsContent .content {
@@ -73,7 +75,7 @@
 
 .termsContainer .termsContent .content p {
     font-size: 1rem;
-    color: #ffffff;
+    color: var(--text-primary);
     font-weight: 300;
     line-height: 20px;
 }
@@ -82,12 +84,12 @@
 
 
 @media (max-width: 767px) {
-    .termsContainer{
+    .termsContainer {
         grid-template-columns: minmax(0, 100%);
         max-width: 576px;
         width: 90%;
         margin-top: 5rem;
     }
 
-    
+
 }
