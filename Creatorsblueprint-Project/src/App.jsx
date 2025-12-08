@@ -39,11 +39,7 @@ function App() {
     if (payment === "cancel") setPaymentActive("PaymentCancel");
   }, []);
 
-  useEffect(() => {
-    // Apply saved theme on mount
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-  }, []);
+
 
 
   // Variants for open and closed states
