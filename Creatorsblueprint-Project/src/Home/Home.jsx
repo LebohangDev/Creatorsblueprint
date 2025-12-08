@@ -535,7 +535,7 @@ function Home({ setNavActive }) {
 
                     <div className={styles.row5Content}>
                         <div className={styles.title}>
-                            <h1>Which One’s Right For <span>You?</span></h1>
+                            <h1>How We <span>Compare</span> to Other Creator Solutions</h1>
                         </div>
 
                         <div className={styles.compareTable}>
@@ -543,45 +543,49 @@ function Home({ setNavActive }) {
                                 <thead>
                                     <tr>
                                         <th>Feature</th>
-                                        <th>The Full System Setup</th>
-                                        <th>The Partnership Model</th>
+                                        <th>Creators Blueprint</th>
+                                        <th>Competitors</th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
                                     <tr>
                                         <td>Goal</td>
-                                        <td>Complete done-for-you system for fast monetization</td>
-                                        <td>Launch your system with no upfront cost; revenue is shared</td>
+                                        <td>Build + Monetize a scalable digital system</td>
+                                        <td>Either build for you OR teach you (not both)</td>
                                     </tr>
                                     <tr>
-                                        <td>Products</td>
-                                        <td>Tailored digital product(s) created for your audience</td>
-                                        <td>Custom digital product or course based on audience insights</td>
+                                        <td>Approach</td>
+                                        <td>Done-for-you + Learn-to-do hybrid system</td>
+                                        <td>One-directional: agency OR coaching only</td>
                                     </tr>
                                     <tr>
-                                        <td>Website</td>
-                                        <td>Custom multi-page website built & optimized for conversions</td>
-                                        <td>Multi-page website designed for conversions</td>
+                                        <td>Digital Products</td>
+                                        <td>Custom, audience-aligned digital products</td>
+                                        <td>Generic templates or inconsistent product strategy</td>
                                     </tr>
+
                                     <tr>
-                                        <td>Payments</td>
-                                        <td>Integrated via PayPal, Stripe, or Ziina</td>
-                                        <td>Learn & set up payment gateways (PayPal / Stripe / Ziina)</td>
+                                        <td>Website & Funnel</td>
+                                        <td>High-conversion multi-page site + automation</td>
+                                        <td>Basic landing page or no funnel at all</td>
                                     </tr>
+
                                     <tr>
-                                        <td>Automation</td>
-                                        <td>Auto-messaging system & automated sales follow-ups</td>
-                                        <td>Full automation support (DMs, replies, follow-ups)</td>
+                                        <td>Monetization Strategy</td>
+                                        <td>Full monetization roadmap + execution</td>
+                                        <td>No structured plan — just tools or advice</td>
                                     </tr>
                                     <tr>
                                         <td>Support</td>
-                                        <td>15-Day Guarantee + launch setup support</td>
-                                        <td>Ongoing monitoring & optimization; partnership support</td>
+                                        <td>1-on-1 onboarding + 15-Day Guarantee</td>
+                                        <td>Limited support, no guarantee</td>
                                     </tr>
+
                                     <tr>
-                                        <td>Cost</td>
-                                        <td>$599 One-Time</td>
-                                        <td>$0 upfront — 50/50 revenue share</td>
+                                        <td>Price</td>
+                                        <td>$799 One-Time (full system included)</td>
+                                        <td>$3,000+ agencies OR $500+ coaching fees</td>
                                     </tr>
                                 </tbody>
                             </table>

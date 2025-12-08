@@ -59,8 +59,7 @@
     max-width: 1400px;
     width: 90%;
     margin: 0 auto;
-
-
+    position: relative;
 
 }
 
@@ -318,6 +317,8 @@
     overflow-x: scroll;
     scroll-behavior: smooth;
     scrollbar-width: none;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 
 
 }

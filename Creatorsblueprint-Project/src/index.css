@@ -48,6 +48,8 @@
   --warning-color: #FFA726;
   --page-tracker-primary: #131b77;
   --page-tracker-secondary: #1c29b6;
+
+  --grid-color: #ffffff;
 }
 
 /* Light Mode Colors */
@@ -81,6 +83,7 @@
   --warning-color: #ED8936;
   --page-tracker-primary: #e4e4e4;
   --page-tracker-secondary: #b7b7b7;
+  --grid-color: var(--accent-blue);
 }
 
 
