@@ -21,33 +21,33 @@ function FAQ() {
     },
     {
       question: "How much does it cost?",
-      answer: "We have a one-time package at $599. This includes everything from building your website to creating and launching your first digital product."
+      answer: "We offer a one-time package for $799. No monthly fees, no subscriptions—just a complete system built for you from start to finish."
     },
     {
       question: "Is there a guarantee?",
       answer: "Yes. If you don’t make at least one sale after launching your system with us, we will refund 100% of your investment."
     },
     {
-      question: "What is included in the $599 package?",
+      question: "What is included in the $799 package?",
       answer: [
-        "A professional website ",
-        "DM automation system (auto-replies and lead capture), ",
-        "Payment gateway setup (PayPal, Ziina, etc.), ",
-        "One digital product (eBook, guide, or course) created for you, ",
-        "Complete system integration and testing"
+        "A fully custom, professional website",
+        "DM automation system (auto-replies and lead capture)",
+        "Payment gateway setup (PayPal, Ziina, Stripe, etc.)",
+        "One digital product created for you (eBook, guide, or course)",
+        "Complete system integration, testing, and launch support"
       ]
     },
     {
       question: "Do I need to be tech-savvy to use this?",
-      answer: "Not at all. We handle all the technical setup for you. Once the system is ready, you only need to focus on creating content and engaging with your audience."
+      answer: "Not at all. We handle the full setup for you. Once your system is ready, you only need to focus on creating content and engaging with your audience."
     },
     {
       question: "How long does it take to launch?",
-      answer: "On average, 7–10 days from start to finish, depending on your niche and how quickly you provide the required information."
+      answer: "On average, 7–10 days, depending on your niche and how quickly you provide the required information."
     },
     {
       question: "Are there any extra costs?",
-      answer: "Yes, but only once you start making money: Domain, hosting, and website tracking = $50/month. This ensures your system stays live, updated, and optimized. If you don’t profit, you don’t pay the monthly fee."
+      answer: "No. Your system runs without any additional required monthly fees. The only optional cost is purchasing a domain name, which is typically around $10–$15 per year."
     },
     {
       question: "Who is this for?",
@@ -55,15 +55,15 @@ function FAQ() {
     },
     {
       question: "How do I know which product to sell?",
-      answer: "Creators Blueprint will analyze your account, including your analytics, niche, and the value you provide to your audience. Based on this, we will tailor a digital product (eBook, course, or template) that aligns with your strengths and ensures your followers find it irresistible."
+      answer: "Creators Blueprint analyzes your niche, audience, and strengths. Based on this, we tailor a digital product—such as an eBook, course, or template—that aligns with your expertise and resonates with your followers."
     },
     {
       question: "How is this different from doing it myself?",
-      answer: "Doing it alone would require learning web design, purchasing software and tools separately, and figuring out payment and automation systems. This could take weeks of work and cost hundreds of dollars more. With us, it is all done-for-you in one package."
+      answer: "Doing it alone requires learning web design, automation tools, and payment systems, which can take weeks and cost more than the package itself. With Creators Blueprint, everything is built for you—from product to website to automation."
     },
     {
       question: "What happens if I need support later?",
-      answer: "We don’t just leave you after setup. Our $50/month plan covers hosting, analytics, ongoing support, and maintenance to ensure your system continues running smoothly."
+      answer: "We provide ongoing support even after your system is launched. If you ever need updates or help, we're always here—at no additional monthly cost."
     }
   ];
 
