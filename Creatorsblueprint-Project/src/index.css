@@ -112,6 +112,7 @@ body {
   scroll-behavior: smooth;
   scrollbar-width: none;
   z-index: 1;
+  background: linear-gradient(174deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
 
 
 
