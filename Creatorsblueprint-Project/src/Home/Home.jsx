@@ -132,7 +132,7 @@ function Home({ setNavActive }) {
             displayAmount: 799,
 
             billed: "One-Time Payment",
-            button: "Pay 50% Now"
+            button: "Pay 50% Now - start Instantly"
         },
         /*
         {
