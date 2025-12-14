@@ -7,10 +7,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 function Home({ setNavActive }) {
 
     const [currentIndex, setCurrentIndex] = useState(0)
-    const [muted, setMuted] = useState(true)
     const containerRef = useRef(null);
     const videoContainerRef = useRef(null);
-    const videoRef = useRef(null);
     const scrollMoreRef = useRef('null')
 
 
@@ -83,15 +81,6 @@ function Home({ setNavActive }) {
 
     }, []);
 
-    function handleVideoMute() {
-        const video = videoRef.current
-
-        if (muted === true) {
-            video.muted = false
-        } else {
-            video.muted = true
-        }
-    }
 
 
 
@@ -130,7 +119,7 @@ function Home({ setNavActive }) {
             image: "Images/Course_Images/side-view-woman-with-photo-camera.jpg",
             title: "The Full System Setup",
             description: "Complete done-for-you system to grow and earn effortlessly.",
-            highlight: "best choice",
+            highlight: "Limited Spots!",
             included: [
                 "Custom Multi-Page Website designed to convert followers into clients.",
                 "Tailored Digital Product Creation based on your audience and engagement.",
@@ -139,10 +128,11 @@ function Home({ setNavActive }) {
                 "15-Day Guarantee — full refund if no sale in first 15 days.",
             ],
             perfectFor: "Creators ready to monetize their audience with a fully automated system.",
-            amount: 799,
-            billingCycle: "paid once",
+            amount: 399,
+            displayAmount: 799,
+
             billed: "One-Time Payment",
-            button: "Get Started!"
+            button: "Pay 50% Now"
         },
         /*
         {
@@ -305,15 +295,18 @@ function Home({ setNavActive }) {
 
                 <div className={styles.videoContainer} ref={videoContainerRef}>
 
-                    <video ref={videoRef} src="Video/website_video.mp4" autoPlay muted loop playsInline controlsList="noDownload noFullscreen noRemoteplayback" disablePictureInPicture >
 
-                    </video>
-                    <div className={styles.button}>
-
-                        <i className={muted === true ? "ri-volume-mute-fill" : "ri-volume-down-fill"} onClick={(e) => { e.preventDefault(); handleVideoMute(); muted === true ? setMuted(false) : setMuted(true) }}></i>
-
-
-                    </div>
+                    <iframe
+                        width="100%"
+                        height="100%"
+                        src="https://www.youtube.com/embed/UVUqPw0UWcw?si=sDmr4Ow19ESIKXhr&controls=1"
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                        style={{ objectFit: 'cover' }}
+                    ></iframe>
 
 
 
@@ -498,8 +491,8 @@ function Home({ setNavActive }) {
                                     <div className={styles.priceContainer}>
 
                                         <div className={styles.cost}>
-                                            <h1>${plan.amount}</h1>
-                                            <p>/{plan.billingCycle}</p>
+                                            <h1>${plan.displayAmount}</h1>
+
                                         </div>
 
                                         <div className={styles.billed}>
@@ -507,7 +500,7 @@ function Home({ setNavActive }) {
                                         </div>
                                     </div>
                                     <div className={styles.paymentButton}>
-                                        <button onClick={(e) => { e.preventDefault(); plan.amount === 799 ? handleZinnaPayment(plan) : window.open("https://wa.link/creatorsblueprint", "_blank") }}>{plan.button}</button>
+                                        <button onClick={(e) => { e.preventDefault(); (plan.amount === 799 || plan.amount === 399) ? handleZinnaPayment(plan) : window.open("https://wa.link/creatorsblueprint", "_blank") }}>{plan.button}</button>
                                     </div>
 
 
