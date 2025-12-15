@@ -212,24 +212,25 @@
 
 .homeContainer .videoContainer {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     grid-row: 2;
+    max-width: 1400px;
     margin: 0 auto;
+    max-height: 700px;
     overflow: hidden;
     opacity: 0;
     transition: opacity 0.8s ease-in-out;
-    max-width: 1400px;
 
 }
 
 
 
 .homeContainer .videoContainer iframe {
-    height: 100%;
+    height: 50rem;
     width: 100%;
-    object-fit: cover;
+    object-fit: fill;
     border: none;
-    border-radius: 25px;
+    border-radius: 20px;
     position: relative;
     z-index: 10;
     outline: none;
@@ -1631,7 +1632,7 @@ th:nth-child(3) {
     .homeContainer .videoContainer {
         grid-area: 4/1;
         width: 90%;
-        height: 40rem;
+        height: 100%;
 
         max-width: 576px;
 
@@ -1640,7 +1641,7 @@ th:nth-child(3) {
 
 
     .homeContainer .videoContainer iframe {
-        height: 100%;
+        height: 17rem;
     }
 
 
@@ -1965,7 +1966,7 @@ th:nth-child(3) {
     .homeContainer .videoContainer {
         grid-area: 2/1;
 
-        height: 50rem;
+        height: 100%;
         width: 90%;
         max-width: 1180px;
 
@@ -1973,11 +1974,7 @@ th:nth-child(3) {
     }
 
 
-    .homeContainer .videoContainer iframe {
-        height: 100%;
 
-
-    }
 
 
     .homeContainer .videoContainer .button {
@@ -2104,16 +2101,15 @@ th:nth-child(3) {
     .homeContainer .videoContainer {
         grid-area: 2/1;
 
-        height: 50rem;
+        height: 100%;
         width: 90%;
         max-width: 1180px;
 
 
     }
 
-
     .homeContainer .videoContainer iframe {
-        height: 100%;
+        height: 30rem;
     }
 
 
@@ -2298,6 +2294,10 @@ th:nth-child(3) {
 
     }
 
+    .homeContainer .videoContainer iframe {
+        height: 40rem;
+    }
+
 }
 
 
@@ -2319,6 +2319,10 @@ th:nth-child(3) {
 
 
 
+    }
+
+    .homeContainer .videoContainer iframe {
+        height: 40rem;
     }
 
     .homeContainer .row1 .title h1 {

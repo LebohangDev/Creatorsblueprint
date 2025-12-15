@@ -132,7 +132,7 @@ function Home({ setNavActive }) {
             displayAmount: 799,
 
             billed: "One-Time Payment",
-            button: "Pay 50% Now - start Instantly"
+            button: "Pay 50% Now, Start Instantly"
         },
         /*
         {
@@ -299,13 +299,12 @@ function Home({ setNavActive }) {
                     <iframe
                         width="100%"
                         height="100%"
-                        src="https://www.youtube.com/embed/UVUqPw0UWcw?si=sDmr4Ow19ESIKXhr&controls=1"
+                        src="https://www.youtube.com/embed/T6FcCcRR-ag?si=wsOw-_k-4ZWxEE6N&controls=1&rel=0&modestbranding=1"
                         title="YouTube video player"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerPolicy="strict-origin-when-cross-origin"
                         allowFullScreen
-                        style={{ objectFit: 'cover' }}
                     ></iframe>
 
 

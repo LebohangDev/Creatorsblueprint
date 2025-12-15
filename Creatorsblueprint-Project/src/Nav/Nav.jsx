@@ -151,25 +151,25 @@ function Nav({ setActive, menuActive, setMenuActive, theme }) {
 
                         <div className={styles.navLinks}>
                             <div className={styles.link1}>
-                                <p onClick={(e) => { e.preventDefault(); setActive('Home'); document.getElementById('Why_us').scrollIntoView({ behavior: "smooth" }) }}>WHY US?</p>
+                                <p onClick={(e) => { e.preventDefault(); setActive('Home'); setMenuActive(false); document.getElementById('Why_us').scrollIntoView({ behavior: "smooth" }) }}>WHY US?</p>
 
                             </div>
                             <div className={styles.link2}>
-                                <p onClick={(e) => { e.preventDefault(); setActive('Home'); document.getElementById('what').scrollIntoView({ behavior: "smooth" }) }}>WHAT WE DO</p>
+                                <p onClick={(e) => { e.preventDefault(); setActive('Home'); setMenuActive(false); document.getElementById('what').scrollIntoView({ behavior: "smooth" }) }}>WHAT WE DO</p>
 
                             </div>
                             <div className={styles.product}>
-                                <p onClick={(e) => { e.preventDefault(); window.open('https://blueprintcreator.gumroad.com/l/xaghx') }}>Product</p>
+                                <p onClick={(e) => { e.preventDefault(); setMenuActive(false); window.open('https://blueprintcreator.gumroad.com/l/xaghx') }}>Product</p>
 
                             </div>
 
                             <div className={styles.FAQ}>
-                                <p onClick={(e) => { e.preventDefault(); setActive('FAQ') }}>FAQ</p>
+                                <p onClick={(e) => { e.preventDefault(); setActive('FAQ'); setMenuActive(false) }}>FAQ</p>
 
                             </div>
 
                             <div className={styles.button}>
-                                <button onClick={(e) => { e.preventDefault(); setActive('Testimonials') }}>TESTIMONIALS</button>
+                                <button onClick={(e) => { e.preventDefault(); setActive('Testimonials'); setMenuActive(false) }}>TESTIMONIALS</button>
 
                             </div>
 
