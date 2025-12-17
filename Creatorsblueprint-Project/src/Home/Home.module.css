@@ -44,7 +44,7 @@
 .homeContainer {
     display: grid;
     grid-template-columns: minmax(0, 100%);
-    grid-template-rows: 15rem auto;
+    grid-template-rows: 15rem 1fr auto;
     gap: 2rem;
 
 
@@ -226,7 +226,7 @@
 
 
 .homeContainer .videoContainer iframe {
-    height: 50rem;
+    height: 47rem;
     width: 100%;
     object-fit: fill;
     border: none;
@@ -1404,6 +1404,8 @@ th:nth-child(3) {
     height: 100%;
     /*background-color: #EAFDFF;*/
     margin-top: 3rem;
+    margin-bottom: 3rem;
+
 
 
 
@@ -1518,6 +1520,7 @@ th:nth-child(3) {
 
         width: 100%;
         margin: 0 auto;
+        padding-top: 3rem;
     }
 
     .homeContainer .row1 {

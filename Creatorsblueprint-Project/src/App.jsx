@@ -5,6 +5,7 @@ import Footer from './Footer/Footer.jsx';
 import Privacy from './Privacy/Privacy.jsx';
 import Terms from './Terms/Terms.jsx';
 import FAQ from './FAQ/FAQ.JSX';
+import Product from './Product/Product.jsx';
 
 import Nav from './Nav/Nav.jsx';
 import Testimonials from './Testimonials/Testimonials.jsx';
@@ -107,6 +108,9 @@ function App() {
 
         <div className={active === 'FAQ' ? 'activeSection' : 'notActiveSection'}>
           <FAQ />
+        </div>
+        <div className={active === 'Product' ? 'activeSection' : 'notActiveSection'}>
+          <Product />
         </div>
 
 

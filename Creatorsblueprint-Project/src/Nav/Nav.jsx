@@ -81,7 +81,7 @@ function Nav({ setActive, menuActive, setMenuActive, theme }) {
 
                     </div>
                     <div className={styles.product}>
-                        <p onClick={(e) => { e.preventDefault(); window.open('https://blueprintcreator.gumroad.com/l/xaghx') }}>Product</p>
+                        <p onClick={(e) => { e.preventDefault(); setActive('Product'); setMenuActive(false); }}>Product</p>
 
                     </div>
 
@@ -159,7 +159,7 @@ function Nav({ setActive, menuActive, setMenuActive, theme }) {
 
                             </div>
                             <div className={styles.product}>
-                                <p onClick={(e) => { e.preventDefault(); setMenuActive(false); window.open('https://blueprintcreator.gumroad.com/l/xaghx') }}>Product</p>
+                                <p onClick={(e) => { e.preventDefault(); setActive('Product'); setMenuActive(false); }}>Product</p>
 
                             </div>
 

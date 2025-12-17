@@ -1,0 +1,560 @@
+.productContainer {
+    display: grid;
+    grid-template-columns: minmax(100%, 1fr);
+    grid-template-rows: 1fr;
+    width: 100%;
+    padding-top: 3rem;
+
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.productContent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    height: 100%;
+}
+
+.productContent .topSection {
+    display: grid;
+    grid-column: span 3;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 90%;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.productContainer .productContent .topSection .infoContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 8rem 3rem auto;
+
+    gap: 0rem;
+}
+
+
+.productContainer .productContent .topSection .infoContainer h1 {
+    font-size: 3rem;
+    margin-top: 0;
+    line-height: 4rem;
+    font-weight: 400;
+}
+
+.productContainer .productContent .topSection .infoContainer h1 span {
+    color: var(--accent-cyan);
+}
+
+.productContainer .productContent .topSection .infoContainer p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    line-height: 2rem;
+    font-weight: 200;
+}
+
+.productContainer .productContent .topSection .infoContainer .formContainer {
+
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    width: 100%;
+    height: fit-content;
+    max-width: 400px;
+}
+
+
+.productContent .topSection .infoContainer .formContainer .emailInput {
+    padding: 1rem;
+    padding-right: 14rem;
+    height: 2rem;
+    border: 0;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+
+.productContent .topSection .infoContainer .formContainer a .accessButton {
+    padding: 1.42rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    border: none;
+    background-color: var(--accent-purple);
+    color: white;
+    font-weight: 500;
+    white-space: nowrap;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+
+.productContent .topSection .infoContainer .formContainer a .accessButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+}
+
+.productContent .topSection .infoContainer .formContainer .paidButton {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding: 1rem;
+
+    border: none;
+    background: linear-gradient(to right, var(--accent-cyan), var(--accent-blue));
+    color: white;
+    font-weight: 500;
+    white-space: nowrap;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.productContent .topSection .infoContainer .formContainer .paidButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+}
+
+.productContent .topSection .bookContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productContent .topSection .bookContainer .toggleContainer {
+    display: flex;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 0.2px solid var(--border-color2);
+    padding: 0.5rem;
+    width: fit-content;
+
+    border-radius: 50px;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+
+
+
+
+
+.productContent .topSection .bookContainer .toggleContainer .toggleButton {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+
+    font-weight: 400;
+    cursor: pointer;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+}
+
+
+
+
+.productContent .topSection .bookContainer .toggleContainer .buttonActive {
+    background: var(--accent-purple);
+    color: white;
+    font-weight: 400;
+    padding: 0.8rem 2rem;
+    border-radius: 20px;
+    border: none;
+}
+
+
+
+
+.productContent .imageContainer {
+    width: 100%;
+    display: flex;
+    min-height: 30rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.productContent .imageContainer img {
+    width: 25rem;
+    max-width: 1200px;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.productContent .imageContainer img:hover {
+    transform: scale(1.02);
+}
+
+.productContent .infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+
+
+
+
+
+
+
+.learnContainer {
+    background-color: var(--bg-secondary);
+    width: 100vw;
+    height: 100%;
+    grid-column: span 3;
+
+}
+
+.learnContent {
+    display: grid;
+    grid-template-columns: minmax(100%, 1fr);
+    grid-template-rows: 10rem auto;
+    max-width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: 3rem;
+    justify-items: center;
+    gap: 2rem;
+}
+
+
+.learnContent .learnHeader {
+    text-align: center;
+    display: flex;
+    width: 45%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+
+.learnContent .learnHeader h1 {
+    font-size: 5rem;
+
+    font-weight: 300;
+
+    margin: 0;
+}
+
+
+.learnContent .learnHeader h1 span {
+    color: var(--accent-cyan);
+}
+
+
+.learnContent .learnHeader p {
+    font-size: 1.7rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    margin-top: 0;
+}
+
+
+.learnContent .learnGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.2rem;
+    margin-bottom: 4rem;
+
+
+    justify-items: center;
+
+
+}
+
+
+.learnContent .learnGrid .learnCard {
+
+    display: flex;
+    width: 22rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.3rem;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+
+.learnContent .learnGrid .learnCard i {
+    font-size: 2rem;
+    padding: 1.4rem;
+    background-color: var(--accent-purple);
+    box-shadow: 0px 0px 10px 6px var(--accent-purple);
+    border-radius: 50px;
+    color: white;
+}
+
+
+.learnContent .learnGrid .learnCard p {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-top: 0;
+    color: var(--text-secondary);
+}
+
+
+
+
+/* Tablet Portrait (and smaller/Mobile defaults) - Stacked Layout */
+@media (max-width: 1024px) and (orientation: portrait) {
+    .productContent .topSection {
+        grid-template-columns: minmax(100%, 1fr);
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    .productContainer .productContent .topSection .infoContainer,
+    .productContent .topSection .bookContainer {
+        display: contents;
+    }
+
+    /* Reordering Logic */
+    .productContainer .productContent .topSection .infoContainer>div:first-child {
+        order: 1;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .productContent .topSection .bookContainer .toggleContainer {
+        order: 2;
+        margin-bottom: 2rem;
+    }
+
+    .productContent .topSection .bookContainer .imageContainer {
+        order: 3;
+        margin-bottom: 2rem;
+    }
+
+    .productContainer .productContent .topSection .infoContainer .formContainer {
+        order: 4;
+        width: 100%;
+        max-width: 600px;
+        justify-content: center;
+    }
+
+    .learnContent {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .learnContent .learnHeader {
+        width: 90%;
+    }
+
+    .learnContent .learnGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* Tablet Landscape - Default Layout (2 cols) but scaled */
+@media (max-width: 1366px) and (orientation: landscape) {
+    .productContainer {
+        padding-top: 2rem;
+    }
+
+    .productContent .topSection {
+        max-width: 90%;
+        /* Use more width on smaller landscape screens */
+        gap: 2rem;
+    }
+
+    .productContainer .productContent .topSection .infoContainer h1 {
+        font-size: 2.5rem;
+        /* Scale down title */
+        line-height: 3rem;
+    }
+
+    .productContainer .productContent .topSection .infoContainer p {
+        font-size: 1.1rem;
+    }
+
+    .productContent .topSection .bookContainer .imageContainer img {
+        width: 25rem;
+        /* Slightly smaller image */
+    }
+
+    .learnContent {
+        max-width: 95%;
+    }
+
+    .learnContent .learnHeader h1 {
+        font-size: 3rem;
+    }
+
+    .learnContent .learnHeader p {
+        font-size: 1.5rem;
+    }
+
+    .learnContent .learnGrid .learnCard {
+
+        gap: 2rem;
+    }
+}
+
+
+
+/*ipad pro portrait */
+@media (max-width: 1024px) and (min-height: 1366px) and (orientation: portrait) {
+    .productContainer .productContent .topSection .infoContainer p {
+        order: 4;
+
+    }
+
+    .productContainer .productContent .topSection .bookContainer .imageContainer img {
+        width: 25rem;
+        /* Slightly smaller image */
+    }
+
+    .learnContainer {
+        padding-top: 2rem;
+    }
+
+    .learnContent .learnHeader h1 {
+        font-size: 6rem;
+        width: 50rem;
+
+    }
+
+
+
+    .learnContent .learnHeader p {
+        font-size: 2rem;
+        width: 40rem;
+    }
+
+
+    .learnContent .learnGrid {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+    }
+}
+
+/* Mobile Specific Overrides (inherits stack from portrait rule usually, but if width < 768 irrespective of orientation, enforce stack and mobile sizes) */
+@media (max-width: 854px) {
+    .productContainer {
+        margin-top: 4rem;
+        text-align: center;
+    }
+
+    .productContainer .productContent {
+        grid-template-columns: minmax(100%, 1fr);
+    }
+
+    .productContent .topSection {
+        grid-template-columns: minmax(100%, 1fr);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+
+
+    .productContainer .productContent .topSection .infoContainer h1 {
+        order: 1;
+        text-align: center;
+
+    }
+
+
+
+    .productContent .topSection .bookContainer .toggleContainer {
+        order: 2;
+    }
+
+    .productContent .topSection .bookContainer .imageContainer {
+        order: 3;
+    }
+
+    .productContainer .productContent .topSection .infoContainer p {
+        order: 4;
+
+    }
+
+
+
+    /* Mobile Text Sizing */
+    .productContainer .productContent .topSection .infoContainer h1 {
+        font-size: 2.2rem;
+        line-height: normal;
+    }
+
+    .productContainer .productContent .topSection .infoContainer p {
+        font-size: 1.3rem;
+    }
+
+    .productContainer .productContent .topSection .infoContainer .formContainer {
+        order: 5;
+        flex-direction: row;
+        align-items: center;
+
+    }
+
+
+    .productContainer .productContent .topSection .infoContainer .formContainer .emailInput {
+        padding-right: 0;
+
+        width: 20rem
+    }
+
+    .productContainer .productContent .topSection .infoContainer .formContainer a .accessButton {
+        padding: 1.55rem;
+        font-size: 0.8rem;
+    }
+
+    .productContainer .productContent .topSection .infoContainer .formContainer .paidButton {
+        padding: 1.5rem;
+        font-size: 0.8rem;
+    }
+
+
+
+
+    /* Mobile Learn Grid */
+    .learnContent .learnHeader {
+        gap: 0.8rem;
+
+    }
+
+    .learnContent .learnHeader h1 {
+        font-size: 3rem;
+
+    }
+
+    .learnContent .learnHeader p {
+        font-size: 1.5rem;
+    }
+
+    .learnContent .learnGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .learnContent .learnGrid .learnCard {
+        gap: 2rem;
+
+    }
+
+    .productContent .topSection .bookContainer .imageContainer img {
+        width: 100%;
+        max-width: 300px;
+    }
+}
