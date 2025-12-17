@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from "framer-motion";
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './Home/Home.jsx';
 import Footer from './Footer/Footer.jsx';
 import Privacy from './Privacy/Privacy.jsx';
@@ -17,21 +18,19 @@ import ThemeToggle from './ThemeToggle/ThemeToggle.jsx';
 
 function App() {
 
-  const [active, setActive] = useState('Home');
   const [paymentActive, setPaymentActive] = useState('')
   const [menuActive, setMenuActive] = useState(false)
   const [navActive, setNavActive] = useState(true)
   // track theme mode 
   const [theme, setTheme] = useState('dark');
 
+  const location = useLocation();
 
   useEffect(() => {
+    const root = document.getElementById('root');
 
-    const container = document.getElementById('root')
-
-    container.scrollTo(0, 0)
-
-  }, [active])
+    root.scrollTo(0, 0);
+  }, [location.pathname]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -66,7 +65,7 @@ function App() {
           exit="closed"
           className={navActive === true ? 'navActive' : 'notNavActive'}
         >
-          <Nav active={active} setActive={setActive} menuActive={menuActive} setMenuActive={setMenuActive} theme={theme} />
+          <Nav menuActive={menuActive} setMenuActive={setMenuActive} theme={theme} />
 
         </motion.div>
 
@@ -89,33 +88,14 @@ function App() {
 
 
       <div className="content">
-
-        <div className={active === 'Home' ? 'activeSection' : 'notActiveSection'}>
-          <Home setNavActive={setNavActive} t />
-
-        </div>
-        <div className={active === 'Testimonials' ? 'activeSection' : 'notActiveSection'}>
-          <Testimonials />
-        </div>
-
-        <div className={active === 'Privacy' ? 'activeSection' : 'notActiveSection'}>
-          <Privacy />
-        </div>
-
-        <div className={active === 'Terms' ? 'activeSection' : 'notActiveSection'}>
-          <Terms />
-        </div>
-
-        <div className={active === 'FAQ' ? 'activeSection' : 'notActiveSection'}>
-          <FAQ />
-        </div>
-        <div className={active === 'Product' ? 'activeSection' : 'notActiveSection'}>
-          <Product />
-        </div>
-
-
-
-
+        <Routes>
+          <Route path="/" element={<Home setNavActive={setNavActive} />} />
+          <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/product" element={<Product />} />
+        </Routes>
       </div>
 
 
@@ -123,7 +103,7 @@ function App() {
 
       <footer>
 
-        <Footer setActive={setActive} theme={theme} />
+        <Footer theme={theme} />
 
       </footer >
 

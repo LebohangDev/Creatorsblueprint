@@ -19,6 +19,8 @@ const Product = () => {
         setIsValidEmail(validateEmail(val));
     };
 
+
+
     const book_info = [
         {
             type: 'free',
@@ -47,8 +49,9 @@ const Product = () => {
         {
             type: 'paid',
             id: 'paid_book',
+            amount: 99,
             image: '/Images/Ebooks/paid_book.svg', // Placeholder or same naming convention
-            title: 'Paid',
+            title: 'From content to cashflow ebook',
             header: <>UNLOCK THE <span>FULL</span> CREATOR BLUEPRINT</>,
             subTitle: 'Get the complete system to monetize your audience.',
             pointsTitle: <>Deep Dive <span>Strategies</span></>,
@@ -66,13 +69,58 @@ const Product = () => {
                     icon: 'ri-vip-crown-line',
                     text: 'Exclusive access to resources and tools'
                 }
-            ]
+            ],
+            successUrl: "https://lebohangdev.github.io/Creatorsblueprint/Books/Paidbook/From_content_to_cashflow_ebook_cb.pdf",
+            cancelUrl: "https://lebohangdev.github.io/Creatorsblueprint/?payment=cancel",
         }
     ];
 
     // keep track of which current books information should be rendered 
 
     const currentBook = activeTab === 'free' ? book_info[0] : book_info[1];
+
+    // pass the selected plan from user
+    async function handleZinnaPayment(bookChoice) {
+        try {
+
+            const paidBook = {
+                amount: bookChoice.amount,
+                title: bookChoice.title,
+                successUrl: bookChoice.successUrl,
+                cancelUrl: bookChoice.cancelUrl,
+
+            }
+            console.log(paidBook);
+
+            const res = await fetch('https://creatorsblueprintbackend.onrender.com/api/create-payment-intent', {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(paidBook),
+
+            });
+            console.log(paidBook);
+
+            const data = await res.json()
+            console.log("data:", data);
+            //window.location.href = data.redirect_url;
+
+            console.log("redirect url:", data.redirect_url)
+
+
+
+        } catch (e) {
+            console.error("failed to send request to create payment session for user:", e)
+
+
+
+        }
+
+
+
+
+
+
+    }
 
     return (
         <div className={styles.productContainer}>
@@ -121,9 +169,10 @@ const Product = () => {
                                         className={styles.emailInput}
                                     />
                                     <button
+                                        type="button"
                                         className={styles.paidButton}
                                         disabled={!isValidEmail}
-                                        onClick={(e) => { e.preventDefault(); /* Handle payment logic here */ }}
+                                        onClick={() => { setEmail(''); handleZinnaPayment(currentBook); console.log(currentBook); }}
                                     >
                                         Buy Now
                                     </button>

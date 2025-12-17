@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import styles from "./Nav.module.css";
-
 import { AnimatePresence, motion } from "framer-motion";
+import { useNavigate, useLocation } from "react-router-dom";
 
 
-function Nav({ setActive, menuActive, setMenuActive, theme }) {
+function Nav({ menuActive, setMenuActive, theme }) {
 
     const [lang, setLang] = useState('Hello');
     const [currentIndex, setCurrentIndex] = useState(0);
+    const navigate = useNavigate();
+    const location = useLocation();
 
 
     const Languages = [
@@ -60,6 +62,19 @@ function Nav({ setActive, menuActive, setMenuActive, theme }) {
         open: { opacity: 1, x: 0, transition: { duration: 0.2 } },
     };
 
+    const handleScrollTo = (id) => {
+        if (location.pathname === '/') {
+            document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        } else {
+            navigate('/');
+            setTimeout(() => {
+                document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+            }, 500);
+        }
+    };
+
+
+
 
 
     return (
@@ -68,30 +83,30 @@ function Nav({ setActive, menuActive, setMenuActive, theme }) {
 
             <div className={styles.NavContainer}>
                 <div className={styles.navLogo}>
-                    <img src={theme === 'dark' ? "Images/CB_Logos/CB_logo2.png" : "Images/CB_Logos/CB_logo.png"} onClick={(e) => { e.preventDefault(); setActive('Home'); }} alt="" />
+                    <img src={theme === 'dark' ? "Images/CB_Logos/CB_logo2.png" : "Images/CB_Logos/CB_logo.png"} onClick={(e) => { e.preventDefault(); navigate('/'); }} alt="" />
                 </div>
 
                 <div className={styles.navLinks}>
                     <div className={styles.link1}>
-                        <p onClick={(e) => { e.preventDefault(); setActive('Home'); document.getElementById('Why_us').scrollIntoView({ behavior: "smooth" }) }}>WHY US?</p>
+                        <p onClick={(e) => { e.preventDefault(); handleScrollTo('Why_us'); }}>WHY US?</p>
 
                     </div>
                     <div className={styles.link2}>
-                        <p onClick={(e) => { e.preventDefault(); setActive('Home'); document.getElementById('what').scrollIntoView({ behavior: "smooth" }) }}>WHAT WE DO</p>
+                        <p onClick={(e) => { e.preventDefault(); handleScrollTo('what'); }}>WHAT WE DO</p>
 
                     </div>
                     <div className={styles.product}>
-                        <p onClick={(e) => { e.preventDefault(); setActive('Product'); setMenuActive(false); }}>Product</p>
+                        <p onClick={(e) => { e.preventDefault(); navigate('/product'); }}>Product</p>
 
                     </div>
 
                     <div className={styles.FAQ}>
-                        <p onClick={(e) => { e.preventDefault(); setActive('FAQ') }}>FAQ</p>
+                        <p onClick={(e) => { e.preventDefault(); navigate('/faq'); }}>FAQ</p>
 
                     </div>
 
                     <div className={styles.button}>
-                        <button onClick={(e) => { e.preventDefault(); setActive('Testimonials') }}>TESTIMONIALS</button>
+                        <button onClick={(e) => { e.preventDefault(); navigate('/testimonials'); }}>TESTIMONIALS</button>
 
                     </div>
 
@@ -100,7 +115,7 @@ function Nav({ setActive, menuActive, setMenuActive, theme }) {
             </div>
             <div className={styles.hamburgerContainer}>
                 <div className={styles.navLogo}>
-                    <img src={theme === 'dark' ? "Images/CB_Logos/CB_logo2.png" : "Images/CB_Logos/CB_logo.png"} onClick={(e) => { e.preventDefault(); setActive('Home'); }} alt="" />
+                    <img src={theme === 'dark' ? "Images/CB_Logos/CB_logo2.png" : "Images/CB_Logos/CB_logo.png"} onClick={(e) => { e.preventDefault(); navigate('/'); }} alt="" />
                 </div>
                 <i className="ri-menu-line" onClick={(e) => { e.preventDefault(); setMenuActive(true) }}></i>
 
@@ -151,25 +166,25 @@ function Nav({ setActive, menuActive, setMenuActive, theme }) {
 
                         <div className={styles.navLinks}>
                             <div className={styles.link1}>
-                                <p onClick={(e) => { e.preventDefault(); setActive('Home'); setMenuActive(false); document.getElementById('Why_us').scrollIntoView({ behavior: "smooth" }) }}>WHY US?</p>
+                                <p onClick={(e) => { e.preventDefault(); setMenuActive(false); handleScrollTo('Why_us'); }}>WHY US?</p>
 
                             </div>
                             <div className={styles.link2}>
-                                <p onClick={(e) => { e.preventDefault(); setActive('Home'); setMenuActive(false); document.getElementById('what').scrollIntoView({ behavior: "smooth" }) }}>WHAT WE DO</p>
+                                <p onClick={(e) => { e.preventDefault(); setMenuActive(false); handleScrollTo('what'); }}>WHAT WE DO</p>
 
                             </div>
                             <div className={styles.product}>
-                                <p onClick={(e) => { e.preventDefault(); setActive('Product'); setMenuActive(false); }}>Product</p>
+                                <p onClick={(e) => { e.preventDefault(); setMenuActive(false); navigate('/product'); }}>Product</p>
 
                             </div>
 
                             <div className={styles.FAQ}>
-                                <p onClick={(e) => { e.preventDefault(); setActive('FAQ'); setMenuActive(false) }}>FAQ</p>
+                                <p onClick={(e) => { e.preventDefault(); setMenuActive(false); navigate('/faq'); }}>FAQ</p>
 
                             </div>
 
                             <div className={styles.button}>
-                                <button onClick={(e) => { e.preventDefault(); setActive('Testimonials'); setMenuActive(false) }}>TESTIMONIALS</button>
+                                <button onClick={(e) => { e.preventDefault(); navigate('/testimonials'); }}>TESTIMONIALS</button>
 
                             </div>
 
@@ -188,9 +203,9 @@ function Nav({ setActive, menuActive, setMenuActive, theme }) {
                                     </div>
                                 </div>
                                 <div className={styles.additonalLinks}>
-                                    <p onClick={(e) => { e.preventDefault(); setActive('Privacy') }}>Privacy</p>
-                                    <p onClick={(e) => { e.preventDefault(); setActive('Terms') }}>Terms</p>
-                                    <p onClick={(e) => { e.preventDefault(); setActive('FAQ') }}>FAQ</p>
+                                    <p onClick={(e) => { e.preventDefault(); handleNavigation('/privacy'); }}>Privacy</p>
+                                    <p onClick={(e) => { e.preventDefault(); handleNavigation('/terms'); }}>Terms</p>
+                                    <p onClick={(e) => { e.preventDefault(); handleNavigation('/faq'); }}>FAQ</p>
 
                                 </div>
                             </div>

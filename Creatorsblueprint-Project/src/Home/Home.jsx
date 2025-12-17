@@ -130,7 +130,8 @@ function Home({ setNavActive }) {
             perfectFor: "Creators ready to monetize their audience with a fully automated system.",
             amount: 399,
             displayAmount: 799,
-
+            successUrl: "https://lebohangdev.github.io/Creatorsblueprint/?payment=success",
+            cancelUrl: "https://lebohangdev.github.io/Creatorsblueprint/?payment=cancel",
             billed: "One-Time Payment",
             button: "Pay 50% Now, Start Instantly"
         },
@@ -203,13 +204,21 @@ function Home({ setNavActive }) {
     async function handleZinnaPayment(planChoice) {
         try {
 
+            const planPayload = {
+                amount: planChoice.amount,
+                title: planChoice.title,
+                successUrl: planChoice.successUrl,
+                cancelUrl: planChoice.cancelUrl,
+
+            }
+
             const res = await fetch('https://creatorsblueprintbackend.onrender.com/api/create-payment-intent', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(planChoice),
+                body: JSON.stringify(planPayload),
 
             });
-            console.log(planChoice);
+            console.log(planPayload);
 
             const data = await res.json()
             window.location.href = data.redirect_url;

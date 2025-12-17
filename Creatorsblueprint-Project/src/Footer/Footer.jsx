@@ -1,15 +1,17 @@
-
 import styles from "./Footer.module.css";
+import { useNavigate } from "react-router-dom";
 
 
-function Footer({ setActive, theme }) {
+function Footer({ theme }) {
+    const navigate = useNavigate();
+
     return (
         <>
 
             <div className={styles.footerContainer}>
                 <div className={styles.footerHeader}>
                     <div className={styles.logo}>
-                        <img src={theme === 'dark' ? "Images/CB_Logos/CB_logo2.png" : "Images/CB_Logos/CB_logo.png"} alt="" />
+                        <img src={theme === 'dark' ? "Images/CB_Logos/CB_logo2.png" : "Images/CB_Logos/CB_logo.png"} alt="" onClick={() => navigate('/')} style={{ cursor: 'pointer' }} />
                     </div>
                     <div className={styles.media}>
                         <h1>Media</h1>
@@ -20,16 +22,16 @@ function Footer({ setActive, theme }) {
                         </div>
                     </div>
                     <div className={styles.additonalLinks}>
-                        <p onClick={(e) => { e.preventDefault(); setActive('Privacy') }}>Privacy</p>
-                        <p onClick={(e) => { e.preventDefault(); setActive('Terms') }}>Terms</p>
-                        <p onClick={(e) => { e.preventDefault(); setActive('FAQ') }}>FAQ</p>
+                        <p onClick={() => navigate('/privacy')}>Privacy</p>
+                        <p onClick={() => navigate('/terms')}>Terms</p>
+                        <p onClick={() => navigate('/faq')}>FAQ</p>
 
                     </div>
                 </div>
 
 
                 <div className={styles.copyright}>
-                    <p><i class="ri-copyright-line"></i>2025 CreatorsBlueprint. All rights reserved. | www.creatorsblueprint.com</p>
+                    <p><i className="ri-copyright-line"></i>2025 CreatorsBlueprint. All rights reserved. | www.creatorsblueprint.com</p>
                 </div>
             </div>
 
