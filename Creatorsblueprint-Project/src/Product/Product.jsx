@@ -102,7 +102,7 @@ const Product = () => {
 
             const data = await res.json()
             console.log("data:", data);
-            //window.location.href = data.redirect_url;
+            window.location.href = data.redirect_url;
 
             console.log("redirect url:", data.redirect_url)
 
