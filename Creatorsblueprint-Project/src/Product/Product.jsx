@@ -4,7 +4,7 @@ import styles from './product.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Product = () => {
-    const [activeTab, setActiveTab] = useState('free');
+    const [activeTab, setActiveTab] = useState('paid');
     const [email, setEmail] = useState('');
     const [isValidEmail, setIsValidEmail] = useState(false);
 
@@ -49,7 +49,7 @@ const Product = () => {
         {
             type: 'paid',
             id: 'paid_book',
-            amount: 99,
+            amount: 9,
             image: '/Images/Ebooks/paid_book.svg', // Placeholder or same naming convention
             title: 'From content to cashflow ebook',
             header: <>UNLOCK THE <span>FULL</span> CREATOR BLUEPRINT</>,
@@ -77,7 +77,7 @@ const Product = () => {
 
     // keep track of which current books information should be rendered 
 
-    const currentBook = activeTab === 'free' ? book_info[0] : book_info[1];
+    const currentBook = activeTab === 'paid' ? book_info[1] : book_info[0];
 
     // pass the selected plan from user
     async function handleZinnaPayment(bookChoice) {
