@@ -52,6 +52,18 @@
 
 }
 
+
+.homeContainer .formOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    z-index: 999;
+}
+
 .homeContainer .row1 {
     display: grid;
     grid-template-columns: 65rem 30rem auto;
@@ -436,15 +448,13 @@
 }
 
 
-.homeContainer .row2 .paginationContainer .dotActive {
-    background-color: var(--page-tracker-secondary);
-}
-
-
 
 
 
 /*row 2*/
+
+
+
 
 
 .homeContainer .row4 {
@@ -468,13 +478,90 @@
     grid-template-rows: auto;
     justify-items: center;
     max-width: 1400px;
+    position: relative;
     margin: 0 auto;
     align-items: end;
 }
 
 
 
-.homeContainer .row4 .title {
+.homeContainer .row4 .row4Content .emailForm {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: 25rem;
+    max-width: 400px;
+
+    height: fit-content;
+    background: var(--bg-secondary);
+
+    border: none;
+    padding: 2.5rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    z-index: 1000;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.homeContainer .row4 .row4Content .emailForm p {
+    font-size: 1rem;
+    color: var(--text-tertiary);
+    margin-top: 0;
+    margin-left: 0.5rem;
+    color: red;
+}
+
+.homeContainer .row4 .row4Content .emailForm .emailInput {
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+    border: none;
+}
+
+.homeContainer .row4 .row4Content .emailForm .emailInput::placeholder {
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+.homeContainer .row4 .row4Content .emailForm button {
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: transform 0.2s;
+}
+
+.homeContainer .row4 .row4Content .emailForm button:nth-child(3) {
+    background: linear-gradient(56deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
+    color: white;
+}
+
+.homeContainer .row4 .row4Content .emailForm button:nth-child(3):disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.homeContainer .row4 .row4Content .emailForm button:nth-child(2) {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.homeContainer .row4 .row4Content .emailForm button:nth-child(2):hover {
+    transform: translateY(-2px);
+}
+
+
+
+.homeContainer .row4 .row4Content .title {
 
     display: grid;
     grid-template-columns: 1fr;
@@ -486,7 +573,7 @@
 }
 
 
-.homeContainer .row4 .title h1 {
+.homeContainer .row4 .row4Content .title h1 {
 
     font-size: 7rem;
     font-weight: 400;
@@ -495,7 +582,7 @@
 }
 
 
-.homeContainer .row4 .title p {
+.homeContainer .row4 .row4Content .title p {
     text-align: center;
     align-items: center;
     width: 40rem;
@@ -506,7 +593,7 @@
 }
 
 
-.homeContainer .row4 .paymentPlans {
+.homeContainer .row4 .row4Content .paymentPlans {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -522,7 +609,7 @@
 
 
 
-.homeContainer .row4 .paymentPlanContainer:nth-child(1) {
+.homeContainer .row4 .row4Content .paymentPlanContainer:nth-child(1) {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 5rem 24rem 7rem auto;
@@ -537,7 +624,7 @@
 }
 
 
-.homeContainer .row4 .paymentPlanContainer:nth-child(2) {
+.homeContainer .row4 .row4Content .paymentPlanContainer:nth-child(2) {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 5rem 24rem 7rem auto;
@@ -552,7 +639,7 @@
 
 
 
-.homeContainer .row4 .paymentPlanContainer .header {
+.homeContainer .row4 .row4Content .paymentPlanContainer .header {
     display: flex;
     flex-direction: row;
     gap: 12px;
@@ -563,19 +650,19 @@
 
 
 
-.homeContainer .row4 .paymentPlanContainer .header .title2 {
+.homeContainer .row4 .row4Content .paymentPlanContainer .header .title2 {
     line-height: 10px;
 
 }
 
 
-.homeContainer .row4 .paymentPlanContainer .header .title2 h1 {
+.homeContainer .row4 .row4Content .paymentPlanContainer .header .title2 h1 {
     font-size: 1.7rem;
     font-weight: 400;
 }
 
 
-.homeContainer .row4 .paymentPlanContainer .header .title2 p {
+.homeContainer .row4 .row4Content .paymentPlanContainer .header .title2 p {
 
     font-weight: 300;
     line-height: 14px;
@@ -584,14 +671,14 @@
 
 
 
-.homeContainer .row4 .paymentPlanContainer:nth-child(2) .header .highlight p {
+.homeContainer .row4 .row4Content .paymentPlanContainer:nth-child(2) .header .highlight p {
     white-space: nowrap;
 
 
 }
 
 
-.homeContainer .row4 .paymentPlanContainer .header .highlight p {
+.homeContainer .row4 .row4Content .paymentPlanContainer .header .highlight p {
     color: white;
     background: var(--accent-purple);
     background: linear-gradient(56deg, rgba(214, 28, 218, 1) 0%, rgba(103, 17, 105, 1) 100%);
@@ -608,7 +695,7 @@
 
 
 
-.homeContainer .row4 .paymentPlanContainer .desc .title3 h1 {
+.homeContainer .row4 .row4Content .paymentPlanContainer .desc .title3 h1 {
     font-size: 1rem;
     color: var(--text-tertiary);
     font-weight: 400;
@@ -619,7 +706,7 @@
 
 
 
-.homeContainer .row4 .paymentPlanContainer .desc .content .item {
+.homeContainer .row4 .row4Content .paymentPlanContainer .desc .content .item {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -628,19 +715,19 @@
 }
 
 
-.homeContainer .row4 .paymentPlanContainer .desc .content .item i {
+.homeContainer .row4 .row4Content .paymentPlanContainer .desc .content .item i {
     color: var(--accent-cyan);
 }
 
 
-.homeContainer .row4 .paymentPlanContainer .desc .content .item p {
+.homeContainer .row4 .row4Content .paymentPlanContainer .desc .content .item p {
     font-size: 1.1rem;
 }
 
 
 
 
-.homeContainer .row4 .paymentPlanContainer .perfect {
+.homeContainer .row4 .row4Content .paymentPlanContainer .perfect {
 
     width: 100%;
     text-align: center;
@@ -650,7 +737,7 @@
 }
 
 
-.homeContainer .row4 .paymentPlanContainer .perfect p {
+.homeContainer .row4 .row4Content .paymentPlanContainer .perfect p {
     border-radius: 15px;
     border: 1px solid var(--border-color);
     padding-top: 0.8rem;
@@ -662,7 +749,7 @@
 
 
 
-.homeContainer .row4 .paymentPlanContainer .priceContainer {
+.homeContainer .row4 .row4Content .paymentPlanContainer .priceContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -671,7 +758,7 @@
 }
 
 
-.homeContainer .row4 .paymentPlanContainer .priceContainer .cost {
+.homeContainer .row4 .row4Content .paymentPlanContainer .priceContainer .cost {
     display: flex;
     flex-direction: row;
     justify-items: start;
@@ -679,7 +766,7 @@
 }
 
 
-.homeContainer .row4 .paymentPlanContainer .priceContainer .cost h1 {
+.homeContainer .row4 .row4Content .paymentPlanContainer .priceContainer .cost h1 {
 
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
@@ -692,7 +779,7 @@
 
 
 
-.homeContainer .row4 .paymentPlanContainer .priceContainer .cost p {
+.homeContainer .row4 .row4Content .paymentPlanContainer .priceContainer .cost p {
     color: var(--text-tertiary);
     font-weight: 300;
 
@@ -703,7 +790,7 @@
 
 
 
-.homeContainer .row4 .paymentPlanContainer .paymentButton {
+.homeContainer .row4 .row4Content .paymentPlanContainer .paymentButton {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -713,7 +800,7 @@
 
 
 
-.homeContainer .row4 .paymentPlanContainer .paymentButton button {
+.homeContainer .row4 .row4Content .paymentPlanContainer .paymentButton button {
 
     border: none;
     border-radius: 25px;
@@ -737,7 +824,7 @@
 
 
 
-.homeContainer .row4 .paymentPlanContainer .paymentButton button:hover {
+.homeContainer .row4 .row4Content .paymentPlanContainer .paymentButton button:hover {
     transform: translateY(-2px);
     cursor: pointer;
     background: #09F7F9;
@@ -748,7 +835,7 @@
 
 
 
-.homeContainer .row4 .paymentPlanContainer .paymentButton button:active {
+.homeContainer .row4 .row4Content .paymentPlanContainer .paymentButton button:active {
     transform: translateY(-2px);
     cursor: pointer;
     background: #09F7F9;
@@ -756,457 +843,6 @@
 
 }
 
-
-
-/*
-
-
-
-.homeContainer .row4 .courseContainer{
-   
-    width: 100%;
-    height: 100%;
-    grid-column: 2;
-}
-
-
-.homeContainer .row4 .courseContainer .course{
-     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 22rem 10rem 20rem auto;
-    border-radius: 25px;
-    background-color: white;
-    
-    height: fit-content;
-}
-
-
-
-.homeContainer .row4 .courseContainer .course .courseIMG{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-   
-    
-}
-
-
-
-.homeContainer .row4 .courseContainer .course .courseIMG img{
-    width: 100%;
-    
-    border-top-right-radius: 25px;
-    border-top-left-radius: 25px;
-}
-
-
-
-.homeContainer .row4 .courseContainer .course .courseHeader{
-    display: flex;
-    flex-direction: column;
-    pointer-events: none;
-    padding: 1rem;
-    
-}
-
-
-.homeContainer .row4 .courseContainer .course .courseHeader  h1{
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-top: 1rem;
-    margin-bottom: 0;
-     font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-
-.homeContainer .row4 .courseContainer .course .courseHeader  p{
-    
-    font-weight: 300;
-    color: #ADADAD;
-    margin-top: 0.4rem;
-    font-size: 1rem;
-    line-height: 25px;
-}
-
-
-
-
-.homeContainer .row4 .courseContainer .course .included{
-    padding: 1rem;
-    pointer-events: none;
-}
-
-
-
-
-.homeContainer .row4 .courseContainer .included  h1{
-    font-size: 0.8rem;
-    color: #403F3F;
-    font-weight: 400;
-    
-}
-
-
-
-
-.homeContainer .row4 .courseContainer .included .item{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 4px;
-    font-size: 0.8rem;
-}
-
-
-.homeContainer .row4 .courseContainer .included .item i{
-    color: #09F7F9;
-}
-
-
-
-
-
-
-.homeContainer .row4 .courseContainer .priceContainer{
-    padding: 1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    pointer-events: none;
-
-}
-
-
-
-
-.homeContainer .row4 .courseContainer .priceContainer h1{
-    
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 2.5rem;
-    height: fit-content;
-    margin: 0;
-
-}
-
-
-
-.homeContainer .row4 .courseContainer .priceContainer p{
-    color: #D61CDA;
-    font-weight: 300;
-   
-    letter-spacing: 1px;
-    font-size: 1rem;
-
-}
-
-
-
-.homeContainer .row4 .courseContainer .courseButton{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    justify-items: center;
-}
-
-
-
-
-.homeContainer .row4 .courseContainer .courseButton button{
-
-     border: none;
-    border-radius:25px;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    padding-left: 8.4rem;
-    padding-right: 8.4rem;
-    text-align: center;
-    color: #ffffff;
-    font-size: 1rem;
-   
-    background: #09F7F9;
-    background: linear-gradient(56deg, rgba(9, 247, 249, 1) 0%, rgba(26, 144, 218, 1) 100%);
-    
-    transition: 0.3s ease-in-out;
-    position: relative;
-    transform: translateY(0);
-
-
-}
-
-
-
-.homeContainer .row4 .courseContainer .courseButton button:hover{
-    transform: translateY(-2px);
-    cursor: pointer;
-
-}
-
-
-.homeContainer .row4 .courseContainer .course .courseButton{
-    padding: 1rem;
-}
-
-
-
-
-*/
-
-/*
-
-
-.homeContainer .row3{
-    grid-area: -1/1;
-    grid-row: 3;
-    height: 105%;
-    
-    background-color: #EAFDFF;
-    
-    
-    
-
-}
-
-
-.homeContainer .row3 .row3Content{
-     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    justify-items: center;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-
-
-.homeContainer .row3 .title{
-    
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 11rem auto;
-    justify-items: center;
-    pointer-events: none;
-}
-
-
-.homeContainer .row3 .title h1{
-   
-    font-size: 7rem;
-    font-weight: 400;
-    margin-top: 6rem;
-
-}
-
-
-.homeContainer .row3 .title p{
-    text-align: center;
-    align-items: center;
-    width: 70%;
-    margin-bottom: 4rem;
-
-    font-size: 2rem;
-    font-weight: 300;
-    color: #656565;
-}
-
-
-
-.homeContainer .row3 .courseContainer{
-   
-    width: 40%;
-    height: 100%;
-}
-
-
-.homeContainer .row3 .courseContainer .course{
-     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 25rem 12rem 23rem auto;
-    border-radius: 25px;
-    background-color: white;
-    
-    height: fit-content;
-}
-
-
-
-.homeContainer .row3 .courseContainer .course .courseIMG{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-   
-    
-}
-
-
-
-.homeContainer .row3 .courseContainer .course .courseIMG img{
-    width: 100%;
-    height: 100%;
-    border-top-right-radius: 25px;
-    border-top-left-radius: 25px;
-}
-
-
-
-.homeContainer .row3 .courseContainer .course .courseHeader{
-    display: flex;
-    flex-direction: column;
-    pointer-events: none;
-    padding: 1rem;
-    
-}
-
-
-.homeContainer .row3 .courseContainer .course .courseHeader  h1{
-    font-size: 2rem;
-    font-weight: 500;
-    margin-top: 1rem;
-    margin-bottom: 0;
-     font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-
-.homeContainer .row3 .courseContainer .course .courseHeader  p{
-    
-    font-weight: 300;
-    color: #ADADAD;
-    margin-top: 0.4rem;
-    font-size: 1.3rem;
-    line-height: 25px;
-}
-
-
-
-
-.homeContainer .row3 .courseContainer .course .included{
-    padding: 1rem;
-    pointer-events: none;
-}
-
-
-
-
-.homeContainer .row3 .courseContainer .included  h1{
-    font-size: 1rem;
-    color: #403F3F;
-    font-weight: 400;
-    
-}
-
-
-
-
-.homeContainer .row3 .courseContainer .included .item{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 4px;
-}
-
-
-.homeContainer .row3 .courseContainer .included .item i{
-    color: #09F7F9;
-}
-
-
-
-
-
-
-.homeContainer .row3 .courseContainer .priceContainer{
-    padding: 1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    pointer-events: none;
-
-}
-
-
-
-
-.homeContainer .row3 .courseContainer .priceContainer h1{
-    
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 3rem;
-    height: fit-content;
-    margin: 0;
-
-}
-
-
-
-.homeContainer .row3 .courseContainer .priceContainer p{
-    color: #D61CDA;
-    font-weight: 300;
-   
-    letter-spacing: 1px;
-    font-size: 0.9rem;
-
-}
-
-
-
-.homeContainer .row3 .courseContainer .courseButton{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    justify-items: center;
-}
-
-
-
-
-.homeContainer .row3 .courseContainer .courseButton button{
-
-     border: none;
-    border-radius:25px;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    padding-left: 8.4rem;
-    padding-right: 8.4rem;
-    text-align: center;
-    color: #ffffff;
-    font-size: 1.3rem;
-   
-    background: #09F7F9;
-    background: linear-gradient(56deg, rgba(9, 247, 249, 1) 0%, rgba(26, 144, 218, 1) 100%);
-    
-    transition: 0.3s ease-in-out;
-    position: relative;
-    transform: translateY(0);
-
-
-}
-
-
-
-.homeContainer .row3 .courseContainer .courseButton button:hover{
-    transform: translateY(-2px);
-    cursor: pointer;
-
-}
-
-
-.homeContainer .row3 .courseContainer .course .courseButton{
-    padding: 1rem;
-}
-
-
-*/
-
-
-/*row 4*/
 
 
 .homeContainer .row5 {
@@ -1775,6 +1411,20 @@ th:nth-child(3) {
 
     .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer:nth-child(1) {
         grid-template-rows: 8rem 24rem 7rem auto;
+
+        align-items: center;
+
+    }
+
+
+    .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer .paymentButton {
+        justify-content: center;
+
+    }
+
+
+    .homeContainer .row4 .row4Content .paymentPlans .paymentPlanContainer .paymentButton button {
+        font-size: 1rem;
 
     }
 

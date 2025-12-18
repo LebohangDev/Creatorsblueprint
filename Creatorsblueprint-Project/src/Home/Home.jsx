@@ -11,6 +11,22 @@ function Home({ setNavActive }) {
     const videoContainerRef = useRef(null);
     const scrollMoreRef = useRef('null')
 
+    const [email, setEmail] = useState('');
+    const [isValidEmail, setIsValidEmail] = useState(false);
+    const [formActive, setFormActive] = useState(false);
+
+
+    const validateEmail = (email) => {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+    };
+
+    const handleEmailChange = (e) => {
+        const val = e.target.value;
+        setEmail(val);
+        setIsValidEmail(validateEmail(val));
+    };
+
 
 
 
@@ -207,6 +223,7 @@ function Home({ setNavActive }) {
             const planPayload = {
                 amount: planChoice.amount,
                 title: planChoice.title,
+                email: email,
                 successUrl: planChoice.successUrl,
                 cancelUrl: planChoice.cancelUrl,
 
@@ -221,7 +238,7 @@ function Home({ setNavActive }) {
             console.log(planPayload);
 
             const data = await res.json()
-            //window.location.href = data.redirect_url;
+            window.location.href = data.redirect_url;
 
             console.log("redirect url:", data.redirect_url)
 
@@ -372,57 +389,7 @@ function Home({ setNavActive }) {
 
 
                 </div>
-                {/*
-            <div className={styles.row3}>
-                <div className={styles.row3Content}>
-                    <div className={styles.title}>
-                        <h1>Your Plan, Your Way</h1>
-                        <p>Learn to manage, track, and optimize your digital assets yourself, at your own pace.</p>
-                    </div>
-                    <div className={styles.courseContainer}>
 
-                        {courses.map((c, index) =>(
-                            <div className={styles.course} key={index}>
-                                <div className={styles.courseIMG}>
-                                    <img src={c.image} alt="" />
-                                </div>
-                                <div className={styles.courseHeader}>
-                                    <h1>{c.title}</h1>
-                                    <p>{c.description}</p>
-                                </div>
-                                <div className={styles.included}>
-                                    <h1>What's Included:</h1>
-                                    {c.whatsIncluded.map((WI, index) =>(
-                                        <div className={styles.item} key={index}>
-                                            <i class="ri-check-line"></i>
-                                            <p>{WI}</p>
-                                        </div>
-                                    ))}
-                                
-                                </div>
-                                <div className={styles.priceContainer}>
-                                
-                                    <h1>${c.price}</h1>
-                                    <p>One Time Payment</p>
-                                
-
-                                </div>
-
-                                <div className={styles.courseButton}>
-                                    <button onClick={(e) =>{e.preventDefault(); handleCheckout();}}>Purchase</button>
-                                </div>
-
-                            </div>
-                        ))}
-
-                    
-                    </div>
-
-                </div>
-                
-
-            </div>
-            */}
 
                 <div className={styles.row4}>
 
@@ -455,9 +422,49 @@ function Home({ setNavActive }) {
 
 
                         </div>
+                        <AnimatePresence>
+                            {formActive === true ? (
+                                <>
+                                    <motion.div
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0 }}
+                                        transition={{ duration: 0.3 }}
+                                        className={styles.formOverlay}
+                                        onClick={() => setFormActive(false)}
+                                    />
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.9 }}
+                                        transition={{ duration: 0.3 }}
+                                        className={styles.emailForm}
+                                    >
+                                        <input
+                                            type="email"
+                                            placeholder="Enter your email"
+                                            value={email}
+                                            onChange={handleEmailChange}
+                                            className={styles.emailInput}
+                                        />
+                                        <p>{isValidEmail === false ? "*enter email to receive invoice" : ""}</p>
+                                        <button
+                                            onClick={(e) => { e.preventDefault(); handleZinnaPayment(plans[0]); setEmail('') }}
+                                            disabled={!isValidEmail}
+                                        >
+                                            Buy Now
+                                        </button>
+                                        <button onClick={() => setFormActive(false)}>Close</button>
+                                    </motion.div>
+                                </>
+                            ) : null}
+                        </AnimatePresence>
 
 
                         <div className={styles.paymentPlans}>
+
+
+
                             {plans.map((plan, index) => (
 
                                 <motion.div
@@ -508,7 +515,9 @@ function Home({ setNavActive }) {
                                         </div>
                                     </div>
                                     <div className={styles.paymentButton}>
-                                        <button onClick={(e) => { e.preventDefault(); (plan.amount === 799 || plan.amount === 399) ? handleZinnaPayment(plan) : window.open("https://wa.link/creatorsblueprint", "_blank") }}>{plan.button}</button>
+                                        <button onClick={(e) => { e.preventDefault(); setFormActive(true); }}>
+                                            {plan.button}
+                                        </button>
                                     </div>
 
 
