@@ -86,8 +86,10 @@ const Product = () => {
             const paidBook = {
                 amount: bookChoice.amount,
                 title: bookChoice.title,
+                email: email,
                 successUrl: bookChoice.successUrl,
                 cancelUrl: bookChoice.cancelUrl,
+
 
             }
             console.log(paidBook);

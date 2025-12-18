@@ -61,7 +61,7 @@ function Nav({ menuActive, setMenuActive, theme }) {
         closed: { opacity: 0, x: 60, transition: { duration: 0.2 } },
         open: { opacity: 1, x: 0, transition: { duration: 0.2 } },
     };
-
+    // logic to scroll to speciic section on home section 
     const handleScrollTo = (id) => {
         if (location.pathname === '/') {
             document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });

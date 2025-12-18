@@ -221,7 +221,7 @@ function Home({ setNavActive }) {
             console.log(planPayload);
 
             const data = await res.json()
-            window.location.href = data.redirect_url;
+            //window.location.href = data.redirect_url;
 
             console.log("redirect url:", data.redirect_url)
 
