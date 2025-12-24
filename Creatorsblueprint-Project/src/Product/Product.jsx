@@ -150,7 +150,7 @@ const Product = () => {
                                         onChange={handleEmailChange}
                                         className={styles.emailInput}
                                     />
-                                    <a href="Books/0 to Viral Instagram Final ebook.pdf" download>
+                                    <a href="Books/0_to_Viral_Instagram.pdf" download>
                                         <button
                                             className={styles.accessButton}
                                             disabled={!isValidEmail}
