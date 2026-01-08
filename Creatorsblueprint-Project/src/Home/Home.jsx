@@ -145,7 +145,7 @@ function Home({ setNavActive }) {
             ],
             perfectFor: "Creators ready to monetize their audience with a fully automated system.",
             amount: 550,
-            displayAmount: 1050,
+            displayAmount: "1,075",
             successUrl: "https://lebohangdev.github.io/Creatorsblueprint/?payment=success",
             cancelUrl: "https://lebohangdev.github.io/Creatorsblueprint/?payment=cancel",
             billed: "One-Time Payment",
