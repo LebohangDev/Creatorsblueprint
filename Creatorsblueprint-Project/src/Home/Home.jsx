@@ -144,7 +144,7 @@ function Home({ setNavActive }) {
                 "15-Day Guarantee — full refund if no sale in first 15 days.",
             ],
             perfectFor: "Creators ready to monetize their audience with a fully automated system.",
-            amount: 399,
+            amount: 1050,
             displayAmount: 799,
             successUrl: "https://lebohangdev.github.io/Creatorsblueprint/?payment=success",
             cancelUrl: "https://lebohangdev.github.io/Creatorsblueprint/?payment=cancel",
