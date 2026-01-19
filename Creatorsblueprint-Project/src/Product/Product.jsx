@@ -94,7 +94,7 @@ const Product = () => {
             }
             console.log(paidBook);
 
-            const res = await fetch('https://creatorsblueprintbackend.onrender.com/api/create-payment-intent', {
+            const res = await fetch('creatorsblueprintbackend-cbbackend.up.railway.app/api/create-payment-intent', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(paidBook),
