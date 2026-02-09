@@ -31,7 +31,7 @@ function Footer({ theme }) {
 
 
                 <div className={styles.copyright}>
-                    <p><i className="ri-copyright-line"></i>2025 CreatorsBlueprint. All rights reserved. | www.creatorsblueprint.com</p>
+                    <p><i className="ri-copyright-line"></i>{new Date().getFullYear()} CreatorsBlueprint. All rights reserved. | www.creatorsblueprint.com</p>
                 </div>
             </div>
 
