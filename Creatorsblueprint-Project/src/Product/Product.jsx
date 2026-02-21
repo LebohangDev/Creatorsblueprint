@@ -70,8 +70,8 @@ const Product = () => {
                     text: 'Exclusive access to resources and tools'
                 }
             ],
-            successUrl: "https://lebohangdev.github.io/Creatorsblueprint/Books/Paidbook/From_content_to_cashflow_ebook_cb.pdf",
-            cancelUrl: "https://lebohangdev.github.io/Creatorsblueprint/?payment=cancel",
+            successUrl: "https://creatorsblueprint.io/Books/Paidbook/From_content_to_cashflow_ebook_cb.pdf",
+            cancelUrl: "https://creatorsblueprint.io/?payment=cancel",
         }
     ];
 
