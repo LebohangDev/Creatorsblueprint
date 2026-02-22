@@ -1,3 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@100..900&display=swap');
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
+}
+
+
+
+:root {
+  font-size: 90%;
+  font-family: "League Spartan", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  overflow: hidden;
+  background: var(--bg-primary);
+  background: linear-gradient(174deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  color: var(--text-primary);
+
+  /* Dark Mode Colors (Default) */
+  --bg-primary: #0B1048;
+  --bg-secondary: #1E2253;
+  --bg-tertiary: #3effff35;
+  --bg-card-primary: #465495;
+  --bg-card-secondary: #1E2253;
+  --bg-card-tertiary: #465495;
+  --bg-card-hover: #354072;
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #E8E8E8;
+  --text-muted: #D2D2D2;
+
+  --accent-cyan: #09F7F9;
+  --accent-blue: #1A90DA;
+  --accent-purple: #D61CDA;
+
+  --border-color: #D7D7D7;
+  --border-color2: #575757;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+
+  --success-color: #4CAF50;
+  --error-color: #FF4D4D;
+  --warning-color: #FFA726;
+  --page-tracker-primary: #131b77;
+  --page-tracker-secondary: #1c29b6;
+
+  --grid-color: #ffffff;
+}
+
 /* Light Mode Colors */
 :root[data-theme="light"] {
   background: white;
