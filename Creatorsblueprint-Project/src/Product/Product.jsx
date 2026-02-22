@@ -70,7 +70,7 @@ const Product = () => {
                     text: 'Exclusive access to resources and tools'
                 }
             ],
-            successUrl: "https://creatorsblueprint.io/Books/Paidbook/From_content_to_cashflow_ebook_cb.pdf/${email}/${bookChoice.type}",
+            successUrl: "https://creatorsblueprint.io/Books/Paidbook/From_content_to_cashflow_ebook_cb.pdf",
             cancelUrl: "https://creatorsblueprint.io/?payment=cancel",
         }
     ];
