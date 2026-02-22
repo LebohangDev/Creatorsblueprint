@@ -149,7 +149,8 @@ function Home({ setNavActive }) {
             successUrl: "https://creatorsblueprint.io/?payment=success",
             cancelUrl: "https://creatorsblueprint.io/?payment=cancel",
             billed: "One-Time Payment",
-            button: "Pay 50% Now, Start Instantly"
+            button: "Pay 50% Now, Start Instantly",
+            type: "Plan_1"
         },
         /*
         {
@@ -224,6 +225,8 @@ function Home({ setNavActive }) {
                 amount: planChoice.amount,
                 title: planChoice.title,
                 email: email,
+                type: planChoice.type,
+
                 successUrl: planChoice.successUrl,
                 cancelUrl: planChoice.cancelUrl,
 

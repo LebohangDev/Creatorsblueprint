@@ -87,6 +87,7 @@ const Product = () => {
                 amount: bookChoice.amount,
                 title: bookChoice.title,
                 email: email,
+                type: bookChoice.type,
                 successUrl: bookChoice.successUrl,
                 cancelUrl: bookChoice.cancelUrl,
 
