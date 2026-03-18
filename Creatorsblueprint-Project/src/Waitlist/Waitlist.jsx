@@ -1,5 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Waitlist.module.css';
+import { motion } from 'framer-motion';
+
+const containerVariants = {
+  hidden: { opacity: 0, scale: 0.95, y: 30 },
+  visible: { 
+    opacity: 1, 
+    scale: 1,
+    y: 0, 
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], staggerChildren: 0.15 } 
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
 
 const Waitlist = () => {
   const [email, setEmail] = useState('');
@@ -61,21 +77,26 @@ const Waitlist = () => {
 
   return (
     <div className={styles.waitlistContainer}>
-      <div className={styles.glassCard}>
-        <div className={styles.header}>
+      <motion.div 
+        className={styles.glassCard}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div className={styles.header} variants={itemVariants}>
           <img src="Images/CB_Logos/logo_new.png" alt="CBstudio" />
 
 
-        </div>
+        </motion.div>
 
-        <h1 className={styles.title}>The Future of Digital Product Creation</h1>
-        <p className={styles.description}>
+        <motion.h1 className={styles.title} variants={itemVariants}>The Future of Digital Product Creation</motion.h1>
+        <motion.p className={styles.description} variants={itemVariants}>
           Get updates on the release of our new platform to create digital products,
           manage your own storefront, automate payments and more!
-        </p>
+        </motion.p>
 
         {!submitted ? (
-          <form onSubmit={handleSubmit} className={styles.formElement}>
+          <motion.form onSubmit={handleSubmit} className={styles.formElement} variants={itemVariants}>
             <input
               type="email"
               placeholder="Enter your email address"
@@ -91,14 +112,14 @@ const Waitlist = () => {
               {loading ? "Submitting..." : "Join Waitlist"}
             </button>
             <p className={styles.message}>{message}</p>
-          </form>
+          </motion.form>
         ) : (
-          <div className={styles.successMessage}>
+          <motion.div className={styles.successMessage} variants={itemVariants}>
             <h3>You're on the list! 🎉</h3>
             <p>Keep an eye on your inbox for early access updates.</p>
-          </div>
+          </motion.div>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 };
