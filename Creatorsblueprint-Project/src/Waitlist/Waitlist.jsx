@@ -107,7 +107,7 @@ const Waitlist = () => {
 
         </motion.div>
 
-        <motion.h1 className={styles.title} variants={itemVariants}>The Future of Digital Product Creation</motion.h1>
+        <motion.h1 className={styles.title} variants={itemVariants}>The Future of Creator business</motion.h1>
         <motion.p className={styles.description} variants={itemVariants}>
           Get updates on the release of our new platform to create digital products,
           manage your own storefront, automate payments and more!
