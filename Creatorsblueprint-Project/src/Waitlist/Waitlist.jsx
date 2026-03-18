@@ -33,7 +33,7 @@ const Waitlist = () => {
       const res = await fetch('https://creatorsblueprintbackend-648711352735.me-west1.run.app/api/waitlist', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, instagram: cleanInsta }),
+        body: JSON.stringify({ email, cleanInsta }),
       });
       if (!res.ok) {
         const newMessage = "Failed to subscribe user try again";
@@ -60,7 +60,7 @@ const Waitlist = () => {
     // Add email regex test
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isEmailValid = emailRegex.test(email);
-    
+
     // Add instagram regex test
     const cleanInsta = instagram.startsWith('@') ? instagram.slice(1) : instagram;
     const instaRegex = /^[a-zA-Z0-9._]{1,30}$/;
