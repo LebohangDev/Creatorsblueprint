@@ -4,11 +4,11 @@ import { motion } from 'framer-motion';
 
 const containerVariants = {
   hidden: { opacity: 0, scale: 0.95, y: 30 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     scale: 1,
-    y: 0, 
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], staggerChildren: 0.15 } 
+    y: 0,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], staggerChildren: 0.15 }
   }
 };
 
@@ -25,6 +25,7 @@ const Waitlist = () => {
   const [loading, setLoading] = useState(false);
 
   async function addToWaitlist() {
+    setLoading(true);
     try {
       const res = await fetch('https://creatorsblueprintbackend-648711352735.me-west1.run.app/api/waitlist', {
         method: 'POST',
@@ -35,6 +36,7 @@ const Waitlist = () => {
         const newMessage = "Failed to subscribe user try again";
         setMessage(newMessage);
         setSubmitted(false);
+        setLoading(false);
 
         throw new Error("failed to subscribe user");
 
@@ -47,6 +49,7 @@ const Waitlist = () => {
     } catch (e) {
       console.error("failed to subscribe user:", e);
     }
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -77,7 +80,7 @@ const Waitlist = () => {
 
   return (
     <div className={styles.waitlistContainer}>
-      <motion.div 
+      <motion.div
         className={styles.glassCard}
         variants={containerVariants}
         initial="hidden"
