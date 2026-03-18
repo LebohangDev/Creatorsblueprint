@@ -151,6 +151,26 @@
   color: rgba(255, 255, 255, 0.3);
 }
 
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.atSymbol {
+  position: absolute;
+  left: 20px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
+  pointer-events: none;
+  font-weight: 500;
+}
+
+.inputFieldWithIcon {
+  padding-left: 45px;
+}
+
 .submitButton {
   font-family: 'Montserrat', sans-serif;
   width: 100%;

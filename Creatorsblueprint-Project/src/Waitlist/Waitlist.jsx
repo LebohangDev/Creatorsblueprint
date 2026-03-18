@@ -19,18 +19,21 @@ const itemVariants = {
 
 const Waitlist = () => {
   const [email, setEmail] = useState('');
+  const [instagram, setInstagram] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [message, setMessage] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(false);
+  const [isValidInsta, setIsValidInsta] = useState(false);
   const [loading, setLoading] = useState(false);
 
   async function addToWaitlist() {
     setLoading(true);
     try {
+      const cleanInsta = instagram.startsWith('@') ? instagram.slice(1) : instagram;
       const res = await fetch('https://creatorsblueprintbackend-648711352735.me-west1.run.app/api/waitlist', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, instagram: cleanInsta }),
       });
       if (!res.ok) {
         const newMessage = "Failed to subscribe user try again";
@@ -53,16 +56,29 @@ const Waitlist = () => {
   }
 
   useEffect(() => {
+
     // Add email regex test
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (emailRegex.test(email)) {
-      setIsValidEmail(true);
-      setMessage("");
-    } else {
-      setIsValidEmail(false);
+    const isEmailValid = emailRegex.test(email);
+    
+    // Add instagram regex test
+    const cleanInsta = instagram.startsWith('@') ? instagram.slice(1) : instagram;
+    const instaRegex = /^[a-zA-Z0-9._]{1,30}$/;
+    const isInstaValid = instaRegex.test(cleanInsta);
+
+    setIsValidEmail(isEmailValid);
+    setIsValidInsta(isInstaValid);
+
+    if (email.length > 0 && !isEmailValid) {
       setMessage("Please enter a valid email address");
+    } else if (instagram.length > 0 && !isInstaValid) {
+      setMessage("Please enter a valid Instagram handle");
+    } else if (email.length === 0 || instagram.length === 0) {
+      setMessage(""); // Clear message if one is empty but no invalid typing
+    } else {
+      setMessage("");
     }
-  }, [email])
+  }, [email, instagram])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,9 +87,8 @@ const Waitlist = () => {
 
     setMessage(""); // clear previous messages
 
-    if (email) {
+    if (email && instagram) {
       await addToWaitlist();
-      setLoading(true);
       setLoading(false);
     }
   };
@@ -111,7 +126,20 @@ const Waitlist = () => {
               }}
               required
             />
-            <button type="submit" disabled={!isValidEmail} className={styles.submitButton}>
+            <div className={styles.inputWrapper}>
+              <span className={styles.atSymbol}>@</span>
+              <input
+                type="text"
+                placeholder="Instagram handle"
+                className={`${styles.inputField} ${styles.inputFieldWithIcon}`}
+                value={instagram}
+                onChange={(e) => {
+                  setInstagram(e.target.value);
+                }}
+                required
+              />
+            </div>
+            <button type="submit" disabled={!isValidEmail || !isValidInsta || loading} className={styles.submitButton}>
               {loading ? "Submitting..." : "Join Waitlist"}
             </button>
             <p className={styles.message}>{message}</p>
