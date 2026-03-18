@@ -12,6 +12,7 @@ import Nav from './Nav/Nav.jsx';
 import Testimonials from './Testimonials/Testimonials.jsx';
 import PaymentSuccess from "./paymentPopups/PaymentSuccess.jsx";
 import PaymentCancel from "./paymentPopups/PaymentCancel.jsx";
+import Waitlist from './Waitlist/Waitlist.jsx';
 import ThemeToggle from './ThemeToggle/ThemeToggle.jsx';
 
 
@@ -50,39 +51,47 @@ function App() {
 
 
 
+  const isWaitlist = location.pathname.startsWith('/waitlist');
+
   return (
 
 
     <>
 
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={navActive}
-          variants={menuVariants}
-          initial="closed"
-          animate="open"
-          exit="closed"
-          className={navActive === true ? 'navActive' : 'notNavActive'}
-        >
-          <Nav menuActive={menuActive} setMenuActive={setMenuActive} theme={theme} />
+      {!isWaitlist && (
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={navActive}
+            variants={menuVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            className={navActive === true ? 'navActive' : 'notNavActive'}
+          >
+            <Nav menuActive={menuActive} setMenuActive={setMenuActive} theme={theme} />
 
-        </motion.div>
+          </motion.div>
 
-      </AnimatePresence>
-
-
-
-
+        </AnimatePresence>
+      )}
 
 
-      <div className={paymentActive === 'PaymentSuccess' ? 'activeSection' : 'notActiveSection'}>
-        <PaymentSuccess setPaymentActive={setPaymentActive} />
-      </div>
 
-      <div className={paymentActive === 'PaymentCancel' ? 'activeSection' : 'notActiveSection'}>
-        <PaymentCancel setPaymentActive={setPaymentActive} />
-      </div>
+
+
+
+      {!isWaitlist && (
+        <>
+          <div className={paymentActive === 'PaymentSuccess' ? 'activeSection' : 'notActiveSection'}>
+            <PaymentSuccess setPaymentActive={setPaymentActive} />
+          </div>
+
+          <div className={paymentActive === 'PaymentCancel' ? 'activeSection' : 'notActiveSection'}>
+            <PaymentCancel setPaymentActive={setPaymentActive} />
+          </div>
+        </>
+      )}
 
 
 
@@ -95,19 +104,20 @@ function App() {
           <Route path="/terms" element={<Terms />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/product" element={<Product />} />
+          <Route path="/waitlist" element={<Waitlist />} />
         </Routes>
       </div>
 
 
 
 
-      <footer>
+      {!isWaitlist && (
+        <footer>
+          <Footer theme={theme} />
+        </footer>
+      )}
 
-        <Footer theme={theme} />
-
-      </footer >
-
-      <ThemeToggle theme={theme} setTheme={setTheme} />
+      {!isWaitlist && <ThemeToggle theme={theme} setTheme={setTheme} />}
 
     </>
   )
