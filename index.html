@@ -1,28 +1,62 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-     <!-- External icon libraries -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Creators blueprint</title>
-    
-    <!-- Single Page Apps for GitHub Pages -->
-    <script type="text/javascript">
-      (function(l) {
-        if (l.search[1] === 'p' && l.search[2] === '=') {
-          var a = document.createElement('a');
-          a.href = l.href;
-          window.history.replaceState(null, null,
-            a.pathname.slice(0, -1) + (a.search.slice(3) || '') + a.hash
-          );
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- External icon libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Primary Meta -->
+  <title>Creators Blueprint</title>
+  <meta name="title" content="Creators Blueprint" />
+  <meta name="description"
+    content="Turn your audience into income. Launch your own digital product in days, not months." />
+
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.creatorsblueprint.io/Images/CB_Logos/logo_new.png" />
+  <meta property="og:title" content="Creators Blueprint" />
+  <meta property="og:description"
+    content="Turn your audience into income. Build and launch your own digital product." />
+  <meta property="og:image" content="https://www.creatorsblueprint.io/Images/CB_Logos/logo_new.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://www.creatorsblueprint.io/Images/CB_Logos/logo_new.png" />
+  <meta property="twitter:title" content="Creators Blueprint" />
+  <meta property="twitter:description"
+    content="Turn your audience into income. Build and launch your own digital product." />
+  <meta property="twitter:image" content="https://www.creatorsblueprint.io/Images/CB_Logos/logo_new.png" />
+
+  <script type="text/javascript">
+    (function (l) {
+      if (l.search) {
+        var params = new URLSearchParams(l.search);
+        var p = params.get("p");
+        var q = params.get("q");
+
+        if (p) {
+          var newUrl = p.replace(/~and~/g, "&");
+
+          if (q) {
+            newUrl += "?" + q.replace(/~and~/g, "&");
+          }
+
+          if (l.hash) {
+            newUrl += l.hash;
+          }
+
+          window.history.replaceState(null, null, newUrl);
         }
-      }(window.location));
-    </script>
-    <script type="module" crossorigin src="/assets/index-FA8PxY16.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CpR4BcCz.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+      }
+    })(window.location);
+  </script>
+  <script type="module" crossorigin src="/assets/index-FA8PxY16.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CpR4BcCz.css">
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
 </html>
