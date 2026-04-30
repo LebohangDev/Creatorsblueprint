@@ -73,8 +73,8 @@ const Waitlist = () => {
       setMessage("Please enter a valid email address");
     } else if (instagram.length > 0 && !isInstaValid) {
       setMessage("Please enter a valid Instagram handle");
-    } else if (email.length === 0 || instagram.length === 0) {
-      setMessage(""); // Clear message if one is empty but no invalid typing
+    } else if (email.length === 0) {
+      setMessage(""); // Clear message if empty
     } else {
       setMessage("");
     }
@@ -87,7 +87,7 @@ const Waitlist = () => {
 
     setMessage(""); // clear previous messages
 
-    if (email && instagram) {
+    if (email) {
       await addToWaitlist();
       setLoading(false);
     }
@@ -107,11 +107,19 @@ const Waitlist = () => {
 
         </motion.div>
 
-        <motion.h1 className={styles.title} variants={itemVariants}>The Future of Creator Business</motion.h1>
-        <motion.p className={styles.description} variants={itemVariants}>
-          Get updates on the release of our new platform to create digital products,
-          manage your own storefront, automate payments and more!
-        </motion.p>
+        <motion.h1 className={styles.title} variants={itemVariants}>Turn Your Knowledge Into A Digital Product In Under 90 Seconds</motion.h1>
+
+        <motion.div className={styles.waitlistCount} variants={itemVariants}>
+          <span className={styles.pulseIcon}></span> Join 2,137 creators already on the waitlist
+        </motion.div>
+
+        <motion.div className={styles.perksSection} variants={itemVariants}>
+          <ul className={styles.perksList}>
+            <li><span className={styles.checkIcon}>✓</span> Free guide to launch your first product</li>
+            <li><span className={styles.checkIcon}>✓</span> Early access to the platform</li>
+            <li><span className={styles.checkIcon}>✓</span> Founding member status</li>
+          </ul>
+        </motion.div>
 
         {!submitted ? (
           <motion.form onSubmit={handleSubmit} className={styles.formElement} variants={itemVariants}>
@@ -130,17 +138,16 @@ const Waitlist = () => {
               <span className={styles.atSymbol}>@</span>
               <input
                 type="text"
-                placeholder="Instagram handle"
+                placeholder="Instagram handle (Optional)"
                 className={`${styles.inputField} ${styles.inputFieldWithIcon}`}
                 value={instagram}
                 onChange={(e) => {
                   setInstagram(e.target.value);
                 }}
-                required
               />
             </div>
-            <button type="submit" disabled={!isValidEmail || !isValidInsta || loading} className={styles.submitButton}>
-              {loading ? "Submitting..." : "Join Waitlist"}
+            <button type="submit" disabled={!isValidEmail || (instagram.length > 0 && !isValidInsta) || loading} className={styles.submitButton}>
+              {loading ? "Submitting..." : "Claim My Early Access Spot →"}
             </button>
             <p className={styles.message}>{message}</p>
           </motion.form>

@@ -114,12 +114,81 @@
   line-height: 1.2;
 }
 
-.description {
-  font-size: 1.05rem;
-  color: #a0aec0;
-  line-height: 1.6;
+.waitlistCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
   margin-top: 0;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
+}
+
+.pulseIcon {
+  width: 8px;
+  height: 8px;
+  background-color: #34d399;
+  border-radius: 50%;
+  animation: waitlistPulse 2s infinite;
+}
+
+@keyframes waitlistPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(52, 211, 153, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
+  }
+}
+
+.perksSection {
+  text-align: left;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 28px;
+}
+
+.perksList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.perksList li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: #e2e8f0;
+  font-weight: 400;
+}
+
+.checkIcon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, #2563eb, #38bdf8);
+  border-radius: 50%;
+  color: white;
+  font-size: 0.6rem;
+  font-weight: bold;
 }
 
 .formElement {
