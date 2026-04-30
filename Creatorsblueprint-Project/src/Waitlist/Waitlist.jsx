@@ -116,7 +116,7 @@ const Waitlist = () => {
         <motion.div className={styles.perksSection} variants={itemVariants}>
           <ul className={styles.perksList}>
             <li><span className={styles.checkIcon}>✓</span> Free guide to launch your first product</li>
-            <li><span className={styles.checkIcon}>✓</span> Early access to the platform</li>
+            <li><span className={styles.checkIcon}>✓</span> Priority support</li>
             <li><span className={styles.checkIcon}>✓</span> Founding member status</li>
           </ul>
         </motion.div>
@@ -147,14 +147,14 @@ const Waitlist = () => {
               />
             </div>
             <button type="submit" disabled={!isValidEmail || (instagram.length > 0 && !isValidInsta) || loading} className={styles.submitButton}>
-              {loading ? "Submitting..." : "Claim My Early Access Spot →"}
+              {loading ? "Submitting..." : "Claim My Priority Support Spot →"}
             </button>
             <p className={styles.message}>{message}</p>
           </motion.form>
         ) : (
           <motion.div className={styles.successMessage} variants={itemVariants}>
             <h3>You're on the list! 🎉</h3>
-            <p>Keep an eye on your inbox for early access updates.</p>
+            <p>Keep an eye on your inbox for priority support updates.</p>
           </motion.div>
         )}
       </motion.div>
