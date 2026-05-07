@@ -44,6 +44,9 @@ const Waitlist = () => {
         throw new Error("failed to subscribe user");
 
       }
+      if (window.fbq) {
+        window.fbq("track", "Lead");
+      }
       const newMessage = "Successfully subscribed to waitlist";
       setMessage(newMessage);
       setSubmitted(true);
@@ -78,7 +81,17 @@ const Waitlist = () => {
     } else {
       setMessage("");
     }
+
+
   }, [email, instagram])
+
+  useEffect(() => {
+    if (window.fbq) {
+      window.fbq('track', 'PageView');
+
+    }
+
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
