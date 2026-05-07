@@ -35,6 +35,16 @@ const Waitlist = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, cleanInsta }),
       });
+
+      if (res.status === 409) {
+        const errorMessage = "Email already exists on waitlist! ";
+        setMessage(errorMessage);
+        setSubmitted(false);
+        setLoading(false);
+
+        throw new Error("Email already exists on waitlist!");
+
+      }
       if (!res.ok) {
         const newMessage = "Failed to subscribe user try again";
         setMessage(newMessage);
@@ -44,6 +54,7 @@ const Waitlist = () => {
         throw new Error("failed to subscribe user");
 
       }
+
       if (window.fbq) {
         window.fbq("track", "Lead");
       }
