@@ -1,42 +1,48 @@
-import styles from "./Footer.module.css";
-import { useNavigate } from "react-router-dom";
+import styles from './Footer.module.css';
 
-
-function Footer({ theme }) {
-    const navigate = useNavigate();
+function Footer() {
+    const currentYear = new Date().getFullYear();
 
     return (
-        <>
-
-            <div className={styles.footerContainer}>
-                <div className={styles.footerHeader}>
-                    <div className={styles.logo}>
-                        <img src={theme === 'dark' ? "Images/CB_Logos/CB_logo2.png" : "Images/CB_Logos/CB_logo.png"} alt="" onClick={() => navigate('/')} style={{ cursor: 'pointer' }} />
-                    </div>
-                    <div className={styles.media}>
-                        <h1>Media</h1>
-                        <div className={styles.socialIcons}>
-                            <i onClick={() => window.open("https://www.instagram.com/creatorsblueprint.io?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", "_blank")} className="ri-instagram-line"></i>
-                            <i onClick={() => window.open("https://www.facebook.com/profile.php?id=61580392831846", "_blank")} className="ri-facebook-fill"></i>
-                            <i onClick={() => window.open("https://wa.link/creatorsblueprint", "_blank")} className="ri-whatsapp-line"></i>
-                        </div>
-                    </div>
-                    <div className={styles.additonalLinks}>
-                        <p onClick={() => navigate('/privacy')}>Privacy</p>
-                        <p onClick={() => navigate('/terms')}>Terms</p>
-                        <p onClick={() => navigate('/faq')}>FAQ</p>
-
+        <footer className={styles.footerContainer}>
+            <div className={styles.footerContent}>
+                <div className={styles.brandSection}>
+                    <img src="/Images/CB_Logos/logo_new.png" alt="CB Studio" className={styles.logo} />
+                    <p className={styles.brandDesc}>
+                        Turn your attention into assets. Build digital products, launch automated sales pages, and scale smarter with the all-in-one creator backend.
+                    </p>
+                    <div className={styles.socials}>
+                        <a href="https://www.instagram.com/creatorsblueprint.io" target="_blank" rel="noreferrer"><i className="ri-instagram-line"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61580392831846" target="_blank" rel="noreferrer"><i className="ri-facebook-circle-fill"></i></a>
+                        <a href="https://wa.link/creatorsblueprint" target="_blank" rel="noreferrer"><i className="ri-whatsapp-line"></i></a>
                     </div>
                 </div>
-
-
-                <div className={styles.copyright}>
-                    <p><i className="ri-copyright-line"></i>{new Date().getFullYear()} CreatorsBlueprint. All rights reserved. | www.creatorsblueprint.com</p>
+                
+                <div className={styles.linksSection}>
+                    <div className={styles.linkColumn}>
+                        <h4>Platform</h4>
+                        <a href="#features">Features</a>
+                        <a href="#how-it-works">How it Works</a>
+                        <a href="https://cb-saas-182428559947.me-central1.run.app">Pricing</a>
+                    </div>
+                    <div className={styles.linkColumn}>
+                        <h4>Company</h4>
+                        <a href="#mission">Mission</a>
+                        <a href="#proof">Phase 1 Proof</a>
+                        <a href="mailto:hello@creatorsblueprint.io">Contact</a>
+                    </div>
+                    <div className={styles.linkColumn}>
+                        <h4>Legal</h4>
+                        <a href="/privacy">Privacy Policy</a>
+                        <a href="/terms">Terms of Service</a>
+                    </div>
                 </div>
             </div>
-
-        </>
-    )
+            <div className={styles.footerBottom}>
+                <p>&copy; {currentYear} CB Studio by CreatorsBlueprint. All rights reserved.</p>
+            </div>
+        </footer>
+    );
 }
 
-export default Footer
+export default Footer;

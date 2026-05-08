@@ -1,128 +1,51 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from "framer-motion";
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './Home/Home.jsx';
 import Footer from './Footer/Footer.jsx';
-import Privacy from './Privacy/Privacy.jsx';
-import Terms from './Terms/Terms.jsx';
-import FAQ from './FAQ/FAQ.JSX';
-import Product from './Product/Product.jsx';
-
 import Nav from './Nav/Nav.jsx';
-import Testimonials from './Testimonials/Testimonials.jsx';
-import PaymentSuccess from "./paymentPopups/PaymentSuccess.jsx";
-import PaymentCancel from "./paymentPopups/PaymentCancel.jsx";
 import Waitlist from './Waitlist/Waitlist.jsx';
-import ThemeToggle from './ThemeToggle/ThemeToggle.jsx';
-
 
 
 function App() {
 
-  const [paymentActive, setPaymentActive] = useState('')
-  const [menuActive, setMenuActive] = useState(false)
-  const [navActive, setNavActive] = useState(true)
-  // track theme mode 
-  const [theme, setTheme] = useState('dark');
-
+  const [navActive, setNavActive] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
-    const root = document.getElementById('root');
-
-    root.scrollTo(0, 0);
-  }, [location.pathname]);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const payment = params.get("payment");
-    if (payment === "success") setPaymentActive("PaymentSuccess");
-    if (payment === "cancel") setPaymentActive("PaymentCancel");
-  }, []);
-
-
-
-
-  // Variants for open and closed states
-  const menuVariants = {
-    closed: { opacity: 0, y: -60, transition: { duration: 0.2 } },
-    open: { opacity: 1, y: 0, transition: { duration: 0.2 } },
-  };
-
+    // If we have a hash in the URL, don't scroll to top, let the anchor work
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash]);
 
 
   const isWaitlist = location.pathname.startsWith('/waitlist');
 
   return (
-
-
     <>
-
-
-      {!isWaitlist && (
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={navActive}
-            variants={menuVariants}
-            initial="closed"
-            animate="open"
-            exit="closed"
-            className={navActive === true ? 'navActive' : 'notNavActive'}
-          >
-            <Nav menuActive={menuActive} setMenuActive={setMenuActive} theme={theme} />
-
-          </motion.div>
-
-        </AnimatePresence>
+      {!isWaitlist && navActive && (
+        <Nav />
       )}
-
-
-
-
-
-
-      {!isWaitlist && (
-        <>
-          <div className={paymentActive === 'PaymentSuccess' ? 'activeSection' : 'notActiveSection'}>
-            <PaymentSuccess setPaymentActive={setPaymentActive} />
-          </div>
-
-          <div className={paymentActive === 'PaymentCancel' ? 'activeSection' : 'notActiveSection'}>
-            <PaymentCancel setPaymentActive={setPaymentActive} />
-          </div>
-        </>
-      )}
-
-
 
 
       <div className="content">
         <Routes>
+          {/* Main SaaS Landing Page */}
           <Route path="/" element={<Home setNavActive={setNavActive} />} />
-          <Route path="/testimonials" element={<Testimonials />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/product" element={<Product />} />
+          
+          {/* Legacy Waitlist */}
           <Route path="/waitlist" element={<Waitlist />} />
+          
+          {/* Redirect all other obsolete routes to Home */}
+          <Route path="*" element={<Home setNavActive={setNavActive} />} />
         </Routes>
       </div>
 
-
-
-
       {!isWaitlist && (
-        <footer>
-          <Footer theme={theme} />
-        </footer>
+        <Footer />
       )}
-
-      {!isWaitlist && <ThemeToggle theme={theme} setTheme={setTheme} />}
-
     </>
-  )
+  );
 }
 
-
-
-export default App
+export default App;
