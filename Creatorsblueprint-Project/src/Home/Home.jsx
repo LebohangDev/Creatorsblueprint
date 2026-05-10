@@ -3,11 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Home.module.css';
 import ResponsiveGrid from './ResponsiveGrid.jsx';
 
-const CTA_URL = "https://cb-saas-182428559947.me-central1.run.app";
+const CTA_URL = "/waitlist";
 
 function Home({ setNavActive }) {
     const [faqOpen, setFaqOpen] = useState(null);
     const [testimonialIndex, setTestimonialIndex] = useState(0);
+    const [lightboxContent, setLightboxContent] = useState(null);
 
     // Fade-in animation variants
     const fadeInUp = {
@@ -81,6 +82,12 @@ function Home({ setNavActive }) {
         }
     }, [setNavActive]);
 
+    useEffect(() => {
+        const handleKey = (e) => { if (e.key === 'Escape') setLightboxImg(null); };
+        window.addEventListener('keydown', handleKey);
+        return () => window.removeEventListener('keydown', handleKey);
+    }, []);
+
 
     return (
         <div className={styles.homeContainer}>
@@ -94,13 +101,13 @@ function Home({ setNavActive }) {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.2, duration: 1 }}
                 >
-                    <div className={styles.heroImage} style={{ width: '22vw', height: 'auto', top: '10%', left: '10%' }}>
+                    <div className={`${styles.heroImage} ${styles.heroImage1}`}>
                         <img src="/Images/home/Rectangle 19.png" alt="Creator Session" />
                     </div>
-                    <div className={styles.heroImage} style={{ width: '24vw', height: 'auto', top: '20%', right: '10%' }}>
+                    <div className={`${styles.heroImage} ${styles.heroImage2}`}>
                         <img src="/Images/home/Rectangle 21.png" alt="Platform Dashboard" />
                     </div>
-                    <div className={styles.heroImage} style={{ width: '20vw', height: 'auto', bottom: '12%', left: '22%' }}>
+                    <div className={`${styles.heroImage} ${styles.heroImage3}`}>
                         <img src="/Images/home/Rectangle 20.png" alt="Working" />
                     </div>
                 </motion.div>
@@ -180,12 +187,11 @@ function Home({ setNavActive }) {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
-                    style={{ width: '100%' }}
                 >
                     <div className={styles.grid2}>
                         <div>
                             <div className={styles.badge}>Our Mission</div>
-                            <h2 className={styles.title} style={{ textAlign: 'left', fontSize: '3rem' }}>
+                            <h2 className={`${styles.title} ${styles.missionTitle}`}>
                                 CreatorsBlueprint exists to help creators turn attention into <span>ownership.</span>
                             </h2>
                             <p style={{ color: '#94a3b8', lineHeight: '1.6', fontSize: '1.1rem' }}>
@@ -296,16 +302,97 @@ function Home({ setNavActive }) {
                     variants={fadeInUp}
                     style={{ width: '100%' }}
                 >
-                    <div className={styles.badge} style={{ margin: '0 auto 24px auto', display: 'block', width: 'fit-content' }}>The Platform</div>
+                    <div className={styles.badge} style={{ margin: '0 auto 16px auto', display: 'block', width: 'fit-content' }}>The Platform</div>
                     <h2 className={styles.title}>Inside <span>CB Studio</span></h2>
-                    <p className={styles.subtitle}>A sneak peek into the premium dashboard built specifically to manage your creator empire.</p>
+                    <p className={styles.subtitle}>Every tool you need to package, launch, and scale your creator business.</p>
 
-                    <div className={styles.showcaseGrid}>
-                        <div className={styles.showcaseImageWrapper}>
-                            <img src="/Images/home/saas_dashboard_dark_1778166948153.png" alt="Platform Dashboard" />
+                    {/* ── Feature block: Storefront Preview ── */}
+                    <div className={styles.featureBlock}>
+                        <div className={styles.featureBlockText}>
+                            <div className={styles.featureBlockTag}>
+                                <i className="ri-store-3-line"></i> Storefront Preview
+                            </div>
+                            <h3 className={styles.featureBlockTitle}>Your brand,<br /><span>one link.</span></h3>
+                            <p className={styles.featureBlockDesc}>
+                                A stunning digital storefront where your entire creator identity lives. Package your knowledge and share it with one easily shareable link.
+                            </p>
                         </div>
-                        <div className={styles.showcaseImageWrapper}>
-                            <img src="/Images/home/saas_funnel_ui_1778166978137.png" alt="Funnel Builder UI" />
+                        <div 
+                            className={styles.featureVideoWrap}
+                            onClick={() => setLightboxContent({ src: '/Video/storefront-preview.mp4', type: 'video', name: 'Storefront Preview', caption: 'The Platform' })}
+                            style={{ cursor: 'pointer' }}
+                        >
+                            <div className={styles.featureVideoGlow} />
+                            <video
+                                className={styles.featureVideo}
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                disablePictureInPicture
+                                style={{ pointerEvents: 'none' }}
+                            >
+                                <source src="/Video/storefront-preview.mp4" type="video/mp4" />
+                            </video>
+                            <div className={styles.videoOverlayHint}>
+                                <i className="ri-fullscreen-line"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* ── Product card previews ── */}
+                    <div className={styles.showcaseCardsRow}>
+                        <div className={styles.showcaseCardItem}>
+                            <div className={styles.showcaseCardTag}>
+                                <i className="ri-book-2-line"></i> Ebook Ideas
+                            </div>
+                            <div 
+                                className={styles.showcaseCardVideoWrap}
+                                onClick={() => setLightboxContent({ src: '/Video/ebook-flow.mp4', type: 'video', name: 'Ebook Ideas', caption: 'AI Builder' })}
+                                style={{ cursor: 'pointer' }}
+                            >
+                                <video
+                                    className={`${styles.showcaseCardVideo} ${styles.ebookVideo}`}
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    disablePictureInPicture
+                                    style={{ pointerEvents: 'none' }}
+                                >
+                                    <source src="/Video/ebook-flow.mp4" type="video/mp4" />
+                                </video>
+                                <div className={styles.videoOverlayHint}>
+                                    <i className="ri-fullscreen-line"></i>
+                                </div>
+                            </div>
+                            <p className={styles.showcaseCardDesc}>AI-assisted product creation that structures your knowledge into a high-value digital asset.</p>
+                        </div>
+                        <div className={styles.showcaseCardItem}>
+                            <div className={styles.showcaseCardTag}>
+                                <i className="ri-edit-box-line"></i> Editor Preview
+                            </div>
+                            <div 
+                                className={styles.showcaseCardVideoWrap}
+                                onClick={() => setLightboxContent({ src: '/Video/editor-preview.mp4', type: 'video', name: 'Editor Preview', caption: 'Product Customization' })}
+                                style={{ cursor: 'pointer' }}
+                            >
+                                <video
+                                    className={styles.showcaseCardVideo}
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    disablePictureInPicture
+                                    style={{ pointerEvents: 'none' }}
+                                >
+                                    <source src="/Video/editor-preview.mp4" type="video/mp4" />
+                                </video>
+                                <div className={styles.videoOverlayHint}>
+                                    <i className="ri-fullscreen-line"></i>
+                                </div>
+                            </div>
+                            <p className={styles.showcaseCardDesc}>The ultimate tool for creators to refine, package, and polish their digital empire.</p>
                         </div>
                     </div>
                 </motion.div>
@@ -335,11 +422,19 @@ function Home({ setNavActive }) {
                         { name: 'Amy Fox', img: '/Images/testimonials/640944934_17874076308535987_1550338404705835315_n (1).jpg' }
                     ]}
                     renderItem={(client) => (
-                        <div className={styles.proofCard}>
+                        <div
+                            className={styles.proofCard}
+                            onClick={() => setLightboxContent({ src: client.img, type: 'image', name: client.name, caption: 'Phase 1 Client' })}
+                            role="button"
+                            aria-label={`View ${client.name} preview`}
+                        >
                             <img src={client.img} alt={client.name} />
                             <div className={styles.proofOverlay}>
                                 <h4>{client.name}</h4>
                                 <p>Phase 1 Client</p>
+                            </div>
+                            <div className={styles.proofExpandHint}>
+                                <i className="ri-expand-diagonal-line"></i>
                             </div>
                         </div>
                     )}
@@ -392,10 +487,10 @@ function Home({ setNavActive }) {
                     viewport={{ once: true }}
                 >
                     <h2 className={styles.title}>Now We're Entering <span>Phase 2</span></h2>
-                    <p style={{ fontSize: '1.5rem', color: '#cbd5e1', lineHeight: '1.6', marginBottom: '40px' }}>
+                    <p className={styles.phase2Text}>
                         We took everything we learned in Phase 1 and turned it into a product. CB Studio is the scalable evolution, giving you the exact infrastructure we used for our top clients.
                     </p>
-                    <a href={CTA_URL} className={styles.primaryButton} style={{ fontSize: '1.2rem', padding: '20px 40px' }}>
+                    <a href={CTA_URL} className={`${styles.primaryButton} ${styles.primaryButtonLarge}`}>
                         Get Early Access
                     </a>
                 </motion.div>
@@ -409,8 +504,8 @@ function Home({ setNavActive }) {
                     viewport={{ once: true }}
                     variants={fadeInUp}
                 >
-                    <h2 className={styles.title}>Built by <span>Creators & Engineers</span></h2>
-                    <p className={styles.subtitle}>The team behind CB Studio.</p>
+                    <h2 className={styles.title}>Built by <span>Young Graduates from Dubai</span></h2>
+                    <p className={styles.subtitle}>The team behind Creatorsblueprint.</p>
                 </motion.div>
 
                 <ResponsiveGrid
@@ -418,12 +513,12 @@ function Home({ setNavActive }) {
                     staggerContainer={staggerContainer}
                     fadeInUp={fadeInUp}
                     items={[
-                        { name: 'Abubakar Khan', role: 'Founder', img: '/Images/team/Rectangle 23.png', bio: "Founder of CB Studio, with a Master's in cloud technology. A football-loving natural captain with a sharp sense of humour, bringing vision, energy, and execution to scalable online growth." },
-                        { name: 'Lebohang Khasipe', role: 'Chief Technical Officer', img: '/Images/team/Rectangle 23-1.png', bio: "Full-stack developer and UI/UX enthusiast building modern, responsive web applications. Creates robust, user-centered digital solutions focused on seamless frontend and backend integration." },
+                        { name: 'Abubakar Khan', role: 'Founder', img: '/Images/team/Rectangle 23.png', bio: "A multi-venture founder with a background in digital business, media, and brand development. After building both a media agency and a clothing brand from scratch, he gained strong insight into creating and scaling brands online." },
+                        { name: 'Lebohang Khasipe', role: 'Chief Technical Officer', img: '/Images/team/Rectangle 23-4.png', bio: "A Full-stack developer who completed his masters in networking and cloud. He is utilizing his skills to develop the future of creator infrastructure through seamless frontend and backend integration." },
                         { name: 'Malak Dabjan', role: 'Co-Founder / Product Specialist', img: '/Images/team/Rectangle 23-2.png', bio: "A law and human-rights-driven professional with a strong passion for empowerment. Guided by a people-first mindset, committed to helping others unlock opportunities and build sustainable success." },
-                        { name: 'Soniya Rajpurohit', role: 'Co-Founder / Marketing Head', img: '/Images/team/Rectangle 23-3.png', bio: "Expert in advertising and PR with experience at top Dubai agencies. Brings strong expertise in brand positioning and messaging, with a portfolio spanning global names like Google and YouTube." },
-                        { name: 'Abdoabiturab Vadnagarwala', role: 'CFO / Automation Engineer', img: '/Images/team/Group 114.png', bio: "Computer Systems Engineering background with experience across AI automation, software, and finance. Bridges technical systems with sharp financial and operational thinking." },
-                        { name: 'Varun', role: 'Growth & Product', img: '', bio: "Grew up in Canada and brings an ambitious, tech-driven mindset to the team. Curious, forward-thinking, and deeply interested in building through technology, adding modern product thinking to CB Studio." },
+                        { name: 'Soniya Rajpurohit', role: 'Co-Founder / Marketing Head', img: '/Images/team/Rectangle 23-1.png', bio: "Expert in advertising and PR with experience at top Dubai agencies. Brings strong expertise in brand positioning and messaging, with a portfolio spanning global names like Google and YouTube." },
+                        { name: 'Abdoabiturab Vadnagarwala', role: 'CFO / Automation Engineer', img: '/Images/team/Rectangle 23-3.png', bio: "Computer Systems Engineering background with experience across AI automation, software, and finance. Bridges technical systems with sharp financial and operational thinking." },
+                        { name: 'Varun Kumaravel', role: 'Lead Developer', img: '/Images/team/varun.jpg', bio: "Grew up in Canada and brings an ambitious, tech-driven mindset. He completed his masters in networking and cloud, and uses his full-stack expertise to build robust, scalable systems." },
                     ]}
                     renderItem={(member) => (
                         <div className={`${styles.glassCard} ${styles.teamCard}`}>
@@ -497,12 +592,57 @@ function Home({ setNavActive }) {
                     <p className={styles.subtitle} style={{ marginBottom: '40px' }}>
                         Join the next phase of creator monetization. Launch smarter with CB Studio today.
                     </p>
-                    <a href={CTA_URL} className={styles.primaryButton} style={{ fontSize: '1.2rem', padding: '20px 40px' }}>
+                    <a href={CTA_URL} className={`${styles.primaryButton} ${styles.primaryButtonLarge}`}>
                         Join the Waitlist <i className="ri-rocket-2-fill" style={{ marginLeft: '8px' }}></i>
                     </a>
                 </motion.div>
             </section>
 
+            {/* Lightbox Modal */}
+            <AnimatePresence>
+                {lightboxContent && (
+                    <motion.div
+                        className={styles.lightboxOverlay}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        onClick={() => setLightboxContent(null)}
+                    >
+                        <motion.div
+                            className={`${styles.lightboxContent} ${lightboxContent.type === 'video' ? styles.lightboxContentVideo : ''}`}
+                            initial={{ scale: 0.88, opacity: 0, y: 24 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.88, opacity: 0, y: 24 }}
+                            transition={{ duration: 0.3, ease: 'easeOut' }}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <button className={styles.lightboxClose} onClick={() => setLightboxContent(null)}>
+                                <i className="ri-close-line"></i>
+                            </button>
+                            
+                            <div className={styles.lightboxMediaWrap}>
+                                {lightboxContent.type === 'video' ? (
+                                    <video 
+                                        src={lightboxContent.src} 
+                                        className={styles.lightboxVideo}
+                                        autoPlay 
+                                        controls 
+                                        playsInline 
+                                    />
+                                ) : (
+                                    <img src={lightboxContent.src} alt={lightboxContent.name} className={styles.lightboxImage} />
+                                )}
+                            </div>
+
+                            <div className={styles.lightboxCaption}>
+                                <h4>{lightboxContent.name}</h4>
+                                <span>{lightboxContent.caption || 'Product Feature'}</span>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }

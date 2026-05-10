@@ -39,9 +39,9 @@ function Nav() {
                     <span className={styles.linkItem} onClick={() => handleScrollTo('proof')}>Proof</span>
                 </div>
                 
-                <a href="https://cb-saas-182428559947.me-central1.run.app" className={styles.ctaButton}>
+                <div onClick={() => navigate('/waitlist')} className={styles.ctaButton}>
                     Join Now
-                </a>
+                </div>
                 
                 <i className={`ri-${mobileMenuOpen ? 'close' : 'menu'}-line ${styles.mobileMenuToggle}`} onClick={() => setMobileMenuOpen(!mobileMenuOpen)}></i>
                 
@@ -58,9 +58,9 @@ function Nav() {
                             <span className={styles.mobileLink} onClick={() => handleScrollTo('features')}>Features</span>
                             <span className={styles.mobileLink} onClick={() => handleScrollTo('how-it-works')}>How it Works</span>
                             <span className={styles.mobileLink} onClick={() => handleScrollTo('proof')}>Proof</span>
-                            <a href="https://cb-saas-182428559947.me-central1.run.app" className={styles.mobileCtaButton}>
+                            <div onClick={() => { setMobileMenuOpen(false); navigate('/waitlist'); }} className={styles.mobileCtaButton}>
                                 Join Now
-                            </a>
+                            </div>
                         </motion.div>
                     )}
                 </AnimatePresence>
