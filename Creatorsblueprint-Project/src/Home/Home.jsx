@@ -83,7 +83,17 @@ function Home({ setNavActive }) {
     }, [setNavActive]);
 
     useEffect(() => {
-        const handleKey = (e) => { if (e.key === 'Escape') setLightboxImg(null); };
+        if (window.fbq) {
+            window.fbq('track', 'PageView');
+            window.fbq('track', 'ViewContent', {
+                content_name: 'Landing Page',
+                content_category: 'Waitlist'
+            });
+        }
+    }, []);
+
+    useEffect(() => {
+        const handleKey = (e) => { if (e.key === 'Escape') setLightboxContent(null); };
         window.addEventListener('keydown', handleKey);
         return () => window.removeEventListener('keydown', handleKey);
     }, []);

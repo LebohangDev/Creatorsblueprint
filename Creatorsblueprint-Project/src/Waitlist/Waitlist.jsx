@@ -57,6 +57,7 @@ const Waitlist = () => {
 
       if (window.fbq) {
         window.fbq("track", "Lead");
+        window.fbq("track", "CompleteRegistration");
       }
       const newMessage = "Successfully subscribed to waitlist";
       setMessage(newMessage);
