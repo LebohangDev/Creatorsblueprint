@@ -22,7 +22,7 @@
   --accent-blue: #2563eb;
 }
 
-body {
+html, body {
   margin: 0;
   overflow-x: hidden;
   background-color: var(--bg-primary);
