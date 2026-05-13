@@ -1188,7 +1188,7 @@
   /* ── Buttons ── */
   .buttonGroup { flex-direction: column; width: 100%; }
   .primaryButton,
-  .secondaryButton { width: 100%; justify-content: center; box-sizing: border-box; }
+  .secondaryButton { width: 100%; justify-content: center; box-sizing: border-box; font-size: 0.95rem; padding: 14px 20px; }
   .primaryButtonLarge { font-size: 0.95rem; padding: 14px 20px; }
 
   /* ── Hero images row: slightly shorter on very small screens ── */
