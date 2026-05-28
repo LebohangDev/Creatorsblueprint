@@ -16,7 +16,7 @@ function FAQ() {
 
   const faqItems = [
     {
-      question: "What does Creators Blueprint do?",
+      question: "What does Creatorsblueprint do?",
       answer: "We help creators turn followers into paying clients. With our done-for-you system, we set up everything you need to start earning—your website, payment gateway, automated DMs, and your first digital product."
     },
     {
@@ -55,11 +55,11 @@ function FAQ() {
     },
     {
       question: "How do I know which product to sell?",
-      answer: "Creators Blueprint analyzes your niche, audience, and strengths. Based on this, we tailor a digital product—such as an eBook, course, or template—that aligns with your expertise and resonates with your followers."
+      answer: "Creatorsblueprint analyzes your niche, audience, and strengths. Based on this, we tailor a digital product—such as an eBook, course, or template—that aligns with your expertise and resonates with your followers."
     },
     {
       question: "How is this different from doing it myself?",
-      answer: "Doing it alone requires learning web design, automation tools, and payment systems, which can take weeks and cost more than the package itself. With Creators Blueprint, everything is built for you—from product to website to automation."
+      answer: "Doing it alone requires learning web design, automation tools, and payment systems, which can take weeks and cost more than the package itself. With Creatorsblueprint, everything is built for you—from product to website to automation."
     },
     {
       question: "What happens if I need support later?",

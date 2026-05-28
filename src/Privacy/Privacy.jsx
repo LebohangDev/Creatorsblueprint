@@ -14,7 +14,7 @@ function Privacy(){
                         <p> 
                             1. Introduction 
                             <br />
-                            Welcome to CreatorsBlueprint. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website www.creatorsblueprint.net.
+                            Welcome to Creatorsblueprint. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website www.creatorsblueprint.net.
                         </p>
                         <p>
                             2. Information We Collect

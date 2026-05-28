@@ -1,14 +1,134 @@
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import styles from './Home.module.css';
 import ResponsiveGrid from './ResponsiveGrid.jsx';
 
 const CTA_URL = "/waitlist";
 
+const heroFeatures = [
+    {
+        icon: 'ri-magic-line',
+        title: 'AI Ebook Builder',
+        desc: 'Generate ideas & write premium eBooks in minutes.',
+        color: 'bgBlue'
+    },
+    {
+        icon: 'ri-store-3-line',
+        title: 'Digital Storefront',
+        desc: 'Deploy high-converting landing pages built to sell.',
+        color: 'bgPurple'
+    },
+    {
+        icon: 'ri-robot-2-line',
+        title: 'Auto Delivery',
+        desc: 'Fulfill orders and trigger emails 24/7 on autopilot.',
+        color: 'bgGreen'
+    },
+    {
+        icon: 'ri-wallet-3-line',
+        title: 'Frictionless Pay',
+        desc: 'Accept secure payments directly with zero friction.',
+        color: 'bgOrange'
+    },
+    {
+        icon: 'ri-bar-chart-2-line',
+        title: 'Creator Analytics',
+        desc: 'Track views and sales in a unified creator dashboard.',
+        color: 'bgCyan'
+    }
+];
+
 function Home({ setNavActive }) {
     const [faqOpen, setFaqOpen] = useState(null);
     const [testimonialIndex, setTestimonialIndex] = useState(0);
     const [lightboxContent, setLightboxContent] = useState(null);
+    const [isMobile, setIsMobile] = useState(false);
+    const [mobileIndex, setMobileIndex] = useState(0);
+
+    // Custom trailing cursor values
+    const cursorX = useMotionValue(-100);
+    const cursorY = useMotionValue(-100);
+    
+    const springConfig = { stiffness: 450, damping: 30 };
+    const cursorXSpring = useSpring(cursorX, springConfig);
+    const cursorYSpring = useSpring(cursorY, springConfig);
+    
+    const [isHovered, setIsHovered] = useState(false);
+    const [cursorVisible, setCursorVisible] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
+        if (isMobile) return;
+        
+        const moveCursor = (e) => {
+            cursorX.set(e.clientX);
+            cursorY.set(e.clientY);
+        };
+        
+        window.addEventListener('mousemove', moveCursor);
+        
+        const handleMouseEnter = () => setCursorVisible(true);
+        const handleMouseLeave = () => setCursorVisible(false);
+        
+        document.body.addEventListener('mouseenter', handleMouseEnter);
+        document.body.addEventListener('mouseleave', handleMouseLeave);
+        
+        const handleHoverStart = () => setIsHovered(true);
+        const handleHoverEnd = () => setIsHovered(false);
+        
+        const attachListeners = () => {
+            document.querySelectorAll('a, button, [role="button"], input, select, textarea').forEach(el => {
+                el.removeEventListener('mouseenter', handleHoverStart);
+                el.removeEventListener('mouseleave', handleHoverEnd);
+                el.addEventListener('mouseenter', handleHoverStart);
+                el.addEventListener('mouseleave', handleHoverEnd);
+            });
+        };
+        
+        attachListeners();
+        const observer = new MutationObserver(attachListeners);
+        observer.observe(document.body, { childList: true, subtree: true });
+        
+        return () => {
+            window.removeEventListener('mousemove', moveCursor);
+            document.body.removeEventListener('mouseenter', handleMouseEnter);
+            document.body.removeEventListener('mouseleave', handleMouseLeave);
+            observer.disconnect();
+        };
+    }, [cursorX, cursorY, isMobile]);
+
+    useEffect(() => {
+        if (!isMobile) return;
+        const interval = setInterval(() => {
+            setMobileIndex((prev) => (prev + 1) % heroFeatures.length);
+        }, 3500);
+        return () => clearInterval(interval);
+    }, [isMobile]);
+
+    const handlePrev = () => {
+        setMobileIndex((prev) => (prev - 1 + heroFeatures.length) % heroFeatures.length);
+    };
+
+    const handleNext = () => {
+        setMobileIndex((prev) => (prev + 1) % heroFeatures.length);
+    };
+
+    const dragEndHandler = (event, info) => {
+        const swipeThreshold = 50;
+        if (info.offset.x < -swipeThreshold) {
+            handleNext();
+        } else if (info.offset.x > swipeThreshold) {
+            handlePrev();
+        }
+    };
 
     // Fade-in animation variants
     const fadeInUp = {
@@ -104,33 +224,80 @@ function Home({ setNavActive }) {
 
             {/* 1. HERO SECTION */}
             <section id="hero" className={`${styles.section} ${styles.hero}`}>
-                {/* Hero Images Collage Background */}
-                <motion.div 
-                    className={styles.heroImages}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.2, duration: 1 }}
-                >
-                    <div className={`${styles.heroImage} ${styles.heroImage1}`}>
-                        <img src="/Images/home/Rectangle 19.png" alt="Creator Session" />
+                {isMobile ? (
+                    <div className={styles.heroCarouselViewport}>
+                        <motion.div 
+                            className={styles.heroCarouselTrack}
+                            drag="x"
+                            dragConstraints={{ left: 0, right: 0 }}
+                            onDragEnd={dragEndHandler}
+                            animate={{ x: -mobileIndex * 100 + "%" }}
+                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        >
+                            {heroFeatures.map((feat, i) => (
+                                <div key={i} className={styles.carouselCard}>
+                                    <div className={styles.carouselCardInner}>
+                                        <div className={`${styles.featureFloatingIcon} ${styles[feat.color]}`}>
+                                            <i className={feat.icon}></i>
+                                        </div>
+                                        <div className={styles.featureFloatingText}>
+                                            <h4>{feat.title}</h4>
+                                            <p>{feat.desc}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </motion.div>
+                        
+                        <div className={styles.carouselControls}>
+                            <button onClick={handlePrev} className={styles.carouselArrow} aria-label="Previous Feature">
+                                <i className="ri-arrow-left-s-line"></i>
+                            </button>
+                            <div className={styles.carouselIndicators}>
+                                {heroFeatures.map((_, idx) => (
+                                    <span 
+                                        key={idx} 
+                                        className={`${styles.carouselDot} ${idx === mobileIndex ? styles.activeDot : ''}`}
+                                        onClick={() => setMobileIndex(idx)}
+                                    />
+                                ))}
+                            </div>
+                            <button onClick={handleNext} className={styles.carouselArrow} aria-label="Next Feature">
+                                <i className="ri-arrow-right-s-line"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div className={`${styles.heroImage} ${styles.heroImage2}`}>
-                        <img src="/Images/home/Rectangle 21.png" alt="Platform Dashboard" />
-                    </div>
-                    <div className={`${styles.heroImage} ${styles.heroImage3}`}>
-                        <img src="/Images/home/Rectangle 20.png" alt="Working" />
-                    </div>
-                </motion.div>
+                ) : (
+                    <motion.div 
+                        className={styles.heroFeatures}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.2, duration: 1 }}
+                    >
+                        {heroFeatures.map((feat, i) => (
+                            <motion.div 
+                                key={i} 
+                                className={`${styles.featureFloatingCard} ${styles[`featCard${i + 1}`]}`}
+                                whileHover={{ 
+                                    scale: 1.08, 
+                                    zIndex: 20,
+                                    transition: { type: "spring", stiffness: 400, damping: 15 }
+                                }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <div className={`${styles.featureFloatingIcon} ${styles[feat.color]}`}>
+                                    <i className={feat.icon}></i>
+                                </div>
+                                <div className={styles.featureFloatingText}>
+                                    <h4>{feat.title}</h4>
+                                    <p>{feat.desc}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                )}
 
                 <div className={styles.heroContent}>
-                    <motion.div
-                        className={styles.badge}
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                    >
-                        Introducing CB Studio
-                    </motion.div>
                     
                     <motion.h1 
                         className={styles.title}
@@ -189,6 +356,160 @@ function Home({ setNavActive }) {
                 ))}
             </section>
 
+            {/* 2.5 CONSOLIDATION SECTION (REPLACE THE MESSY STACK) */}
+            <section id="consolidation" className={`${styles.section} ${styles.consolidationSection}`}>
+                <motion.div
+                    className={styles.consolidationHeader}
+                    variants={fadeInUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    style={{ textAlign: 'center', marginBottom: '40px' }}
+                >
+                    <div className={styles.badge}>Tool Consolidation</div>
+                    <h2 className={styles.title}>A Simpler <span>Solution</span></h2>
+                    <p className={styles.subtitle}>
+                        No more paying for 5+ different apps! Creatorsblueprint brings it all home.
+                    </p>
+                </motion.div>
+
+                <div className={styles.consolidationWrapper}>
+                    <div className={styles.dockComparisonWrapper}>
+                        {/* The Fragmented Dock Container */}
+                        <div className={styles.competitorDockCard}>
+                            <span className={styles.cardCaption}>Old Fragmented Stack</span>
+                            <div className={styles.macOSDock}>
+                                <div className={styles.dockGlowRed}></div>
+                                <div className={`${styles.dockIconItem} ${styles.jiggleAlways}`}>
+                                    <div className={`${styles.appIconSquircle} ${styles.appGumroad}`}>
+                                        <span className={styles.badgeStrike}></span>
+                                        <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.2 13c-.9 0-1.7-.5-2.1-1.3l1.8-1c.2.4.5.6.8.6.4 0 .7-.3.7-.7V8h-2V6.5h3.5V13c0 1.1-.9 2-2 2z"/></svg>
+                                        <div className={styles.glossOverlay}></div>
+                                    </div>
+                                    <span className={styles.dockIconLabel}>Gumroad</span>
+                                </div>
+                                <div className={`${styles.dockIconItem} ${styles.jiggleAlways}`}>
+                                    <div className={`${styles.appIconSquircle} ${styles.appCanva}`}>
+                                        <span className={styles.badgeStrike}></span>
+                                        <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5c-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5c1.7 0 3.1.9 3.8 2.3l-1.4.8c-.4-.9-1.3-1.4-2.4-1.4-1.6 0-2.9 1.3-2.9 2.9s1.3 2.9 2.9 2.9c1.1 0 2-.5 2.4-1.4l1.4.8c-.7 1.4-2.1 2.3-3.8 2.3z"/></svg>
+                                        <div className={styles.glossOverlay}></div>
+                                    </div>
+                                    <span className={styles.dockIconLabel}>Canva</span>
+                                </div>
+                                <div className={`${styles.dockIconItem} ${styles.jiggleAlways}`}>
+                                    <div className={`${styles.appIconSquircle} ${styles.appNotion}`}>
+                                        <span className={styles.badgeStrike}></span>
+                                        <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 3h15a1.5 1.5 0 0 1 1.5 1.5v15a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 19.5v-15A1.5 1.5 0 0 1 4.5 3zM6.5 6v12H9v-5l4.5 5H17.5V6H15v5L10.5 6H6.5z"/></svg>
+                                        <div className={styles.glossOverlay}></div>
+                                    </div>
+                                    <span className={styles.dockIconLabel}>Notion</span>
+                                </div>
+                                <div className={`${styles.dockIconItem} ${styles.jiggleAlways}`}>
+                                    <div className={`${styles.appIconSquircle} ${styles.appLinktree}`}>
+                                        <span className={styles.badgeStrike}></span>
+                                        <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v16M8 6l4-4 4 4M5 12l7-7 7 7M9 22h6"/></svg>
+                                        <div className={styles.glossOverlay}></div>
+                                    </div>
+                                    <span className={styles.dockIconLabel}>Linktree</span>
+                                </div>
+                                <div className={`${styles.dockIconItem} ${styles.jiggleAlways}`}>
+                                    <div className={`${styles.appIconSquircle} ${styles.appMailchimp}`}>
+                                        <span className={styles.badgeStrike}></span>
+                                        <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                                        <div className={styles.glossOverlay}></div>
+                                    </div>
+                                    <span className={styles.dockIconLabel}>Mailchimp</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Transition Arrow Indicator */}
+                        <div className={styles.dockComparisonArrow}>
+                            <i className={isMobile ? "ri-arrow-down-line" : "ri-arrow-right-line"}></i>
+                            <div className={styles.arrowPulse}></div>
+                        </div>
+
+                        {/* The Unified App Container */}
+                        <div className={styles.unifiedAppCard}>
+                            <span className={styles.cardCaption}>Unified Solution</span>
+                            <div className={`${styles.appIconSquircle} ${styles.appCBStudio}`}>
+                                <img src="/Images/CB_Logos/CB_fingerprint.png" alt="CB Studio" className={styles.cbStudioAppLogo} />
+                                <div className={styles.glossOverlay}></div>
+                                <div className={styles.neonHaloBlue}></div>
+                            </div>
+                            <span className={styles.unifiedAppLabel}>CB Studio</span>
+                        </div>
+                    </div>
+
+                    <div className={styles.consolidationTextInfo}>
+                        <h3>Consolidate everything. Save over $400/month.</h3>
+                        <p>
+                            Instead of jumping between tabs to manage checkout links, write drafts, design covers, and set up delivery automations, CB Studio provides a single premium workspace to handle it all. Keep 100% of your earnings with <strong>no hidden platform transaction fees</strong>.
+                        </p>
+                    </div>
+
+                    <motion.div 
+                        className={styles.stanComparisonCard}
+                        variants={fadeInUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        <div className={styles.stanList}>
+                            {[
+                                { emoji: '🎓', title: 'AI Ebook & Course Builder', replaces: 'Replaces Kajabi', price: '$119' },
+                                { emoji: '📱', title: 'Digital Storefront & Checkout', replaces: 'Replaces Squarespace, Shopify', price: '$29' },
+                                { emoji: '✉️', title: 'Auto-Delivery & Email Funnels', replaces: 'Replaces Mailchimp', price: '$20' },
+                                { emoji: '📝', title: 'AI Outline & Writing Workspace', replaces: 'Replaces Notion', price: '$10' },
+                                { emoji: '🎨', title: 'Product Cover & Asset Designer', replaces: 'Replaces Canva', price: '$15' },
+                                { emoji: '📨', title: 'Instagram AutoDMs & Lead Triggers', replaces: 'Replaces Manychat', price: '$15' },
+                                { emoji: '🔗', title: 'Custom Link-in-Bio Hub', replaces: 'Replaces Linktree', price: '$9' }
+                            ].map((item, idx) => (
+                                <div key={idx} className={styles.stanItem}>
+                                    <div className={styles.stanItemLeft}>
+                                        <div className={styles.stanItemEmoji}>{item.emoji}</div>
+                                        <div className={styles.stanItemMeta}>
+                                            <span className={styles.stanItemTitle}>{item.title}</span>
+                                            {item.replaces && (
+                                                <span className={styles.stanItemReplaces}>
+                                                    Replaces <span className={styles.replacesBrands}>{item.replaces.replace('Replaces ', '')}</span>
+                                                </span>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <div className={styles.stanItemRight}>
+                                        <span className={styles.stanItemPrice}>{item.price}</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <div className={styles.stanSeparator}></div>
+                        <div className={styles.stanFooterRow}>
+                            <div className={styles.stanItemLeft}>
+                                <div className={styles.stanFooterIconRed}>
+                                    <i className="ri-close-line"></i>
+                                </div>
+                                <span className={styles.stanFooterOldText}>What You'd Spend Otherwise</span>
+                            </div>
+                            <div className={styles.stanFooterRight}>
+                                <span className={styles.stanOldPriceStrike}>$217/mo</span>
+                            </div>
+                        </div>
+                        <div className={styles.stanFooterRow}>
+                            <div className={styles.stanItemLeft}>
+                                <div className={styles.stanFooterIconBlue}>
+                                    <i className="ri-money-dollar-circle-fill"></i>
+                                </div>
+                                <span className={styles.stanFooterNewText}>Join Creatorsblueprint ✨</span>
+                            </div>
+                            <div className={styles.stanFooterRight}>
+                                <span className={styles.stanNewPrice}>$29/mo</span>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
             {/* 3. MISSION */}
             <section id="mission" className={styles.section}>
                 <motion.div 
@@ -202,7 +523,7 @@ function Home({ setNavActive }) {
                         <div>
                             <div className={styles.badge}>Our Mission</div>
                             <h2 className={`${styles.title} ${styles.missionTitle}`}>
-                                CreatorsBlueprint exists to help creators turn attention into <span>ownership.</span>
+                                Creatorsblueprint exists to help creators turn attention into <span>ownership.</span>
                             </h2>
                             <p style={{ color: '#94a3b8', lineHeight: '1.6', fontSize: '1.1rem' }}>
                                 In a world where creators depend on unpredictable views, likes, and brand deals, CB Studio helps them build owned digital assets, systems, and automated monetization flows. We believe you should control your revenue engine.
@@ -226,41 +547,6 @@ function Home({ setNavActive }) {
                 </motion.div>
             </section>
 
-            {/* 4. FEATURES SECTION */}
-            <section id="features" className={styles.section}>
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.1 }}
-                    variants={fadeInUp}
-                >
-                    <h2 className={styles.title}>The All-in-One <span>Creator Backend</span></h2>
-                    <p className={styles.subtitle}>Everything you need to package, launch, and automate your digital business.</p>
-                </motion.div>
-
-                <ResponsiveGrid 
-                    gridClassName={styles.grid3}
-                    staggerContainer={staggerContainer}
-                    fadeInUp={fadeInUp}
-                    items={[
-                        { icon: 'ri-magic-line', title: 'AI-Powered Product Builder', desc: 'Build and launch monetizable digital products faster than ever before. Package your knowledge efficiently.' },
-                        { icon: 'ri-layout-masonry-line', title: 'Landing Page Funnels', desc: 'Create premium, high-converting sales pages without starting from scratch. Design that demands attention.' },
-                        { icon: 'ri-robot-2-line', title: 'Automated Delivery', desc: 'Automate product delivery and creator systems. Set it up once and let the software handle fulfillment.' },
-                        { icon: 'ri-bar-chart-grouped-line', title: 'Sales Automation', desc: 'Turn your audience into a repeatable revenue engine with smart workflows and optimized checkout flows.' },
-                        { icon: 'ri-vip-diamond-line', title: 'Premium Packaging', desc: 'Give your digital products the high-end feel they deserve. Increase perceived value instantly.' },
-                        { icon: 'ri-dashboard-3-line', title: 'Creator Infrastructure', desc: 'Manage your entire digital empire from one sleek dashboard built specifically for the modern creator.' }
-                    ]}
-                    renderItem={(feat) => (
-                        <div className={`${styles.glassCard} ${styles.featureCard}`}>
-                            <div className={styles.featureIcon}>
-                                <i className={feat.icon}></i>
-                            </div>
-                            <h3>{feat.title}</h3>
-                            <p>{feat.desc}</p>
-                        </div>
-                    )}
-                />
-            </section>
 
             {/* 5. HOW IT WORKS */}
             <section id="how-it-works" className={styles.section}>
@@ -327,25 +613,80 @@ function Home({ setNavActive }) {
                                 A stunning digital storefront where your entire creator identity lives. Package your knowledge and share it with one easily shareable link.
                             </p>
                         </div>
-                        <div 
-                            className={styles.featureVideoWrap}
-                            onClick={() => setLightboxContent({ src: '/Video/storefront-preview.mp4', type: 'video', name: 'Storefront Preview', caption: 'The Platform' })}
-                            style={{ cursor: 'pointer' }}
-                        >
-                            <div className={styles.featureVideoGlow} />
-                            <video
-                                className={styles.featureVideo}
-                                autoPlay
-                                muted
-                                loop
-                                playsInline
-                                disablePictureInPicture
-                                style={{ pointerEvents: 'none' }}
+                        <div className={styles.videoMockupWrapper}>
+                            {/* Floating Badge: Email Delivery */}
+                            <div className={`${styles.floatingCircleBadge} ${styles.badgeEmail}`}>
+                                <div className={styles.circleBadgeIcon}>
+                                    <i className="ri-mail-send-line"></i>
+                                </div>
+                                <span>EMAIL DELIVERY</span>
+                            </div>
+
+                            {/* Floating Badge: Ebooks */}
+                            <div className={`${styles.floatingCircleBadge} ${styles.badgeEbooks}`}>
+                                <div className={styles.circleBadgeIcon}>
+                                    <i className="ri-book-open-line"></i>
+                                </div>
+                                <span>EBOOKS</span>
+                            </div>
+
+                            {/* Floating Badge: Auto Payments */}
+                            <div className={`${styles.floatingCircleBadge} ${styles.badgePayments}`}>
+                                <div className={styles.circleBadgeIcon}>
+                                    <i className="ri-bank-card-line"></i>
+                                </div>
+                                <span>AUTO PAYMENTS</span>
+                            </div>
+
+                            {/* Floating Badge: Links */}
+                            <div className={`${styles.floatingCircleBadge} ${styles.badgeLinks}`}>
+                                <div className={styles.circleBadgeIcon}>
+                                    <i className="ri-link"></i>
+                                </div>
+                                <span>LINKS</span>
+                            </div>
+
+                            {/* Floating Badge: Affiliate Links */}
+                            <div className={`${styles.floatingCircleBadge} ${styles.badgeAffiliate}`}>
+                                <div className={styles.circleBadgeIcon}>
+                                    <i className="ri-percent-line"></i>
+                                </div>
+                                <span>AFFILIATE LINKS</span>
+                            </div>
+
+                            {/* Main Video Browser Mockup */}
+                            <div 
+                                className={styles.windowMockup}
+                                onClick={() => setLightboxContent({ src: '/Video/storefront-preview.mp4', type: 'video', name: 'Storefront Preview', caption: 'The Platform' })}
+                                style={{ cursor: 'pointer' }}
                             >
-                                <source src="/Video/storefront-preview.mp4" type="video/mp4" />
-                            </video>
-                            <div className={styles.videoOverlayHint}>
-                                <i className="ri-fullscreen-line"></i>
+                                <div className={styles.windowHeader}>
+                                    <div className={styles.windowDots}>
+                                        <span className={`${styles.windowDot} ${styles.dotRed}`}></span>
+                                        <span className={`${styles.windowDot} ${styles.dotYellow}`}></span>
+                                        <span className={`${styles.windowDot} ${styles.dotGreen}`}></span>
+                                    </div>
+                                    <span className={styles.windowTitle}>storefront.creatorsblueprint.com</span>
+                                </div>
+                                <div className={styles.windowBody}>
+                                    <div className={styles.featureVideoWrap}>
+                                        <div className={styles.featureVideoGlow} />
+                                        <video
+                                            className={styles.featureVideo}
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                            disablePictureInPicture
+                                            style={{ pointerEvents: 'none' }}
+                                        >
+                                            <source src="/Video/storefront-preview.mp4" type="video/mp4" />
+                                        </video>
+                                        <div className={styles.videoOverlayHint}>
+                                            <i className="ri-fullscreen-line"></i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -357,23 +698,35 @@ function Home({ setNavActive }) {
                                 <i className="ri-book-2-line"></i> Ebook Ideas
                             </div>
                             <div 
-                                className={styles.showcaseCardVideoWrap}
+                                className={styles.windowMockup}
                                 onClick={() => setLightboxContent({ src: '/Video/ebook-flow.mp4', type: 'video', name: 'Ebook Ideas', caption: 'AI Builder' })}
                                 style={{ cursor: 'pointer' }}
                             >
-                                <video
-                                    className={`${styles.showcaseCardVideo} ${styles.ebookVideo}`}
-                                    autoPlay
-                                    muted
-                                    loop
-                                    playsInline
-                                    disablePictureInPicture
-                                    style={{ pointerEvents: 'none' }}
-                                >
-                                    <source src="/Video/ebook-flow.mp4" type="video/mp4" />
-                                </video>
-                                <div className={styles.videoOverlayHint}>
-                                    <i className="ri-fullscreen-line"></i>
+                                <div className={styles.windowHeader}>
+                                    <div className={styles.windowDots}>
+                                        <span className={`${styles.windowDot} ${styles.dotRed}`}></span>
+                                        <span className={`${styles.windowDot} ${styles.dotYellow}`}></span>
+                                        <span className={`${styles.windowDot} ${styles.dotGreen}`}></span>
+                                    </div>
+                                    <span className={styles.windowTitle}>ebook-builder.creatorsblueprint.com</span>
+                                </div>
+                                <div className={styles.windowBody}>
+                                    <div className={styles.showcaseCardVideoWrap}>
+                                        <video
+                                            className={`${styles.showcaseCardVideo} ${styles.ebookVideo}`}
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                            disablePictureInPicture
+                                            style={{ pointerEvents: 'none' }}
+                                        >
+                                            <source src="/Video/ebook-flow.mp4" type="video/mp4" />
+                                        </video>
+                                        <div className={styles.videoOverlayHint}>
+                                            <i className="ri-fullscreen-line"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <p className={styles.showcaseCardDesc}>AI-assisted product creation that structures your knowledge into a high-value digital asset.</p>
@@ -383,23 +736,35 @@ function Home({ setNavActive }) {
                                 <i className="ri-edit-box-line"></i> Editor Preview
                             </div>
                             <div 
-                                className={styles.showcaseCardVideoWrap}
+                                className={styles.windowMockup}
                                 onClick={() => setLightboxContent({ src: '/Video/editor-preview.mp4', type: 'video', name: 'Editor Preview', caption: 'Product Customization' })}
                                 style={{ cursor: 'pointer' }}
                             >
-                                <video
-                                    className={styles.showcaseCardVideo}
-                                    autoPlay
-                                    muted
-                                    loop
-                                    playsInline
-                                    disablePictureInPicture
-                                    style={{ pointerEvents: 'none' }}
-                                >
-                                    <source src="/Video/editor-preview.mp4" type="video/mp4" />
-                                </video>
-                                <div className={styles.videoOverlayHint}>
-                                    <i className="ri-fullscreen-line"></i>
+                                <div className={styles.windowHeader}>
+                                    <div className={styles.windowDots}>
+                                        <span className={`${styles.windowDot} ${styles.dotRed}`}></span>
+                                        <span className={`${styles.windowDot} ${styles.dotYellow}`}></span>
+                                        <span className={`${styles.windowDot} ${styles.dotGreen}`}></span>
+                                    </div>
+                                    <span className={styles.windowTitle}>editor.creatorsblueprint.com</span>
+                                </div>
+                                <div className={styles.windowBody}>
+                                    <div className={styles.showcaseCardVideoWrap}>
+                                        <video
+                                            className={styles.showcaseCardVideo}
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                            disablePictureInPicture
+                                            style={{ pointerEvents: 'none' }}
+                                        >
+                                            <source src="/Video/editor-preview.mp4" type="video/mp4" />
+                                        </video>
+                                        <div className={styles.videoOverlayHint}>
+                                            <i className="ri-fullscreen-line"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <p className={styles.showcaseCardDesc}>The ultimate tool for creators to refine, package, and polish their digital empire.</p>
@@ -543,6 +908,8 @@ function Home({ setNavActive }) {
                 />
             </section>
 
+
+
             {/* 10. FAQ */}
             <section className={styles.section}>
                 <motion.h2 
@@ -589,24 +956,6 @@ function Home({ setNavActive }) {
                 </div>
             </section>
 
-            {/* 11. FINAL CTA */}
-            <section className={styles.section}>
-                <motion.div 
-                    className={styles.ctaBox}
-                    variants={fadeInUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                >
-                    <h2>Ready to Turn Attention Into <span>Assets?</span></h2>
-                    <p className={styles.subtitle} style={{ marginBottom: '40px' }}>
-                        Join the next phase of creator monetization. Launch smarter with CB Studio today.
-                    </p>
-                    <a href={CTA_URL} className={`${styles.primaryButton} ${styles.primaryButtonLarge}`}>
-                        Join the Waitlist <i className="ri-rocket-2-fill" style={{ marginLeft: '8px' }}></i>
-                    </a>
-                </motion.div>
-            </section>
 
             {/* Lightbox Modal */}
             <AnimatePresence>
@@ -653,6 +1002,35 @@ function Home({ setNavActive }) {
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            {cursorVisible && !isMobile && (
+                <>
+                    <motion.div 
+                        className={styles.customCursorDot}
+                        style={{
+                            left: cursorX,
+                            top: cursorY,
+                            x: -4,
+                            y: -4
+                        }}
+                    />
+                    <motion.div 
+                        className={styles.customCursorRing}
+                        style={{
+                            left: cursorXSpring,
+                            top: cursorYSpring,
+                            x: -16,
+                            y: -16
+                        }}
+                        animate={{
+                            scale: isHovered ? 1.5 : 1,
+                            borderColor: isHovered ? 'rgba(56, 189, 248, 0.8)' : 'rgba(56, 189, 248, 0.3)',
+                            backgroundColor: isHovered ? 'rgba(56, 189, 248, 0.05)' : 'rgba(255, 255, 255, 0)'
+                        }}
+                        transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                    />
+                </>
+            )}
         </div>
     );
 }

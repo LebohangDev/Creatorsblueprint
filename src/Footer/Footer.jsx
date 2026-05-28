@@ -39,7 +39,7 @@ function Footer() {
                 </div>
             </div>
             <div className={styles.footerBottom}>
-                <p>&copy; {currentYear} CB Studio by CreatorsBlueprint. All rights reserved.</p>
+                <p>&copy; {currentYear} CB Studio by Creatorsblueprint. All rights reserved.</p>
             </div>
         </footer>
     );

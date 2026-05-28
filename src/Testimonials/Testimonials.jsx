@@ -12,7 +12,7 @@ function Testimonials(){
             social: "@hajirakhaaan",
             description:
 
-            "Working with CreatorsBlueprint was a game-changer. They built a system that turned my casual followers into a real, predictable income stream. My first digital product sold out faster than I ever imagined!",
+            "Working with Creatorsblueprint was a game-changer. They built a system that turned my casual followers into a real, predictable income stream. My first digital product sold out faster than I ever imagined!",
             rating: 5
         },
         {

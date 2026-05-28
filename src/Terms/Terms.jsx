@@ -20,7 +20,7 @@ function Terms() {
                         <p>
                             2. Services
                             <br />
-                            CreatorsBlueprint provides digital product creation, monetization strategy,
+                            Creatorsblueprint provides digital product creation, monetization strategy,
                             and website development for content creators. The specifics of the services
                             are outlined in our "Packages" section and will be detailed in a formal agreement upon engagement.
                         </p>
@@ -29,7 +29,7 @@ function Terms() {
                             <br />
                             All prices for our services are listed in AED and USD. Payment is required before work commences.
                             We use third-party payment processors (Stripe/PayPal), and you agree to their terms when making a payment. 
-                            All payments made to CreatorsBlueprint are final and non-refundable. 
+                            All payments made to Creatorsblueprint are final and non-refundable. 
                             By making a payment, you acknowledge that you have read and agreed to our Terms of Service and Privacy Policy.
                         </p>
                         <p>
@@ -42,7 +42,7 @@ function Terms() {
                         <p>
                             5. Limitation of Liability
                             <br />
-                            CreatorsBlueprint is not liable for any indirect, incidental, or consequential damages
+                            Creatorsblueprint is not liable for any indirect, incidental, or consequential damages
                             (including loss of income) resulting from the use of our services.
                             Our total liability is limited to the amount you paid for the service.
                         </p>
@@ -55,7 +55,7 @@ function Terms() {
                         <p>
                             7. Governing Law
                             <br />
-                            These Terms shall be governed by the laws of the jurisdiction in which CreatorsBlueprint is registered,
+                            These Terms shall be governed by the laws of the jurisdiction in which Creatorsblueprint is registered,
                             without regard to its conflict of law provisions.
                         </p>
                     </div>

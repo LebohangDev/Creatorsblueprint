@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap');
-
 .footerContainer {
     background: #030816;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     padding: 80px 24px 24px 24px;
-    font-family: 'Roboto', sans-serif;
-    color: #94a3b8;
+    font-family: 'Inter', sans-serif;
+    color: #a1a1aa;
     position: relative;
     z-index: 10;
 }
@@ -42,14 +40,14 @@
 }
 
 .socials a {
-    color: #94a3b8;
+    color: #a1a1aa;
     font-size: 1.5rem;
     transition: color 0.3s ease, transform 0.3s ease;
     text-decoration: none;
 }
 
 .socials a:hover {
-    color: #38bdf8;
+    color: #ffffff;
     transform: translateY(-2px);
 }
 
@@ -67,19 +65,20 @@
 
 .linkColumn h4 {
     color: white;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 1.1rem;
     margin-bottom: 8px;
+    font-weight: 700;
 }
 
 .linkColumn a {
-    color: #94a3b8;
+    color: #71717a;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
 }
 
 .linkColumn a:hover {
-    color: #38bdf8;
+    color: #ffffff;
 }
 
 .footerBottom {

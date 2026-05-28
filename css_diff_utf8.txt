@@ -1,0 +1,1877 @@
+﻿diff --git a/src/Home/Home.module.css b/src/Home/Home.module.css
+index 193f474..6fb51c1 100644
+--- a/src/Home/Home.module.css
++++ b/src/Home/Home.module.css
+@@ -4,13 +4,50 @@
+ .homeContainer {
+   width: 100%;
+   min-height: 100vh;
+-  background: radial-gradient(circle at top right, #0a192f, #000000);
+-  font-family: 'Roboto', -apple-system, sans-serif;
+-  color: #ffffff;
++  background-color: #000000;
++  background-image: radial-gradient(circle at top right, #0a192f, #000000);
++  font-family: 'Inter', -apple-system, sans-serif;
++  color: #f4f4f5;
+   overflow-x: hidden;
+   position: relative;
+ }
+ 
++/* Custom Cursor & Hiding Default Pointer on Desktop */
++@media (min-width: 768px) {
++  .homeContainer,
++  .homeContainer a,
++  .homeContainer button,
++  .homeContainer [role="button"],
++  .homeContainer input,
++  .homeContainer select,
++  .homeContainer textarea {
++    cursor: none !important;
++  }
++}
++
++.customCursorDot {
++  position: fixed;
++  width: 8px;
++  height: 8px;
++  background-color: #38bdf8;
++  border-radius: 50%;
++  pointer-events: none;
++  z-index: 99999;
++  will-change: transform;
++}
++
++.customCursorRing {
++  position: fixed;
++  width: 32px;
++  height: 32px;
++  border: 1.5px solid rgba(56, 189, 248, 0.4);
++  border-radius: 50%;
++  pointer-events: none;
++  z-index: 99998;
++  will-change: transform;
++  transition: border-color 0.15s ease, background-color 0.15s ease;
++}
++
+ .homeContainer::before {
+   content: '';
+   position: fixed;
+@@ -63,8 +100,8 @@
+ .badge {
+   display: inline-block;
+   padding: 6px 16px;
+-  background: rgba(56, 189, 248, 0.1);
+-  border: 1px solid rgba(56, 189, 248, 0.2);
++  background: rgba(56, 189, 248, 0.08);
++  border: 1px solid rgba(56, 189, 248, 0.15);
+   color: #38bdf8;
+   border-radius: 20px;
+   font-size: 0.85rem;
+@@ -75,30 +112,31 @@
+ }
+ 
+ .title {
+-  font-family: 'Montserrat', sans-serif;
+-  font-size: 4rem;
++  font-family: 'Plus Jakarta Sans', sans-serif;
++  font-size: 4.5rem;
+   font-weight: 800;
+-  line-height: 1.1;
++  line-height: 1.05;
+   margin-bottom: 24px;
+   text-align: center;
+-  background: linear-gradient(to bottom right, #ffffff, #a0aec0);
++  background: linear-gradient(to bottom right, #ffffff, #a1a1aa);
+   -webkit-background-clip: text;
+   background-clip: text;
+   -webkit-text-fill-color: transparent;
++  letter-spacing: -0.04em;
+ }
+ 
+ .title span {
+-  background: linear-gradient(135deg, #38bdf8, #2563eb);
++  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+   -webkit-background-clip: text;
+   background-clip: text;
+   -webkit-text-fill-color: transparent;
+ }
+ 
+ .subtitle {
+-  font-size: 1.2rem;
+-  color: #94a3b8;
++  font-size: 1.15rem;
++  color: #a1a1aa;
+   text-align: center;
+-  max-width: 700px;
++  max-width: 680px;
+   margin: 0 auto 40px auto;
+   line-height: 1.6;
+ }
+@@ -112,17 +150,16 @@
+ }
+ 
+ .primaryButton {
+-  font-family: 'Montserrat', sans-serif;
++  font-family: 'Plus Jakarta Sans', sans-serif;
+   padding: 16px 32px;
+-  background: linear-gradient(135deg, #2563eb, #38bdf8);
+-  color: white;
+-  border: none;
++  background: #ffffff;
++  color: #030303;
++  border: 1px solid #ffffff;
+   border-radius: 12px;
+-  font-size: 1.1rem;
+-  font-weight: 600;
++  font-size: 1.05rem;
++  font-weight: 700;
+   cursor: pointer;
+-  transition: all 0.3s ease;
+-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
++  transition: all 0.2s ease;
+   display: inline-flex;
+   align-items: center;
+   gap: 8px;
+@@ -130,22 +167,24 @@
+ }
+ 
+ .primaryButton:hover {
++  background: transparent;
++  color: #ffffff;
++  border-color: rgba(255, 255, 255, 0.3);
+   transform: translateY(-2px);
+-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+-  background: linear-gradient(135deg, #3b82f6, #7dd3fc);
++  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.05);
+ }
+ 
+ .secondaryButton {
+-  font-family: 'Montserrat', sans-serif;
++  font-family: 'Plus Jakarta Sans', sans-serif;
+   padding: 16px 32px;
+-  background: rgba(255, 255, 255, 0.05);
+-  color: white;
+-  border: 1px solid rgba(255, 255, 255, 0.1);
++  background: rgba(255, 255, 255, 0.02);
++  color: #f4f4f5;
++  border: 1px solid rgba(255, 255, 255, 0.08);
+   border-radius: 12px;
+-  font-size: 1.1rem;
+-  font-weight: 600;
++  font-size: 1.05rem;
++  font-weight: 700;
+   cursor: pointer;
+-  transition: all 0.3s ease;
++  transition: all 0.2s ease;
+   display: inline-flex;
+   align-items: center;
+   gap: 8px;
+@@ -153,16 +192,17 @@
+ }
+ 
+ .secondaryButton:hover {
+-  background: rgba(255, 255, 255, 0.1);
++  background: rgba(255, 255, 255, 0.05);
++  border-color: rgba(255, 255, 255, 0.15);
+   transform: translateY(-2px);
+ }
+ 
+ /* Glass Card Component */
+ .glassCard {
+-  background: rgba(255, 255, 255, 0.03);
++  background: rgba(9, 9, 11, 0.7);
+   backdrop-filter: blur(24px);
+   -webkit-backdrop-filter: blur(24px);
+-  border: 1px solid rgba(255, 255, 255, 0.08);
++  border: 1px solid rgba(255, 255, 255, 0.06);
+   border-radius: 24px;
+   padding: 40px;
+   transition: transform 0.3s ease, border-color 0.3s ease;
+@@ -170,7 +210,7 @@
+ 
+ .glassCard:hover {
+   transform: translateY(-5px);
+-  border-color: rgba(56, 189, 248, 0.3);
++  border-color: rgba(56, 189, 248, 0.2);
+ }
+ 
+ /* Layouts */
+@@ -208,7 +248,8 @@
+   align-items: center;
+ }
+ 
+-.heroImages {
++/* Hero Floating Features Container */
++.heroFeatures {
+   position: absolute;
+   top: 0;
+   left: 0;
+@@ -218,41 +259,114 @@
+   pointer-events: none;
+ }
+ 
+-.heroImage {
++/* Floating card styling (Glassmorphism) */
++.featureFloatingCard {
+   position: absolute;
+-  opacity: 0.8;
++  pointer-events: auto;
++  background: rgba(9, 9, 11, 0.7);
++  backdrop-filter: blur(16px);
++  -webkit-backdrop-filter: blur(16px);
++  border: 1px solid rgba(255, 255, 255, 0.06);
++  border-radius: 16px;
++  padding: 16px 20px;
++  display: flex;
++  align-items: center;
++  gap: 16px;
++  width: 280px;
++  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
++  transition: border-color 0.3s ease, box-shadow 0.3s ease;
++}
++
++/* Color glowing borders on hover */
++.featCard1:hover { border-color: rgba(59, 130, 246, 0.3); box-shadow: 0 15px 35px rgba(59, 130, 246, 0.05); }
++.featCard2:hover { border-color: rgba(168, 85, 247, 0.3); box-shadow: 0 15px 35px rgba(168, 85, 247, 0.05); }
++.featCard3:hover { border-color: rgba(16, 185, 129, 0.3); box-shadow: 0 15px 35px rgba(16, 185, 129, 0.05); }
++.featCard4:hover { border-color: rgba(249, 115, 22, 0.3); box-shadow: 0 15px 35px rgba(249, 115, 22, 0.05); }
++.featCard5:hover { border-color: rgba(6, 182, 212, 0.3); box-shadow: 0 15px 35px rgba(6, 182, 212, 0.05); }
++
++/* Icons */
++.featureFloatingIcon {
++  width: 44px;
++  height: 44px;
++  border-radius: 12px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+-  filter: drop-shadow(0 20px 40px rgba(37, 99, 235, 0.25));
++  flex-shrink: 0;
++  background: rgba(255, 255, 255, 0.02);
++  border: 1px solid rgba(255, 255, 255, 0.08);
++}
++
++.featureFloatingIcon i {
++  font-size: 20px;
++  color: #a1a1aa;
++}
++
++/* Gradients for icon backgrounds */
++.bgBlue i { color: #60a5fa; }
++.bgPurple i { color: #a78bfa; }
++.bgGreen i { color: #34d399; }
++.bgOrange i { color: #f97316; }
++.bgCyan i { color: #22d3ee; }
++
++.featureFloatingText {
++  display: flex;
++  flex-direction: column;
++  text-align: left;
+ }
+ 
+-/* Stagger each image with a different animation + duration */
+-.heroImage:nth-child(1) {
+-  animation: floatA 6s ease-in-out infinite;
++.featureFloatingText h4 {
++  margin: 0 0 4px 0;
++  font-family: 'Plus Jakarta Sans', sans-serif;
++  font-size: 0.95rem;
++  font-weight: 700;
++  color: #ffffff;
+ }
+ 
+-.heroImage:nth-child(2) {
+-  animation: floatB 8s ease-in-out infinite;
+-  animation-delay: -2s;
++.featureFloatingText p {
++  margin: 0;
++  font-size: 0.78rem;
++  color: #a1a1aa;
++  line-height: 1.4;
+ }
+ 
+-.heroImage:nth-child(3) {
+-  animation: floatC 7s ease-in-out infinite;
+-  animation-delay: -4s;
++/* Sinusoidal floating animations */
++@keyframes floatCard1 {
++  0% { transform: translateY(0px) translateX(0px) rotate(-0.5deg); }
++  50% { transform: translateY(-10px) translateX(4px) rotate(0.5deg); }
++  100% { transform: translateY(0px) translateX(0px) rotate(-0.5deg); }
+ }
+ 
+-.heroImage img {
+-  width: 100%;
+-  height: auto;
+-  object-fit: contain;
+-  border-radius: 16px;
++@keyframes floatCard2 {
++  0% { transform: translateY(0px) translateX(0px) rotate(0.5deg); }
++  50% { transform: translateY(-8px) translateX(-4px) rotate(-0.5deg); }
++  100% { transform: translateY(0px) translateX(0px) rotate(0.5deg); }
++}
++
++@keyframes floatCard3 {
++  0% { transform: translateY(0px) translateX(0px) rotate(-0.3deg); }
++  50% { transform: translateY(-12px) translateX(5px) rotate(0.3deg); }
++  100% { transform: translateY(0px) translateX(0px) rotate(-0.3deg); }
++}
++
++@keyframes floatCard4 {
++  0% { transform: translateY(0px) translateX(0px) rotate(0.4deg); }
++  50% { transform: translateY(-9px) translateX(-5px) rotate(-0.4deg); }
++  100% { transform: translateY(0px) translateX(0px) rotate(0.4deg); }
++}
++
++@keyframes floatCard5 {
++  0% { transform: translateY(0px) translateX(0px) rotate(-0.4deg); }
++  50% { transform: translateY(-11px) translateX(3px) rotate(0.4deg); }
++  100% { transform: translateY(0px) translateX(0px) rotate(-0.4deg); }
+ }
+ 
+-/* Individual hero image positions */
+-.heroImage1 { width: 22vw; top: 10%; left: 10%; }
+-.heroImage2 { width: 24vw; top: 20%; right: 10%; }
+-.heroImage3 { width: 20vw; bottom: 12%; left: 22%; }
++/* Large screen position layout */
++.featCard1 { top: 12%; left: 6%; animation: floatCard1 12s ease-in-out infinite; }
++.featCard2 { bottom: 15%; left: 8%; animation: floatCard2 14s ease-in-out infinite; }
++.featCard3 { top: 14%; right: 6%; animation: floatCard3 16s ease-in-out infinite; }
++.featCard4 { bottom: 18%; right: 8%; animation: floatCard4 13s ease-in-out infinite; }
++.featCard5 { top: 48%; right: 4%; animation: floatCard5 15s ease-in-out infinite; }
+ 
+ /* Value Strip */
+ .valueStrip {
+@@ -264,19 +378,19 @@
+   border-top: 1px solid rgba(255,255,255,0.05);
+   border-bottom: 1px solid rgba(255,255,255,0.05);
+   width: 100%;
+-  background: rgba(0,0,0,0.2);
++  background: rgba(9, 9, 11, 0.2);
+ }
+ 
+ .valueItem {
+   display: flex;
+   align-items: center;
+   gap: 12px;
+-  color: #cbd5e1;
++  color: #a1a1aa;
+   font-weight: 500;
+ }
+ 
+ .valueItem i {
+-  color: #38bdf8;
++  color: #60a5fa;
+   font-size: 1.5rem;
+ }
+ 
+@@ -296,16 +410,17 @@
+ .statNumber {
+   font-size: 3.5rem;
+   font-weight: 800;
+-  font-family: 'Montserrat', sans-serif;
+-  background: linear-gradient(135deg, #38bdf8, #2563eb);
++  font-family: 'Plus Jakarta Sans', sans-serif;
++  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+   -webkit-background-clip: text;
+   background-clip: text;
+   -webkit-text-fill-color: transparent;
+   margin-bottom: 8px;
++  letter-spacing: -0.03em;
+ }
+ 
+ .statLabel {
+-  color: #94a3b8;
++  color: #71717a;
+   font-weight: 500;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+@@ -322,28 +437,29 @@
+ .featureIcon {
+   width: 60px;
+   height: 60px;
+-  background: rgba(37, 99, 235, 0.1);
++  background: rgba(255, 255, 255, 0.02);
+   border-radius: 16px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 24px;
+-  border: 1px solid rgba(59, 130, 246, 0.2);
++  border: 1px solid rgba(255, 255, 255, 0.08);
+ }
+ 
+ .featureIcon i {
+   font-size: 24px;
+-  color: #38bdf8;
++  color: #60a5fa;
+ }
+ 
+ .featureCard h3 {
+-  font-size: 1.5rem;
++  font-size: 1.4rem;
+   margin-bottom: 16px;
+-  font-family: 'Montserrat', sans-serif;
++  font-family: 'Plus Jakarta Sans', sans-serif;
++  letter-spacing: -0.02em;
+ }
+ 
+ .featureCard p {
+-  color: #94a3b8;
++  color: #a1a1aa;
+   line-height: 1.6;
+ }
+ 
+@@ -466,7 +582,7 @@
+ }
+ 
+ .featureBlockTitle span {
+-  background: linear-gradient(135deg, #38bdf8, #2563eb);
++  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+   -webkit-background-clip: text;
+   background-clip: text;
+   -webkit-text-fill-color: transparent;
+@@ -474,23 +590,82 @@
+ 
+ .featureBlockDesc {
+   font-size: 1.1rem;
+-  color: #94a3b8;
++  color: #a1a1aa;
+   line-height: 1.7;
+ }
+ 
++/* window mockup wrapper */
++.windowMockup {
++  width: 100%;
++  border-radius: 16px;
++  background: #09090b;
++  border: 1px solid rgba(255, 255, 255, 0.08);
++  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
++  overflow: hidden;
++  display: flex;
++  flex-direction: column;
++  transition: border-color 0.3s ease, box-shadow 0.3s ease;
++}
++
++.windowMockup:hover {
++  border-color: rgba(255, 255, 255, 0.15);
++  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 255, 255, 0.02);
++}
++
++.windowHeader {
++  height: 40px;
++  background: #0e0e11;
++  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
++  display: flex;
++  align-items: center;
++  padding: 0 16px;
++  position: relative;
++  box-sizing: border-box;
++}
++
++.windowDots {
++  display: flex;
++  gap: 8px;
++}
++
++.windowDot {
++  width: 10px;
++  height: 10px;
++  border-radius: 50%;
++  display: inline-block;
++}
++
++.dotRed { background-color: #ef4444; }
++.dotYellow { background-color: #f59e0b; }
++.dotGreen { background-color: #10b981; }
++
++.windowTitle {
++  position: absolute;
++  left: 50%;
++  transform: translateX(-50%);
++  color: #64748b;
++  font-size: 0.78rem;
++  font-family: 'Inter', monospace;
++  font-weight: 500;
++  pointer-events: none;
++}
++
++.windowBody {
++  background: #000000;
++  width: 100%;
++}
++
+ .featureVideoWrap {
+   position: relative;
+-  border-radius: 24px;
+   overflow: hidden;
+-  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+-  border: 1px solid rgba(255,255,255,0.1);
+   background: #000;
++  display: flex;
+ }
+ 
+ .featureVideoGlow {
+   position: absolute;
+   inset: 0;
+-  background: radial-gradient(circle at center, rgba(37, 99, 235, 0.2), transparent 70%);
++  background: radial-gradient(circle at center, rgba(37, 99, 235, 0.15), transparent 70%);
+   z-index: 1;
+   pointer-events: none;
+ }
+@@ -512,19 +687,20 @@
+ }
+ 
+ .showcaseCardItem {
+-  background: rgba(255, 255, 255, 0.02);
++  background: rgba(9, 9, 11, 0.4);
+   border: 1px solid rgba(255, 255, 255, 0.05);
+   border-radius: 32px;
+   padding: 40px;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+-  transition: transform 0.3s ease;
++  transition: transform 0.3s ease, border-color 0.3s ease;
++  box-sizing: border-box;
+ }
+ 
+ .showcaseCardItem:hover {
+-  transform: translateY(-8px);
+-  border-color: rgba(56, 189, 248, 0.2);
++  transform: translateY(-4px);
++  border-color: rgba(255, 255, 255, 0.1);
+ }
+ 
+ .showcaseCardTag {
+@@ -538,11 +714,10 @@
+ 
+ .showcaseCardVideoWrap {
+   width: 100%;
+-  border-radius: 16px;
+   overflow: hidden;
+   background: rgba(0,0,0,0.3);
+-  border: 1px solid rgba(255,255,255,0.08);
+   position: relative;
++  display: flex;
+ }
+ 
+ .showcaseCardVideo {
+@@ -1024,131 +1199,1049 @@
+   text-align: left;
+ }
+ 
+-@media (max-width: 1024px) {
+-  .grid3 { grid-template-columns: repeat(2, 1fr); }
+-  .statsGrid { grid-template-columns: repeat(3, 1fr); }
+-  .hero { min-height: 80vh; }
++/* Tool Consolidation Section */
++.consolidationSection {
++  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.03) 0%, transparent 60%);
++  padding: 80px 24px;
+ }
+ 
+-@media (max-width: 768px) {
+-  /* ΓöÇΓöÇ Typography ΓöÇΓöÇ */
+-  .title { font-size: 2.2rem; line-height: 1.2; }
+-  .subtitle { font-size: 1rem; padding: 0; }
+-  .missionTitle { font-size: 1.7rem; text-align: left; }
++.consolidationWrapper {
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++  width: 100%;
++  margin-top: 40px;
++  gap: 32px;
++}
+ 
+-  /* ΓöÇΓöÇ Layout ΓÇö increase side padding so cards don't touch screen edges ΓöÇΓöÇ */
+-  .section { padding: 56px 24px; }
+-  .grid2,
+-  .grid3,
+-  .proofGrid,
+-  .teamGrid,
+-  .showcaseGrid { grid-template-columns: 1fr; gap: 20px; }
+-  .statsGrid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
++.logoWebContainer {
++  position: relative;
++  width: 100%;
++  max-width: 680px;
++  height: 280px;
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  margin: 20px auto;
++}
+ 
+-  /* ΓöÇΓöÇ Hero: text first, images row below, height = content only ΓöÇΓöÇ */
+-  .hero {
+-    min-height: auto;
+-    padding: 110px 24px 40px;
+-    flex-direction: column;
+-    justify-content: flex-start;
+-    align-items: center;
+-    overflow: hidden;
+-  }
++.logoWebCenter {
++  position: relative;
++  width: 96px;
++  height: 96px;
++  border-radius: 50%;
++  background: rgba(10, 25, 47, 0.7);
++  border: 1px solid rgba(56, 189, 248, 0.3);
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  z-index: 5;
++  box-shadow: 0 0 45px rgba(56, 189, 248, 0.25), inset 0 0 15px rgba(56, 189, 248, 0.15);
++  backdrop-filter: blur(8px);
++  -webkit-backdrop-filter: blur(8px);
++}
+ 
+-  /* Push text content to top (order 1) and images below (order 2) */
+-  .heroContent { width: 100%; text-align: center; padding: 0; order: 1; }
++.logoFingerprint {
++  width: 44px;
++  height: 44px;
++  object-fit: contain;
++  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.5));
++}
+ 
+-  /* Reflow images as a horizontal thumbnail row below hero text */
+-  .heroImages {
+-    order: 2;
+-    position: relative;
+-    top: auto; left: auto;
+-    width: 100%;
+-    height: auto;
+-    display: flex;
+-    gap: 10px;
+-    margin-top: 32px;
+-    pointer-events: none;
+-  }
++.radarPulse {
++  position: absolute;
++  width: 100%;
++  height: 100%;
++  border-radius: 50%;
++  border: 1.5px solid rgba(56, 189, 248, 0.2);
++  animation: radarPulseAnim 3.5s infinite cubic-bezier(0.16, 1, 0.3, 1);
++}
+ 
+-  /* Each image becomes equal-width column */
+-  .heroImage {
+-    position: relative !important;
+-    width: calc(33.333% - 7px) !important;
+-    height: 160px;
+-    overflow: hidden;
+-    border-radius: 14px;
+-    opacity: 0.9;
+-    flex-shrink: 0;
+-    /* keep float animation */
+-  }
++.radarPulseSecond {
++  position: absolute;
++  width: 100%;
++  height: 100%;
++  border-radius: 50%;
++  border: 1px solid rgba(56, 189, 248, 0.1);
++  animation: radarPulseAnim 3.5s infinite cubic-bezier(0.16, 1, 0.3, 1);
++  animation-delay: 1.75s;
++}
+ 
+-  /* Override individual desktop positions */
+-  .heroImage1, .heroImage2, .heroImage3 {
+-    display: block;
+-    top: auto !important;
+-    left: auto !important;
+-    right: auto !important;
+-    bottom: auto !important;
+-    width: calc(33.333% - 7px) !important;
+-  }
++@keyframes radarPulseAnim {
++  0% { transform: scale(1); opacity: 0.9; }
++  100% { transform: scale(3.5); opacity: 0; }
++}
+ 
+-  /* Cover-fit images inside their fixed-height containers */
+-  .heroImage img {
+-    width: 100%;
+-    height: 100%;
+-    object-fit: cover;
+-    object-position: center top;
+-    border-radius: 14px;
+-  }
++/* iOS squircle style & glossy overlay */
++.appIconSquircle {
++  position: relative;
++  width: 72px;
++  height: 72px;
++  border-radius: 22%;
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  overflow: hidden;
++  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2);
++  transition: transform 0.2s ease, border-color 0.2s ease;
++  box-sizing: border-box;
++}
+ 
+-  /* ΓöÇΓöÇ Value strip ΓöÇΓöÇ */
+-  .valueStrip { gap: 20px; padding: 32px 24px; flex-wrap: wrap; justify-content: flex-start; }
+-  .valueItem { font-size: 0.9rem; }
++.replacedBadge.appIconSquircle {
++  position: absolute;
++  padding: 0;
++}
+ 
+-  /* ΓöÇΓöÇ How it works ΓöÇΓöÇ */
+-  .stepList { max-width: 100%; }
+-  .stepList::before { left: 20px; }
+-  .stepItem { gap: 20px; }
+-  .stepNumber { width: 40px; height: 40px; font-size: 1rem; flex-shrink: 0; }
+-  .stepContent h3 { font-size: 1.2rem; }
++.glossOverlay {
++  position: absolute;
++  inset: 0;
++  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 50%);
++  z-index: 4;
++  pointer-events: none;
++}
+ 
+-  /* ΓöÇΓöÇ Glass / Feature cards ΓöÇΓöÇ */
+-  .glassCard { 
+-    padding: 24px;
+-    width: 95% !important;
+-    margin: 0 auto;
+-    box-sizing: border-box;
+-  }
++/* iOS Jiggle Animation */
++@keyframes jiggle {
++  0% { transform: scale(1.06) rotate(-2deg); }
++  50% { transform: scale(1.06) rotate(2deg); }
++  100% { transform: scale(1.06) rotate(-2deg); }
++}
+ 
+-  /* ΓöÇΓöÇ Showcase ΓöÇΓöÇ */
+-  .featureBlock {
+-    grid-template-columns: 1fr;
+-    padding: 40px 24px;
+-    gap: 40px;
+-    border-radius: 24px;
+-    margin: 40px 0;
+-  }
++.appIconSquircle:hover {
++  animation: jiggle 0.22s infinite ease-in-out;
++  border-color: rgba(255, 255, 255, 0.35) !important;
++  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 255, 255, 0.1);
++  z-index: 10;
++}
+ 
+-  .featureBlockTitle {
+-    font-size: 2.2rem;
+-  }
++/* Brand specific backdrops */
++.appGumroad {
++  background-color: #121212;
++  border: 1px solid rgba(255, 255, 255, 0.1);
++}
++.appGumroad .badgeIcon {
++  color: #ff5c5c !important;
++}
+ 
+-  .showcaseCardsRow {
+-    grid-template-columns: 1fr;
+-    gap: 24px;
+-  }
++.appCanva {
++  background: linear-gradient(135deg, #7d2ae8, #00c4cc);
++  border: 1px solid rgba(255, 255, 255, 0.15);
++}
++.appCanva .badgeIcon {
++  color: #ffffff !important;
++}
+ 
+-  .showcaseCardItem {
+-    padding: 24px;
+-    border-radius: 24px;
+-  }
++.appNotion {
++  background-color: #ffffff;
++  border: 1px solid rgba(0, 0, 0, 0.15);
++}
++.appNotion .badgeIcon {
++  color: #000000 !important;
++}
+ 
+-  /* ΓöÇΓöÇ Proof / Client cards ΓöÇΓöÇ */
+-  .proofCard { height: 260px; }
+-  .proofExpandHint { opacity: 0.75; }
++.appLinktree {
++  background-color: #25c06a;
++  border: 1px solid rgba(255, 255, 255, 0.15);
++}
++.appLinktree .badgeIcon {
++  color: #ffffff !important;
++}
+ 
+-  /* ΓöÇΓöÇ Testimonials ΓöÇΓöÇ */
++.appMailchimp {
++  background-color: #ffe01b;
++  border: 1px solid rgba(0, 0, 0, 0.15);
++}
++.appMailchimp .badgeIcon {
++  color: #2c2205 !important;
++}
++
++.badgeIcon {
++  width: 28px;
++  height: 28px;
++  display: inline-block;
++  z-index: 2;
++  flex-shrink: 0;
++}
++
++.badgeStrike {
++  position: absolute;
++  top: 50%;
++  left: -10%;
++  right: -10%;
++  height: 3px;
++  background: linear-gradient(90deg, transparent, #ef4444, transparent);
++  box-shadow: 0 0 8px #ef4444;
++  z-index: 5;
++  transform: rotate(-15deg);
++  opacity: 0.85;
++  transition: opacity 0.2s ease, box-shadow 0.2s ease;
++}
++
++.appIconSquircle:hover .badgeStrike {
++  opacity: 1;
++  box-shadow: 0 0 12px #ef4444;
++  height: 4px;
++}
++
++/* macOS Dock Comparison Visual */
++.dockComparisonWrapper {
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  gap: 48px;
++  width: 100%;
++  max-width: 900px;
++  margin: 40px auto 60px auto;
++  position: relative;
++  z-index: 5;
++}
++
++.competitorDockCard, .unifiedAppCard {
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++  gap: 20px;
++}
++
++.cardCaption {
++  font-family: 'Plus Jakarta Sans', sans-serif;
++  font-size: 0.8rem;
++  font-weight: 700;
++  color: #71717a;
++  text-transform: uppercase;
++  letter-spacing: 1.5px;
++}
++
++.macOSDock {
++  display: flex;
++  align-items: center;
++  gap: 16px;
++  background: rgba(255, 255, 255, 0.02);
++  border: 1px solid rgba(255, 255, 255, 0.06);
++  padding: 20px 24px 16px 24px;
++  border-radius: 24px;
++  position: relative;
++  box-shadow: 
++    inset 0 1px 0 rgba(255, 255, 255, 0.05),
++    0 25px 50px rgba(0, 0, 0, 0.6);
++  backdrop-filter: blur(12px);
++  -webkit-backdrop-filter: blur(12px);
++}
++
++.dockGlowRed {
++  position: absolute;
++  inset: 0;
++  border-radius: 24px;
++  background: radial-gradient(circle at center, rgba(239, 68, 68, 0.05) 0%, transparent 80%);
++  pointer-events: none;
++  z-index: 0;
++}
++
++.dockIconItem {
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++  gap: 8px;
++  position: relative;
++  z-index: 1;
++}
++
++.dockIconLabel {
++  font-size: 0.72rem;
++  color: #71717a;
++  font-weight: 600;
++  letter-spacing: 0.5px;
++  transition: color 0.2s ease;
++}
++
++.dockIconItem:hover .dockIconLabel {
++  color: #e4e4e7;
++}
++
++/* Wiggle animation (slow for default, faster on hover) */
++@keyframes jiggleSlow {
++  0% { transform: rotate(-0.8deg); }
++  50% { transform: rotate(0.8deg); }
++  100% { transform: rotate(-0.8deg); }
++}
++
++.jiggleAlways .appIconSquircle {
++  animation: jiggleSlow 0.35s infinite ease-in-out;
++}
++
++.dockIconItem:hover .appIconSquircle {
++  animation: jiggle 0.2s infinite ease-in-out !important;
++  transform: scale(1.15) !important;
++}
++
++/* Creatorsblueprint Unified App Icon */
++.appCBStudio {
++  background-color: #030712;
++  border: 2px solid #38bdf8;
++  width: 96px;
++  height: 96px;
++  box-shadow: 
++    0 0 35px rgba(56, 189, 248, 0.3),
++    inset 0 1px 1px rgba(255, 255, 255, 0.3),
++    inset 0 0 15px rgba(56, 189, 248, 0.2);
++  position: relative;
++  overflow: visible; /* to show the rotating halo */
++}
++
++.cbStudioAppLogo {
++  width: 44px;
++  height: 44px;
++  object-fit: contain;
++  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.6));
++  z-index: 3;
++}
++
++.neonHaloBlue {
++  position: absolute;
++  inset: -6px;
++  border-radius: 22%;
++  border: 1.5px dashed rgba(56, 189, 248, 0.45);
++  animation: rotateHalo 16s linear infinite;
++  z-index: 1;
++  pointer-events: none;
++}
++
++@keyframes rotateHalo {
++  0% { transform: rotate(0deg); }
++  100% { transform: rotate(360deg); }
++}
++
++.unifiedAppLabel {
++  font-family: 'Plus Jakarta Sans', sans-serif;
++  font-size: 1rem;
++  font-weight: 800;
++  color: #38bdf8;
++  letter-spacing: 0.5px;
++  text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
++}
++
++/* Transition Chevron Indicator */
++.dockComparisonArrow {
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  font-size: 3rem;
++  color: #38bdf8;
++  position: relative;
++  width: 48px;
++  height: 48px;
++  z-index: 2;
++}
++
++.dockComparisonArrow i {
++  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.4));
++  animation: arrowPulseAnim 2.5s infinite ease-in-out;
++}
++
++@keyframes arrowPulseAnim {
++  0%, 100% { transform: translateX(0); opacity: 0.8; }
++  50% { transform: translateX(6px); opacity: 1; }
++}
++
++.arrowPulse {
++  position: absolute;
++  width: 56px;
++  height: 56px;
++  border-radius: 50%;
++  border: 1.5px solid rgba(56, 189, 248, 0.25);
++  animation: pulseArrow 2.5s infinite ease-out;
++  pointer-events: none;
++}
++
++@keyframes pulseArrow {
++  0% { transform: scale(0.8); opacity: 0.8; }
++  100% { transform: scale(1.8); opacity: 0; }
++}
++
++.consolidationTextInfo {
++  max-width: 680px;
++  text-align: center;
++}
++
++.consolidationTextInfo h3 {
++  font-size: 1.8rem;
++  font-family: 'Plus Jakarta Sans', sans-serif;
++  font-weight: 800;
++  color: #ffffff;
++  margin: 0 0 16px 0;
++  letter-spacing: -0.5px;
++}
++
++.consolidationTextInfo p {
++  color: #a1a1aa;
++  font-size: 1.05rem;
++  line-height: 1.7;
++  margin: 0;
++}
++
++.consolidationTextInfo p strong {
++  color: #38bdf8;
++}
++
++/* Side-by-Side Comparison Grid Deck */
++.comparisonGridDeck {
++  display: grid;
++  grid-template-columns: 1fr 1fr;
++  gap: 32px;
++  width: 100%;
++  max-width: 960px;
++  margin-top: 48px;
++}
++
++.comparisonCard {
++  background: rgba(9, 9, 11, 0.6);
++  backdrop-filter: blur(20px);
++  -webkit-backdrop-filter: blur(20px);
++  border: 1px solid rgba(255, 255, 255, 0.05);
++  border-radius: 24px;
++  padding: 40px;
++  position: relative;
++  overflow: hidden;
++  display: flex;
++  flex-direction: column;
++  box-sizing: border-box;
++  text-align: left;
++  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
++  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
++}
++
++.comparisonCard:hover {
++  transform: translateY(-6px);
++  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
++}
++
++.fragmentedCard:hover {
++  border-color: rgba(239, 68, 68, 0.25);
++  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(239, 68, 68, 0.05);
++}
++
++.unifiedCard {
++  border: 1px solid rgba(56, 189, 248, 0.15);
++}
++
++.unifiedCard:hover {
++  border-color: rgba(56, 189, 248, 0.4);
++  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.08);
++}
++
++.cardGlowRed {
++  position: absolute;
++  top: -20%;
++  right: -20%;
++  width: 50%;
++  height: 50%;
++  background: radial-gradient(circle, rgba(239, 68, 68, 0.08) 0%, transparent 70%);
++  pointer-events: none;
++  z-index: 0;
++}
++
++.cardGlowBlue {
++  position: absolute;
++  top: -20%;
++  right: -20%;
++  width: 50%;
++  height: 50%;
++  background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
++  pointer-events: none;
++  z-index: 0;
++}
++
++.comparisonCardHeader {
++  position: relative;
++  z-index: 1;
++  margin-bottom: 28px;
++  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
++  padding-bottom: 24px;
++}
++
++.cardHeaderTag {
++  font-family: 'Plus Jakarta Sans', sans-serif;
++  font-size: 0.78rem;
++  font-weight: 700;
++  letter-spacing: 1px;
++  text-transform: uppercase;
++  color: #71717a;
++  display: block;
++  margin-bottom: 12px;
++}
++
++.tagHighlight {
++  color: #38bdf8;
++}
++
++.comparisonCardHeader h4 {
++  font-family: 'Plus Jakarta Sans', sans-serif;
++  font-size: 1.8rem;
++  font-weight: 800;
++  color: #ffffff;
++  margin: 0 0 12px 0;
++  letter-spacing: -0.5px;
++}
++
++.cardPriceInfo {
++  display: flex;
++  align-items: baseline;
++  gap: 8px;
++}
++
++.cardPriceAmount {
++  font-family: 'Plus Jakarta Sans', sans-serif;
++  font-size: 2.8rem;
++  font-weight: 800;
++  color: #ffffff;
++  line-height: 1;
++}
++
++.fragmentedCard .cardPriceAmount {
++  color: #cbd5e1;
++}
++
++.unifiedCard .cardPriceAmount {
++  background: linear-gradient(135deg, #ffffff, #93c5fd);
++  -webkit-background-clip: text;
++  background-clip: text;
++  -webkit-text-fill-color: transparent;
++}
++
++.cardPricePeriod {
++  font-size: 0.95rem;
++  color: #71717a;
++  font-weight: 500;
++}
++
++.comparisonPoints {
++  position: relative;
++  z-index: 1;
++  list-style: none;
++  padding: 0;
++  margin: 0;
++  display: flex;
++  flex-direction: column;
++  gap: 18px;
++}
++
++.comparisonPoints li {
++  display: flex;
++  align-items: flex-start;
++  gap: 14px;
++  font-size: 0.95rem;
++  line-height: 1.5;
++  color: #a1a1aa;
++}
++
++.comparisonPoints li i {
++  font-size: 1.15rem;
++  flex-shrink: 0;
++  margin-top: 2px;
++}
++
++.comparisonPoints li .ri-close-circle-fill {
++  color: rgba(239, 68, 68, 0.7);
++}
++
++.comparisonPoints li .ri-checkbox-circle-fill {
++  color: #10b981;
++}
++
++.comparisonPoints li strong {
++  color: #ffffff;
++}
++
++/* App icon grid inside comparison card */
++.appIconGrid {
++  display: grid;
++  grid-template-columns: repeat(5, 1fr);
++  gap: 12px;
++  width: 100%;
++  margin-top: 32px;
++  justify-content: center;
++}
++
++.gridAppContainer {
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++  gap: 12px;
++  text-align: center;
++}
++
++/* Override app icon size inside the card grid */
++.gridAppContainer .appIconSquircle {
++  width: 64px;
++  height: 64px;
++}
++
++.gridAppContainer .badgeIcon {
++  width: 24px;
++  height: 24px;
++}
++
++.appCaption {
++  display: flex;
++  flex-direction: column;
++  gap: 2px;
++}
++
++.appCaption strong {
++  color: #f4f4f5;
++  font-size: 0.85rem;
++  font-weight: 700;
++  display: block;
++}
++
++.appCaption span {
++  color: #f43f5e;
++  font-size: 0.72rem;
++  font-weight: 600;
++}
++
++/* Pricing Section */
++.pricingSection {
++  background: radial-gradient(circle at bottom, rgba(56, 189, 248, 0.01) 0%, transparent 60%);
++  padding: 80px 24px;
++}
++
++.pricingHeader {
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++  margin-bottom: 48px;
++}
++
++.billingToggleContainer {
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  gap: 16px;
++  margin-top: 24px;
++  font-weight: 600;
++  font-size: 1.05rem;
++  color: #71717a;
++}
++
++.toggleSwitch {
++  background: rgba(255, 255, 255, 0.04);
++  border: 1px solid rgba(255, 255, 255, 0.08);
++  width: 48px;
++  height: 24px;
++  border-radius: 20px;
++  position: relative;
++  cursor: pointer;
++  transition: all 0.2s ease;
++  padding: 0;
++  outline: none;
++}
++
++.toggleKnob {
++  position: absolute;
++  width: 16px;
++  height: 16px;
++  background: #ffffff;
++  border-radius: 50%;
++  top: 3px;
++  left: 4px;
++  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
++}
++
++.toggleKnobRight {
++  transform: translateX(22px);
++  background: #3b82f6;
++}
++
++.activeBilling {
++  color: #ffffff;
++  transition: color 0.2s ease;
++}
++
++.saveBadge {
++  background: rgba(16, 185, 129, 0.1);
++  border: 1px solid rgba(16, 185, 129, 0.2);
++  color: #34d399;
++  font-size: 0.7rem;
++  padding: 2px 8px;
++  border-radius: 8px;
++  margin-left: 4px;
++  font-weight: 700;
++  text-transform: uppercase;
++  letter-spacing: 0.5px;
++}
++
++.pricingContainer {
++  width: 100%;
++  display: flex;
++  justify-content: center;
++  margin-top: 20px;
++}
++
++.premiumPricingCard {
++  background: rgba(9, 9, 11, 0.7);
++  backdrop-filter: blur(24px);
++  -webkit-backdrop-filter: blur(24px);
++  border: 1px solid rgba(255, 255, 255, 0.06);
++  border-radius: 32px;
++  width: 100%;
++  max-width: 920px;
++  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.6);
++  overflow: hidden;
++  box-sizing: border-box;
++}
++
++.premiumCardMain {
++  display: grid;
++  grid-template-columns: 1fr 1.15fr;
++  align-items: stretch;
++}
++
++.premiumCardDetails {
++  padding: 56px 48px;
++  border-right: 1px solid rgba(255, 255, 255, 0.05);
++  display: flex;
++  flex-direction: column;
++  text-align: left;
++  background: transparent;
++  box-sizing: border-box;
++}
++
++.premiumCardDetails h3 {
++  font-size: 1.8rem;
++  font-family: 'Plus Jakarta Sans', sans-serif;
++  font-weight: 800;
++  color: #ffffff;
++  margin: 0 0 12px 0;
++  letter-spacing: -0.5px;
++}
++
++.premiumCardDetails p {
++  color: #a1a1aa;
++  font-size: 0.95rem;
++  line-height: 1.55;
++  margin: 0 0 24px 0;
++}
++
++.premiumPriceArea {
++  display: flex;
++  align-items: baseline;
++  gap: 4px;
++  margin-top: 16px;
++}
++
++.premiumCurrency {
++  font-size: 2.2rem;
++  font-weight: 700;
++  color: #3b82f6;
++  font-family: 'Plus Jakarta Sans', sans-serif;
++}
++
++.premiumPriceAmount {
++  font-size: 4.8rem;
++  font-weight: 800;
++  color: #ffffff;
++  font-family: 'Plus Jakarta Sans', sans-serif;
++  line-height: 1;
++  letter-spacing: -3px;
++}
++
++.premiumBillingPeriod {
++  font-size: 1.15rem;
++  color: #71717a;
++  font-weight: 500;
++  margin-left: 4px;
++}
++
++.premiumYearlyLabel {
++  font-size: 0.85rem;
++  color: #34d399;
++  display: block;
++  margin-top: 8px;
++  font-weight: 600;
++}
++
++.premiumPricingCta {
++  background: #ffffff;
++  color: #030303;
++  border: 1px solid #ffffff;
++  border-radius: 12px;
++  padding: 16px 36px;
++  font-size: 1.05rem;
++  font-weight: 700;
++  text-decoration: none;
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  gap: 8px;
++  margin-top: 32px;
++  cursor: pointer;
++  transition: all 0.2s ease;
++  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.03);
++  text-align: center;
++}
++
++.premiumPricingCta:hover {
++  background: transparent;
++  color: #ffffff;
++  border-color: rgba(255, 255, 255, 0.3);
++  transform: translateY(-2px);
++  box-shadow: 0 15px 30px rgba(255, 255, 255, 0.05);
++}
++
++.premiumCardGuarantee {
++  font-size: 0.8rem;
++  color: #71717a;
++  text-align: center;
++  margin-top: 14px;
++  display: block;
++}
++
++.premiumCardFeatures {
++  padding: 56px 48px;
++  display: flex;
++  flex-direction: column;
++  justify-content: space-between;
++  text-align: left;
++  box-sizing: border-box;
++}
++
++.premiumCardFeatures h4 {
++  font-size: 0.95rem;
++  font-family: 'Plus Jakarta Sans', sans-serif;
++  color: #71717a;
++  margin: 0 0 24px 0;
++  font-weight: 700;
++  text-transform: uppercase;
++  letter-spacing: 1px;
++}
++
++.premiumFeaturesList {
++  list-style: none;
++  padding: 0;
++  margin: 0;
++  display: flex;
++  flex-direction: column;
++  gap: 18px;
++}
++
++.premiumFeaturesList li {
++  display: flex;
++  align-items: flex-start;
++  gap: 12px;
++  font-size: 0.95rem;
++  line-height: 1.55;
++  color: #a1a1aa;
++}
++
++.premiumFeaturesList li i {
++  color: #3b82f6;
++  font-size: 1.1rem;
++  flex-shrink: 0;
++  margin-top: 2px;
++}
++
++.premiumFeaturesList li strong {
++  color: #ffffff;
++}
++
++.premiumCardFooterNote {
++  margin-top: 32px;
++  background: rgba(255, 255, 255, 0.01);
++  border: 1px solid rgba(255, 255, 255, 0.03);
++  border-radius: 12px;
++  padding: 12px 16px;
++  display: flex;
++  gap: 10px;
++  align-items: center;
++  font-size: 0.8rem;
++  color: #71717a;
++  box-sizing: border-box;
++}
++
++.premiumCardFooterNote i {
++  color: #3b82f6;
++  font-size: 1rem;
++}
++
++@media (max-width: 1024px) {
++  .grid3 { grid-template-columns: repeat(2, 1fr); }
++  .statsGrid { grid-template-columns: repeat(3, 1fr); }
++  .hero { min-height: 80vh; }
++}
++
++@media (max-width: 768px) {
++  /* ΓöÇΓöÇ Typography ΓöÇΓöÇ */
++  .title { font-size: 2.2rem; line-height: 1.2; }
++  .subtitle { font-size: 1rem; padding: 0; }
++  .missionTitle { font-size: 1.7rem; text-align: left; }
++
++  /* ΓöÇΓöÇ Layout ΓÇö increase side padding so cards don't touch screen edges ΓöÇΓöÇ */
++  .section { padding: 56px 24px; }
++  .grid2,
++  .grid3,
++  .proofGrid,
++  .teamGrid,
++  .showcaseGrid,
++  .comparisonGridDeck { grid-template-columns: 1fr; gap: 20px; }
++  .statsGrid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
++
++  /* ΓöÇΓöÇ Hero: text first, images row below, height = content only ΓöÇΓöÇ */
++  .hero {
++    min-height: auto;
++    padding: 110px 24px 40px;
++    flex-direction: column;
++    justify-content: flex-start;
++    align-items: center;
++    overflow: hidden;
++  }
++
++  /* Push text content to top (order 1) and images below (order 2) */
++  .heroContent { width: 100%; text-align: center; padding: 0; order: 1; }
++
++  /* Reflow features as a horizontal swipable row below hero text */
++  .heroCarouselViewport {
++    order: 2;
++    width: 100%;
++    overflow: hidden;
++    position: relative;
++    margin-top: 40px;
++    padding: 10px 0;
++  }
++
++  .heroCarouselTrack {
++    display: flex;
++    width: 100%;
++    cursor: grab;
++    touch-action: pan-y;
++  }
++
++  .heroCarouselTrack:active {
++    cursor: grabbing;
++  }
++
++  .carouselCard {
++    width: 100%;
++    flex-shrink: 0;
++    padding: 0 12px;
++    box-sizing: border-box;
++  }
++
++  .carouselCardInner {
++    background: rgba(255, 255, 255, 0.03);
++    backdrop-filter: blur(16px);
++    -webkit-backdrop-filter: blur(16px);
++    border: 1px solid rgba(255, 255, 255, 0.08);
++    border-radius: 20px;
++    padding: 24px;
++    display: flex;
++    align-items: center;
++    gap: 16px;
++    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
++  }
++
++  /* Carousel Controls */
++  .carouselControls {
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    gap: 20px;
++    margin-top: 24px;
++    width: 100%;
++  }
++
++  .carouselArrow {
++    background: rgba(255, 255, 255, 0.04);
++    border: 1px solid rgba(255, 255, 255, 0.08);
++    color: #ffffff;
++    width: 40px;
++    height: 40px;
++    border-radius: 50%;
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    cursor: pointer;
++    transition: all 0.2s ease;
++  }
++
++  .carouselArrow:hover {
++    background: rgba(255, 255, 255, 0.08);
++    border-color: rgba(56, 189, 248, 0.3);
++    color: #38bdf8;
++  }
++
++  .carouselArrow i {
++    font-size: 1.25rem;
++  }
++
++  .carouselIndicators {
++    display: flex;
++    gap: 8px;
++    align-items: center;
++  }
++
++  .carouselDot {
++    width: 8px;
++    height: 8px;
++    border-radius: 50%;
++    background: rgba(255, 255, 255, 0.2);
++    cursor: pointer;
++    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
++  }
++
++  .carouselDot.activeDot {
++    background: #38bdf8;
++    width: 20px;
++    border-radius: 4px;
++  }
++
++  /* ΓöÇΓöÇ Value strip ΓöÇΓöÇ */
++  .valueStrip { gap: 20px; padding: 32px 24px; flex-wrap: wrap; justify-content: flex-start; }
++  .valueItem { font-size: 0.9rem; }
++
++  /* ΓöÇΓöÇ How it works ΓöÇΓöÇ */
++  .stepList { max-width: 100%; }
++  .stepList::before { left: 20px; }
++  .stepItem { gap: 20px; }
++  .stepNumber { width: 40px; height: 40px; font-size: 1rem; flex-shrink: 0; }
++  .stepContent h3 { font-size: 1.2rem; }
++
++  /* ΓöÇΓöÇ Glass / Feature cards ΓöÇΓöÇ */
++  .glassCard { 
++    padding: 24px;
++    width: 95% !important;
++    margin: 0 auto;
++    box-sizing: border-box;
++  }
++
++  /* ΓöÇΓöÇ Showcase ΓöÇΓöÇ */
++  .featureBlock {
++    grid-template-columns: 1fr;
++    padding: 40px 24px;
++    gap: 40px;
++    border-radius: 24px;
++    margin: 40px 0;
++  }
++
++  .featureBlockTitle {
++    font-size: 2.2rem;
++  }
++
++  .showcaseCardsRow {
++    grid-template-columns: 1fr;
++    gap: 24px;
++  }
++
++  .showcaseCardItem {
++    padding: 24px;
++    border-radius: 24px;
++  }
++
++  /* ΓöÇΓöÇ Proof / Client cards ΓöÇΓöÇ */
++  .proofCard { height: 260px; }
++  .proofExpandHint { opacity: 0.75; }
++
++  /* ΓöÇΓöÇ Testimonials ΓöÇΓöÇ */
+   .testimonialGrid { grid-template-columns: 1fr; }
+   .testimonialCardGrid { padding: 28px 20px; }
+ 
+@@ -1174,6 +2267,139 @@
+   /* ΓöÇΓöÇ Lightbox ΓöÇΓöÇ */
+   .lightboxContent { max-width: 100%; border-radius: 16px; }
+   .lightboxImageWrap { max-height: 55vh; }
++
++  /* ΓöÇΓöÇ Consolidation Mobile Reflow ΓöÇΓöÇ */
++  .dockComparisonWrapper {
++    flex-direction: column;
++    gap: 24px;
++    margin: 30px auto;
++  }
++
++  .macOSDock {
++    padding: 12px 14px 10px 14px;
++    gap: 8px;
++    border-radius: 16px;
++    max-width: 100%;
++  }
++
++  .dockIconItem {
++    gap: 4px;
++  }
++
++  .macOSDock .appIconSquircle {
++    width: 48px;
++    height: 48px;
++  }
++
++  .macOSDock .badgeIcon {
++    width: 20px;
++    height: 20px;
++  }
++
++  .dockIconLabel {
++    font-size: 0.65rem;
++  }
++
++  /* Transition chevron points down on mobile */
++  .dockComparisonArrow {
++    transform: rotate(90deg);
++    font-size: 2.2rem;
++    height: 32px;
++  }
++
++  @keyframes arrowPulseAnim {
++    0%, 100% { transform: rotate(90deg) translateX(0); opacity: 0.8; }
++    50% { transform: rotate(90deg) translateX(6px); opacity: 1; }
++  }
++
++  .appCBStudio {
++    width: 76px;
++    height: 76px;
++  }
++
++  .cbStudioAppLogo {
++    width: 34px;
++    height: 34px;
++  }
++
++  /* ΓöÇΓöÇ Comparison Mobile Reflow ΓöÇΓöÇ */
++  .comparisonGridDeck {
++    margin-top: 32px;
++    gap: 20px;
++    width: 100%;
++  }
++
++  .comparisonCard {
++    padding: 32px 24px;
++    border-radius: 20px;
++  }
++
++  .comparisonCardHeader h4 {
++    font-size: 1.5rem;
++  }
++
++  .cardPriceAmount {
++    font-size: 2.2rem;
++  }
++
++  /* Competitor Squircle App mobile overrides */
++  .replacedBadge.appIconSquircle {
++    width: 56px;
++    height: 56px;
++    padding: 0;
++  }
++
++  .replacedBadge.appIconSquircle .badgeIcon {
++    width: 22px;
++    height: 22px;
++  }
++
++  .appIconGrid {
++    grid-template-columns: repeat(5, 1fr);
++    gap: 8px;
++    margin-top: 24px;
++  }
++
++  .gridAppContainer .appIconSquircle {
++    width: 48px;
++    height: 48px;
++  }
++
++  .gridAppContainer .badgeIcon {
++    width: 18px;
++    height: 18px;
++  }
++
++  .appCaption strong {
++    font-size: 0.72rem;
++  }
++
++  .appCaption span {
++    font-size: 0.65rem;
++  }
++
++  /* ΓöÇΓöÇ Pricing Mobile Reflow ΓöÇΓöÇ */
++  .premiumPricingCard {
++    border-radius: 24px;
++  }
++
++  .premiumCardMain {
++    grid-template-columns: 1fr;
++  }
++
++  .premiumCardDetails {
++    padding: 40px 24px;
++    border-right: none;
++    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
++  }
++
++  .premiumCardFeatures {
++    padding: 40px 24px;
++  }
++
++  .premiumPriceAmount {
++    font-size: 3.8rem;
++  }
+ }
+ 
+ @media (max-width: 480px) {
+@@ -1191,8 +2417,9 @@
+   .secondaryButton { width: 100%; justify-content: center; box-sizing: border-box; font-size: 0.95rem; padding: 14px 20px; }
+   .primaryButtonLarge { font-size: 0.95rem; padding: 14px 20px; }
+ 
+-  /* ΓöÇΓöÇ Hero images row: slightly shorter on very small screens ΓöÇΓöÇ */
+-  .heroImage { height: 130px; }
++  /* ΓöÇΓöÇ Hero features row: adjustments for very small screens ΓöÇΓöÇ */
++  .carouselCard { padding: 0 8px; }
++  .carouselCardInner { padding: 16px; }
+   .hero { padding: 100px 20px 40px; }
+ 
+   /* ΓöÇΓöÇ Value strip ΓöÇΓöÇ */
+@@ -1211,4 +2438,7 @@
+ 
+   /* ΓöÇΓöÇ Proof / expand hint ΓöÇΓöÇ */
+   .proofCard { height: 220px; }
++
++  /* ΓöÇΓöÇ Pricing adjustments for extremely small screens ΓöÇΓöÇ */
++  .premiumPriceAmount { font-size: 3rem !important; }
+ }
+\ No newline at end of file
