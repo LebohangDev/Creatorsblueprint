@@ -10,7 +10,7 @@ function Nav() {
 
     const handleScrollTo = (id) => {
         setMobileMenuOpen(false);
-        if (location.pathname === '/') {
+        if (location.pathname === '/' || location.pathname === '/proof') {
             document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
         } else {
             navigate('/');

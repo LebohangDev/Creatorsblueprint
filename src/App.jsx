@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     // If we have a hash in the URL, don't scroll to top, let the anchor work
-    if (!location.hash) {
+    if (!location.hash && location.pathname !== '/proof') {
       window.scrollTo(0, 0);
     }
   }, [location.pathname, location.hash]);
@@ -32,6 +32,9 @@ function App() {
         <Routes>
           {/* Main SaaS Landing Page */}
           <Route path="/" element={<Home setNavActive={setNavActive} />} />
+          
+          {/* Proof page route */}
+          <Route path="/proof" element={<Home setNavActive={setNavActive} />} />
           
           {/* Legacy Waitlist */}
           <Route path="/waitlist" element={<Waitlist />} />

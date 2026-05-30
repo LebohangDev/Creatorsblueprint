@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import styles from './Home.module.css';
 import ResponsiveGrid from './ResponsiveGrid.jsx';
@@ -44,6 +45,20 @@ function Home({ setNavActive }) {
     const [lightboxContent, setLightboxContent] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
     const [mobileIndex, setMobileIndex] = useState(0);
+
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.pathname === '/proof') {
+            const timer = setTimeout(() => {
+                const element = document.getElementById('proof');
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+            return () => clearTimeout(timer);
+        }
+    }, [location.pathname]);
 
     // Custom trailing cursor values
     const cursorX = useMotionValue(-100);
