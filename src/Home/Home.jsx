@@ -63,11 +63,11 @@ function Home({ setNavActive }) {
     // Custom trailing cursor values
     const cursorX = useMotionValue(-100);
     const cursorY = useMotionValue(-100);
-    
+
     const springConfig = { stiffness: 450, damping: 30 };
     const cursorXSpring = useSpring(cursorX, springConfig);
     const cursorYSpring = useSpring(cursorY, springConfig);
-    
+
     const [isHovered, setIsHovered] = useState(false);
     const [cursorVisible, setCursorVisible] = useState(false);
 
@@ -82,23 +82,23 @@ function Home({ setNavActive }) {
 
     useEffect(() => {
         if (isMobile) return;
-        
+
         const moveCursor = (e) => {
             cursorX.set(e.clientX);
             cursorY.set(e.clientY);
         };
-        
+
         window.addEventListener('mousemove', moveCursor);
-        
+
         const handleMouseEnter = () => setCursorVisible(true);
         const handleMouseLeave = () => setCursorVisible(false);
-        
+
         document.body.addEventListener('mouseenter', handleMouseEnter);
         document.body.addEventListener('mouseleave', handleMouseLeave);
-        
+
         const handleHoverStart = () => setIsHovered(true);
         const handleHoverEnd = () => setIsHovered(false);
-        
+
         const attachListeners = () => {
             document.querySelectorAll('a, button, [role="button"], input, select, textarea').forEach(el => {
                 el.removeEventListener('mouseenter', handleHoverStart);
@@ -107,11 +107,11 @@ function Home({ setNavActive }) {
                 el.addEventListener('mouseleave', handleHoverEnd);
             });
         };
-        
+
         attachListeners();
         const observer = new MutationObserver(attachListeners);
         observer.observe(document.body, { childList: true, subtree: true });
-        
+
         return () => {
             window.removeEventListener('mousemove', moveCursor);
             document.body.removeEventListener('mouseenter', handleMouseEnter);
@@ -241,7 +241,7 @@ function Home({ setNavActive }) {
             <section id="hero" className={`${styles.section} ${styles.hero}`}>
                 {isMobile ? (
                     <div className={styles.heroCarouselViewport}>
-                        <motion.div 
+                        <motion.div
                             className={styles.heroCarouselTrack}
                             drag="x"
                             dragConstraints={{ left: 0, right: 0 }}
@@ -263,15 +263,15 @@ function Home({ setNavActive }) {
                                 </div>
                             ))}
                         </motion.div>
-                        
+
                         <div className={styles.carouselControls}>
                             <button onClick={handlePrev} className={styles.carouselArrow} aria-label="Previous Feature">
                                 <i className="ri-arrow-left-s-line"></i>
                             </button>
                             <div className={styles.carouselIndicators}>
                                 {heroFeatures.map((_, idx) => (
-                                    <span 
-                                        key={idx} 
+                                    <span
+                                        key={idx}
                                         className={`${styles.carouselDot} ${idx === mobileIndex ? styles.activeDot : ''}`}
                                         onClick={() => setMobileIndex(idx)}
                                     />
@@ -283,18 +283,18 @@ function Home({ setNavActive }) {
                         </div>
                     </div>
                 ) : (
-                    <motion.div 
+                    <motion.div
                         className={styles.heroFeatures}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2, duration: 1 }}
                     >
                         {heroFeatures.map((feat, i) => (
-                            <motion.div 
-                                key={i} 
+                            <motion.div
+                                key={i}
                                 className={`${styles.featureFloatingCard} ${styles[`featCard${i + 1}`]}`}
-                                whileHover={{ 
-                                    scale: 1.08, 
+                                whileHover={{
+                                    scale: 1.08,
                                     zIndex: 20,
                                     transition: { type: "spring", stiffness: 400, damping: 15 }
                                 }}
@@ -313,8 +313,8 @@ function Home({ setNavActive }) {
                 )}
 
                 <div className={styles.heroContent}>
-                    
-                    <motion.h1 
+
+                    <motion.h1
                         className={styles.title}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -323,8 +323,8 @@ function Home({ setNavActive }) {
                         Views and Likes Are Nice.<br />
                         <span>Revenue Is Better.</span>
                     </motion.h1>
-                    
-                    <motion.p 
+
+                    <motion.p
                         className={styles.subtitle}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -332,8 +332,8 @@ function Home({ setNavActive }) {
                     >
                         Turn your attention into assets. Build digital products, launch automated sales pages, and scale smarter with the all-in-one creator backend.
                     </motion.p>
-                    
-                    <motion.div 
+
+                    <motion.div
                         className={styles.buttonGroup}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -342,7 +342,14 @@ function Home({ setNavActive }) {
                         <a href={CTA_URL} className={styles.primaryButton}>
                             Join Now <i className="ri-arrow-right-line"></i>
                         </a>
-                        <a href="#features" className={styles.secondaryButton}>
+                        <a
+                            href="#features"
+                            className={styles.secondaryButton}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+                            }}
+                        >
                             Explore Features
                         </a>
                     </motion.div>
@@ -357,8 +364,8 @@ function Home({ setNavActive }) {
                     { icon: 'ri-money-dollar-circle-line', text: 'Convert attention into revenue' },
                     { icon: 'ri-loop-right-line', text: 'Build once, sell 24/7' }
                 ].map((item, i) => (
-                    <motion.div 
-                        key={i} 
+                    <motion.div
+                        key={i}
                         className={styles.valueItem}
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -398,7 +405,7 @@ function Home({ setNavActive }) {
                                 <div className={`${styles.dockIconItem} ${styles.jiggleAlways}`}>
                                     <div className={`${styles.appIconSquircle} ${styles.appGumroad}`}>
                                         <span className={styles.badgeStrike}></span>
-                                        <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.2 13c-.9 0-1.7-.5-2.1-1.3l1.8-1c.2.4.5.6.8.6.4 0 .7-.3.7-.7V8h-2V6.5h3.5V13c0 1.1-.9 2-2 2z"/></svg>
+                                        <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.2 13c-.9 0-1.7-.5-2.1-1.3l1.8-1c.2.4.5.6.8.6.4 0 .7-.3.7-.7V8h-2V6.5h3.5V13c0 1.1-.9 2-2 2z" /></svg>
                                         <div className={styles.glossOverlay}></div>
                                     </div>
                                     <span className={styles.dockIconLabel}>Gumroad</span>
@@ -406,7 +413,7 @@ function Home({ setNavActive }) {
                                 <div className={`${styles.dockIconItem} ${styles.jiggleAlways}`}>
                                     <div className={`${styles.appIconSquircle} ${styles.appCanva}`}>
                                         <span className={styles.badgeStrike}></span>
-                                        <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5c-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5c1.7 0 3.1.9 3.8 2.3l-1.4.8c-.4-.9-1.3-1.4-2.4-1.4-1.6 0-2.9 1.3-2.9 2.9s1.3 2.9 2.9 2.9c1.1 0 2-.5 2.4-1.4l1.4.8c-.7 1.4-2.1 2.3-3.8 2.3z"/></svg>
+                                        <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5c-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5c1.7 0 3.1.9 3.8 2.3l-1.4.8c-.4-.9-1.3-1.4-2.4-1.4-1.6 0-2.9 1.3-2.9 2.9s1.3 2.9 2.9 2.9c1.1 0 2-.5 2.4-1.4l1.4.8c-.7 1.4-2.1 2.3-3.8 2.3z" /></svg>
                                         <div className={styles.glossOverlay}></div>
                                     </div>
                                     <span className={styles.dockIconLabel}>Canva</span>
@@ -414,7 +421,7 @@ function Home({ setNavActive }) {
                                 <div className={`${styles.dockIconItem} ${styles.jiggleAlways}`}>
                                     <div className={`${styles.appIconSquircle} ${styles.appNotion}`}>
                                         <span className={styles.badgeStrike}></span>
-                                        <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 3h15a1.5 1.5 0 0 1 1.5 1.5v15a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 19.5v-15A1.5 1.5 0 0 1 4.5 3zM6.5 6v12H9v-5l4.5 5H17.5V6H15v5L10.5 6H6.5z"/></svg>
+                                        <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 3h15a1.5 1.5 0 0 1 1.5 1.5v15a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 19.5v-15A1.5 1.5 0 0 1 4.5 3zM6.5 6v12H9v-5l4.5 5H17.5V6H15v5L10.5 6H6.5z" /></svg>
                                         <div className={styles.glossOverlay}></div>
                                     </div>
                                     <span className={styles.dockIconLabel}>Notion</span>
@@ -422,7 +429,7 @@ function Home({ setNavActive }) {
                                 <div className={`${styles.dockIconItem} ${styles.jiggleAlways}`}>
                                     <div className={`${styles.appIconSquircle} ${styles.appLinktree}`}>
                                         <span className={styles.badgeStrike}></span>
-                                        <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v16M8 6l4-4 4 4M5 12l7-7 7 7M9 22h6"/></svg>
+                                        <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v16M8 6l4-4 4 4M5 12l7-7 7 7M9 22h6" /></svg>
                                         <div className={styles.glossOverlay}></div>
                                     </div>
                                     <span className={styles.dockIconLabel}>Linktree</span>
@@ -430,7 +437,7 @@ function Home({ setNavActive }) {
                                 <div className={`${styles.dockIconItem} ${styles.jiggleAlways}`}>
                                     <div className={`${styles.appIconSquircle} ${styles.appMailchimp}`}>
                                         <span className={styles.badgeStrike}></span>
-                                        <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                                        <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" /></svg>
                                         <div className={styles.glossOverlay}></div>
                                     </div>
                                     <span className={styles.dockIconLabel}>Mailchimp</span>
@@ -463,7 +470,7 @@ function Home({ setNavActive }) {
                         </p>
                     </div>
 
-                    <motion.div 
+                    <motion.div
                         className={styles.stanComparisonCard}
                         variants={fadeInUp}
                         initial="hidden"
@@ -527,7 +534,7 @@ function Home({ setNavActive }) {
 
             {/* 3. MISSION */}
             <section id="mission" className={styles.section}>
-                <motion.div 
+                <motion.div
                     className={styles.glassCard}
                     variants={fadeInUp}
                     initial="hidden"
@@ -578,8 +585,8 @@ function Home({ setNavActive }) {
                         </p>
                         <a href={CTA_URL} className={styles.primaryButton}>Start Now</a>
                     </motion.div>
-                    
-                    <motion.div 
+
+                    <motion.div
                         className={styles.stepList}
                         variants={staggerContainer}
                         initial="hidden"
@@ -605,7 +612,7 @@ function Home({ setNavActive }) {
             </section>
 
             {/* 5.5 PLATFORM SHOWCASE */}
-            <section id="platform" className={styles.section}>
+            <section id="features" className={styles.section}>
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -670,7 +677,7 @@ function Home({ setNavActive }) {
                             </div>
 
                             {/* Main Video Browser Mockup */}
-                            <div 
+                            <div
                                 className={styles.windowMockup}
                                 onClick={() => setLightboxContent({ src: '/Video/storefront-preview.mp4', type: 'video', name: 'Storefront Preview', caption: 'The Platform' })}
                                 style={{ cursor: 'pointer' }}
@@ -712,7 +719,7 @@ function Home({ setNavActive }) {
                             <div className={styles.showcaseCardTag}>
                                 <i className="ri-book-2-line"></i> Ebook Ideas
                             </div>
-                            <div 
+                            <div
                                 className={styles.windowMockup}
                                 onClick={() => setLightboxContent({ src: '/Video/ebook-flow.mp4', type: 'video', name: 'Ebook Ideas', caption: 'AI Builder' })}
                                 style={{ cursor: 'pointer' }}
@@ -750,7 +757,7 @@ function Home({ setNavActive }) {
                             <div className={styles.showcaseCardTag}>
                                 <i className="ri-edit-box-line"></i> Editor Preview
                             </div>
-                            <div 
+                            <div
                                 className={styles.windowMockup}
                                 onClick={() => setLightboxContent({ src: '/Video/editor-preview.mp4', type: 'video', name: 'Editor Preview', caption: 'Product Customization' })}
                                 style={{ cursor: 'pointer' }}
@@ -869,7 +876,7 @@ function Home({ setNavActive }) {
 
             {/* 8. PHASE 2 INTRO */}
             <section className={styles.section}>
-                <motion.div 
+                <motion.div
                     style={{ textAlign: 'center', maxWidth: '800px' }}
                     variants={fadeInUp}
                     initial="hidden"
@@ -908,12 +915,12 @@ function Home({ setNavActive }) {
                         { name: 'Malak Dabjan', role: 'Co-Founder / Product Specialist', img: '/Images/team/Rectangle 23-2.png', bio: "A law and human-rights-driven professional with a strong passion for empowerment. Guided by a people-first mindset, committed to helping others unlock opportunities and build sustainable success." },
                         { name: 'Soniya Rajpurohit', role: 'Co-Founder / Marketing Head', img: '/Images/team/Rectangle 23-1.png', bio: "Expert in advertising and PR with experience at top Dubai agencies. Brings strong expertise in brand positioning and messaging, with a portfolio spanning global names like Google and YouTube." },
                         { name: 'Abdoabiturab Vadnagarwala', role: 'CFO / Automation Engineer', img: '/Images/team/Rectangle 23-3.png', bio: "Computer Systems Engineering background with experience across AI automation, software, and finance. Bridges technical systems with sharp financial and operational thinking." },
-                        { name: 'Varun Kumaravel', role: 'Lead Developer', img: '/Images/team/varun.jpg', bio: "Grew up in Canada and brings an ambitious, tech-driven mindset. He completed his masters in networking and cloud, and uses his full-stack expertise to build robust, scalable systems." },
+                        { name: 'Varun Kumaravel', role: 'Lead Developer', img: '/Images/team/varun.jpeg', bio: "Grew up in Canada and brings an ambitious, tech-driven mindset. He completed his masters in networking and cloud, and uses his full-stack expertise to build robust, scalable systems." },
                     ]}
                     renderItem={(member) => (
                         <div className={`${styles.glassCard} ${styles.teamCard}`}>
                             <div className={styles.teamImage}>
-                                {member.img ? <img src={member.img} alt={member.name} onError={(e) => e.target.style.display='none'} /> : null}
+                                {member.img ? <img src={member.img} alt={member.name} onError={(e) => e.target.style.display = 'none'} /> : null}
                             </div>
                             <h3>{member.name}</h3>
                             <h4>{member.role}</h4>
@@ -927,7 +934,7 @@ function Home({ setNavActive }) {
 
             {/* 10. FAQ */}
             <section className={styles.section}>
-                <motion.h2 
+                <motion.h2
                     className={styles.title}
                     variants={fadeInUp}
                     initial="hidden"
@@ -939,16 +946,16 @@ function Home({ setNavActive }) {
 
                 <div className={styles.faqContainer}>
                     {faqs.map((faq, i) => (
-                        <motion.div 
-                            key={i} 
+                        <motion.div
+                            key={i}
                             className={styles.faqItem}
                             variants={fadeInUp}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true }}
                         >
-                            <div 
-                                className={styles.faqQuestion} 
+                            <div
+                                className={styles.faqQuestion}
                                 onClick={() => setFaqOpen(faqOpen === i ? null : i)}
                             >
                                 {faq.q}
@@ -956,7 +963,7 @@ function Home({ setNavActive }) {
                             </div>
                             <AnimatePresence>
                                 {faqOpen === i && (
-                                    <motion.div 
+                                    <motion.div
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: 'auto', opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
@@ -994,15 +1001,15 @@ function Home({ setNavActive }) {
                             <button className={styles.lightboxClose} onClick={() => setLightboxContent(null)}>
                                 <i className="ri-close-line"></i>
                             </button>
-                            
+
                             <div className={styles.lightboxMediaWrap}>
                                 {lightboxContent.type === 'video' ? (
-                                    <video 
-                                        src={lightboxContent.src} 
+                                    <video
+                                        src={lightboxContent.src}
                                         className={styles.lightboxVideo}
-                                        autoPlay 
-                                        controls 
-                                        playsInline 
+                                        autoPlay
+                                        controls
+                                        playsInline
                                     />
                                 ) : (
                                     <img src={lightboxContent.src} alt={lightboxContent.name} className={styles.lightboxImage} />
@@ -1020,7 +1027,7 @@ function Home({ setNavActive }) {
 
             {cursorVisible && !isMobile && (
                 <>
-                    <motion.div 
+                    <motion.div
                         className={styles.customCursorDot}
                         style={{
                             left: cursorX,
@@ -1029,7 +1036,7 @@ function Home({ setNavActive }) {
                             y: -4
                         }}
                     />
-                    <motion.div 
+                    <motion.div
                         className={styles.customCursorRing}
                         style={{
                             left: cursorXSpring,

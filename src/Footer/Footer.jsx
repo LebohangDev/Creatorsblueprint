@@ -1,7 +1,22 @@
+import { useNavigate, useLocation } from "react-router-dom";
 import styles from './Footer.module.css';
 
 function Footer() {
     const currentYear = new Date().getFullYear();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const handleScrollTo = (e, id) => {
+        e.preventDefault();
+        if (location.pathname === '/' || location.pathname === '/proof') {
+            document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        } else {
+            navigate('/');
+            setTimeout(() => {
+                document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+            }, 500);
+        }
+    };
 
     return (
         <footer className={styles.footerContainer}>
@@ -21,14 +36,14 @@ function Footer() {
                 <div className={styles.linksSection}>
                     <div className={styles.linkColumn}>
                         <h4>Platform</h4>
-                        <a href="#features">Features</a>
-                        <a href="#how-it-works">How it Works</a>
+                        <a href="#features" onClick={(e) => handleScrollTo(e, 'features')}>Features</a>
+                        <a href="#how-it-works" onClick={(e) => handleScrollTo(e, 'how-it-works')}>How it Works</a>
                         <a href="https://cb-saas-182428559947.me-central1.run.app">Pricing</a>
                     </div>
                     <div className={styles.linkColumn}>
                         <h4>Company</h4>
-                        <a href="#mission">Mission</a>
-                        <a href="#proof">Phase 1 Proof</a>
+                        <a href="#mission" onClick={(e) => handleScrollTo(e, 'mission')}>Mission</a>
+                        <a href="#proof" onClick={(e) => handleScrollTo(e, 'proof')}>Phase 1 Proof</a>
                         <a href="mailto:hello@creatorsblueprint.io">Contact</a>
                     </div>
                     <div className={styles.linkColumn}>
