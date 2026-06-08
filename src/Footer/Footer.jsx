@@ -32,13 +32,13 @@ function Footer() {
                         <a href="https://wa.link/creatorsblueprint" target="_blank" rel="noreferrer"><i className="ri-whatsapp-line"></i></a>
                     </div>
                 </div>
-                
+
                 <div className={styles.linksSection}>
                     <div className={styles.linkColumn}>
                         <h4>Platform</h4>
                         <a href="#features" onClick={(e) => handleScrollTo(e, 'features')}>Features</a>
                         <a href="#how-it-works" onClick={(e) => handleScrollTo(e, 'how-it-works')}>How it Works</a>
-                        <a href="https://cb-saas-182428559947.me-central1.run.app">Pricing</a>
+                        <a href="https://app.creatorsblueprint.io/pricing">Pricing</a>
                     </div>
                     <div className={styles.linkColumn}>
                         <h4>Company</h4>
@@ -48,8 +48,8 @@ function Footer() {
                     </div>
                     <div className={styles.linkColumn}>
                         <h4>Legal</h4>
-                        <a href="/privacy">Privacy Policy</a>
-                        <a href="/terms">Terms of Service</a>
+                        <a href="/legal/CB_Studio_Privacy_Policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                        <a href="/legal/CB_Studio_Terms_of_Service.pdf" target="_blank" rel="noopener noreferrer">Terms of Service</a>
                     </div>
                 </div>
             </div>
