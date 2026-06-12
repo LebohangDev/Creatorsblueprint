@@ -48,8 +48,8 @@ function Footer() {
                     </div>
                     <div className={styles.linkColumn}>
                         <h4>Legal</h4>
-                        <a href="/legal/CB_Studio_Privacy_Policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-                        <a href="/legal/CB_Studio_Terms_of_Service.pdf" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+                        <a href="/legal/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                        <a href="/legal/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a>
                     </div>
                 </div>
             </div>
