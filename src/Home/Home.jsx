@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import styles from './Home.module.css';
 import ResponsiveGrid from './ResponsiveGrid.jsx';
+import LiveStoreMockup from './LiveStoreMockup.jsx';
 
 const CTA_URL = "https://app.creatorsblueprint.io";
 
@@ -257,92 +258,47 @@ function Home({ setNavActive }) {
                                     variants={fadeInUp}
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
+                                    style={{ cursor: 'pointer' }}
                                 >
                                     <i className={`${badge.icon} ${styles.badgeIcon}`}></i>
                                     <span>{badge.label}</span>
                                 </motion.div>
                             ))}
                         </motion.div>
-                    </div >
 
-                    {/* Right Column: Reserve Your Brand Card */}
-                    < div className={styles.heroRight} >
                         <motion.div
-                            className={styles.reserveCard}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.3, duration: 0.8 }}
+                            className={`${styles.buttonGroup} ${styles.heroButtonGroup}`}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.6 }}
                         >
-                            {/* Avatar silhouette */}
-                            <div className={styles.avatarSilhouetteArea}>
-                                <div className={styles.avatarCircle}>
-                                    <i className="ri-user-fill"></i>
-                                </div>
-                                <span className={styles.urlPreview}>
-                                    creatorsblueprint.io/{handle ? handle : 'username'}
-                                </span>
-                            </div>
-
-                            {/* Card title */}
-                            <div className={styles.reserveCardHeader}>
-                                <h3>Secure your creator handle</h3>
-                                <p>Your handle is your storefront link, checkout hub, and professional web address. Secure your identity before someone else claims it.</p>
-                            </div>
-
-                            {/* Input group */}
-                            <div className={styles.handleInputWrapper}>
-                                <span className={styles.domainPrefix}>creatorsblueprint.io/</span>
-                                <input
-                                    type="text"
-                                    placeholder="username"
-                                    value={handle}
-                                    onChange={(e) => setHandle(e.target.value.trim().toLowerCase())}
-                                    className={styles.handleInput}
-                                    maxLength={20}
-                                />
-                            </div>
-
-                            {/* Real-time feedback status */}
-                            <div className={styles.statusIndicator}>
-                                {checkerStatus === 'checking' && (
-                                    <span className={`${styles.statusText} ${styles.statusChecking}`}>
-                                        <i className="ri-loader-4-line ri-spin"></i> Checking availability...
-                                    </span>
-                                )}
-                                {checkerStatus === 'available' && (
-                                    <span className={`${styles.statusText} ${styles.statusAvailable}`}>
-                                        <span className={styles.greenDot}></span> Username available!
-                                    </span>
-                                )}
-                                {checkerStatus === 'taken' && (
-                                    <span className={`${styles.statusText} ${styles.statusTaken}`}>
-                                        <span className={styles.redDot}></span> Username already taken
-                                    </span>
-                                )}
-                                {checkerStatus === 'invalid' && (
-                                    <span className={`${styles.statusText} ${styles.statusTaken}`}>
-                                        <span className={styles.redDot}></span> Invalid handle (3-20 characters, a-z, 0-9, _)
-                                    </span>
-                                )}
-                                {checkerStatus === '' && (
-                                    <span className={styles.statusPlaceholder}>&nbsp;</span>
-                                )}
-                            </div>
-
-                            {/* Button */}
-                            <a
-                                href={handle ? `https://app.creatorsblueprint.io?username=${handle}&handle=${handle}` : `https://app.creatorsblueprint.io`}
-                                className={styles.claimButton}
-                            >
+                            <a href={CTA_URL} className={styles.primaryButton}>
                                 Claim My Handle <i className="ri-arrow-right-line"></i>
                             </a>
-
-                            {/* Sign in prompt */}
-                            <span className={styles.signInStudioLink}>
-                                Already a creator? <a href="https://app.creatorsblueprint.io/login">Sign in to your studio</a>
-                            </span>
+                            <a
+                                href="#features"
+                                className={styles.secondaryButton}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+                                }}
+                            >
+                                Explore Features
+                            </a>
                         </motion.div>
                     </div >
+
+                    {/* Right Column: Hajira Khan Live Store Mockup */}
+                    <div className={styles.heroRight}>
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3, duration: 0.8 }}
+                            style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
+                        >
+                            <LiveStoreMockup />
+                        </motion.div>
+                    </div>
                 </div >
             </section >
 
@@ -426,6 +382,14 @@ function Home({ setNavActive }) {
                                     </div>
                                     <span className={styles.dockIconLabel}>Linktree</span>
                                 </div>
+                                <div className={`${styles.dockIconItem} ${styles.jiggleAlways}`}>
+                                    <div className={`${styles.appIconSquircle} ${styles.appMetricool}`}>
+                                        <span className={styles.badgeStrike}></span>
+                                        <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" /></svg>
+                                        <div className={styles.glossOverlay}></div>
+                                    </div>
+                                    <span className={styles.dockIconLabel}>Metricool</span>
+                                </div>
                             </div>
                         </div>
 
@@ -465,6 +429,7 @@ function Home({ setNavActive }) {
                             {[
                                 { emoji: '🎓', title: 'AI Ebook & Course Magic', replaces: 'Replaces Kajabi', price: '$119' },
                                 { emoji: '📱', title: 'Storefront & Frictionless Checkout', replaces: 'Replaces Squarespace, Shopify', price: '$29' },
+                                { emoji: '📊', title: 'Instagram & Social Analytics', replaces: 'Replaces Metricool, Flick', price: '$15' },
                                 { emoji: '📝', title: 'AI Creator Workspace', replaces: 'Replaces Notion', price: '$10' },
                                 { emoji: '🎨', title: 'AI Visual & Cover Designer', replaces: 'Replaces Canva', price: '$15' },
                                 { emoji: '🔗', title: 'Custom Link-in-Bio Hub', replaces: 'Replaces Linktree', price: '$9' }
@@ -665,14 +630,6 @@ function Home({ setNavActive }) {
                                 onClick={() => setLightboxContent({ src: '/Video/storefront-preview.mp4', type: 'video', name: 'Storefront Preview', caption: 'The Platform' })}
                                 style={{ cursor: 'pointer' }}
                             >
-                                <div className={styles.windowHeader}>
-                                    <div className={styles.windowDots}>
-                                        <span className={`${styles.windowDot} ${styles.dotRed}`}></span>
-                                        <span className={`${styles.windowDot} ${styles.dotYellow}`}></span>
-                                        <span className={`${styles.windowDot} ${styles.dotGreen}`}></span>
-                                    </div>
-                                    <span className={styles.windowTitle}>storefront.creatorsblueprint.com</span>
-                                </div>
                                 <div className={styles.windowBody}>
                                     <div className={styles.featureVideoWrap}>
                                         <div className={styles.featureVideoGlow} />
@@ -707,14 +664,6 @@ function Home({ setNavActive }) {
                                 onClick={() => setLightboxContent({ src: '/Video/ebook-flow.mp4', type: 'video', name: 'Ebook Ideas', caption: 'AI Builder' })}
                                 style={{ cursor: 'pointer' }}
                             >
-                                <div className={styles.windowHeader}>
-                                    <div className={styles.windowDots}>
-                                        <span className={`${styles.windowDot} ${styles.dotRed}`}></span>
-                                        <span className={`${styles.windowDot} ${styles.dotYellow}`}></span>
-                                        <span className={`${styles.windowDot} ${styles.dotGreen}`}></span>
-                                    </div>
-                                    <span className={styles.windowTitle}>ebook-builder.creatorsblueprint.com</span>
-                                </div>
                                 <div className={styles.windowBody}>
                                     <div className={styles.showcaseCardVideoWrap}>
                                         <video
@@ -745,14 +694,6 @@ function Home({ setNavActive }) {
                                 onClick={() => setLightboxContent({ src: '/Video/editor-preview.mp4', type: 'video', name: 'Editor Preview', caption: 'Product Customization' })}
                                 style={{ cursor: 'pointer' }}
                             >
-                                <div className={styles.windowHeader}>
-                                    <div className={styles.windowDots}>
-                                        <span className={`${styles.windowDot} ${styles.dotRed}`}></span>
-                                        <span className={`${styles.windowDot} ${styles.dotYellow}`}></span>
-                                        <span className={`${styles.windowDot} ${styles.dotGreen}`}></span>
-                                    </div>
-                                    <span className={styles.windowTitle}>editor.creatorsblueprint.com</span>
-                                </div>
                                 <div className={styles.windowBody}>
                                     <div className={styles.showcaseCardVideoWrap}>
                                         <video
