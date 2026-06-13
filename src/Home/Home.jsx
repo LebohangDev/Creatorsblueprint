@@ -73,7 +73,7 @@ function Home({ setNavActive }) {
 
         const delayDebounce = setTimeout(() => {
             const reservedHandles = [
-                'admin', 'lebohang', 'abubakar', 'malak', 'soniya', 'varun', 'cb', 
+                'admin', 'lebohang', 'abubakar', 'malak', 'soniya', 'varun', 'cb',
                 'cbstudio', 'creatorsblueprint', 'support', 'test', 'username', 'billing',
                 'dashboard', 'settings', 'login', 'signup', 'logout', 'api', 'stripe'
             ];
@@ -221,33 +221,21 @@ function Home({ setNavActive }) {
 
             {/* 1. HERO SECTION */}
             <section id="hero" className={`${styles.section} ${styles.hero}`}>
-<<<<<<< HEAD
                 <div className={styles.heroGrid}>
                     {/* Left Column: Content and Features */}
                     <div className={styles.heroLeft}>
-                        <motion.h1 
+                        <motion.h1
                             className={styles.heroHeadline}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2, duration: 0.8 }}
-=======
-                {isMobile ? (
-                    <div className={styles.heroCarouselViewport}>
-                        <motion.div
-                            className={styles.heroCarouselTrack}
-                            drag="x"
-                            dragConstraints={{ left: 0, right: 0 }}
-                            onDragEnd={dragEndHandler}
-                            animate={{ x: -mobileIndex * 100 + "%" }}
-                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
->>>>>>> 9c8c85d877646bf0be43a978617cb992b96bb585
                         >
                             Package your knowledge. <br />
                             Turn attention into <br />
                             <span>ownership.</span>
                         </motion.h1>
-                        
-                        <motion.p 
+
+                        <motion.p
                             className={styles.heroSubText}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -255,16 +243,16 @@ function Home({ setNavActive }) {
                         >
                             Claim your handle, connect your social, and launch premium digital products in 90 seconds. Zero coding required.
                         </motion.p>
-                        
-                        <motion.div 
+
+                        <motion.div
                             className={styles.badgeContainer}
                             initial="hidden"
                             animate="visible"
                             variants={staggerContainer}
                         >
                             {heroBadges.map((badge, idx) => (
-                                <motion.div 
-                                    key={idx} 
+                                <motion.div
+                                    key={idx}
                                     className={styles.heroBadgePill}
                                     variants={fadeInUp}
                                     whileHover={{ scale: 1.05 }}
@@ -275,12 +263,11 @@ function Home({ setNavActive }) {
                                 </motion.div>
                             ))}
                         </motion.div>
-<<<<<<< HEAD
-                    </div>
+                    </div >
 
                     {/* Right Column: Reserve Your Brand Card */}
-                    <div className={styles.heroRight}>
-                        <motion.div 
+                    < div className={styles.heroRight} >
+                        <motion.div
                             className={styles.reserveCard}
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -305,11 +292,11 @@ function Home({ setNavActive }) {
                             {/* Input group */}
                             <div className={styles.handleInputWrapper}>
                                 <span className={styles.domainPrefix}>creatorsblueprint.io/</span>
-                                <input 
-                                    type="text" 
-                                    placeholder="username" 
-                                    value={handle} 
-                                    onChange={(e) => setHandle(e.target.value.trim().toLowerCase())} 
+                                <input
+                                    type="text"
+                                    placeholder="username"
+                                    value={handle}
+                                    onChange={(e) => setHandle(e.target.value.trim().toLowerCase())}
                                     className={styles.handleInput}
                                     maxLength={20}
                                 />
@@ -343,8 +330,8 @@ function Home({ setNavActive }) {
                             </div>
 
                             {/* Button */}
-                            <a 
-                                href={handle ? `https://app.creatorsblueprint.io?username=${handle}&handle=${handle}` : `https://app.creatorsblueprint.io`} 
+                            <a
+                                href={handle ? `https://app.creatorsblueprint.io?username=${handle}&handle=${handle}` : `https://app.creatorsblueprint.io`}
                                 className={styles.claimButton}
                             >
                                 Claim My Handle <i className="ri-arrow-right-line"></i>
@@ -355,126 +342,37 @@ function Home({ setNavActive }) {
                                 Already a creator? <a href="https://app.creatorsblueprint.io/login">Sign in to your studio</a>
                             </span>
                         </motion.div>
-                    </div>
-=======
-
-                        <div className={styles.carouselControls}>
-                            <button onClick={handlePrev} className={styles.carouselArrow} aria-label="Previous Feature">
-                                <i className="ri-arrow-left-s-line"></i>
-                            </button>
-                            <div className={styles.carouselIndicators}>
-                                {heroFeatures.map((_, idx) => (
-                                    <span
-                                        key={idx}
-                                        className={`${styles.carouselDot} ${idx === mobileIndex ? styles.activeDot : ''}`}
-                                        onClick={() => setMobileIndex(idx)}
-                                    />
-                                ))}
-                            </div>
-                            <button onClick={handleNext} className={styles.carouselArrow} aria-label="Next Feature">
-                                <i className="ri-arrow-right-s-line"></i>
-                            </button>
-                        </div>
-                    </div>
-                ) : (
-                    <motion.div
-                        className={styles.heroFeatures}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2, duration: 1 }}
-                    >
-                        {heroFeatures.map((feat, i) => (
-                            <motion.div
-                                key={i}
-                                className={`${styles.featureFloatingCard} ${styles[`featCard${i + 1}`]}`}
-                                whileHover={{
-                                    scale: 1.08,
-                                    zIndex: 20,
-                                    transition: { type: "spring", stiffness: 400, damping: 15 }
-                                }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                <div className={`${styles.featureFloatingIcon} ${styles[feat.color]}`}>
-                                    <i className={feat.icon}></i>
-                                </div>
-                                <div className={styles.featureFloatingText}>
-                                    <h4>{feat.title}</h4>
-                                    <p>{feat.desc}</p>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                )}
-
-                <div className={styles.heroContent}>
-
-                    <motion.h1
-                        className={styles.title}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3, duration: 0.8 }}
-                    >
-                        Views and Likes Are Nice.<br />
-                        <span>Revenue Is Better.</span>
-                    </motion.h1>
-
-                    <motion.p
-                        className={styles.subtitle}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.5, duration: 0.8 }}
-                    >
-                        Turn your attention into assets. Build digital products, launch automated sales pages, and scale smarter with the all-in-one creator backend.
-                    </motion.p>
-
-                    <motion.div
-                        className={styles.buttonGroup}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.7 }}
-                    >
-                        <a href={CTA_URL} className={styles.primaryButton}>
-                            Join Now <i className="ri-arrow-right-line"></i>
-                        </a>
-                        <a
-                            href="#features"
-                            className={styles.secondaryButton}
-                            onClick={(e) => {
-                                e.preventDefault();
-                                document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
-                            }}
-                        >
-                            Explore Features
-                        </a>
-                    </motion.div>
->>>>>>> 9c8c85d877646bf0be43a978617cb992b96bb585
-                </div>
-            </section>
+                    </div >
+                </div >
+            </section >
 
             {/* 2. TRUST / VALUE STRIP */}
-            <section id="trust" className={styles.valueStrip}>
-                {[
-                    { icon: 'ri-rocket-2-line', text: 'Launch sales pages fast' },
-                    { icon: 'ri-settings-4-line', text: 'Automate your backend' },
-                    { icon: 'ri-money-dollar-circle-line', text: 'Convert attention into revenue' },
-                    { icon: 'ri-loop-right-line', text: 'Build once, sell 24/7' }
-                ].map((item, i) => (
-                    <motion.div
-                        key={i}
-                        className={styles.valueItem}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.1 }}
-                    >
-                        <i className={item.icon}></i>
-                        <span>{item.text}</span>
-                    </motion.div>
-                ))}
-            </section>
+            < section id="trust" className={styles.valueStrip} >
+                {
+                    [
+                        { icon: 'ri-rocket-2-line', text: 'Launch sales pages fast' },
+                        { icon: 'ri-settings-4-line', text: 'Automate your backend' },
+                        { icon: 'ri-money-dollar-circle-line', text: 'Convert attention into revenue' },
+                        { icon: 'ri-loop-right-line', text: 'Build once, sell 24/7' }
+                    ].map((item, i) => (
+                        <motion.div
+                            key={i}
+                            className={styles.valueItem}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 }}
+                        >
+                            <i className={item.icon}></i>
+                            <span>{item.text}</span>
+                        </motion.div>
+                    ))
+                }
+            </section >
 
             {/* 2.5 CONSOLIDATION SECTION (REPLACE THE MESSY STACK) */}
-            <section id="consolidation" className={`${styles.section} ${styles.consolidationSection}`}>
+            < section id="consolidation" className={`${styles.section} ${styles.consolidationSection}`
+            }>
                 <motion.div
                     className={styles.consolidationHeader}
                     variants={fadeInUp}
@@ -623,10 +521,10 @@ function Home({ setNavActive }) {
                         </div>
                     </motion.div>
                 </div>
-            </section>
+            </section >
 
             {/* 3. MISSION */}
-            <section id="mission" className={styles.section}>
+            < section id="mission" className={styles.section} >
                 <motion.div
                     className={styles.glassCard}
                     variants={fadeInUp}
@@ -660,11 +558,11 @@ function Home({ setNavActive }) {
                         </div>
                     </div>
                 </motion.div>
-            </section>
+            </section >
 
 
             {/* 5. HOW IT WORKS */}
-            <section id="how-it-works" className={styles.section}>
+            < section id="how-it-works" className={styles.section} >
                 <div className={styles.grid2}>
                     <motion.div
                         className={styles.stepsLeft}
@@ -703,10 +601,10 @@ function Home({ setNavActive }) {
                         ))}
                     </motion.div>
                 </div>
-            </section>
+            </section >
 
             {/* 5.5 PLATFORM SHOWCASE */}
-            <section id="features" className={styles.section}>
+            < section id="features" className={styles.section} >
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -887,10 +785,10 @@ function Home({ setNavActive }) {
                         </div>
                     </div>
                 </motion.div>
-            </section>
+            </section >
 
             {/* 6. PHASE 1 PROOF */}
-            <section id="proof" className={styles.section}>
+            < section id="proof" className={styles.section} >
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -930,10 +828,10 @@ function Home({ setNavActive }) {
                         </div>
                     )}
                 />
-            </section>
+            </section >
 
             {/* 7. TESTIMONIALS */}
-            <section className={styles.section}>
+            < section className={styles.section} >
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -966,10 +864,10 @@ function Home({ setNavActive }) {
                         </div>
                     )}
                 />
-            </section>
+            </section >
 
             {/* 8. PHASE 2 INTRO */}
-            <section className={styles.section}>
+            < section className={styles.section} >
                 <motion.div
                     style={{ textAlign: 'center', maxWidth: '800px' }}
                     variants={fadeInUp}
@@ -985,10 +883,10 @@ function Home({ setNavActive }) {
                         Get Early Access
                     </a>
                 </motion.div>
-            </section>
+            </section >
 
             {/* 8.5 SUBSCRIPTION PLANS & PRICING */}
-            <section id="pricing" className={styles.section}>
+            < section id="pricing" className={styles.section} >
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -1001,7 +899,7 @@ function Home({ setNavActive }) {
                     <p className={styles.subtitle}>One plan. All features. Cancel anytime. Join as a Founding Member before we expand our tier pricing.</p>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                     className={`${styles.glassCard} ${styles.pricingCard}`}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -1058,10 +956,10 @@ function Home({ setNavActive }) {
                         Secure Founding Member Spot <i className="ri-arrow-right-line"></i>
                     </a>
                 </motion.div>
-            </section>
+            </section >
 
             {/* 8.6 CORE SYSTEMS OVERVIEW */}
-            <section id="core-systems" className={styles.section}>
+            < section id="core-systems" className={styles.section} >
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -1124,10 +1022,10 @@ function Home({ setNavActive }) {
                         </motion.div>
                     ))}
                 </div>
-            </section>
+            </section >
 
             {/* 9. TEAM */}
-            <section className={styles.section}>
+            < section className={styles.section} >
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -1161,12 +1059,12 @@ function Home({ setNavActive }) {
                         </div>
                     )}
                 />
-            </section>
+            </section >
 
 
 
             {/* 10. FAQ */}
-            <section className={styles.section}>
+            < section className={styles.section} >
                 <motion.h2
                     className={styles.title}
                     variants={fadeInUp}
@@ -1209,11 +1107,11 @@ function Home({ setNavActive }) {
                         </motion.div>
                     ))}
                 </div>
-            </section>
+            </section >
 
 
             {/* Lightbox Modal */}
-            <AnimatePresence>
+            < AnimatePresence >
                 {lightboxContent && (
                     <motion.div
                         className={styles.lightboxOverlay}
@@ -1256,7 +1154,7 @@ function Home({ setNavActive }) {
                         </motion.div>
                     </motion.div>
                 )}
-            </AnimatePresence>
+            </AnimatePresence >
 
             {cursorVisible && !isMobile && (
                 <>
@@ -1286,7 +1184,7 @@ function Home({ setNavActive }) {
                     />
                 </>
             )}
-        </div>
+        </div >
     );
 }
 
