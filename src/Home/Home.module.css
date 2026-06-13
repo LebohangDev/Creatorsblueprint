@@ -248,7 +248,7 @@
   justify-content: center;
   padding-top: 0;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .heroContent {
@@ -480,6 +480,24 @@
 .featureCard p {
   color: #a1a1aa;
   line-height: 1.6;
+}
+
+.stepsLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.stepsTitle {
+  text-align: left;
+}
+
+.stepsDesc {
+  color: #94a3b8;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  margin-bottom: 32px;
 }
 
 /* Steps */
@@ -2136,7 +2154,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    overflow: hidden;
+    overflow: visible;
   }
 
   /* Push text content to top (order 1) and images below (order 2) */
@@ -2243,6 +2261,22 @@
   .valueItem { font-size: 0.9rem; }
 
   /* ── How it works ── */
+  .stepsLeft {
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .stepsTitle {
+    font-size: 1.8rem !important;
+    text-align: center !important;
+  }
+  .stepsDesc {
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    padding: 0 16px;
+    text-align: center;
+  }
   .stepList { max-width: 100%; }
   .stepList::before { left: 20px; }
   .stepItem { gap: 20px; }
@@ -2479,6 +2513,14 @@
   .ctaBox { padding: 32px 20px; }
 
   /* ── Steps ── */
+  .stepsTitle {
+    font-size: 1.5rem !important;
+    text-align: center !important;
+  }
+  .stepsDesc {
+    font-size: 0.9rem;
+    padding: 0 8px;
+  }
   .stepContent h3 { font-size: 1.1rem; }
   .stepContent p { font-size: 0.9rem; }
 
@@ -2487,6 +2529,8 @@
 
   /* ── Pricing adjustments for extremely small screens ── */
   .premiumPriceAmount { font-size: 3rem !important; }
+  .stanFooterNewText { font-size: 0.9rem; }
+  .stanNewPrice { font-size: 1.1rem; }
 }
 
 /* ── Stan-style Comparison Card ── */
@@ -2517,12 +2561,14 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  gap: 16px;
 }
 
 .stanItemLeft {
   display: flex;
   align-items: center;
   gap: 16px;
+  min-width: 0;
 }
 
 .stanItemEmoji {
@@ -2539,6 +2585,7 @@
   display: flex;
   flex-direction: column;
   text-align: left;
+  min-width: 0;
 }
 
 .stanItemTitle {
@@ -2636,16 +2683,13 @@
 }
 
 .stanFooterIconBlue {
-  background: #2563eb;
+  background: transparent;
   color: #ffffff;
-  border-radius: 50%;
   width: 32px;
   height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.05rem;
-  font-weight: bold;
   flex-shrink: 0;
 }
 
@@ -2686,7 +2730,7 @@
   }
 
   .stanFooterNewText {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
 
   .stanNewPrice {
@@ -2867,5 +2911,771 @@
 @media (max-width: 360px) {
   .videoMockupWrapper {
     transform: scale(0.62);
+  }
+}
+
+/* Redesigned Hero Section (Dual-Column Layout) */
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  width: 100%;
+  align-items: center;
+  z-index: 10;
+  position: relative;
+  margin-top: 40px;
+}
+
+.heroLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.heroBadgeTop {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 20px;
+  color: #38bdf8;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.heroBadgeLogo {
+  width: 16px;
+  height: 16px;
+}
+
+.heroHeadline {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 3.8rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  background: linear-gradient(to bottom right, #ffffff, #a1a1aa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.03em;
+}
+
+.heroHeadline span {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroSubText {
+  font-size: 1.15rem;
+  color: #a1a1aa;
+  margin-bottom: 32px;
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+.badgeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 540px;
+}
+
+.heroBadgePill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f4f4f5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.heroBadgePill:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(56, 189, 248, 0.3);
+  color: #ffffff;
+}
+
+.badgeIcon {
+  color: #38bdf8;
+  font-size: 1.05rem;
+}
+
+.heroRight {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Reserve Your Brand Card */
+.reserveCard {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(2, 6, 23, 0.8) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: 28px;
+  padding: 36px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.avatarSilhouetteArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatarCircle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatarCircle i {
+  font-size: 28px;
+  color: #38bdf8;
+}
+
+.urlPreview {
+  font-family: 'Inter', monospace;
+  font-size: 0.85rem;
+  color: #71717a;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 6px 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reserveCardHeader h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #ffffff;
+}
+
+.reserveCardHeader p {
+  font-size: 0.88rem;
+  color: #a1a1aa;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.handleInputWrapper {
+  display: flex;
+  align-items: center;
+  background: #09090b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0 16px;
+  height: 52px;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.handleInputWrapper:focus-within {
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.3);
+}
+
+.domainPrefix {
+  color: #71717a;
+  font-size: 0.95rem;
+  user-select: none;
+  font-weight: 500;
+}
+
+.handleInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 0.95rem;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  font-weight: 600;
+}
+
+.statusIndicator {
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.statusText {
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.statusChecking {
+  color: #a1a1aa;
+}
+
+.statusChecking i {
+  font-size: 0.95rem;
+}
+
+.statusAvailable {
+  color: #34d399;
+}
+
+.greenDot {
+  width: 8px;
+  height: 8px;
+  background-color: #34d399;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px #34d399;
+}
+
+.statusTaken {
+  color: #f87171;
+}
+
+.redDot {
+  width: 8px;
+  height: 8px;
+  background-color: #f87171;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px #f87171;
+}
+
+.statusPlaceholder {
+  visibility: hidden;
+}
+
+.claimButton {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #3b82f6 0%, #38bdf8 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25);
+  box-sizing: border-box;
+}
+
+.claimButton:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.signInStudioLink {
+  font-size: 0.85rem;
+  color: #71717a;
+  text-align: center;
+}
+
+.signInStudioLink a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signInStudioLink a:hover {
+  text-decoration: underline;
+}
+
+/* Pricing Section Styles */
+.pricingHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.pricingCard {
+  max-width: 580px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.08);
+}
+
+.pricingCardHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.pricingTag {
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+}
+
+.slashedPrice {
+  font-size: 1.8rem;
+  color: #71717a;
+  text-decoration: line-through;
+  font-weight: 600;
+}
+
+.aedPrice {
+  font-size: 3.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.pricePeriod {
+  font-size: 1.2rem;
+  color: #a1a1aa;
+}
+
+.pricingCardHeader h4 {
+  font-size: 1rem;
+  color: #a1a1aa;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.pricingSeparator {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+  margin: 32px 0;
+}
+
+.pricingIncludes {
+  text-align: left;
+  margin-bottom: 36px;
+}
+
+.pricingIncludes h5 {
+  font-size: 0.85rem;
+  color: #71717a;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0 0 16px 0;
+}
+
+.includesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.includesList li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: #e4e4e7;
+}
+
+.includesList li i {
+  color: #34d399;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.includesList li strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.pricingButton {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #3b82f6 0%, #38bdf8 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35);
+  box-sizing: border-box;
+}
+
+.pricingButton:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+}
+
+/* Core Systems Grid Styles */
+.systemsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.systemCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.systemIconWrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #38bdf8;
+}
+
+.systemIconWrap i {
+  font-size: 1.5rem;
+}
+
+.systemCard h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.systemCard p {
+  font-size: 0.88rem;
+  color: #a1a1aa;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Redesigned Hero Responsiveness ── */
+@media (max-width: 1024px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    text-align: center;
+  }
+  
+  .heroLeft {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .heroHeadline {
+    font-size: 3rem;
+  }
+  
+  .heroSubText {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .badgeContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .systemsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .heroLeft {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+  
+  .heroHeadline {
+    font-size: 2.2rem !important;
+    line-height: 1.2;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .heroHeadline br {
+    display: none;
+  }
+  
+  .heroSubText {
+    text-align: center;
+    padding: 0 24px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+  
+  .badgeContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  
+  .heroRight {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .reserveCard {
+    padding: 24px;
+    text-align: center;
+    margin: 0 auto !important;
+    align-self: center;
+  }
+  
+  .reserveCardHeader {
+    text-align: center;
+  }
+  
+  .handleInputWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .handleInput {
+    flex: none;
+    width: 110px;
+    text-align: left;
+  }
+  
+  .aedPrice {
+    font-size: 2.8rem;
+  }
+  .slashedPrice {
+    font-size: 1.4rem;
+  }
+  .pricePeriod {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .systemsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .handleInputWrapper {
+    padding: 0 12px;
+  }
+  
+  .domainPrefix {
+    font-size: 0.85rem;
+  }
+  
+  .handleInput {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroLeft {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 8px;
+    box-sizing: border-box;
+  }
+
+  .heroHeadline {
+    font-size: 1.75rem !important;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .heroSubText {
+    font-size: 0.9rem;
+    line-height: 1.45;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    text-align: center;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+  
+  .heroBadgePill {
+    padding: 6px 10px;
+    font-size: 0.72rem;
+    gap: 6px;
+  }
+  
+  .badgeContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    gap: 6px;
+    padding: 0;
+  }
+
+  .heroRight {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .reserveCard {
+    padding: 20px;
+    gap: 16px;
+    border-radius: 20px;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto !important;
+    align-self: center;
+  }
+
+  .avatarCircle {
+    width: 48px;
+    height: 48px;
+  }
+
+  .avatarCircle i {
+    font-size: 20px;
+  }
+
+  .urlPreview {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+
+  .reserveCardHeader h3 {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+  }
+
+  .reserveCardHeader p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .handleInputWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 44px;
+    padding: 0 12px;
+  }
+
+  .handleInput {
+    flex: none;
+    width: 110px;
+    text-align: left;
+  }
+
+  .claimButton {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    height: 44px;
+  }
+
+  .signInStudioLink {
+    font-size: 0.76rem;
+  }
+
+  .aedPrice {
+    font-size: 2.4rem;
+  }
+  .slashedPrice {
+    font-size: 1.2rem;
+  }
+  .pricePeriod {
+    font-size: 0.9rem;
   }
 }

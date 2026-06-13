@@ -4,39 +4,15 @@ import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motio
 import styles from './Home.module.css';
 import ResponsiveGrid from './ResponsiveGrid.jsx';
 
-const CTA_URL = "/waitlist";
+const CTA_URL = "https://app.creatorsblueprint.io";
 
-const heroFeatures = [
-    {
-        icon: 'ri-magic-line',
-        title: 'AI Ebook Builder',
-        desc: 'Generate ideas & write premium eBooks in minutes.',
-        color: 'bgBlue'
-    },
-    {
-        icon: 'ri-store-3-line',
-        title: 'Digital Storefront',
-        desc: 'Deploy high-converting landing pages built to sell.',
-        color: 'bgPurple'
-    },
-    {
-        icon: 'ri-robot-2-line',
-        title: 'Auto Delivery',
-        desc: 'Fulfill orders and trigger emails 24/7 on autopilot.',
-        color: 'bgGreen'
-    },
-    {
-        icon: 'ri-wallet-3-line',
-        title: 'Frictionless Pay',
-        desc: 'Accept secure payments directly with zero friction.',
-        color: 'bgOrange'
-    },
-    {
-        icon: 'ri-bar-chart-2-line',
-        title: 'Creator Analytics',
-        desc: 'Track views and sales in a unified creator dashboard.',
-        color: 'bgCyan'
-    }
+const heroBadges = [
+    { icon: 'ri-magic-line', label: 'AI Ebook Magic' },
+    { icon: 'ri-store-3-line', label: 'Custom Storefronts' },
+    { icon: 'ri-checkbox-circle-line', label: 'Instant Checkout' },
+    { icon: 'ri-mail-send-line', label: 'Autopilot Email Funnels' },
+    { icon: 'ri-bar-chart-2-line', label: 'Pro Analytics' },
+    { icon: 'ri-fingerprint-line', label: 'Own Your Brand' }
 ];
 
 function Home({ setNavActive }) {
@@ -44,7 +20,8 @@ function Home({ setNavActive }) {
     const [testimonialIndex, setTestimonialIndex] = useState(0);
     const [lightboxContent, setLightboxContent] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
-    const [mobileIndex, setMobileIndex] = useState(0);
+    const [handle, setHandle] = useState('');
+    const [checkerStatus, setCheckerStatus] = useState(''); // '', 'checking', 'available', 'taken', 'invalid'
 
     const location = useLocation();
 
@@ -79,6 +56,37 @@ function Home({ setNavActive }) {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+
+    useEffect(() => {
+        if (!handle) {
+            setCheckerStatus('');
+            return;
+        }
+
+        const handleRegex = /^[a-zA-Z0-9_]{3,20}$/;
+        if (!handleRegex.test(handle)) {
+            setCheckerStatus('invalid');
+            return;
+        }
+
+        setCheckerStatus('checking');
+
+        const delayDebounce = setTimeout(() => {
+            const reservedHandles = [
+                'admin', 'lebohang', 'abubakar', 'malak', 'soniya', 'varun', 'cb', 
+                'cbstudio', 'creatorsblueprint', 'support', 'test', 'username', 'billing',
+                'dashboard', 'settings', 'login', 'signup', 'logout', 'api', 'stripe'
+            ];
+
+            if (reservedHandles.includes(handle.toLowerCase())) {
+                setCheckerStatus('taken');
+            } else {
+                setCheckerStatus('available');
+            }
+        }, 600);
+
+        return () => clearTimeout(delayDebounce);
+    }, [handle]);
 
     useEffect(() => {
         if (isMobile) return;
@@ -119,32 +127,6 @@ function Home({ setNavActive }) {
             observer.disconnect();
         };
     }, [cursorX, cursorY, isMobile]);
-
-    useEffect(() => {
-        if (!isMobile) return;
-        const interval = setInterval(() => {
-            setMobileIndex((prev) => (prev + 1) % heroFeatures.length);
-        }, 3500);
-        return () => clearInterval(interval);
-    }, [isMobile]);
-
-    const handlePrev = () => {
-        setMobileIndex((prev) => (prev - 1 + heroFeatures.length) % heroFeatures.length);
-    };
-
-    const handleNext = () => {
-        setMobileIndex((prev) => (prev + 1) % heroFeatures.length);
-    };
-
-    const dragEndHandler = (event, info) => {
-        const swipeThreshold = 50;
-        if (info.offset.x < -swipeThreshold) {
-            handleNext();
-        } else if (info.offset.x > swipeThreshold) {
-            handlePrev();
-        }
-    };
-
     // Fade-in animation variants
     const fadeInUp = {
         hidden: { opacity: 0, y: 40 },
@@ -239,113 +221,128 @@ function Home({ setNavActive }) {
 
             {/* 1. HERO SECTION */}
             <section id="hero" className={`${styles.section} ${styles.hero}`}>
-                {isMobile ? (
-                    <div className={styles.heroCarouselViewport}>
-                        <motion.div 
-                            className={styles.heroCarouselTrack}
-                            drag="x"
-                            dragConstraints={{ left: 0, right: 0 }}
-                            onDragEnd={dragEndHandler}
-                            animate={{ x: -mobileIndex * 100 + "%" }}
-                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                <div className={styles.heroGrid}>
+                    {/* Left Column: Content and Features */}
+                    <div className={styles.heroLeft}>
+                        <motion.h1 
+                            className={styles.heroHeadline}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2, duration: 0.8 }}
                         >
-                            {heroFeatures.map((feat, i) => (
-                                <div key={i} className={styles.carouselCard}>
-                                    <div className={styles.carouselCardInner}>
-                                        <div className={`${styles.featureFloatingIcon} ${styles[feat.color]}`}>
-                                            <i className={feat.icon}></i>
-                                        </div>
-                                        <div className={styles.featureFloatingText}>
-                                            <h4>{feat.title}</h4>
-                                            <p>{feat.desc}</p>
-                                        </div>
-                                    </div>
-                                </div>
+                            Package your knowledge. <br />
+                            Turn attention into <br />
+                            <span>ownership.</span>
+                        </motion.h1>
+                        
+                        <motion.p 
+                            className={styles.heroSubText}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.4, duration: 0.8 }}
+                        >
+                            Claim your handle, connect your social, and launch premium digital products in 90 seconds. Zero coding required.
+                        </motion.p>
+                        
+                        <motion.div 
+                            className={styles.badgeContainer}
+                            initial="hidden"
+                            animate="visible"
+                            variants={staggerContainer}
+                        >
+                            {heroBadges.map((badge, idx) => (
+                                <motion.div 
+                                    key={idx} 
+                                    className={styles.heroBadgePill}
+                                    variants={fadeInUp}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    <i className={`${badge.icon} ${styles.badgeIcon}`}></i>
+                                    <span>{badge.label}</span>
+                                </motion.div>
                             ))}
                         </motion.div>
-                        
-                        <div className={styles.carouselControls}>
-                            <button onClick={handlePrev} className={styles.carouselArrow} aria-label="Previous Feature">
-                                <i className="ri-arrow-left-s-line"></i>
-                            </button>
-                            <div className={styles.carouselIndicators}>
-                                {heroFeatures.map((_, idx) => (
-                                    <span 
-                                        key={idx} 
-                                        className={`${styles.carouselDot} ${idx === mobileIndex ? styles.activeDot : ''}`}
-                                        onClick={() => setMobileIndex(idx)}
-                                    />
-                                ))}
-                            </div>
-                            <button onClick={handleNext} className={styles.carouselArrow} aria-label="Next Feature">
-                                <i className="ri-arrow-right-s-line"></i>
-                            </button>
-                        </div>
                     </div>
-                ) : (
-                    <motion.div 
-                        className={styles.heroFeatures}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2, duration: 1 }}
-                    >
-                        {heroFeatures.map((feat, i) => (
-                            <motion.div 
-                                key={i} 
-                                className={`${styles.featureFloatingCard} ${styles[`featCard${i + 1}`]}`}
-                                whileHover={{ 
-                                    scale: 1.08, 
-                                    zIndex: 20,
-                                    transition: { type: "spring", stiffness: 400, damping: 15 }
-                                }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                <div className={`${styles.featureFloatingIcon} ${styles[feat.color]}`}>
-                                    <i className={feat.icon}></i>
-                                </div>
-                                <div className={styles.featureFloatingText}>
-                                    <h4>{feat.title}</h4>
-                                    <p>{feat.desc}</p>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                )}
 
-                <div className={styles.heroContent}>
-                    
-                    <motion.h1 
-                        className={styles.title}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3, duration: 0.8 }}
-                    >
-                        Views and Likes Are Nice.<br />
-                        <span>Revenue Is Better.</span>
-                    </motion.h1>
-                    
-                    <motion.p 
-                        className={styles.subtitle}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.5, duration: 0.8 }}
-                    >
-                        Turn your attention into assets. Build digital products, launch automated sales pages, and scale smarter with the all-in-one creator backend.
-                    </motion.p>
-                    
-                    <motion.div 
-                        className={styles.buttonGroup}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.7 }}
-                    >
-                        <a href={CTA_URL} className={styles.primaryButton}>
-                            Join Now <i className="ri-arrow-right-line"></i>
-                        </a>
-                        <a href="#features" className={styles.secondaryButton}>
-                            Explore Features
-                        </a>
-                    </motion.div>
+                    {/* Right Column: Reserve Your Brand Card */}
+                    <div className={styles.heroRight}>
+                        <motion.div 
+                            className={styles.reserveCard}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.3, duration: 0.8 }}
+                        >
+                            {/* Avatar silhouette */}
+                            <div className={styles.avatarSilhouetteArea}>
+                                <div className={styles.avatarCircle}>
+                                    <i className="ri-user-fill"></i>
+                                </div>
+                                <span className={styles.urlPreview}>
+                                    creatorsblueprint.io/{handle ? handle : 'username'}
+                                </span>
+                            </div>
+
+                            {/* Card title */}
+                            <div className={styles.reserveCardHeader}>
+                                <h3>Secure your creator handle</h3>
+                                <p>Your handle is your storefront link, checkout hub, and professional web address. Secure your identity before someone else claims it.</p>
+                            </div>
+
+                            {/* Input group */}
+                            <div className={styles.handleInputWrapper}>
+                                <span className={styles.domainPrefix}>creatorsblueprint.io/</span>
+                                <input 
+                                    type="text" 
+                                    placeholder="username" 
+                                    value={handle} 
+                                    onChange={(e) => setHandle(e.target.value.trim().toLowerCase())} 
+                                    className={styles.handleInput}
+                                    maxLength={20}
+                                />
+                            </div>
+
+                            {/* Real-time feedback status */}
+                            <div className={styles.statusIndicator}>
+                                {checkerStatus === 'checking' && (
+                                    <span className={`${styles.statusText} ${styles.statusChecking}`}>
+                                        <i className="ri-loader-4-line ri-spin"></i> Checking availability...
+                                    </span>
+                                )}
+                                {checkerStatus === 'available' && (
+                                    <span className={`${styles.statusText} ${styles.statusAvailable}`}>
+                                        <span className={styles.greenDot}></span> Username available!
+                                    </span>
+                                )}
+                                {checkerStatus === 'taken' && (
+                                    <span className={`${styles.statusText} ${styles.statusTaken}`}>
+                                        <span className={styles.redDot}></span> Username already taken
+                                    </span>
+                                )}
+                                {checkerStatus === 'invalid' && (
+                                    <span className={`${styles.statusText} ${styles.statusTaken}`}>
+                                        <span className={styles.redDot}></span> Invalid handle (3-20 characters, a-z, 0-9, _)
+                                    </span>
+                                )}
+                                {checkerStatus === '' && (
+                                    <span className={styles.statusPlaceholder}>&nbsp;</span>
+                                )}
+                            </div>
+
+                            {/* Button */}
+                            <a 
+                                href={handle ? `https://app.creatorsblueprint.io?username=${handle}&handle=${handle}` : `https://app.creatorsblueprint.io`} 
+                                className={styles.claimButton}
+                            >
+                                Claim My Handle <i className="ri-arrow-right-line"></i>
+                            </a>
+
+                            {/* Sign in prompt */}
+                            <span className={styles.signInStudioLink}>
+                                Already a creator? <a href="https://app.creatorsblueprint.io/login">Sign in to your studio</a>
+                            </span>
+                        </motion.div>
+                    </div>
                 </div>
             </section>
 
@@ -381,10 +378,9 @@ function Home({ setNavActive }) {
                     viewport={{ once: true }}
                     style={{ textAlign: 'center', marginBottom: '40px' }}
                 >
-                    <div className={styles.badge}>Tool Consolidation</div>
-                    <h2 className={styles.title}>A Simpler <span>Solution</span></h2>
+                    <h2 className={styles.title}>Consolidate. <span>Simplify. Scale.</span></h2>
                     <p className={styles.subtitle}>
-                        No more paying for 5+ different apps! Creatorsblueprint brings it all home.
+                        Stop bleeding money on 5+ expensive monthly subscriptions. We built the ultimate tech stack so you don't have to.
                     </p>
                 </motion.div>
 
@@ -392,7 +388,7 @@ function Home({ setNavActive }) {
                     <div className={styles.dockComparisonWrapper}>
                         {/* The Fragmented Dock Container */}
                         <div className={styles.competitorDockCard}>
-                            <span className={styles.cardCaption}>Old Fragmented Stack</span>
+                            <span className={styles.cardCaption}>The Messy, Expensive Way</span>
                             <div className={styles.macOSDock}>
                                 <div className={styles.dockGlowRed}></div>
                                 <div className={`${styles.dockIconItem} ${styles.jiggleAlways}`}>
@@ -446,7 +442,7 @@ function Home({ setNavActive }) {
 
                         {/* The Unified App Container */}
                         <div className={styles.unifiedAppCard}>
-                            <span className={styles.cardCaption}>Unified Solution</span>
+                            <span className={styles.cardCaption}>The Ownership Way ✨</span>
                             <div className={`${styles.appIconSquircle} ${styles.appCBStudio}`}>
                                 <img src="/Images/CB_Logos/CB_fingerprint.png" alt="CB Studio" className={styles.cbStudioAppLogo} />
                                 <div className={styles.glossOverlay}></div>
@@ -459,7 +455,7 @@ function Home({ setNavActive }) {
                     <div className={styles.consolidationTextInfo}>
                         <h3>Consolidate everything. Save over $400/month.</h3>
                         <p>
-                            Instead of jumping between tabs to manage checkout links, write drafts, design covers, and set up delivery automations, CB Studio provides a single premium workspace to handle it all. Keep 100% of your earnings with <strong>no hidden platform transaction fees</strong>.
+                            Instead of jumping between tabs to manage checkouts, write drafts, design covers, and set up delivery automations, CB Studio gives you one premium workspace to rule them all. Keep 100% of your earnings with <strong>zero hidden transaction fees</strong>.
                         </p>
                     </div>
 
@@ -472,12 +468,11 @@ function Home({ setNavActive }) {
                     >
                         <div className={styles.stanList}>
                             {[
-                                { emoji: '🎓', title: 'AI Ebook & Course Builder', replaces: 'Replaces Kajabi', price: '$119' },
-                                { emoji: '📱', title: 'Digital Storefront & Checkout', replaces: 'Replaces Squarespace, Shopify', price: '$29' },
-                                { emoji: '✉️', title: 'Auto-Delivery & Email Funnels', replaces: 'Replaces Mailchimp', price: '$20' },
-                                { emoji: '📝', title: 'AI Outline & Writing Workspace', replaces: 'Replaces Notion', price: '$10' },
-                                { emoji: '🎨', title: 'Product Cover & Asset Designer', replaces: 'Replaces Canva', price: '$15' },
-                                { emoji: '📨', title: 'Instagram AutoDMs & Lead Triggers', replaces: 'Replaces Manychat', price: '$15' },
+                                { emoji: '🎓', title: 'AI Ebook & Course Magic', replaces: 'Replaces Kajabi', price: '$119' },
+                                { emoji: '📱', title: 'Storefront & Frictionless Checkout', replaces: 'Replaces Squarespace, Shopify', price: '$29' },
+                                { emoji: '✉️', title: 'Autopilot Email Funnels', replaces: 'Replaces Mailchimp', price: '$20' },
+                                { emoji: '📝', title: 'AI Creator Workspace', replaces: 'Replaces Notion', price: '$10' },
+                                { emoji: '🎨', title: 'AI Visual & Cover Designer', replaces: 'Replaces Canva', price: '$15' },
                                 { emoji: '🔗', title: 'Custom Link-in-Bio Hub', replaces: 'Replaces Linktree', price: '$9' }
                             ].map((item, idx) => (
                                 <div key={idx} className={styles.stanItem}>
@@ -513,12 +508,12 @@ function Home({ setNavActive }) {
                         <div className={styles.stanFooterRow}>
                             <div className={styles.stanItemLeft}>
                                 <div className={styles.stanFooterIconBlue}>
-                                    <i className="ri-money-dollar-circle-fill"></i>
+                                    <img src="/Images/CB_Logos/CB_fingerprint.png" alt="CB Logo" style={{ width: '24px', height: '24px', objectFit: 'contain' }} />
                                 </div>
                                 <span className={styles.stanFooterNewText}>Join Creatorsblueprint ✨</span>
                             </div>
                             <div className={styles.stanFooterRight}>
-                                <span className={styles.stanNewPrice}>$29/mo</span>
+                                <span className={styles.stanNewPrice}>$22/mo</span>
                             </div>
                         </div>
                     </motion.div>
@@ -538,10 +533,10 @@ function Home({ setNavActive }) {
                         <div>
                             <div className={styles.badge}>Our Mission</div>
                             <h2 className={`${styles.title} ${styles.missionTitle}`}>
-                                Creatorsblueprint exists to help creators turn attention into <span>ownership.</span>
+                                We help creators turn attention into <span>ownership.</span>
                             </h2>
                             <p style={{ color: '#94a3b8', lineHeight: '1.6', fontSize: '1.1rem' }}>
-                                In a world where creators depend on unpredictable views, likes, and brand deals, CB Studio helps them build owned digital assets, systems, and automated monetization flows. We believe you should control your revenue engine.
+                                Views don't pay the bills, ownership does. The algorithms in the GCC are changing daily. If you're only relying on brand deals and social reach, you are at the mercy of algorithms. We give you the infrastructure to fully own your platform and monetize your knowledge 24/7.
                             </p>
                         </div>
                         <div className={styles.statsGrid}>
@@ -567,16 +562,17 @@ function Home({ setNavActive }) {
             <section id="how-it-works" className={styles.section}>
                 <div className={styles.grid2}>
                     <motion.div
+                        className={styles.stepsLeft}
                         variants={fadeInUp}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
                     >
-                        <h2 className={styles.title} style={{ textAlign: 'left' }}>From Audience to <span>Assets</span> in 4 Steps</h2>
-                        <p style={{ color: '#94a3b8', lineHeight: '1.6', fontSize: '1.1rem', marginBottom: '32px' }}>
-                            We've streamlined the entire process. No more stringing together 5 different expensive tools.
+                        <h2 className={`${styles.title} ${styles.stepsTitle}`}>Turn attention into <span>cashflow</span> in 4 steps</h2>
+                        <p className={styles.stepsDesc}>
+                            No complex tech, no bloated monthly subscriptions. Simple setup, auto-delivery, and instant payouts.
                         </p>
-                        <a href={CTA_URL} className={styles.primaryButton}>Start Now</a>
+                        <a href={CTA_URL} className={styles.primaryButton}>Claim My Handle</a>
                     </motion.div>
                     
                     <motion.div 
@@ -587,10 +583,10 @@ function Home({ setNavActive }) {
                         viewport={{ once: true }}
                     >
                         {[
-                            { step: '1', title: 'Define your offer', desc: 'Identify what your audience actually wants to buy based on your unique expertise.' },
-                            { step: '2', title: 'Build your digital product', desc: 'Use our AI-assisted tools to structure and generate your high-value digital asset.' },
-                            { step: '3', title: 'Launch your page', desc: 'Deploy a premium, converting sales landing page with integrated payments.' },
-                            { step: '4', title: 'Convert & Automate', desc: 'Drive traffic from your socials and let the system handle sales and delivery 24/7.' }
+                            { step: '1', title: 'Pick your play', desc: 'Identify what your audience is searching for based on your actual expertise.' },
+                            { step: '2', title: 'Spin up the product', desc: 'Let our AI package your expertise into high-value ebooks or resources in 90 seconds.' },
+                            { step: '3', title: 'Launch the page', desc: 'Deploy a gorgeous, high-converting digital storefront with frictionless checkouts.' },
+                            { step: '4', title: 'Automate sales', desc: 'Drive traffic from your socials and let our systems auto-fulfill orders 24/7.' }
                         ].map((item, i) => (
                             <motion.div key={i} className={styles.stepItem} variants={fadeInUp}>
                                 <div className={styles.stepNumber}>{item.step}</div>
@@ -613,9 +609,9 @@ function Home({ setNavActive }) {
                     variants={fadeInUp}
                     style={{ width: '100%' }}
                 >
-                    <div className={styles.badge} style={{ margin: '0 auto 16px auto', display: 'block', width: 'fit-content' }}>The Platform</div>
-                    <h2 className={styles.title}>Inside <span>CB Studio</span></h2>
-                    <p className={styles.subtitle}>Every tool you need to package, launch, and scale your creator business.</p>
+                    <div className={styles.badge} style={{ margin: '0 auto 16px auto', display: 'block', width: 'fit-content' }}>Under the Hood</div>
+                    <h2 className={styles.title}>Inside the <span>Studio</span></h2>
+                    <p className={styles.subtitle}>Everything you need to package, launch, and scale your creator business without hiring an agency.</p>
 
                     {/* ── Feature block: Storefront Preview ── */}
                     <div className={styles.featureBlock}>
@@ -782,7 +778,7 @@ function Home({ setNavActive }) {
                                     </div>
                                 </div>
                             </div>
-                            <p className={styles.showcaseCardDesc}>The ultimate tool for creators to refine, package, and polish their digital empire.</p>
+                            <p className={styles.showcaseCardDesc}>The ultimate platform for creators to refine, package, and monetize their knowledge.</p>
                         </div>
                     </div>
                 </motion.div>
@@ -884,6 +880,145 @@ function Home({ setNavActive }) {
                         Get Early Access
                     </a>
                 </motion.div>
+            </section>
+
+            {/* 8.5 SUBSCRIPTION PLANS & PRICING */}
+            <section id="pricing" className={styles.section}>
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeInUp}
+                    className={styles.pricingHeader}
+                >
+                    <div className={styles.badge}>FOUNDING MEMBER — LIMITED ACCESS</div>
+                    <h2 className={styles.title}>Everything you need to <br />own your <span>platform</span></h2>
+                    <p className={styles.subtitle}>One plan. All features. Cancel anytime. Join as a Founding Member before we expand our tier pricing.</p>
+                </motion.div>
+
+                <motion.div 
+                    className={`${styles.glassCard} ${styles.pricingCard}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <div className={styles.pricingCardHeader}>
+                        <span className={styles.pricingTag}>Founding Member Special</span>
+                        <div className={styles.priceRow}>
+                            <span className={styles.slashedPrice}>$27 USD</span>
+                            <span className={styles.aedPrice}>$22 USD</span>
+                            <span className={styles.pricePeriod}>/mo</span>
+                        </div>
+                        <h4>FOUNDING MEMBER LIFETIME ACCESS</h4>
+                    </div>
+
+                    <div className={styles.pricingSeparator}></div>
+
+                    <div className={styles.pricingIncludes}>
+                        <h5>WHAT'S INCLUDED:</h5>
+                        <ul className={styles.includesList}>
+                            <li>
+                                <i className="ri-checkbox-circle-fill"></i>
+                                <span><strong>Custom Storefront</strong> for your digital products</span>
+                            </li>
+                            <li>
+                                <i className="ri-checkbox-circle-fill"></i>
+                                <span><strong>Pro Social Media</strong> (Instagram) Analytics</span>
+                            </li>
+                            <li>
+                                <i className="ri-checkbox-circle-fill"></i>
+                                <span><strong>Unlimited Ebook</strong> & Course Creations</span>
+                            </li>
+                            <li>
+                                <i className="ri-checkbox-circle-fill"></i>
+                                <span><strong>Automated Email</strong> & SMTP Delivery</span>
+                            </li>
+                            <li>
+                                <i className="ri-checkbox-circle-fill"></i>
+                                <span><strong>Stripe Checkout</strong> & Stripe Connect Payouts</span>
+                            </li>
+                            <li>
+                                <i className="ri-checkbox-circle-fill"></i>
+                                <span><strong>24/7 Order Fulfillments</strong> & Automations</span>
+                            </li>
+                            <li>
+                                <i className="ri-checkbox-circle-fill"></i>
+                                <span><strong>Custom Link-in-Bio</strong> Hub</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href={CTA_URL} className={styles.pricingButton}>
+                        Secure Founding Member Spot <i className="ri-arrow-right-line"></i>
+                    </a>
+                </motion.div>
+            </section>
+
+            {/* 8.6 CORE SYSTEMS OVERVIEW */}
+            <section id="core-systems" className={styles.section}>
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeInUp}
+                    style={{ textAlign: 'center', marginBottom: '40px' }}
+                >
+                    <div className={styles.badge}>Under The Hood</div>
+                    <h2 className={styles.title}>Powering Your <span>Creator Studio</span></h2>
+                    <p className={styles.subtitle}>State of the art technology and automated pipelines designed to run your business 24/7.</p>
+                </motion.div>
+
+                <div className={styles.systemsGrid}>
+                    {[
+                        {
+                            icon: 'ri-compass-3-line',
+                            title: '9-Step Onboarding Wizard',
+                            desc: 'Connect channels, define niche/market, pick brand tone (Educational, Luxury, Bold, Motivational), highlight topics, upload cover photos, and launch your concept blueprint.'
+                        },
+                        {
+                            icon: 'ri-instagram-line',
+                            title: 'Instagram Analyzer Scraper',
+                            desc: 'Securely calls an Apify scraper to extract profile metadata, captions, engagement metrics, and top posts analytics. The AI identifies topics your fans already love.'
+                        },
+                        {
+                            icon: 'ri-coins-line',
+                            title: 'Usage Credits System',
+                            desc: 'Fair server usage quotas tracking Idea Generations, Ebook Creations, Ebook Edits, and Cover Generations. Limits reset automatically at the beginning of each billing cycle.'
+                        },
+                        {
+                            icon: 'ri-share-line',
+                            title: 'Refgrow Partnership Program',
+                            desc: 'Earn recurring revenue splits from creators you refer to CB Studio. The dashboard automatically embeds a Refgrow tracking frame using your registered email.'
+                        },
+                        {
+                            icon: 'ri-brain-line',
+                            title: 'Advanced Writing AI Pipeline',
+                            desc: 'Integrates OpenAI GPT-4o and Gemini models. Formats text, inserts pages, and compiles layout schemas with Templated.io & CraftMyPDF into professional PDFs.'
+                        },
+                        {
+                            icon: 'ri-shield-keyhole-line',
+                            title: 'Secured Payments & Downloads',
+                            desc: 'Stripe Connect routes payouts directly to your bank account. Digital eBook files are stored on secure GCS and delivered with time-limited download keys.'
+                        }
+                    ].map((sys, idx) => (
+                        <motion.div
+                            key={idx}
+                            className={`${styles.glassCard} ${styles.systemCard}`}
+                            variants={fadeInUp}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            transition={{ delay: idx * 0.05 }}
+                        >
+                            <div className={styles.systemIconWrap}>
+                                <i className={sys.icon}></i>
+                            </div>
+                            <h3>{sys.title}</h3>
+                            <p>{sys.desc}</p>
+                        </motion.div>
+                    ))}
+                </div>
             </section>
 
             {/* 9. TEAM */}

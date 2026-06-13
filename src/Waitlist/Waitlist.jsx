@@ -19,7 +19,10 @@ const itemVariants = {
 
 const Waitlist = () => {
   const [email, setEmail] = useState('');
-  const [instagram, setInstagram] = useState('');
+  const [instagram, setInstagram] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('handle') || params.get('username') || '';
+  });
   const [submitted, setSubmitted] = useState(false);
   const [message, setMessage] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(false);
@@ -127,7 +130,7 @@ const Waitlist = () => {
         animate="visible"
       >
         <motion.div className={styles.header} variants={itemVariants}>
-          <img src="Images/CB_Logos/logo_new.png" alt="CBstudio" />
+          <img src="/Images/CB_Logos/logo_new.png" alt="CBstudio" />
 
 
         </motion.div>

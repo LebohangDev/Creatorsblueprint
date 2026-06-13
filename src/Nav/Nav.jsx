@@ -39,7 +39,7 @@ function Nav() {
                     <span className={styles.linkItem} onClick={() => handleScrollTo('proof')}>Proof</span>
                 </div>
                 
-                <div onClick={() => navigate('/waitlist')} className={styles.ctaButton}>
+                <div onClick={() => window.location.href = 'https://app.creatorsblueprint.io'} className={styles.ctaButton}>
                     Join Now
                 </div>
                 
@@ -58,7 +58,7 @@ function Nav() {
                             <span className={styles.mobileLink} onClick={() => handleScrollTo('features')}>Features</span>
                             <span className={styles.mobileLink} onClick={() => handleScrollTo('how-it-works')}>How it Works</span>
                             <span className={styles.mobileLink} onClick={() => handleScrollTo('proof')}>Proof</span>
-                            <div onClick={() => { setMobileMenuOpen(false); navigate('/waitlist'); }} className={styles.mobileCtaButton}>
+                             <div onClick={() => { setMobileMenuOpen(false); window.location.href = 'https://app.creatorsblueprint.io'; }} className={styles.mobileCtaButton}>
                                 Join Now
                             </div>
                         </motion.div>
