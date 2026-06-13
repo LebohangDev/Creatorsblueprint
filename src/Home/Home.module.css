@@ -1398,14 +1398,6 @@
   color: #ffffff !important;
 }
 
-.appMailchimp {
-  background-color: #ffe01b;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-}
-.appMailchimp .badgeIcon {
-  color: #2c2205 !important;
-}
-
 .badgeIcon {
   width: 28px;
   height: 28px;

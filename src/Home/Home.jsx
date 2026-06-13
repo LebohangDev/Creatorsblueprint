@@ -426,14 +426,6 @@ function Home({ setNavActive }) {
                                     </div>
                                     <span className={styles.dockIconLabel}>Linktree</span>
                                 </div>
-                                <div className={`${styles.dockIconItem} ${styles.jiggleAlways}`}>
-                                    <div className={`${styles.appIconSquircle} ${styles.appMailchimp}`}>
-                                        <span className={styles.badgeStrike}></span>
-                                        <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" /></svg>
-                                        <div className={styles.glossOverlay}></div>
-                                    </div>
-                                    <span className={styles.dockIconLabel}>Mailchimp</span>
-                                </div>
                             </div>
                         </div>
 
@@ -473,7 +465,6 @@ function Home({ setNavActive }) {
                             {[
                                 { emoji: '🎓', title: 'AI Ebook & Course Magic', replaces: 'Replaces Kajabi', price: '$119' },
                                 { emoji: '📱', title: 'Storefront & Frictionless Checkout', replaces: 'Replaces Squarespace, Shopify', price: '$29' },
-                                { emoji: '✉️', title: 'Autopilot Email Funnels', replaces: 'Replaces Mailchimp', price: '$20' },
                                 { emoji: '📝', title: 'AI Creator Workspace', replaces: 'Replaces Notion', price: '$10' },
                                 { emoji: '🎨', title: 'AI Visual & Cover Designer', replaces: 'Replaces Canva', price: '$15' },
                                 { emoji: '🔗', title: 'Custom Link-in-Bio Hub', replaces: 'Replaces Linktree', price: '$9' }
@@ -505,7 +496,7 @@ function Home({ setNavActive }) {
                                 <span className={styles.stanFooterOldText}>What You'd Spend Otherwise</span>
                             </div>
                             <div className={styles.stanFooterRight}>
-                                <span className={styles.stanOldPriceStrike}>$217/mo</span>
+                                <span className={styles.stanOldPriceStrike}>$197/mo</span>
                             </div>
                         </div>
                         <div className={styles.stanFooterRow}>
