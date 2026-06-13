@@ -231,9 +231,8 @@ function Home({ setNavActive }) {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2, duration: 0.8 }}
                         >
-                            Package your knowledge. <br />
-                            Turn attention into <br />
-                            <span>ownership.</span>
+                            More Than a <br />
+                            Link in <span>Bio.</span>
                         </motion.h1>
 
                         <motion.p
@@ -242,7 +241,7 @@ function Home({ setNavActive }) {
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4, duration: 0.8 }}
                         >
-                            Claim your handle, connect your social, and launch premium digital products in 90 seconds. Zero coding required.
+                            Create products, sell instantly, and own your audience.
                         </motion.p>
 
                         <motion.div
