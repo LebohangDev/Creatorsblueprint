@@ -78,7 +78,10 @@ export default function LiveStoreMockup() {
                                     <img src="/Images/mockup_assets/ebook_cover.png" alt="AI Ebook Cover" />
                                 </div>
                                 <div className={styles.productCardMainInfo}>
-                                    <h4>AI Generated Ebook</h4>
+                                    <h4>
+                                        <i className="ri-magic-fill" style={{ color: '#8b5cf6', marginRight: '6px', fontSize: '0.9rem', verticalAlign: 'middle' }}></i>
+                                        AI Generated Ebook
+                                    </h4>
                                     <p className={styles.productCardDescText}>High-quality AI generated ebook ready to download and resell.</p>
                                     <div className={styles.productCardDeliveryBadge}>
                                         <i className="ri-mail-line"></i> Email Delivery
@@ -216,7 +219,7 @@ export default function LiveStoreMockup() {
             {/* Left side: AI Generated Ebooks */}
             <div className={`${styles.floatingLiveBadge} ${styles.liveBadgeEbooks}`}>
                 <div className={`${styles.liveBadgeIconBox} ${styles.iconBoxPurple}`}>
-                    <i className="ri-sparkles-fill"></i>
+                    <i className="ri-magic-fill"></i>
                 </div>
                 <span>AI Generated Ebooks</span>
             </div>

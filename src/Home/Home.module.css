@@ -3734,6 +3734,7 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  transform: translate(-40%, -50%) scale(0.96);
   transform-origin: center center;
   transition: transform 0.3s ease;
 }
@@ -4404,6 +4405,30 @@
     transform: scale(0.95);
     margin: -5px auto;
   }
+  .liveBadgeEbooks { left: -25px; }
+  .liveBadgeEmail { left: -45px; }
+  .liveBadgePayments { left: -30px; }
+  .liveBadgeAffiliate { right: -25px; }
+  .liveBadgeProducts { right: -35px; }
+}
+
+@media (max-width: 600px) {
+  .liveStoreMockupContainer {
+    transform: scale(0.9);
+    margin: -15px auto;
+  }
+  .mockupPhone {
+    left: 55%;
+  }
+  .abstractHeaderCard {
+    left: 60%;
+    transform: translate(-50%, -50%) scale(0.88) rotate(1deg);
+  }
+  .analyticsCard {
+    left: 8%;
+    transform: translate(-50%, -50%) scale(0.85);
+    width: 220px !important;
+  }
   .liveBadgeEbooks { left: -15px; }
   .liveBadgeEmail { left: -30px; }
   .liveBadgePayments { left: -20px; }
@@ -4411,62 +4436,50 @@
   .liveBadgeProducts { right: -25px; }
 }
 
-@media (max-width: 600px) {
-  .liveStoreMockupContainer {
-    transform: scale(0.88);
-    margin: -20px auto;
-  }
-  .liveBadgeEbooks { left: 0px; }
-  .liveBadgeEmail { left: -10px; }
-  .liveBadgePayments { left: -5px; }
-  .liveBadgeAffiliate { right: 0px; }
-  .liveBadgeProducts { right: -5px; }
-  .analyticsCard {
-    left: 15%;
-    transform: translate(-50%, -50%) scale(0.85);
-  }
-  .abstractHeaderCard {
-    left: 52%;
-    transform: translate(-50%, -50%) scale(0.85) rotate(1deg);
-  }
-}
-
 @media (max-width: 480px) {
   .liveStoreMockupContainer {
-    transform: scale(0.78);
-    margin: -45px auto;
+    transform: scale(0.88);
+    margin: -25px auto;
   }
-  .liveBadgeEbooks { left: 15px; }
-  .liveBadgeEmail { left: 5px; }
-  .liveBadgePayments { left: 10px; }
-  .liveBadgeAffiliate { right: 15px; }
-  .liveBadgeProducts { right: 10px; }
-  .analyticsCard {
-    left: 18%;
-    transform: translate(-50%, -50%) scale(0.8);
+  .mockupPhone {
+    left: 56%;
   }
   .abstractHeaderCard {
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.8) rotate(1deg);
+    left: 61%;
+    transform: translate(-50%, -50%) scale(0.82) rotate(1deg);
   }
+  .analyticsCard {
+    left: 8%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 200px !important;
+  }
+  .liveBadgeEbooks { left: -20px; }
+  .liveBadgeEmail { left: -35px; }
+  .liveBadgePayments { left: -25px; }
+  .liveBadgeAffiliate { right: -15px; }
+  .liveBadgeProducts { right: -20px; }
 }
 
 @media (max-width: 380px) {
   .liveStoreMockupContainer {
-    transform: scale(0.68);
-    margin: -65px auto;
+    transform: scale(0.82);
+    margin: -40px auto;
   }
-  .liveBadgeEbooks { left: 25px; }
-  .liveBadgeEmail { left: 15px; }
-  .liveBadgePayments { left: 20px; }
-  .liveBadgeAffiliate { right: 25px; }
-  .liveBadgeProducts { right: 20px; }
-  .analyticsCard {
-    left: 20%;
-    transform: translate(-50%, -50%) scale(0.75);
+  .mockupPhone {
+    left: 56%;
   }
   .abstractHeaderCard {
-    left: 48%;
-    transform: translate(-50%, -50%) scale(0.75) rotate(1deg);
+    left: 61%;
+    transform: translate(-50%, -50%) scale(0.78) rotate(1deg);
   }
+  .analyticsCard {
+    left: 6%;
+    transform: translate(-50%, -50%) scale(0.75);
+    width: 190px !important;
+  }
+  .liveBadgeEbooks { left: -15px; }
+  .liveBadgeEmail { left: -25px; }
+  .liveBadgePayments { left: -20px; }
+  .liveBadgeAffiliate { right: -10px; }
+  .liveBadgeProducts { right: -15px; }
 }
