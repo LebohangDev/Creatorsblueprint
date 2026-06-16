@@ -11,7 +11,7 @@ const heroBadges = [
     { icon: 'ri-magic-line', label: 'AI Ebook Magic' },
     { icon: 'ri-store-3-line', label: 'Custom Storefronts' },
     { icon: 'ri-checkbox-circle-line', label: 'Instant Checkout' },
-    { icon: 'ri-mail-send-line', label: 'Autopilot Email Funnels' },
+    { icon: 'ri-mail-send-line', label: 'Instant Email Delivery' },
     { icon: 'ri-bar-chart-2-line', label: 'Pro Analytics' },
     { icon: 'ri-fingerprint-line', label: 'Own Your Brand' }
 ];
@@ -147,7 +147,7 @@ function Home({ setNavActive }) {
         { q: "What is CB Studio?", a: "CB Studio is a comprehensive SaaS platform designed to help creators, brands, and digital entrepreneurs package their knowledge into digital products, build beautiful sales pages, and automate delivery." },
         { q: "Who is CB Studio for?", a: "It's for anyone with an audience or expertise who wants to build owned digital assets, systems, and automated monetization flows instead of relying solely on unpredictable views and brand deals." },
         { q: "Do I need technical skills?", a: "Not at all. CB Studio is built to handle the technical infrastructure for you. You bring the knowledge; we provide the platform to package and sell it." },
-        { q: "What can I build with CB Studio?", a: "You can create digital products like ebooks, templates, and guides, alongside high-converting sales landing pages and automated delivery funnels." },
+        { q: "What can I build with CB Studio?", a: "You can create digital products like ebooks, templates, and guides, alongside high-converting sales landing pages and automated product delivery." },
         { q: "Is this for creators only?", a: "While built with creators in mind, it's perfect for consultants, coaches, agencies, and any digital brand wanting to scale their revenue through digital products." },
         { q: "When can I join?", a: "CB Studio is currently rolling out. Click any 'Join Now' or 'Get Started' button to secure your spot and start building." },
     ];
