@@ -3734,7 +3734,7 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  transform: translate(-40%, -50%) scale(0.96);
+  transform: scale(0.96);
   transform-origin: center center;
   transition: transform 0.3s ease;
 }
