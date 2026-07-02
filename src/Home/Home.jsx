@@ -471,7 +471,7 @@ function Home({ setNavActive }) {
                                 <span className={styles.stanFooterNewText}>Join Creatorsblueprint ✨</span>
                             </div>
                             <div className={styles.stanFooterRight}>
-                                <span className={styles.stanNewPrice}>$22/mo</span>
+                                <span className={styles.stanNewPrice}>$27/mo</span>
                             </div>
                         </div>
                     </motion.div>
@@ -840,8 +840,8 @@ function Home({ setNavActive }) {
                     <div className={styles.pricingCardHeader}>
                         <span className={styles.pricingTag}>Founding Member Special</span>
                         <div className={styles.priceRow}>
-                            <span className={styles.slashedPrice}>$27 USD</span>
-                            <span className={styles.aedPrice}>$22 USD</span>
+                            <span className={styles.slashedPrice}>$33 USD</span>
+                            <span className={styles.aedPrice}>$27 USD</span>
                             <span className={styles.pricePeriod}>/mo</span>
                         </div>
                         <h4>FOUNDING MEMBER LIFETIME ACCESS</h4>
