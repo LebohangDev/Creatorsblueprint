@@ -26,6 +26,16 @@ function Home({ setNavActive }) {
 
     const location = useLocation();
 
+    const trackCTAClick = (sectionName) => {
+        if (window.fbq) {
+            window.fbq('track', 'InitiateCheckout', {
+                content_name: 'Claim My Handle / Get Started',
+                content_category: 'SaaS Signup Start',
+                section: sectionName
+            });
+        }
+    };
+
     useEffect(() => {
         if (location.pathname === '/proof') {
             const timer = setTimeout(() => {
@@ -271,7 +281,11 @@ function Home({ setNavActive }) {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.6 }}
                         >
-                            <a href={CTA_URL} className={styles.primaryButton}>
+                            <a 
+                                href={CTA_URL} 
+                                className={styles.primaryButton}
+                                onClick={() => trackCTAClick('Hero')}
+                            >
                                 Claim My Handle <i className="ri-arrow-right-line"></i>
                             </a>
                             <a
@@ -530,7 +544,13 @@ function Home({ setNavActive }) {
                         <p className={styles.stepsDesc}>
                             No complex tech, no bloated monthly subscriptions. Simple setup, auto-delivery, and instant payouts.
                         </p>
-                        <a href={CTA_URL} className={styles.primaryButton}>Claim My Handle</a>
+                        <a 
+                            href={CTA_URL} 
+                            className={styles.primaryButton}
+                            onClick={() => trackCTAClick('How It Works')}
+                        >
+                            Claim My Handle
+                        </a>
                     </motion.div>
 
                     <motion.div
@@ -810,7 +830,11 @@ function Home({ setNavActive }) {
                     <p className={styles.phase2Text}>
                         We took everything we learned in Phase 1 and turned it into a product. CB Studio is the scalable evolution, giving you the exact infrastructure we used for our top clients.
                     </p>
-                    <a href={CTA_URL} className={`${styles.primaryButton} ${styles.primaryButtonLarge}`}>
+                    <a 
+                        href={CTA_URL} 
+                        className={`${styles.primaryButton} ${styles.primaryButtonLarge}`}
+                        onClick={() => trackCTAClick('Phase 2 Intro')}
+                    >
                         Get Early Access
                     </a>
                 </motion.div>
@@ -883,7 +907,11 @@ function Home({ setNavActive }) {
                         </ul>
                     </div>
 
-                    <a href={CTA_URL} className={styles.pricingButton}>
+                    <a 
+                        href={CTA_URL} 
+                        className={styles.pricingButton}
+                        onClick={() => trackCTAClick('Pricing Tier')}
+                    >
                         Secure Founding Member Spot <i className="ri-arrow-right-line"></i>
                     </a>
                 </motion.div>

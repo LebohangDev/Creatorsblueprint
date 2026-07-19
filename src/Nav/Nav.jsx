@@ -8,6 +8,16 @@ function Nav() {
     const navigate = useNavigate();
     const location = useLocation();
 
+    const trackNavCTAClick = (type) => {
+        if (window.fbq) {
+            window.fbq('track', 'InitiateCheckout', {
+                content_name: 'Join Now',
+                content_category: 'SaaS Signup Start',
+                section: `Navbar ${type}`
+            });
+        }
+    };
+
     const handleScrollTo = (id) => {
         setMobileMenuOpen(false);
         if (location.pathname === '/' || location.pathname === '/proof') {
@@ -39,7 +49,13 @@ function Nav() {
                     <span className={styles.linkItem} onClick={() => handleScrollTo('proof')}>Proof</span>
                 </div>
                 
-                <div onClick={() => window.location.href = 'https://app.creatorsblueprint.io'} className={styles.ctaButton}>
+                <div 
+                    onClick={() => {
+                        trackNavCTAClick('Desktop');
+                        window.location.href = 'https://app.creatorsblueprint.io';
+                    }} 
+                    className={styles.ctaButton}
+                >
                     Join Now
                 </div>
                 
@@ -58,7 +74,14 @@ function Nav() {
                             <span className={styles.mobileLink} onClick={() => handleScrollTo('features')}>Features</span>
                             <span className={styles.mobileLink} onClick={() => handleScrollTo('how-it-works')}>How it Works</span>
                             <span className={styles.mobileLink} onClick={() => handleScrollTo('proof')}>Proof</span>
-                             <div onClick={() => { setMobileMenuOpen(false); window.location.href = 'https://app.creatorsblueprint.io'; }} className={styles.mobileCtaButton}>
+                             <div 
+                                onClick={() => { 
+                                    setMobileMenuOpen(false); 
+                                    trackNavCTAClick('Mobile');
+                                    window.location.href = 'https://app.creatorsblueprint.io'; 
+                                }} 
+                                className={styles.mobileCtaButton}
+                             >
                                 Join Now
                             </div>
                         </motion.div>

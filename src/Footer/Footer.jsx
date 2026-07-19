@@ -6,6 +6,16 @@ function Footer() {
     const navigate = useNavigate();
     const location = useLocation();
 
+    const trackFooterPricingClick = () => {
+        if (window.fbq) {
+            window.fbq('track', 'InitiateCheckout', {
+                content_name: 'Pricing Link',
+                content_category: 'SaaS Signup Start',
+                section: 'Footer'
+            });
+        }
+    };
+
     const handleScrollTo = (e, id) => {
         e.preventDefault();
         if (location.pathname === '/' || location.pathname === '/proof') {
@@ -38,7 +48,12 @@ function Footer() {
                         <h4>Platform</h4>
                         <a href="#features" onClick={(e) => handleScrollTo(e, 'features')}>Features</a>
                         <a href="#how-it-works" onClick={(e) => handleScrollTo(e, 'how-it-works')}>How it Works</a>
-                        <a href="https://app.creatorsblueprint.io/pricing">Pricing</a>
+                        <a 
+                            href="https://app.creatorsblueprint.io/pricing"
+                            onClick={trackFooterPricingClick}
+                        >
+                            Pricing
+                        </a>
                     </div>
                     <div className={styles.linkColumn}>
                         <h4>Company</h4>
