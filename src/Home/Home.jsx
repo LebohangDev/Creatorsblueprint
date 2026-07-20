@@ -8,11 +8,11 @@ import LiveStoreMockup from './LiveStoreMockup.jsx';
 const CTA_URL = "https://app.creatorsblueprint.io";
 
 const heroBadges = [
+    { icon: 'ri-gift-line', label: '7-Day Free Trial' },
     { icon: 'ri-magic-line', label: 'AI Ebook Magic' },
     { icon: 'ri-store-3-line', label: 'Custom Storefronts' },
     { icon: 'ri-checkbox-circle-line', label: 'Instant Checkout' },
     { icon: 'ri-mail-send-line', label: 'Instant Email Delivery' },
-    { icon: 'ri-bar-chart-2-line', label: 'Pro Analytics' },
     { icon: 'ri-fingerprint-line', label: 'Own Your Brand' }
 ];
 
@@ -154,12 +154,13 @@ function Home({ setNavActive }) {
 
     // FAQ Data
     const faqs = [
+        { q: "How does the 7-day free trial work?", a: "You get 100% full, unrestricted access to all CB Studio features for 7 days with $0 charged today. If you love the platform, your subscription will seamlessly continue at the Founding Member rate of $27/mo. You can cancel at any time with a single click in your dashboard." },
         { q: "What is CB Studio?", a: "CB Studio is a comprehensive SaaS platform designed to help creators, brands, and digital entrepreneurs package their knowledge into digital products, build beautiful sales pages, and automate delivery." },
         { q: "Who is CB Studio for?", a: "It's for anyone with an audience or expertise who wants to build owned digital assets, systems, and automated monetization flows instead of relying solely on unpredictable views and brand deals." },
         { q: "Do I need technical skills?", a: "Not at all. CB Studio is built to handle the technical infrastructure for you. You bring the knowledge; we provide the platform to package and sell it." },
         { q: "What can I build with CB Studio?", a: "You can create digital products like ebooks, templates, and guides, alongside high-converting sales landing pages and automated product delivery." },
         { q: "Is this for creators only?", a: "While built with creators in mind, it's perfect for consultants, coaches, agencies, and any digital brand wanting to scale their revenue through digital products." },
-        { q: "When can I join?", a: "CB Studio is currently rolling out. Click any 'Join Now' or 'Get Started' button to secure your spot and start building." },
+        { q: "When can I join?", a: "Right now! Click any 'Start 7-Day Free Trial' button to secure your spot and start building immediately." },
     ];
 
     // Testimonial Data
@@ -235,6 +236,16 @@ function Home({ setNavActive }) {
                 <div className={styles.heroGrid}>
                     {/* Left Column: Content and Features */}
                     <div className={styles.heroLeft}>
+                        <motion.div
+                            className={styles.trialAnnouncementBanner}
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1, duration: 0.6 }}
+                        >
+                            <span className={styles.trialPulseDot}></span>
+                            <span className={styles.trialBannerText}>🎁 START YOUR 7-DAY FREE TRIAL • NO RISK</span>
+                        </motion.div>
+
                         <motion.h1
                             className={styles.heroHeadline}
                             initial={{ opacity: 0, y: 20 }}
@@ -286,7 +297,7 @@ function Home({ setNavActive }) {
                                 className={styles.primaryButton}
                                 onClick={() => trackCTAClick('Hero')}
                             >
-                                Claim My Handle <i className="ri-arrow-right-line"></i>
+                                Start 7-Day Free Trial <i className="ri-arrow-right-line"></i>
                             </a>
                             <a
                                 href="#features"
@@ -298,6 +309,16 @@ function Home({ setNavActive }) {
                             >
                                 Explore Features
                             </a>
+                        </motion.div>
+
+                        <motion.div
+                            className={styles.heroTrustSubtext}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.7 }}
+                        >
+                            <i className="ri-shield-check-line"></i>
+                            <span>$0 Today • Full Access • Cancel Anytime in 1 Click</span>
                         </motion.div>
                     </div >
 
@@ -485,7 +506,7 @@ function Home({ setNavActive }) {
                                 <span className={styles.stanFooterNewText}>Join Creatorsblueprint ✨</span>
                             </div>
                             <div className={styles.stanFooterRight}>
-                                <span className={styles.stanNewPrice}>$27/mo</span>
+                                <span className={styles.stanNewPrice}>$0 Today <span style={{ fontSize: '0.85rem', color: '#38bdf8', fontWeight: 500 }}>(7 Days Free)</span></span>
                             </div>
                         </div>
                     </motion.div>
@@ -549,7 +570,7 @@ function Home({ setNavActive }) {
                             className={styles.primaryButton}
                             onClick={() => trackCTAClick('How It Works')}
                         >
-                            Claim My Handle
+                            Start 7-Day Free Trial <i className="ri-arrow-right-line"></i>
                         </a>
                     </motion.div>
 
@@ -835,7 +856,7 @@ function Home({ setNavActive }) {
                         className={`${styles.primaryButton} ${styles.primaryButtonLarge}`}
                         onClick={() => trackCTAClick('Phase 2 Intro')}
                     >
-                        Get Early Access
+                        Start 7-Day Free Trial <i className="ri-arrow-right-line"></i>
                     </a>
                 </motion.div>
             </section >
@@ -849,9 +870,9 @@ function Home({ setNavActive }) {
                     variants={fadeInUp}
                     className={styles.pricingHeader}
                 >
-                    <div className={styles.badge}>FOUNDING MEMBER — LIMITED ACCESS</div>
+                    <div className={styles.badge}>7-DAY FREE TRIAL INCLUDED • 100% RISK-FREE</div>
                     <h2 className={styles.title}>Everything you need to <br />own your <span>platform</span></h2>
-                    <p className={styles.subtitle}>One plan. All features. Cancel anytime. Join as a Founding Member before we expand our tier pricing.</p>
+                    <p className={styles.subtitle}>Try Creatorsblueprint risk-free for 7 full days. Cancel anytime with 1 click in your dashboard.</p>
                 </motion.div>
 
                 <motion.div
@@ -862,20 +883,23 @@ function Home({ setNavActive }) {
                     transition={{ duration: 0.8 }}
                 >
                     <div className={styles.pricingCardHeader}>
-                        <span className={styles.pricingTag}>Founding Member Special</span>
+                        <span className={styles.pricingTag}>7-Day Free Trial Included</span>
                         <div className={styles.priceRow}>
-                            <span className={styles.slashedPrice}>$33 USD</span>
-                            <span className={styles.aedPrice}>$27 USD</span>
-                            <span className={styles.pricePeriod}>/mo</span>
+                            <span className={styles.aedPrice}>$0 Today</span>
+                            <span className={styles.pricePeriod}>for 7 days, then $27 USD/mo</span>
                         </div>
-                        <h4>FOUNDING MEMBER LIFETIME ACCESS</h4>
+                        <h4>FOUNDING MEMBER LIFETIME RATE</h4>
                     </div>
 
                     <div className={styles.pricingSeparator}></div>
 
                     <div className={styles.pricingIncludes}>
-                        <h5>WHAT'S INCLUDED:</h5>
+                        <h5>WHAT'S INCLUDED IN YOUR 7-DAY FREE TRIAL:</h5>
                         <ul className={styles.includesList}>
+                            <li>
+                                <i className="ri-checkbox-circle-fill"></i>
+                                <span><strong>7 Days Full Unrestricted Access</strong> ($0 charged today)</span>
+                            </li>
                             <li>
                                 <i className="ri-checkbox-circle-fill"></i>
                                 <span><strong>Custom Storefront</strong> for your digital products</span>
@@ -912,7 +936,7 @@ function Home({ setNavActive }) {
                         className={styles.pricingButton}
                         onClick={() => trackCTAClick('Pricing Tier')}
                     >
-                        Secure Founding Member Spot <i className="ri-arrow-right-line"></i>
+                        Start 7-Day Free Trial <i className="ri-arrow-right-line"></i>
                     </a>
                 </motion.div>
             </section >

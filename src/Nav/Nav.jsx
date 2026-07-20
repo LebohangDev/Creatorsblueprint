@@ -56,7 +56,7 @@ function Nav() {
                     }} 
                     className={styles.ctaButton}
                 >
-                    Join Now
+                    Start 7-Day Free Trial
                 </div>
                 
                 <i className={`ri-${mobileMenuOpen ? 'close' : 'menu'}-line ${styles.mobileMenuToggle}`} onClick={() => setMobileMenuOpen(!mobileMenuOpen)}></i>
@@ -82,7 +82,7 @@ function Nav() {
                                 }} 
                                 className={styles.mobileCtaButton}
                              >
-                                Join Now
+                                Start 7-Day Free Trial
                             </div>
                         </motion.div>
                     )}
