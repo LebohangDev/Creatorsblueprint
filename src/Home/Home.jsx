@@ -236,16 +236,6 @@ function Home({ setNavActive }) {
                 <div className={styles.heroGrid}>
                     {/* Left Column: Content and Features */}
                     <div className={styles.heroLeft}>
-                        <motion.div
-                            className={styles.trialAnnouncementBanner}
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1, duration: 0.6 }}
-                        >
-                            <span className={styles.trialPulseDot}></span>
-                            <span className={styles.trialBannerText}>🎁 START YOUR 7-DAY FREE TRIAL • NO RISK</span>
-                        </motion.div>
-
                         <motion.h1
                             className={styles.heroHeadline}
                             initial={{ opacity: 0, y: 20 }}
@@ -446,7 +436,7 @@ function Home({ setNavActive }) {
                     </div>
 
                     <div className={styles.consolidationTextInfo}>
-                        <h3>Consolidate everything. Save over $400/month.</h3>
+                        <h3>Consolidate everything. Save over $170/month.</h3>
                         <p>
                             Instead of jumping between tabs to manage checkouts, write drafts, design covers, and set up delivery automations, CB Studio gives you one premium workspace to rule them all. Keep 100% of your earnings with <strong>zero hidden transaction fees</strong>.
                         </p>
