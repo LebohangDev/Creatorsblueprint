@@ -669,6 +669,8 @@ function Home({ setNavActive }) {
                                             muted
                                             loop
                                             playsInline
+                                            preload="auto"
+                                            onCanPlay={(e) => e.target.play()}
                                             disablePictureInPicture
                                             style={{ pointerEvents: 'none' }}
                                         >
@@ -702,6 +704,8 @@ function Home({ setNavActive }) {
                                             muted
                                             loop
                                             playsInline
+                                            preload="auto"
+                                            onCanPlay={(e) => e.target.play()}
                                             disablePictureInPicture
                                             style={{ pointerEvents: 'none' }}
                                         >
@@ -732,6 +736,8 @@ function Home({ setNavActive }) {
                                             muted
                                             loop
                                             playsInline
+                                            preload="auto"
+                                            onCanPlay={(e) => e.target.play()}
                                             disablePictureInPicture
                                             style={{ pointerEvents: 'none' }}
                                         >
@@ -1114,6 +1120,8 @@ function Home({ setNavActive }) {
                                         autoPlay
                                         controls
                                         playsInline
+                                        preload="auto"
+                                        onCanPlay={(e) => e.target.play().catch(() => {})}
                                     />
                                 ) : (
                                     <img src={lightboxContent.src} alt={lightboxContent.name} className={styles.lightboxImage} />
