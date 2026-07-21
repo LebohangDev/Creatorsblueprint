@@ -1,288 +1,89 @@
-.faqContainer {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    justify-items: center;
-    max-width: 1400px;
-    width: 100%;
-
-
-
-    margin: 0 auto;
-
-
+.faqSection {
+  width: 100%;
+  padding: 100px 24px;
+  background: #0c0c0e;
 }
 
-
-.faqContainer .title {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2rem;
-
-
+.faqHeader {
+  max-width: 640px;
+  margin: 0 auto 50px auto;
+  text-align: center;
 }
 
-
-.faqContainer .title h1 {
-    font-size: 3.5rem;
-    font-weight: 400;
-    margin: 0;
-
-
-
-
+.sectionTitle {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin: 0 0 12px 0;
 }
 
-.faqContainer .title h1 span {
-    color: #09F7F9;
-
+.sectionTitle span {
+  color: #f5eedc;
 }
 
-
-.faqContainer .title p {
-    font-size: 1.1rem;
-    width: 55%;
-    font-weight: 300;
-    text-align: center;
-    color: var(--text-tertiary);
-    line-height: 25px;
+.sectionSubtitle {
+  font-size: 1.05rem;
+  color: #a1a1aa;
+  line-height: 1.6;
+  margin: 0 auto;
 }
 
-
-
-.faqContainer .title p span {
-    color: #09F7F9;
-    text-decoration: underline;
-    cursor: pointer;
+.faqAccordionContainer {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-
-
-
-
-.faqContainer .FAQS {
-    display: grid;
-    gap: 12px;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    justify-items: center;
-    width: 100%;
-    margin-bottom: 4rem;
+.faqItem {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.2s ease;
 }
 
-
-.faqContainer .FAQS .FAQ {
-    padding: 2rem;
-    border-radius: 25px;
-    border: none;
-    width: 70%;
-    background-color: var(--bg-card-tertiary);
-    transition: 0.1s ease-in-out;
-
-
-
+.faqItemOpen {
+  border-color: rgba(0, 180, 216, 0.35);
+  background: rgba(255, 255, 255, 0.04);
 }
 
-
-
-
-.faqContainer .FAQS .FAQ:hover {
-    cursor: pointer;
-
+.faqQuestionRow {
+  width: 100%;
+  padding: 22px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
 }
 
-
-
-
-.faqContainer .FAQS .FAQ .header {
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    gap: 12px;
+.faqChevron {
+  font-size: 1.3rem;
+  color: #00b4d8;
+  transition: transform 0.3s ease;
 }
 
-.faqContainer .FAQS .FAQ .header i {
-    font-size: 2rem;
-    padding-top: 0.6rem;
+.faqChevronRotate {
+  transform: rotate(180deg);
 }
 
-
-
-
-
-.faqContainer .FAQS .FAQ .header .content {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 3rem auto;
-    gap: 4px;
-    pointer-events: none;
-
+.faqAnswerContent {
+  padding: 0 28px 22px 28px;
 }
 
-
-.faqContainer .FAQS .FAQ .header .content h1 {
-    font-size: 1.6rem;
-    font-weight: 300;
-}
-
-
-
-
-.faqContainer .FAQS .FAQ .header .content .activeDesc {
-    display: block;
-
-
-}
-
-
-
-
-
-/*not the currently clicked FAQ*/
-
-
-
-.faqContainer .FAQS .notFAQ {
-    background-color: var(--bg-card-secondary);
-    padding: 2rem;
-    border-radius: 25px;
-    border: none;
-    width: 70%;
-
-
-
-}
-
-
-.faqContainer .FAQS .notFAQ:hover {
-
-    cursor: pointer;
-    background-color: var(--bg-card-hover);
-
-}
-
-
-
-
-.faqContainer .FAQS .notFAQ .header {
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    gap: 12px;
-}
-
-.faqContainer .FAQS .notFAQ .header i {
-    font-size: 2rem;
-    padding-top: 0.6rem;
-}
-
-
-
-
-
-.faqContainer .FAQS .notFAQ .header .content {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 3rem auto;
-    pointer-events: none;
-
-}
-
-
-.faqContainer .FAQS .notFAQ .header .content h1 {
-    font-size: 1.6rem;
-    font-weight: 200;
-}
-
-
-
-
-.faqContainer .FAQS .notFAQ .header .content .notActiveDesc {
-    font-size: 1rem;
-    line-height: 20px;
-
-    display: none;
-}
-
-
-
-
-@media (max-width: 767px) {
-    .faqContainer {
-        grid-template-columns: minmax(0, 100%);
-        max-width: 576px;
-        grid-template-rows: 16rem auto;
-        width: 90%;
-        margin-top: 5rem;
-    }
-
-    .faqContainer .title h1 {
-        font-size: 3rem;
-    }
-
-
-    .faqContainer .title p {
-        width: 90%;
-    }
-
-
-    .faqContainer .FAQS {
-        grid-template-columns: minmax(0, 100%);
-
-
-    }
-
-
-    .faqContainer .FAQS .FAQ {
-        width: 90%;
-        padding-bottom: 0.5rem;
-
-
-
-    }
-
-
-    .faqContainer .FAQS .FAQ .header i {
-        padding-top: 0.4rem;
-    }
-
-
-    .faqContainer .FAQS .FAQ .header .content {
-        grid-template-columns: minmax(0, 100%);
-        grid-template-rows: 3rem auto;
-
-    }
-
-
-    .faqContainer .FAQS .FAQ .header .content h1 {
-        height: fit-content;
-        margin-bottom: 0;
-        font-size: 1.3rem;
-    }
-
-
-    .faqContainer .FAQS .FAQ .header .content p {
-        margin-top: 4px;
-        line-height: 12px;
-
-
-    }
-
-    .faqContainer .FAQS .notFAQ {
-        width: 90%;
-
-    }
-
-    .faqContainer .FAQS .notFAQ .header i {
-        padding-top: 0.4rem;
-    }
-
-    .faqContainer .FAQS .notFAQ .header .content h1 {
-        font-size: 1.3rem;
-
-    }
-
-
+.faqAnswerContent p {
+  font-size: 0.95rem;
+  color: #a1a1aa;
+  line-height: 1.6;
+  margin: 0;
 }

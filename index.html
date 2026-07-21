@@ -3,31 +3,60 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="/Images/CB_Logos/CB_fingerprint.png" />
-  <!-- External icon libraries -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RTSM2LFL7L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RTSM2LFL7L');
+  </script>
+  <link rel="icon" type="image/png" href="/Images/CB_Logos/CB_fingerprint_hd.png" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Primary Meta -->
-  <title>Creatorsblueprint | Custom Storefronts & Business Tools for Creators</title>
-  <meta name="title" content="Creatorsblueprint | Custom Storefronts & Business Tools for Creators" />
-  <meta name="description"
-    content="Turn your audience into direct revenue. Package your knowledge, launch custom storefronts, and scale your creator business with CB Studio." />
+  
+  <!-- Primary Meta Tags -->
+  <title>Creators Blueprint | Build & Scale Your Creator Business in the GCC</title>
+  <meta name="title" content="Creators Blueprint | Build & Scale Your Creator Business in the GCC" />
+  <meta name="description" content="Turn your content into a creator business. Build your storefront, create digital products, accept Stripe payments, and manage your creator business—built for GCC creators across UAE, KSA, Qatar, Kuwait, Bahrain, and Oman." />
+  <meta name="keywords" content="creatorsblueprint, creators blueprint, creators, gcc creators, creator economy gcc, dubai creators, creator storefront, link in bio, sell digital products, stripe payouts gcc" />
+  <meta name="robots" content="index, follow" />
 
-  <!-- Open Graph / Facebook / WhatsApp -->
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.creatorsblueprint.io" />
-  <meta property="og:title" content="Creatorsblueprint | Custom Storefronts & Business Tools for Creators" />
-  <meta property="og:description"
-    content="Turn your audience into direct revenue. Package your knowledge, launch custom storefronts, and scale your creator business with CB Studio." />
-  <meta property="og:image" content="https://www.creatorsblueprint.io/Images/CB_Logos/CB_fingerprint.png" />
+  <meta property="og:title" content="Creators Blueprint | Build & Scale Your Creator Business in the GCC" />
+  <meta property="og:description" content="Turn your content into a creator business. Build your storefront, create digital products, and accept Stripe payments—all from one platform built for GCC creators." />
+  <meta property="og:image" content="https://www.creatorsblueprint.io/Images/CB_Logos/logo_new.png" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://www.creatorsblueprint.io" />
-  <meta property="twitter:title" content="Creatorsblueprint | Custom Storefronts & Business Tools for Creators" />
-  <meta property="twitter:description"
-    content="Turn your audience into direct revenue. Package your knowledge, launch custom storefronts, and scale your creator business with CB Studio." />
-  <meta property="twitter:image" content="https://www.creatorsblueprint.io/Images/CB_Logos/CB_fingerprint.png" />
+  <meta property="twitter:title" content="Creators Blueprint | Build & Scale Your Creator Business in the GCC" />
+  <meta property="twitter:description" content="Turn your content into a creator business. Build your storefront, create digital products, and accept Stripe payments—all from one platform built for GCC creators." />
+  <meta property="twitter:image" content="https://www.creatorsblueprint.io/Images/CB_Logos/logo_new.png" />
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Creators Blueprint",
+    "operatingSystem": "Web",
+    "applicationCategory": "BusinessApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "priceValidUntil": "2027-12-31",
+      "description": "7-Day Free Trial"
+    },
+    "description": "The operating system for GCC creators. Build custom storefronts, package digital products, and accept direct Stripe payouts."
+  }
+  </script>
 
   <script type="text/javascript">
     (function (l) {
@@ -38,45 +67,17 @@
 
         if (p) {
           var newUrl = p.replace(/~and~/g, "&");
-
           if (q) {
-            newUrl += "?" + q.replace(/~and~/g, "&");
+            newUrl += (newUrl.indexOf('?') !== -1 ? '&' : '?') + q.replace(/~and~/g, "&");
           }
-
-          if (l.hash) {
-            newUrl += l.hash;
-          }
-
-          window.history.replaceState(null, null, newUrl);
+          window.history.replaceState(null, null, l.pathname + newUrl + l.hash);
         }
       }
-    })(window.location);
+    }(window.location));
   </script>
-
-  <!-- Meta Pixel Code -->
-  <script>
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-      };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = []; t = b.createElement(e); t.async = !0;
-      t.src = v; s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2174708320022983');
-    fbq('track', 'PageView');
-  </script>
-  <!-- End Meta Pixel Code -->
 </head>
 
 <body>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=2174708320022983&ev=PageView&noscript=1" />
-  </noscript>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>

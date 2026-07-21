@@ -1,0 +1,163 @@
+.ugcSection {
+  width: 100%;
+  max-width: 1140px;
+  padding: 100px 24px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ugcHeader {
+  margin-bottom: 50px;
+}
+
+.sectionTitle {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin: 0 0 12px 0;
+}
+
+.sectionTitle span {
+  color: #f5eedc;
+}
+
+.sectionSubtitle {
+  font-size: 1.05rem;
+  color: #a1a1aa;
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.ugcGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 320px));
+  justify-content: center;
+  gap: 24px;
+}
+
+.ugcReelCard {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.ugcReelCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.reelMediaWrapperCss {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background: #121216;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reelAvatarCircle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.playOverlayCss {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  transition: background 0.2s ease;
+}
+
+.playButtonCircle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 180, 216, 0.4);
+  padding-left: 3px;
+}
+
+.reelGradientOverlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(to top, rgba(12, 12, 14, 0.95), transparent);
+  pointer-events: none;
+}
+
+.reelContent {
+  padding: 16px;
+  text-align: left;
+  background: #141418;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.creatorNameGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.creatorName {
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: #ffffff;
+}
+
+.verifiedIcon {
+  color: #00b4d8;
+  font-size: 0.9rem;
+}
+
+.creatorHandle {
+  font-size: 0.8rem;
+  color: #a1a1aa;
+}
+
+.reelNicheTag {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: #00b4d8;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+@media (max-width: 1024px) {
+  .ugcGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .ugcGrid {
+    grid-template-columns: 1fr;
+  }
+}

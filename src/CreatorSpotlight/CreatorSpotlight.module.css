@@ -1,0 +1,185 @@
+.spotlightSection {
+  width: 100%;
+  padding: 100px 24px;
+  background: #0c0c0e;
+  overflow: hidden;
+}
+
+.spotlightHeaderRow {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto 40px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.spotlightTitleGroup {
+  max-width: 680px;
+}
+
+.sectionTitle {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin: 0 0 12px 0;
+}
+
+.sectionTitle span {
+  color: #f5eedc;
+}
+
+.sectionSubtitle {
+  font-size: 1.05rem;
+  color: #a1a1aa;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.carouselArrowControls {
+  display: flex;
+  gap: 10px;
+}
+
+.carouselArrowBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.carouselArrowBtn:hover:not(.arrowDisabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.arrowDisabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.carouselContainer {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  padding-bottom: 24px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.carouselContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.singlePhoneCarouselCard {
+  flex: 0 0 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.singlePhoneCarouselCard:hover {
+  transform: translateY(-6px);
+}
+
+.cardCreatorHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.cardCreatorName {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.verifiedIcon {
+  color: #00b4d8;
+  font-size: 1rem;
+}
+
+.cardCreatorSub {
+  font-size: 0.85rem;
+  color: #a1a1aa;
+}
+
+/* Single iPhone Screen Frame Shell */
+.singleIphoneFrame {
+  width: 280px;
+  height: 560px;
+  background: #000000;
+  border-radius: 42px;
+  border: 4px solid #27272a;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.singleIphoneFrame::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 18px;
+  background: #000000;
+  border-radius: 20px;
+  z-index: 10;
+}
+
+.singleIphoneFrame:hover {
+  border-color: rgba(0, 180, 216, 0.4);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 180, 216, 0.2);
+}
+
+.iphoneScreenImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  display: block;
+  background: #0a0a0a;
+}
+
+@media (max-width: 768px) {
+  .spotlightHeaderRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  .singlePhoneCarouselCard {
+    flex: 0 0 280px;
+  }
+  .singleIphoneFrame {
+    width: 240px;
+    height: 480px;
+    border-radius: 34px;
+  }
+}

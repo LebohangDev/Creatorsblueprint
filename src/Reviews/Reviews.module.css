@@ -1,0 +1,193 @@
+.reviewsSection {
+  width: 100%;
+  max-width: 1140px;
+  padding: 100px 24px;
+  margin: 0 auto;
+}
+
+.reviewsHeader {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.sectionTitle {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin: 0 0 12px 0;
+}
+
+.sectionTitle span {
+  color: #f5eedc;
+}
+
+.sectionSubtitle {
+  font-size: 1.05rem;
+  color: #a1a1aa;
+  line-height: 1.6;
+  margin: 0 auto;
+}
+
+/* Mixed Stan-Style Grid Layout */
+.mixedGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.gridCol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Comment / Feedback Tweet Card */
+.feedbackCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.feedbackCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.feedbackHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.avatarCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feedbackAuthor {
+  display: flex;
+  flex-direction: column;
+}
+
+.feedbackAuthor strong {
+  font-size: 0.92rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.verifiedIcon {
+  color: #00b4d8;
+  font-size: 0.85rem;
+}
+
+.feedbackAuthor span {
+  font-size: 0.78rem;
+  color: #a1a1aa;
+}
+
+.feedbackText {
+  font-size: 0.9rem;
+  color: #d4d4d8;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.feedbackText strong {
+  color: #00b4d8;
+}
+
+/* UGC Reel Screenshot Card - Full View Image Display */
+.ugcReelFrameCard {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.ugcReelFrameCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.reelHeaderBanner {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  z-index: 2;
+  background: rgba(12, 12, 14, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.reelHeaderBanner i {
+  color: #10b981;
+}
+
+.ugcScreenshotImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 24px;
+}
+
+.reelOverlayFooter {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 16px 16px 16px;
+  background: linear-gradient(to top, rgba(12, 12, 14, 0.95) 0%, transparent 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.reelCreatorInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.reelCreatorInfo strong {
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+.reelCreatorInfo span {
+  font-size: 0.78rem;
+  color: #a1a1aa;
+}
+
+@media (max-width: 900px) {
+  .mixedGrid {
+    grid-template-columns: 1fr;
+  }
+}

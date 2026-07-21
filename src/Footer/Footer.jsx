@@ -1,78 +1,66 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 
-function Footer() {
-    const currentYear = new Date().getFullYear();
-    const navigate = useNavigate();
-    const location = useLocation();
-
-    const trackFooterPricingClick = () => {
-        if (window.fbq) {
-            window.fbq('track', 'InitiateCheckout', {
-                content_name: 'Pricing Link',
-                content_category: 'SaaS Signup Start',
-                section: 'Footer'
-            });
-        }
-    };
-
-    const handleScrollTo = (e, id) => {
-        e.preventDefault();
-        if (location.pathname === '/' || location.pathname === '/proof') {
-            document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-        } else {
-            navigate('/');
-            setTimeout(() => {
-                document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-            }, 500);
-        }
-    };
-
+export default function Footer() {
     return (
-        <footer className={styles.footerContainer}>
-            <div className={styles.footerContent}>
-                <div className={styles.brandSection}>
-                    <img src="/Images/CB_Logos/logo_new.png" alt="CB Studio" className={styles.logo} />
-                    <p className={styles.brandDesc}>
-                        Turn your attention into assets. Build digital products, launch automated sales pages, and scale smarter with the all-in-one creator backend.
-                    </p>
-                    <div className={styles.socials}>
-                        <a href="https://www.instagram.com/creatorsblueprint.io" target="_blank" rel="noreferrer"><i className="ri-instagram-line"></i></a>
-                        <a href="https://www.facebook.com/profile.php?id=61580392831846" target="_blank" rel="noreferrer"><i className="ri-facebook-circle-fill"></i></a>
-                        <a href="https://wa.link/creatorsblueprint" target="_blank" rel="noreferrer"><i className="ri-whatsapp-line"></i></a>
+        <footer className={styles.footer}>
+            <div className={styles.footerContainer}>
+                
+                <div className={styles.footerTop}>
+                    <div className={styles.footerBrand}>
+                        <img src="/Images/CB_Logos/logo_new.png" alt="Creators Blueprint" className={styles.footerLogo} />
+                        <p className={styles.footerTagline}>
+                            The creator operating system built for GCC creators. Turn your audience into a high-margin digital business.
+                        </p>
+                        <p className={styles.footerSeoSnippet}>
+                            Empowering GCC creators across UAE, KSA, Qatar, Kuwait, Bahrain, and Oman with custom storefronts, digital product pipelines, and Stripe payments.
+                        </p>
+                    </div>
+
+                    <div className={styles.footerNavCols}>
+                        <div className={styles.footerCol}>
+                            <h5>Product</h5>
+                            <ul>
+                                <li><a href="#features">Custom Storefront</a></li>
+                                <li><a href="#features">Ebook Builder</a></li>
+                                <li><a href="#features">Stripe Payouts</a></li>
+                                <li><a href="#pricing">Pricing</a></li>
+                            </ul>
+                        </div>
+
+                        <div className={styles.footerCol}>
+                            <h5>Creators</h5>
+                            <ul>
+                                <li><a href="#spotlight">Creator Showcase</a></li>
+                                <li><a href="#how-it-works">How It Works</a></li>
+                                <li><a href="https://app.creatorsblueprint.io/login">Log In</a></li>
+                                <li><a href="https://app.creatorsblueprint.io">Start Free Trial</a></li>
+                            </ul>
+                        </div>
+
+                        <div className={styles.footerCol}>
+                            <h5>Legal & Trust</h5>
+                            <ul>
+                                <li><Link to="/legal/privacy">Privacy Policy</Link></li>
+                                <li><Link to="/legal/terms">Terms of Service</Link></li>
+                                <li><a href="mailto:support@creatorsblueprint.io">Contact Support</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <div className={styles.linksSection}>
-                    <div className={styles.linkColumn}>
-                        <h4>Platform</h4>
-                        <a href="#features" onClick={(e) => handleScrollTo(e, 'features')}>Features</a>
-                        <a href="#how-it-works" onClick={(e) => handleScrollTo(e, 'how-it-works')}>How it Works</a>
-                        <a 
-                            href="https://app.creatorsblueprint.io/pricing"
-                            onClick={trackFooterPricingClick}
-                        >
-                            Pricing
-                        </a>
+                <div className={styles.footerBottom}>
+                    <div>
+                        © {new Date().getFullYear()} Creators Blueprint (Creatorsblueprint LLC). All rights reserved.
                     </div>
-                    <div className={styles.linkColumn}>
-                        <h4>Company</h4>
-                        <a href="#mission" onClick={(e) => handleScrollTo(e, 'mission')}>Mission</a>
-                        <a href="#proof" onClick={(e) => handleScrollTo(e, 'proof')}>Phase 1 Proof</a>
-                        <a href="mailto:hello@creatorsblueprint.io">Contact</a>
-                    </div>
-                    <div className={styles.linkColumn}>
-                        <h4>Legal</h4>
-                        <a href="/legal/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-                        <a href="/legal/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+                    <div className={styles.footerLegalLinks}>
+                        <Link to="/legal/privacy">Privacy Policy</Link>
+                        <span>·</span>
+                        <Link to="/legal/terms">Terms of Service</Link>
                     </div>
                 </div>
-            </div>
-            <div className={styles.footerBottom}>
-                <p>&copy; {currentYear} CB Studio by Creatorsblueprint. All rights reserved.</p>
+
             </div>
         </footer>
     );
 }
-
-export default Footer;

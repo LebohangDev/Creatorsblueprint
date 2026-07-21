@@ -1,0 +1,86 @@
+.finalCtaSection {
+  width: 100%;
+  padding: 120px 24px;
+  background: #141417;
+  display: flex;
+  justify-content: center;
+}
+
+.finalCtaBox {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(0, 180, 216, 0.3);
+  border-radius: 36px;
+  padding: 60px 32px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+}
+
+.finalCtaTitle {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin: 0 0 16px 0;
+}
+
+.finalCtaTitle span {
+  color: #f5eedc;
+}
+
+.finalCtaSub {
+  font-size: 1.1rem;
+  color: #a1a1aa;
+  margin-bottom: 32px;
+}
+
+.finalCtaBtnGroup {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.primaryButtonLarge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 16px 32px;
+  border-radius: 16px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 180, 216, 0.25);
+  transition: all 0.2s ease;
+}
+
+.primaryButtonLarge:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #0096c7 0%, #48cae4 100%);
+}
+
+.finalCtaAssurance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.finalCtaAssurance i {
+  color: #00b4d8;
+}
+
+@media (max-width: 768px) {
+  .finalCtaTitle {
+    font-size: 2.1rem;
+  }
+}
