@@ -16,6 +16,13 @@ function Nav() {
                 section: `Navbar ${type}`
             });
         }
+        if (window.gtag) {
+            window.gtag('event', 'begin_checkout', {
+                event_category: 'SaaS Signup Start',
+                event_label: `Navbar ${type}`,
+                value: 0
+            });
+        }
         setTimeout(() => {
             window.location.href = 'https://app.creatorsblueprint.io';
         }, 150);

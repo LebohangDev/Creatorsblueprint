@@ -32,6 +32,13 @@ export default function HowItWorks() {
                 section: 'How It Works'
             });
         }
+        if (window.gtag) {
+            window.gtag('event', 'begin_checkout', {
+                event_category: 'SaaS Signup Start',
+                event_label: 'How It Works',
+                value: 0
+            });
+        }
         setTimeout(() => {
             window.location.href = "https://app.creatorsblueprint.io";
         }, 150);

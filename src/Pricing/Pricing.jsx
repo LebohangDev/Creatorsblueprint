@@ -14,6 +14,13 @@ export default function Pricing() {
                 section: 'Pricing Section'
             });
         }
+        if (window.gtag) {
+            window.gtag('event', 'begin_checkout', {
+                event_category: 'SaaS Signup Start',
+                event_label: 'Pricing Section',
+                value: 0
+            });
+        }
         setTimeout(() => {
             window.location.href = "https://app.creatorsblueprint.io";
         }, 150);

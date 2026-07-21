@@ -17,6 +17,13 @@ export default function Hero() {
                 section: sectionName
             });
         }
+        if (window.gtag) {
+            window.gtag('event', 'begin_checkout', {
+                event_category: 'SaaS Signup Start',
+                event_label: sectionName,
+                value: 0
+            });
+        }
 
         const handleToUse = customHandle !== null ? customHandle : handleInput;
         const cleanHandle = handleToUse ? handleToUse.trim().replace(/^@/, '') : '';

@@ -11,6 +11,13 @@ export default function CTA() {
                 section: 'Final CTA Banner'
             });
         }
+        if (window.gtag) {
+            window.gtag('event', 'begin_checkout', {
+                event_category: 'SaaS Signup Start',
+                event_label: 'Final CTA Banner',
+                value: 0
+            });
+        }
         setTimeout(() => {
             window.location.href = "https://app.creatorsblueprint.io";
         }, 150);

@@ -62,6 +62,15 @@ const Waitlist = () => {
         window.fbq("track", "Lead");
         window.fbq("track", "CompleteRegistration");
       }
+      if (window.gtag) {
+        window.gtag('event', 'generate_lead', {
+          event_category: 'Waitlist',
+          event_label: 'Lead Generation'
+        });
+        window.gtag('event', 'sign_up', {
+          method: 'Waitlist Form'
+        });
+      }
       const newMessage = "Successfully subscribed to waitlist";
       setMessage(newMessage);
       setSubmitted(true);
