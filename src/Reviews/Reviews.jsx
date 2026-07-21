@@ -36,7 +36,7 @@ export default function Reviews() {
                             </div>
                         </div>
                         <p className={styles.feedbackText}>
-                            Just realized I hit my 1-year anniversary using <strong>@creatorsblueprint</strong> 👑 80+ playlist sales later, I couldn't love this platform more! ✨
+                            800+ playlist sales later, I couldn't love <strong>@creatorsblueprint</strong> more! ✨
                         </p>
                     </motion.div>
 
@@ -128,7 +128,7 @@ export default function Reviews() {
                             </div>
                         </div>
                         <p className={styles.feedbackText}>
-                            Using <strong>Creators Blueprint</strong> has been one of the biggest blessings for my digital business. Hosting and selling my fitness ebook from ONE place is a game changer!
+                            Hosting and selling my 2 ebooks about my surgeries and modeling has been a game changer! <strong>Creators Blueprint</strong> makes it so easy. If I can do it, anyone can! ✨
                         </p>
                     </motion.div>
 
