@@ -41,13 +41,20 @@ export default function Reviews() {
                     </motion.div>
 
                     {/* UGC Video 1: Oyeyinka Oyerinde */}
-                    <motion.div 
+                    <motion.a 
+                        href="https://www.instagram.com/reel/DazvtP6MjQk/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className={styles.ugcReelFrameCard}
+                        style={{ display: 'block', textDecoration: 'none' }}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2, duration: 0.4 }}
                     >
+                        <div className={styles.playButtonOverlay}>
+                            <i className="ri-play-fill"></i>
+                        </div>
                         <img 
                             src="/Images/ugc/ugc_creator2.png" 
                             alt="Oyeyinka Oyerinde Video Screenshot" 
@@ -59,19 +66,26 @@ export default function Reviews() {
                                 <span>@heyoyeyinka</span>
                             </div>
                         </div>
-                    </motion.div>
+                    </motion.a>
                 </div>
 
                 {/* Column 2: UGC Video (Top) -> Text Card (Bottom) */}
                 <div className={styles.gridCol}>
                     {/* UGC Video 2: Rena Sibaei */}
-                    <motion.div 
+                    <motion.a 
+                        href="https://www.instagram.com/reel/DbBVIRVS5jZ/"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className={styles.ugcReelFrameCard}
+                        style={{ display: 'block', textDecoration: 'none' }}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1, duration: 0.4 }}
                     >
+                        <div className={styles.playButtonOverlay}>
+                            <i className="ri-play-fill"></i>
+                        </div>
                         <img 
                             src="/Images/ugc/ugc_creator1.png" 
                             alt="Rena Sibaei Video Screenshot" 
@@ -83,7 +97,7 @@ export default function Reviews() {
                                 <span>@rena_sibaei</span>
                             </div>
                         </div>
-                    </motion.div>
+                    </motion.a>
 
                     {/* Text Card 2: Sena Bayram */}
                     <motion.div 

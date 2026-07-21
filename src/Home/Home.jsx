@@ -1,7 +1,6 @@
 import Hero from '../Hero/Hero';
 import TrustStrip from '../TrustStrip/TrustStrip';
 import CreatorSpotlight from '../CreatorSpotlight/CreatorSpotlight';
-import UGCVideos from '../UGCVideos/UGCVideos';
 import Reviews from '../Reviews/Reviews';
 import Features from '../Features/Features';
 import HowItWorks from '../HowItWorks/HowItWorks';
@@ -15,7 +14,6 @@ export default function Home() {
             <Hero />
             <TrustStrip />
             <CreatorSpotlight />
-            <UGCVideos />
             <Reviews />
             <Features />
             <HowItWorks />
