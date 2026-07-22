@@ -44,7 +44,6 @@ export default function CreatorSpotlight() {
     const scrollRef = useRef(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
-    const [isHovered, setIsHovered] = useState(false);
 
     const checkScroll = () => {
         if (!scrollRef.current) return;
@@ -61,20 +60,6 @@ export default function CreatorSpotlight() {
         }
         return () => el?.removeEventListener('scroll', checkScroll);
     }, []);
-
-    useEffect(() => {
-        if (isHovered) return;
-        const interval = setInterval(() => {
-            if (!scrollRef.current) return;
-            const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-            if (scrollLeft >= scrollWidth - clientWidth - 20) {
-                scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-                scrollRef.current.scrollBy({ left: 370, behavior: 'smooth' });
-            }
-        }, 4000);
-        return () => clearInterval(interval);
-    }, [isHovered]);
 
     const scrollByAmount = (distance) => {
         if (scrollRef.current) {
@@ -115,8 +100,6 @@ export default function CreatorSpotlight() {
             <div 
                 className={styles.carouselContainer}
                 ref={scrollRef}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
             >
                 {creatorShowcaseData.map((creator, idx) => (
                     <motion.div 
