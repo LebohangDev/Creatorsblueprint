@@ -146,6 +146,22 @@ function Privacy() {
                         <ul>
                             <li>The End-Buyer’s email address, <strong>strictly</strong> if the End-Buyer provides explicit, opt-in consent to receive promotional materials from that specific Creator.</li>
                         </ul>
+
+                        <h3>3.7 Product Analytics and Session Recording</h3>
+                        <p>
+                            We use PostHog, a third-party analytics and product evaluation service, to help us understand how users engage with our platform, troubleshoot issues, and improve our product.
+                        </p>
+                        <p>
+                            Through PostHog, we may collect and process information such as:
+                        </p>
+                        <ul>
+                            <li><strong>Device and Network Information:</strong> Your IP address, device type, operating system, and browser type.</li>
+                            <li><strong>Usage Data:</strong> Pages visited, buttons clicked, navigation paths, and time spent on specific features.</li>
+                            <li><strong>Session Recordings:</strong> We may record user sessions to identify technical bugs and understand user behavior to enhance the overall experience. We configure these recordings to automatically mask sensitive information (such as passwords and payment details) before it is captured.</li>
+                        </ul>
+                        <p>
+                            PostHog acts as our data processor and handles this information strictly in accordance with our instructions to provide their services to us. For more detailed information on how PostHog handles data, you can review the <a href="https://posthog.com/privacy" target="_blank" rel="noopener noreferrer">PostHog Privacy Policy</a>.
+                        </p>
                     </section>
 
                     <section>
