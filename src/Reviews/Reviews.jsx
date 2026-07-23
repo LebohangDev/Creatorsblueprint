@@ -40,6 +40,28 @@ export default function Reviews() {
                         </p>
                     </motion.div>
 
+                    {/* Text Card 2: Sena Bayram */}
+                    <motion.div 
+                        className={styles.feedbackCard}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.15, duration: 0.4 }}
+                    >
+                        <div className={styles.feedbackHeader}>
+                            <div className={styles.avatarCircle} style={{ background: 'linear-gradient(135deg, #4361ee, #3a0ca3)' }}>
+                                SB
+                            </div>
+                            <div className={styles.feedbackAuthor}>
+                                <strong>Sena Bayram <i className={`ri-checkbox-circle-fill ${styles.verifiedIcon}`}></i></strong>
+                                <span>@dubaiwithsena · 2h</span>
+                            </div>
+                        </div>
+                        <p className={styles.feedbackText}>
+                            I love that I can host everything all in one place. I created an ebook all about my experiences in Dubai in literally 10 minutes! <strong>@creatorsblueprint</strong> is amazing. 💖
+                        </p>
+                    </motion.div>
+
                     {/* UGC Video 1: Oyeyinka Oyerinde */}
                     <motion.a 
                         href="https://www.instagram.com/reel/DazvtP6MjQk/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
@@ -99,27 +121,33 @@ export default function Reviews() {
                         </div>
                     </motion.a>
 
-                    {/* Text Card 2: Sena Bayram */}
-                    <motion.div 
-                        className={styles.feedbackCard}
+                    {/* UGC Video 3: Sena Bayram */}
+                    <motion.a 
+                        href="https://www.instagram.com/reel/DbH351LIT-7/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.ugcReelFrameCard}
+                        style={{ display: 'block', textDecoration: 'none' }}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3, duration: 0.4 }}
                     >
-                        <div className={styles.feedbackHeader}>
-                            <div className={styles.avatarCircle} style={{ background: 'linear-gradient(135deg, #4361ee, #3a0ca3)' }}>
-                                SB
-                            </div>
-                            <div className={styles.feedbackAuthor}>
-                                <strong>Sena Bayram <i className={`ri-checkbox-circle-fill ${styles.verifiedIcon}`}></i></strong>
-                                <span>@dubaiwithsena · 2h</span>
+                        <div className={styles.playButtonOverlay}>
+                            <i className="ri-play-fill"></i>
+                        </div>
+                        <img 
+                            src="/Images/ugc/ugc_creator3.png" 
+                            alt="Sena Bayram Video Screenshot" 
+                            className={styles.ugcScreenshotImg} 
+                        />
+                        <div className={styles.reelOverlayFooter}>
+                            <div className={styles.reelCreatorInfo}>
+                                <strong>Sena Bayram</strong>
+                                <span>@dubaiwithsena</span>
                             </div>
                         </div>
-                        <p className={styles.feedbackText}>
-                            The GCC focus makes all the difference. Instant payment processing and storefront templates built for Arab creators.
-                        </p>
-                    </motion.div>
+                    </motion.a>
                 </div>
 
                 {/* Column 3: Text Card (Top) */}

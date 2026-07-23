@@ -20,6 +20,16 @@ const ugcVideosData = [
         niche: 'UGC & Lifestyle',
         embedUrl: 'https://www.instagram.com/reel/DazvtP6MjQk/?utm_source=ig_embed&utm_campaign=loading',
         bgImage: '/Images/ugc/ugc_creator2.png'
+    },
+    {
+        id: 'video-6',
+        creatorName: 'Sena Bayram',
+        initials: 'SB',
+        avatarBg: 'linear-gradient(135deg, #4361ee, #3a0ca3)',
+        creatorHandle: '@dubaiwithsena',
+        niche: 'Dubai Life & Travel',
+        embedUrl: 'https://www.instagram.com/reel/DbH351LIT-7/?utm_source=ig_embed&utm_campaign=loading',
+        bgImage: '/Images/ugc/ugc_creator3.png'
     }
 ];
 
