@@ -53,11 +53,35 @@ export default function Hero() {
                     transition={{ duration: 0.5 }}
                 >
                     <h1 className={styles.heroTitle}>
-                        Turn your content into a <span>creator business.</span>
+                        The{' '}
+                        <span className={styles.brushHighlight}>
+                            link in bio
+                            <svg className={styles.brushStroke} viewBox="0 0 280 20" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                <defs>
+                                    <linearGradient id="heroBrushGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stopColor="#ffee32" />
+                                        <stop offset="50%" stopColor="#ffd100" />
+                                        <stop offset="100%" stopColor="#ff9e00" />
+                                    </linearGradient>
+                                </defs>
+                                {/* Stylish hand-drawn double-pass scribble underline with animated draw */}
+                                <motion.path 
+                                    d="M 4 5 C 70 3, 170 3, 272 5 C 190 10, 90 12, 14 14 C 90 13, 180 12, 276 13" 
+                                    stroke="url(#heroBrushGradient)" 
+                                    strokeWidth="2.2" 
+                                    strokeLinecap="round" 
+                                    strokeLinejoin="round" 
+                                    initial={{ pathLength: 0, opacity: 0 }}
+                                    animate={{ pathLength: 1, opacity: 1 }}
+                                    transition={{ duration: 1.2, delay: 0.3, ease: [0.33, 1, 0.68, 1] }}
+                                />
+                            </svg>
+                        </span>{' '}
+                        for your <span>creator business.</span>
                     </h1>
 
                     <p className={styles.heroSubText}>
-                        Build your storefront, create digital products, accept payments and manage your creator business, all from one platform built for GCC creators.
+                        Build your storefront, sell digital products, accept direct payouts, and manage your creator business, all from one high-converting link in bio.
                     </p>
 
 

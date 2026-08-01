@@ -4,20 +4,20 @@ import styles from './HowItWorks.module.css';
 const steps = [
     {
         number: '01',
-        title: 'Step 1: Claim your creator page',
-        desc: 'Choose your handle and create your account.',
+        title: 'Step 1: Claim your link in bio handle',
+        desc: 'Choose your custom username and create your creator account.',
         icon: 'ri-user-add-line'
     },
     {
         number: '02',
         title: 'Step 2: Build your offer',
-        desc: 'Add an existing product or create one using the platform.',
+        desc: 'Add existing digital products or create new ones using our platform.',
         icon: 'ri-add-circle-line'
     },
     {
         number: '03',
-        title: 'Step 3: Share and start selling',
-        desc: 'Place your Creators Blueprint link in your bio and manage everything from your dashboard.',
+        title: 'Step 3: Put link in bio & start selling',
+        desc: 'Place your Creators Blueprint link in your Instagram, TikTok, or YouTube bio and monetize your audience.',
         icon: 'ri-rocket-line'
     }
 ];

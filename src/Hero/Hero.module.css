@@ -38,6 +38,25 @@
   color: #f5eedc;
 }
 
+.brushHighlight {
+  position: relative;
+  display: inline-block;
+  color: #ffffff;
+  white-space: nowrap;
+  padding-bottom: 3px;
+}
+
+.brushStroke {
+  position: absolute;
+  bottom: -6px;
+  left: -1%;
+  width: 102%;
+  height: 18px;
+  overflow: visible;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 8px rgba(255, 209, 0, 0.45));
+}
+
 .heroSubText {
   font-size: 1.12rem;
   color: #a1a1aa;

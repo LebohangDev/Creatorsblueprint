@@ -5,15 +5,11 @@ export default function Features() {
     return (
         <section className={styles.featuresSection} id="features">
             <div className={styles.featuresHeader}>
-                <div className={styles.versionBadgeRow}>
-                    <i className="ri-checkbox-circle-fill"></i>
-                    <span>Platform Overview · Currently Live in v1.4</span>
-                </div>
                 <h2 className={styles.sectionTitle}>
-                    Everything you need to <span>sell online</span>
+                    Everything your <span>link in bio</span> needs
                 </h2>
                 <p className={styles.sectionSubtitle}>
-                    Simple tools designed to get you selling fast, backed by our Phase 2 creator expansion roadmap.
+                    Turn your link in bio into a high-converting creator storefront with all the tools built into one place.
                 </p>
             </div>
 
@@ -36,14 +32,14 @@ export default function Features() {
                                 <i className="ri-pulse-fill"></i> Live v1.4
                             </span>
                         </div>
-                        <h3 className={styles.cardTitle}>Custom Creator Storefront</h3>
+                        <h3 className={styles.cardTitle}>Custom Link-in-Bio Storefront</h3>
                         <p className={styles.cardDescription}>
-                            Keep your products, links, and identity in one mobile-friendly store built for your link in bio.
+                            Keep your digital products, links, and creator brand identity in one high-converting link in bio page.
                         </p>
                         <ul className={styles.featureChecklist}>
                             <li><i className="ri-checkbox-circle-fill"></i> Link-in-bio storefront</li>
                             <li><i className="ri-checkbox-circle-fill"></i> Mobile-first design</li>
-                            <li><i className="ri-checkbox-circle-fill"></i> Custom handle</li>
+                            <li><i className="ri-checkbox-circle-fill"></i> Custom handle & bio</li>
                         </ul>
                     </div>
 
