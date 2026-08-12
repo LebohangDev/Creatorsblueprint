@@ -1,27 +1,24 @@
 .privacyContainer {
     width: 100%;
     min-height: 100vh;
-    background-color: #000000;
-    background-image: radial-gradient(circle at top right, #0a192f, #000000);
+    background-color: var(--bg-page);
     padding: 120px 24px 80px 24px;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    color: #f4f4f5;
-    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    font-family: var(--font-body);
 }
 
 .privacyContent {
     width: 100%;
     max-width: 900px;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.45) 0%, rgba(2, 6, 23, 0.65) 100%);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(56, 189, 248, 0.15);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
     border-radius: 24px;
     padding: 60px;
     box-sizing: border-box;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    box-shadow: var(--shadow-md);
 }
 
 .header {
@@ -31,40 +28,34 @@
 
 .header i {
     font-size: 3.5rem;
-    color: #38bdf8;
-    background: linear-gradient(135deg, #60a5fa, #3b82f6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent-blue);
     display: inline-block;
     margin-bottom: 16px;
 }
 
 .header h1 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: var(--font-display);
     font-size: 3rem;
     font-weight: 800;
     margin: 0 0 8px 0;
     letter-spacing: -0.03em;
+    color: var(--text-primary);
 }
 
 .header h1 span {
-    background: linear-gradient(135deg, #60a5fa, #3b82f6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent-blue);
 }
 
 .subtitle {
     font-size: 1.2rem;
-    color: #a1a1aa;
+    color: var(--text-secondary);
     margin: 0;
 }
 
 /* Metadata Card */
 .metaCard {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: var(--bg-surface-subtle);
+    border: 1px solid var(--border-light);
     border-radius: 16px;
     padding: 24px;
     margin-bottom: 48px;
@@ -75,25 +66,29 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     font-size: 0.95rem;
-    color: #cbd5e1;
+    color: var(--text-secondary);
+}
+
+.metaGrid strong {
+    color: var(--text-primary);
 }
 
 .metaGrid a {
-    color: #38bdf8;
+    color: var(--accent-blue);
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 .metaGrid a:hover {
-    color: #60a5fa;
+    color: var(--accent-blue-hover);
     text-decoration: underline;
 }
 
 /* Legal Body Content */
 .legalBody {
     line-height: 1.75;
-    font-size: 1.05rem;
-    color: #cbd5e1;
+    font-size: 1.02rem;
+    color: var(--text-secondary);
 }
 
 .legalBody section {
@@ -101,30 +96,30 @@
 }
 
 .legalBody h2 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: var(--font-display);
     font-size: 1.8rem;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--text-primary);
     margin-top: 0;
     margin-bottom: 24px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--border-light);
     padding-bottom: 12px;
 }
 
 .legalBody h3 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: var(--font-display);
     font-size: 1.3rem;
     font-weight: 600;
-    color: #38bdf8;
+    color: var(--accent-blue);
     margin-top: 32px;
     margin-bottom: 16px;
 }
 
 .legalBody h4 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: var(--font-display);
     font-size: 1.1rem;
     font-weight: 600;
-    color: #ffffff;
+    color: var(--text-primary);
     margin-top: 24px;
     margin-bottom: 12px;
 }
@@ -143,17 +138,26 @@
 }
 
 .legalBody strong {
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 .legalBody em {
-    color: #a1a1aa;
+    color: var(--text-muted);
+}
+
+.legalBody a {
+    color: var(--accent-blue);
+    text-decoration: none;
+}
+
+.legalBody a:hover {
+    text-decoration: underline;
 }
 
 /* Info Box */
 .infoBox {
-    background: rgba(56, 189, 248, 0.04);
-    border: 1px solid rgba(56, 189, 248, 0.15);
+    background: var(--accent-blue-subtle);
+    border: 1px solid rgba(29, 78, 216, 0.2);
     border-radius: 12px;
     padding: 24px;
     margin: 28px 0;
@@ -161,7 +165,7 @@
 
 .infoBox h4 {
     margin-top: 0;
-    color: #38bdf8;
+    color: var(--accent-blue);
     margin-bottom: 12px;
 }
 
@@ -170,7 +174,7 @@
     font-family: monospace;
     font-size: 0.95rem;
     line-height: 1.6;
-    color: #94a3b8;
+    color: var(--text-secondary);
 }
 
 /* Table styling */
@@ -179,7 +183,7 @@
     overflow-x: auto;
     margin: 28px 0;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-light);
 }
 
 .cookieTable {
@@ -192,24 +196,24 @@
 
 .cookieTable th, .cookieTable td {
     padding: 16px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid var(--border-light);
 }
 
 .cookieTable th {
-    background: rgba(255, 255, 255, 0.03);
-    color: #ffffff;
+    background: var(--bg-surface-subtle);
+    color: var(--text-primary);
     font-weight: 600;
 }
 
 .cookieTable td {
-    color: #cbd5e1;
+    color: var(--text-secondary);
 }
 
 .cookieTable code {
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--accent-blue-subtle);
     padding: 2px 6px;
     border-radius: 4px;
-    color: #38bdf8;
+    color: var(--accent-blue);
     font-family: monospace;
     font-size: 0.9rem;
 }
