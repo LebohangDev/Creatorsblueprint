@@ -36,13 +36,13 @@ function Terms() {
 
                         <h3>1.2 Explicit Conditional Access</h3>
                         <p>
-                            The Company offers access to its cloud-hosted software application, automated ebook generation pipelines, digital storefront hosting infrastructure, and affiliate tracking modules (collectively, the <strong>"Services"</strong>) conditioned entirely upon your unconditioned acceptance of this Agreement.
+                            The Company offers access to its cloud-hosted software application, automated ebook generation pipelines, digital creator store hosting infrastructure, and affiliate tracking modules (collectively, the <strong>"Services"</strong>) conditioned entirely upon your unconditioned acceptance of this Agreement.
                         </p>
 
                         <div className={styles.warningBox}>
                             <h4>IMPORTANT NOTICE ON ACCEPTANCE</h4>
                             <p>
-                                BY CLICKING "I AGREE", COMPLETING THE ADMINISTRATIVE ONBOARDING PROCESS, GENERATING AN EBOOK, OR SETTING UP A HOSTED STOREFRONT, YOU DECLARE THAT YOU HAVE READ, UNDERSTOOD, AND CONCURRENTLY AGREE TO BE BOUND BY EVERY CLAUSE, DISCLAIMER, RISK ALLOCATION, AND LIABILITY CAP CONTAINED HEREIN. IF YOU DO NOT AGREE TO THIS AGREEMENT IN ITS ENTIRETY, YOU LACK AUTHORIZATION TO USE THE SERVICES AND MUST IMMEDIATELY ESCAPE THE PLATFORM AND CEASE ALL INTERACTION WITH DOMAINS OPERATED BY THE COMPANY.
+                                BY CLICKING "I AGREE", COMPLETING THE ADMINISTRATIVE ONBOARDING PROCESS, GENERATING AN EBOOK, OR SETTING UP A HOSTED CREATOR STORE, YOU DECLARE THAT YOU HAVE READ, UNDERSTOOD, AND CONCURRENTLY AGREE TO BE BOUND BY EVERY CLAUSE, DISCLAIMER, RISK ALLOCATION, AND LIABILITY CAP CONTAINED HEREIN. IF YOU DO NOT AGREE TO THIS AGREEMENT IN ITS ENTIRETY, YOU LACK AUTHORIZATION TO USE THE SERVICES AND MUST IMMEDIATELY ESCAPE THE PLATFORM AND CEASE ALL INTERACTION WITH DOMAINS OPERATED BY THE COMPANY.
                             </p>
                         </div>
                     </section>
@@ -55,8 +55,8 @@ function Terms() {
                         <ul>
                             <li><strong>"Account"</strong> means the personalized digital environment, database access privileges, and administrative interface issued by the Company to a specific User upon successful completion of the registration protocol.</li>
                             <li><strong>"AI Engine Providers"</strong> means the external third-party enterprise machine learning and large language model architectures integrated via API into the platform, including but not limited to OpenAI, LLC, Nano Banana Pro, and Templated.io.</li>
-                            <li><strong>"Buyer"</strong> means any end-consumer or individual web traffic participant who visits a Creator Storefront hosted on the CB Studio platform to purchase, download, or interact with a digital asset.</li>
-                            <li><strong>"Creator Storefront"</strong> means the dynamic web presentation layer, hosted on infrastructure managed by the Company, that allows a Creator to display, market, and sell digital assets to Buyers.</li>
+                            <li><strong>"Buyer"</strong> means any end-consumer or individual web traffic participant who visits a Creator Store hosted on the CB Studio platform to purchase, download, or interact with a digital asset.</li>
+                            <li><strong>"Creator Store"</strong> means the dynamic web presentation layer, hosted on infrastructure managed by the Company, that allows a Creator to display, market, and sell digital assets to Buyers.</li>
                             <li><strong>"User Content"</strong> means any raw inputs, data structures, textual entries, layout choices, image assets, or PDF files uploaded, keyed, or otherwise transferred to the platform by a User.</li>
                             <li><strong>"AI-Generated Output"</strong> means the structured text files, ebook layout structures, dynamic compilation results, and digital cover graphic files delivered to a User by the platform as a result of processing data through third-party machine learning APIs.</li>
                         </ul>
@@ -100,10 +100,10 @@ function Terms() {
                         
                         <h3>5.1 Marketplace Venue Clarification</h3>
                         <p>
-                            Creators acknowledge that CB Studio acts strictly as a technical platform infrastructure provider. The Company does not act as a retail vendor, broker, auctioneer, or agent for any products offered through Creator Storefronts.
+                            Creators acknowledge that CB Studio acts strictly as a technical platform infrastructure provider. The Company does not act as a retail vendor, broker, auctioneer, or agent for any products offered through Creator Stores.
                         </p>
                         <p>
-                            <strong>WHEN A BUYER PURCHASES AN EBOOK OR DIGITAL ASSET THROUGH A CREATOR STOREFRONT HOSTED ON THE PLATFORM, THE CONTRACT FOR SALE IS FORMED DIRECTLY AND EXCLUSIVELY BETWEEN THAT CREATOR AND THE BUYER. THE COMPANY IS NOT A PARTY TO, BENEFICIARY OF, OR GUARANTOR OF THAT COMMERCIAL TRANSACTION.</strong>
+                            <strong>WHEN A BUYER PURCHASES AN EBOOK OR DIGITAL ASSET THROUGH A CREATOR STORE HOSTED ON THE PLATFORM, THE CONTRACT FOR SALE IS FORMED DIRECTLY AND EXCLUSIVELY BETWEEN THAT CREATOR AND THE BUYER. THE COMPANY IS NOT A PARTY TO, BENEFICIARY OF, OR GUARANTOR OF THAT COMMERCIAL TRANSACTION.</strong>
                         </p>
 
                         <h3>5.2 Dynamic UAE Licensing Pass-Through Mandate</h3>
@@ -120,7 +120,7 @@ function Terms() {
                         
                         <h3>6.1 Subscription Engine Mechanics</h3>
                         <p>
-                            Access to core ebook generation tools and Creator Storefront hosting features requires an active, paid tier subscription plan. The Company utilizes a single, tier-based subscription model. All subscription fees are priced in United States Dollars (USD) or United Arab Emirates Dirhams (AED), as determined by the Company checkout dashboard.
+                            Access to core ebook generation tools and Creator Store hosting features requires an active, paid tier subscription plan. The Company utilizes a single, tier-based subscription model. All subscription fees are priced in United States Dollars (USD) or United Arab Emirates Dirhams (AED), as determined by the Company checkout dashboard.
                         </p>
 
                         <h3>6.2 Automatic Renewal Protocols</h3>
@@ -147,7 +147,7 @@ function Terms() {
                         
                         <h3>7.1 Scope of Extraction Request</h3>
                         <p>
-                            To accelerate onboarding and storefront configuration, the platform incorporates automated data-gathering scraping modules powered by Apify. By providing your public Instagram handle during the validation checklist, you grant the Company an explicit, active mandate and authorization to execute web-scraping queries against your public Instagram profile page to extract your public profile image URL, follower/following metrics, display name, and biographical text parameters.
+                            To accelerate onboarding and creator store configuration, the platform incorporates automated data-gathering scraping modules powered by Apify. By providing your public Instagram handle during the validation checklist, you grant the Company an explicit, active mandate and authorization to execute web-scraping queries against your public Instagram profile page to extract your public profile image URL, follower/following metrics, display name, and biographical text parameters.
                         </p>
 
                         <h3>7.2 Creator Representation and Warranties on Scraping</h3>
@@ -172,12 +172,12 @@ function Terms() {
                         <h3>8.3 Ownership of User Content and AI Outputs</h3>
                         <ul>
                             <li><strong>User Content:</strong> The Creator retains sole ownership, title, and intellectual property rights over all raw assets uploaded to our GCP storage buckets (e.g., source images, reference PDFs, customized text blocks).</li>
-                            <li><strong>AI-Generated Outputs:</strong> Pursuant to your subscription tier rights, the Company transfers all transferable rights and title to the AI-Generated Output (completed digital books, generated structural cover files, storefront presentation texts) to the Creator once the generation cycle is complete.</li>
+                            <li><strong>AI-Generated Outputs:</strong> Pursuant to your subscription tier rights, the Company transfers all transferable rights and title to the AI-Generated Output (completed digital books, generated structural cover files, creator store presentation texts) to the Creator once the generation cycle is complete.</li>
                         </ul>
 
                         <h3>8.4 Contractual License Granted to the Company</h3>
                         <p>
-                            To operate the platform, host storefronts, and distribute content, you grant the Company a worldwide, royalty-free, fully paid-up, sublicensable (solely to our technical subprocessors like Google Cloud Platform and OpenAI), non-exclusive license to host, parse, cache, reproduce, translate, and transmit your User Content and AI-Generated Outputs. <strong>This license is strictly limited to providing and maintaining the Services, and the Company will not use your content or outputs to train public or proprietary machine learning models.</strong>
+                            To operate the platform, host creator stores, and distribute content, you grant the Company a worldwide, royalty-free, fully paid-up, sublicensable (solely to our technical subprocessors like Google Cloud Platform and OpenAI), non-exclusive license to host, parse, cache, reproduce, translate, and transmit your User Content and AI-Generated Outputs. <strong>This license is strictly limited to providing and maintaining the Services, and the Company will not use your content or outputs to train public or proprietary machine learning models.</strong>
                         </p>
 
                         <h3>8.5 Feedback Ownership</h3>
@@ -196,7 +196,7 @@ function Terms() {
 
                         <h3>9.2 Non-Delegable Curation Mandate</h3>
                         <p>
-                            The Creator accepts sole, non-delegable responsibility for checking, reviewing, revising, and verifying all AI-Generated Outputs before publishing, marketing, or selling them on a Creator Storefront. The Creator is responsible for ensuring that all content sold on the platform does not violate copyright protections, trademark registrations, or consumer protection guidelines.
+                            The Creator accepts sole, non-delegable responsibility for checking, reviewing, revising, and verifying all AI-Generated Outputs before publishing, marketing, or selling them on a Creator Store. The Creator is responsible for ensuring that all content sold on the platform does not violate copyright protections, trademark registrations, or consumer protection guidelines.
                         </p>
 
                         <h3>9.3 No Professional Advice</h3>
@@ -215,7 +215,7 @@ function Terms() {
 
                         <h3>10.2 Refgrow Affiliate Attribution Platform Rules</h3>
                         <p>
-                            The platform incorporates the Refgrow affiliate tracking script to manage, monitor, and pay out commissions within our affiliate ecosystem. By activating your affiliate status or loading a Creator Storefront containing tracking variables, you acknowledge that the Refgrow client-side script parses query parameters and deploys domain-specific first-party cookies and localStorage keys to track attribution across modern browser security environments (such as Safari ITP). The Company is not responsible for tracking inaccuracies caused by browser configurations, ad-blockers, or local script interference.
+                            The platform incorporates the Refgrow affiliate tracking script to manage, monitor, and pay out commissions within our affiliate ecosystem. By activating your affiliate status or loading a Creator Store containing tracking variables, you acknowledge that the Refgrow client-side script parses query parameters and deploys domain-specific first-party cookies and localStorage keys to track attribution across modern browser security environments (such as Safari ITP). The Company is not responsible for tracking inaccuracies caused by browser configurations, ad-blockers, or local script interference.
                         </p>
                     </section>
 
@@ -247,12 +247,12 @@ function Terms() {
                         
                         <h3>13.1 Subjective Review and Discretionary Takedowns</h3>
                         <p>
-                            The Company retains the right, but not the obligation, to monitor, review, and moderate User Content and AI-Generated Outputs. <strong>The Company reserves the right to remove, delete, or disable access to any content, storefront, or product layout at its sole discretion, without prior notice or liability, if it determines that the material violates these Terms, presents legal exposure, or undermines platform stability.</strong>
+                            The Company retains the right, but not the obligation, to monitor, review, and moderate User Content and AI-Generated Outputs. <strong>The Company reserves the right to remove, delete, or disable access to any content, creator store, or product layout at its sole discretion, without prior notice or liability, if it determines that the material violates these Terms, presents legal exposure, or undermines platform stability.</strong>
                         </p>
 
                         <h3>13.2 DMCA and Copyright Enforcement Workflow</h3>
                         <p>
-                            If you believe that any material hosted on a Creator Storefront infringes your copyright protections, you may submit a formal notification to our support endpoint: <a href="mailto:help@creatorsblueprint.io">help@creatorsblueprint.io</a>. Your notice must include a physical or electronic signature of the owner, specific identification of the work, clear target URLs, and a statement made under penalty of perjury that the deployment is unauthorized.
+                            If you believe that any material hosted on a Creator Store infringes your copyright protections, you may submit a formal notification to our support endpoint: <a href="mailto:help@creatorsblueprint.io">help@creatorsblueprint.io</a>. Your notice must include a physical or electronic signature of the owner, specific identification of the work, clear target URLs, and a statement made under penalty of perjury that the deployment is unauthorized.
                         </p>
 
                         <h3>13.3 Counter-Notice Process</h3>
@@ -281,7 +281,7 @@ function Terms() {
 
                         <h3>14.4 Effects of Termination and Data Purge Protocols</h3>
                         <p>
-                            Upon account termination, our automated scripts trigger a deletion sequence that permanently scrubs all uploaded files, generated books, storefront layouts, and scraped metrics from our production databases within a few minutes. Notwithstanding this automated data purge, the Company retains the right to preserve transactional data sets, invoices, payment histories, and metadata logs required by law or Stripe's regulatory compliance frameworks to satisfy tax, accounting, or ongoing legal holds.
+                            Upon account termination, our automated scripts trigger a deletion sequence that permanently scrubs all uploaded files, generated books, creator store layouts, and scraped metrics from our production databases within a few minutes. Notwithstanding this automated data purge, the Company retains the right to preserve transactional data sets, invoices, payment histories, and metadata logs required by law or Stripe's regulatory compliance frameworks to satisfy tax, accounting, or ongoing legal holds.
                         </p>
                     </section>
 
@@ -302,7 +302,7 @@ function Terms() {
                     <section>
                         <h2>16. Indemnification Firewall</h2>
                         <p>
-                            You agree to defend, indemnify, and hold harmless the Company, its parent entities, subsidiaries, officers, directors, software developers, and agents from and against any third-party claims, liabilities, financial losses, damages, costs, or legal fees arising out of or related to your misuse of the platform, intellectual property or privacy infringement associated with your storefront, transactional buyer disputes, violation of applicable laws, or a UAE Creator's failure to maintain a valid trade license.
+                            You agree to defend, indemnify, and hold harmless the Company, its parent entities, subsidiaries, officers, directors, software developers, and agents from and against any third-party claims, liabilities, financial losses, damages, costs, or legal fees arising out of or related to your misuse of the platform, intellectual property or privacy infringement associated with your creator store, transactional buyer disputes, violation of applicable laws, or a UAE Creator's failure to maintain a valid trade license.
                         </p>
                     </section>
 

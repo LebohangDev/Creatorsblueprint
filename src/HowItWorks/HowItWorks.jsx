@@ -51,7 +51,7 @@ export default function HowItWorks() {
                     How it <span>works</span>
                 </h2>
                 <p className={styles.sectionSubtitle}>
-                    Launch your storefront and start selling in 3 simple steps.
+                    Launch your creator store and start selling in 3 simple steps.
                 </p>
             </div>
 

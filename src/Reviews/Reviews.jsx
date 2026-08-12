@@ -10,7 +10,7 @@ export default function Reviews() {
                     See what creators are <span>saying</span> 👀
                 </h2>
                 <p className={styles.sectionSubtitle}>
-                    Creators Blueprint is the easiest way to launch your storefront and sell online.
+                    Creators Blueprint is the easiest way to launch your creator store and sell online.
                 </p>
             </div>
 
@@ -192,7 +192,7 @@ export default function Reviews() {
                             </div>
                         </div>
                         <p className={styles.feedbackText}>
-                            I went from having no online presence to having my own storefront live in literally one afternoon. <strong>Creators Blueprint</strong> made it so simple, I didn't need to figure out anything technical. ✨
+                            I went from having no online presence to having my own creator store live in literally one afternoon. <strong>Creators Blueprint</strong> made it so simple, I didn't need to figure out anything technical. ✨
                         </p>
                     </motion.div>
 

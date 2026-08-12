@@ -9,13 +9,13 @@ export default function Features() {
                     Everything your <span>link in bio</span> needs
                 </h2>
                 <p className={styles.sectionSubtitle}>
-                    Turn your link in bio into a high-converting creator storefront with all the tools built into one place.
+                    Turn your link in bio into a high-converting creator store with all the tools built into one place.
                 </p>
             </div>
 
             <div className={styles.bentoGrid}>
                 
-                {/* 1. Creator Storefront (Large Featured Card) */}
+                {/* 1. Creator Store (Large Featured Card) */}
                 <motion.div 
                     className={`${styles.bentoCard} ${styles.bentoCardLarge}`}
                     initial={{ opacity: 0, y: 20 }}
@@ -32,12 +32,12 @@ export default function Features() {
                                 <i className="ri-pulse-fill"></i> Live v1.4
                             </span>
                         </div>
-                        <h3 className={styles.cardTitle}>Custom Link-in-Bio Storefront</h3>
+                        <h3 className={styles.cardTitle}>Custom Link-in-Bio Creator Store</h3>
                         <p className={styles.cardDescription}>
                             Keep your digital products, links, and creator brand identity in one high-converting link in bio page.
                         </p>
                         <ul className={styles.featureChecklist}>
-                            <li><i className="ri-checkbox-circle-fill"></i> Link-in-bio storefront</li>
+                            <li><i className="ri-checkbox-circle-fill"></i> Link-in-bio creator store</li>
                             <li><i className="ri-checkbox-circle-fill"></i> Mobile-first design</li>
                             <li><i className="ri-checkbox-circle-fill"></i> Custom handle & bio</li>
                         </ul>
@@ -234,7 +234,7 @@ export default function Features() {
                         </div>
                         <h3 className={styles.cardTitle}>Real-Time Analytics</h3>
                         <p className={styles.cardDescription}>
-                            Monitor storefront views, product clicks, and conversion rates from your dashboard.
+                            Monitor creator store views, product clicks, and conversion rates from your dashboard.
                         </p>
                     </div>
                 </motion.div>

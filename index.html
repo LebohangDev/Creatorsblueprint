@@ -11,7 +11,25 @@
     gtag('js', new Date());
     gtag('config', 'G-RTSM2LFL7L');
   </script>
-  
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2174708320022983');
+    fbq('track', 'PageView');
+  </script>
+  <!-- End Meta Pixel Code -->
+
   <link rel="icon" type="image/png" href="/Images/CB_Logos/CB_fingerprint_hd.png" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,9 +43,9 @@
   <title>Creators Blueprint | The Link in Bio for Your Creator Business</title>
   <meta name="title" content="Creators Blueprint | The Link in Bio for Your Creator Business" />
   <meta name="description"
-    content="Creators Blueprint is the link in bio platform for your creator business. Build your custom storefront, sell digital products, accept 0% fee payouts, and monetize your audience." />
+    content="Creators Blueprint is the link in bio platform for your creator business. Build your custom creator store, sell digital products, accept 0% fee payouts, and monetize your audience." />
   <meta name="keywords"
-    content="creatorsblueprint, creators blueprint, link in bio, creator business, link in bio storefront, sell digital products, link in bio for creators, dubai creators, gcc creators, monetize audience" />
+    content="creatorsblueprint, creators blueprint, link in bio, creator business, link in bio creator store, sell digital products, link in bio for creators, dubai creators, gcc creators, monetize audience" />
   <meta name="robots" content="index, follow" />
 
   <!-- Open Graph / Facebook -->
@@ -35,7 +53,7 @@
   <meta property="og:url" content="https://www.creatorsblueprint.io" />
   <meta property="og:title" content="Creators Blueprint | The Link in Bio for Your Creator Business" />
   <meta property="og:description"
-    content="Creators Blueprint is the link in bio platform for your creator business. Build your custom storefront, sell digital products, accept direct payouts, and monetize your audience." />
+    content="Creators Blueprint is the link in bio platform for your creator business. Build your custom creator store, sell digital products, accept direct payouts, and monetize your audience." />
   <meta property="og:image" content="https://www.creatorsblueprint.io/Images/CB_Logos/logo_new.png" />
 
   <!-- Twitter -->
@@ -43,7 +61,7 @@
   <meta property="twitter:url" content="https://www.creatorsblueprint.io" />
   <meta property="twitter:title" content="Creators Blueprint | The Link in Bio for Your Creator Business" />
   <meta property="twitter:description"
-    content="Creators Blueprint is the link in bio platform for your creator business. Build your custom storefront, sell digital products, accept direct payouts, and monetize your audience." />
+    content="Creators Blueprint is the link in bio platform for your creator business. Build your custom creator store, sell digital products, accept direct payouts, and monetize your audience." />
   <meta property="twitter:image" content="https://www.creatorsblueprint.io/Images/CB_Logos/logo_new.png" />
 
   <!-- Structured Data JSON-LD -->
@@ -61,7 +79,7 @@
       "priceValidUntil": "2027-12-31",
       "description": "7-Day Free Trial"
     },
-    "description": "The link in bio for your creator business. Build custom storefronts, package digital products, and accept direct Stripe payouts."
+    "description": "The link in bio for your creator business. Build custom creator stores, package digital products, and accept direct Stripe payouts."
   }
   </script>
 
@@ -85,6 +103,8 @@
 </head>
 
 <body>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=2228811247964365&ev=PageView&noscript=1" /></noscript>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>

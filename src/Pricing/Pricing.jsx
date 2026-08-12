@@ -73,11 +73,11 @@ export default function Pricing() {
                     </div>
 
                     <ul className={styles.pricingFeatureList}>
-                        <li><i className="ri-checkbox-circle-fill"></i> <span>Custom Creator Storefront</span></li>
+                        <li><i className="ri-checkbox-circle-fill"></i> <span>Custom Creator Store</span></li>
                         <li><i className="ri-checkbox-circle-fill"></i> <span>Unlimited Digital Products & Ebooks</span></li>
                         <li><i className="ri-checkbox-circle-fill"></i> <span>Stripe Payouts (0% Commission)</span></li>
                         <li><i className="ri-checkbox-circle-fill"></i> <span>Automatic Email File Delivery</span></li>
-                        <li><i className="ri-checkbox-circle-fill"></i> <span>Storefront Views & Clicks</span></li>
+                        <li><i className="ri-checkbox-circle-fill"></i> <span>Creator Store Views & Clicks</span></li>
                     </ul>
 
                     <button 

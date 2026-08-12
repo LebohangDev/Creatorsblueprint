@@ -32,7 +32,7 @@ function Privacy() {
                         
                         <h3>1.1 Purpose</h3>
                         <p>
-                            Creator Blueprint FZ-LLC, a free zone limited liability company established under the rules and regulations of the Ras Al Khaimah Economic Zone (RAKEZ), United Arab Emirates, operating under the commercial product name <strong>"CB Studio"</strong> (hereinafter referred to as <strong>"the Company"</strong>, <strong>"we"</strong>, <strong>"us"</strong>, or <strong>"our"</strong>), values the privacy, digital integrity, and data protection rights of our users. This Privacy Policy (the <strong>"Policy"</strong>) is a comprehensive disclosures document detailing how we collect, process, secure, transfer, and retain personal data when individuals interact with our SaaS web application, enterprise ebook generation interfaces, hosted creator storefront layouts, affiliate program networks, and associated web domains located at or linked to creatorsblueprint.io (collectively, the <strong>"Services"</strong>).
+                            Creator Blueprint FZ-LLC, a free zone limited liability company established under the rules and regulations of the Ras Al Khaimah Economic Zone (RAKEZ), United Arab Emirates, operating under the commercial product name <strong>"CB Studio"</strong> (hereinafter referred to as <strong>"the Company"</strong>, <strong>"we"</strong>, <strong>"us"</strong>, or <strong>"our"</strong>), values the privacy, digital integrity, and data protection rights of our users. This Privacy Policy (the <strong>"Policy"</strong>) is a comprehensive disclosures document detailing how we collect, process, secure, transfer, and retain personal data when individuals interact with our SaaS web application, enterprise ebook generation interfaces, hosted creator store layouts, affiliate program networks, and associated web domains located at or linked to creatorsblueprint.io (collectively, the <strong>"Services"</strong>).
                         </p>
 
                         <h3>1.2 Scope of Application</h3>
@@ -42,7 +42,7 @@ function Privacy() {
                         <ul>
                             <li><strong>"Creators / Users":</strong> Digital influencers, content creators, and account holders who register an account with CB Studio to build, design, host, and sell digital assets.</li>
                             <li><strong>"Affiliates":</strong> Participants in our integrated marketing and commission-tracking ecosystem powered by Refgrow.</li>
-                            <li><strong>"End-Buyers":</strong> Consumers who access, view, or execute commercial transactions on any Creator Storefront hosted on infrastructure deployed by the Company.</li>
+                            <li><strong>"End-Buyers":</strong> Consumers who access, view, or execute commercial transactions on any Creator Store hosted on infrastructure deployed by the Company.</li>
                             <li><strong>"Visitors":</strong> Unauthenticated web traffic participants navigating our main domain interfaces.</li>
                         </ul>
 
@@ -52,7 +52,7 @@ function Privacy() {
                         </p>
                         <ul>
                             <li><strong>CB Studio as a Data Controller:</strong> The Company acts as a Data Controller for all personal data collected directly to set up accounts, manage billing tiers, execute direct promotional campaigns, track platform security parameters, and monitor core cloud infrastructure performance.</li>
-                            <li><strong>CB Studio as a Data Processor:</strong> When a Creator utilizes our platform infrastructure to host a storefront, customize sales links, collect buyer emails, or distribute digital assets to End-Buyers, the Creator acts as the Data Controller. The Company processes that End-Buyer personal data strictly as a Data Processor, acting under the direct contractual instruction and mandate of the Creator as set out in our Terms of Service.</li>
+                            <li><strong>CB Studio as a Data Processor:</strong> When a Creator utilizes our platform infrastructure to host a creator store, customize sales links, collect buyer emails, or distribute digital assets to End-Buyers, the Creator acts as the Data Controller. The Company processes that End-Buyer personal data strictly as a Data Processor, acting under the direct contractual instruction and mandate of the Creator as set out in our Terms of Service.</li>
                         </ul>
                     </section>
 
@@ -83,7 +83,7 @@ function Privacy() {
                                 <strong>Direct Submissions</strong> &rarr; Identifiers, Accounts, Uploaded Raw Media Assets <br />
                                 <strong>Automated Scrapes</strong> &rarr; Apify Pipeline &rarr; Public Instagram Content <br />
                                 <strong>Automated Logging</strong> &rarr; Infrastructure Telemetry, Secure JWT Session States <br />
-                                <strong>Storefront Actions</strong> &rarr; Buyer Marketing Consent, Stripe Metadata Tokens
+                                <strong>Creator Store Actions</strong> &rarr; Buyer Marketing Consent, Stripe Metadata Tokens
                             </p>
                         </div>
 
@@ -97,7 +97,7 @@ function Privacy() {
 
                         <h3>3.2 Automated Public Social Media Extraction (Apify Ingestion Pipeline)</h3>
                         <p>
-                            To simplify profile setups and automate Creator storefront creation, the platform runs an automated extraction sequence using Apify. When a Creator explicitly inputs their handle and consents to account validation, our system extracts and stores:
+                            To simplify profile setups and automate Creator store creation, the platform runs an automated extraction sequence using Apify. When a Creator explicitly inputs their handle and consents to account validation, our system extracts and stores:
                         </p>
                         <ul>
                             <li>The public Instagram display name and biographical text string.</li>
@@ -141,7 +141,7 @@ function Privacy() {
 
                         <h3>3.6 End-Buyer Information</h3>
                         <p>
-                            When a consumer completes an asset purchase on a Creator Storefront hosted on our system, we collect:
+                            When a consumer completes an asset purchase on a Creator Store hosted on our system, we collect:
                         </p>
                         <ul>
                             <li>The End-Buyer’s email address, <strong>strictly</strong> if the End-Buyer provides explicit, opt-in consent to receive promotional materials from that specific Creator.</li>
@@ -186,7 +186,7 @@ function Privacy() {
                         <ul>
                             <li><strong>SaaS Application Delivery:</strong> Provisioning account environments, activating dashboard variables, and maintaining core SaaS availability.</li>
                             <li><strong>Automated Content Generation Pipeline:</strong> Processing text inputs and media attachments through automated design templates and large language model APIs to compile books and covers.</li>
-                            <li><strong>Storefront Hosting and Commercial Infrastructure:</strong> Providing public-facing web presentation layers for creators to sell digital products to End-Buyers.</li>
+                            <li><strong>Creator Store Hosting and Commercial Infrastructure:</strong> Providing public-facing web presentation layers for creators to sell digital products to End-Buyers.</li>
                             <li><strong>Payment Gateway Interlocking:</strong> Linking vendor payouts and routing customer fees through Stripe and Stripe Connect systems.</li>
                             <li><strong>System Integrity and Fraud Prevention:</strong> Identifying unauthorized logins, tracking duplicate accounts, blocking malicious script injections, and monitoring system security.</li>
                             <li><strong>Technical Customer Support:</strong> Responding to troubleshooting inquiries, debugging structural errors, and managing platform tickets.</li>
@@ -260,7 +260,7 @@ function Privacy() {
 
                         <h3>7.3 Accuracy and Hallucination Limitations</h3>
                         <p>
-                            Our systems use advanced machine learning architectures, but AI-Generated Outputs can contain factual errors, structural inconsistencies, and hallucinations. Creators retain sole responsibility to review, check, edit, and verify all generated content before selling it on their hosted storefronts. The Company makes no warranties regarding the originality or legal accuracy of AI-generated content.
+                            Our systems use advanced machine learning architectures, but AI-Generated Outputs can contain factual errors, structural inconsistencies, and hallucinations. Creators retain sole responsibility to review, check, edit, and verify all generated content before selling it on their hosted creator stores. The Company makes no warranties regarding the originality or legal accuracy of AI-generated content.
                         </p>
                     </section>
 
@@ -292,7 +292,7 @@ function Privacy() {
 
                         <h3>9.2 Complete Account Deletion Execution</h3>
                         <p>
-                            When a Creator initiates an account deletion via their account settings dashboard, our automated system starts a deletion script that targets the user's records. All uploaded images, reference PDFs, custom text blocks, scraped profile information, active storefront profiles, and AI-generated outputs are permanently purged from our active databases within a few minutes.
+                            When a Creator initiates an account deletion via their account settings dashboard, our automated system starts a deletion script that targets the user's records. All uploaded images, reference PDFs, custom text blocks, scraped profile information, active creator store profiles, and AI-generated outputs are permanently purged from our active databases within a few minutes.
                         </p>
 
                         <h3>9.3 Legal and Financial Records Retention Exceptions</h3>
@@ -375,7 +375,7 @@ function Privacy() {
                             The Company may send promotional emails, system updates, market insights, or product announcements to registered Creators who opt-in to receive marketing materials. These activities strictly comply with CAN-SPAM and CASL regulations. Users can opt-out of promotional lists at any time by clicking the "Unsubscribe" link at the bottom of any marketing email or by emailing <a href="mailto:help@creatorsblueprint.io">help@creatorsblueprint.io</a>.
                         </p>
                         <p>
-                            <strong>Independent Storefront Direct Marketing Disclaimer:</strong> When an End-Buyer opts-in to receive promotional content on a hosted Creator Storefront, that consent is granted directly to the individual Creator. The Creator manages their own independent marketing lists. CB Studio is not responsible for marketing communications sent by Creators using data collected through the platform. End-Buyers must exercise their opt-out and deletion rights directly with the relevant Creator.
+                            <strong>Independent Creator Store Direct Marketing Disclaimer:</strong> When an End-Buyer opts-in to receive promotional content on a hosted Creator Store, that consent is granted directly to the individual Creator. The Creator manages their own independent marketing lists. CB Studio is not responsible for marketing communications sent by Creators using data collected through the platform. End-Buyers must exercise their opt-out and deletion rights directly with the relevant Creator.
                         </p>
                     </section>
 
@@ -395,7 +395,7 @@ function Privacy() {
                     <section>
                         <h2>14. Exclusions & Integration Disclaimers</h2>
                         <p>
-                            Our Services contain links to external web applications and third-party tools. If you click an external link or utilize an external plugin, you exit our platform domain. The Company does not control and is not responsible for the privacy practices, content protections, or security protocols of external third-party sites. Creators who host public storefronts via CB Studio must maintain their own independent terms of service and privacy policies to govern their interactions with End-Buyers.
+                            Our Services contain links to external web applications and third-party tools. If you click an external link or utilize an external plugin, you exit our platform domain. The Company does not control and is not responsible for the privacy practices, content protections, or security protocols of external third-party sites. Creators who host public creator stores via CB Studio must maintain their own independent terms of service and privacy policies to govern their interactions with End-Buyers.
                         </p>
                     </section>
 

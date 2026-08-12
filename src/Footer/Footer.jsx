@@ -13,7 +13,7 @@ export default function Footer() {
                             The creator operating system built for GCC creators. Turn your audience into a high-margin digital business.
                         </p>
                         <p className={styles.footerSeoSnippet}>
-                            Empowering GCC creators across UAE, KSA, Qatar, Kuwait, Bahrain, and Oman with custom storefronts, digital product pipelines, and Stripe payments.
+                            Empowering GCC creators across UAE, KSA, Qatar, Kuwait, Bahrain, and Oman with custom creator stores, digital product pipelines, and Stripe payments.
                         </p>
                     </div>
 
@@ -21,7 +21,7 @@ export default function Footer() {
                         <div className={styles.footerCol}>
                             <h5>Product</h5>
                             <ul>
-                                <li><a href="#features">Custom Storefront</a></li>
+                                <li><a href="#features">Custom Creator Store</a></li>
                                 <li><a href="#features">Ebook Builder</a></li>
                                 <li><a href="#features">Stripe Payouts</a></li>
                                 <li><a href="#pricing">Pricing</a></li>

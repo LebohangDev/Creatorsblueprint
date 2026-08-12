@@ -81,7 +81,7 @@ export default function Hero() {
                     </h1>
 
                     <p className={styles.heroSubText}>
-                        Build your storefront, sell digital products, accept direct payouts, and manage your creator business, all from one high-converting link in bio.
+                        Build your creator store, sell digital products, accept direct payouts, and manage your creator business, all from one high-converting link in bio.
                     </p>
 
 
@@ -135,11 +135,11 @@ export default function Hero() {
                             />
                         </div>
 
-                        {/* Front iPhone: Creators Blueprint Storefront */}
+                        {/* Front iPhone: Creators Blueprint Creator Store */}
                         <div className={`${styles.iphoneFrame} ${styles.frontPhoneStorefront}`}>
                             <img 
                                 src="/Images/creators/hajira_storefront.png" 
-                                alt="Hajira Khan Storefront" 
+                                alt="Hajira Khan Creator Store" 
                                 className={styles.iphoneScreenImg}
                             />
                         </div>

@@ -36,7 +36,7 @@ export default function CTA() {
                     Ready to turn your link in bio into a <span>creator business?</span>
                 </h2>
                 <p className={styles.finalCtaSub}>
-                    Launch your custom storefront, package your digital products, and start your 7-day free trial today.
+                    Launch your custom creator store, package your digital products, and start your 7-day free trial today.
                 </p>
 
                 <div className={styles.finalCtaBtnGroup}>

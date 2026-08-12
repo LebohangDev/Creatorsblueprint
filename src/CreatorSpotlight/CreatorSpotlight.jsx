@@ -75,7 +75,7 @@ export default function CreatorSpotlight() {
                         See how creators are building with <span>Creators Blueprint</span>
                     </h2>
                     <p className={styles.sectionSubtitle}>
-                        From their social profile to their own storefront, Creators Blueprint gives creators one place to turn attention into ownership.
+                        From their social profile to their own creator store, Creators Blueprint gives creators one place to turn attention into ownership.
                     </p>
                 </div>
 
@@ -120,11 +120,11 @@ export default function CreatorSpotlight() {
                             </span>
                         </div>
 
-                        {/* Single iPhone Mockup Frame displaying storefront screen */}
+                        {/* Single iPhone Mockup Frame displaying creator store screen */}
                         <div className={styles.singleIphoneFrame}>
                             <img 
                                 src={creator.posterImage} 
-                                alt={`${creator.name} Storefront Showcase`} 
+                                alt={`${creator.name} Creator Store Showcase`} 
                                 className={styles.iphoneScreenImg}
                                 style={['caroline', 'sena', 'oyeyinka', 'hajira', 'rena'].includes(creator.id) ? { objectFit: 'cover', objectPosition: 'top center' } : {}}
                                 loading="lazy"

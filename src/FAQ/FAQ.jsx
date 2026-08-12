@@ -5,7 +5,7 @@ import styles from './FAQ.module.css';
 const faqItems = [
     {
         q: 'What is Creators Blueprint?',
-        a: 'Creators Blueprint is the creator operating system designed specifically for GCC creators. It gives you a single place to launch a custom storefront, create digital products, process payments, and manage your creator business.'
+        a: 'Creators Blueprint is the creator operating system designed specifically for GCC creators. It gives you a single place to launch a custom creator store, create digital products, process payments, and manage your creator business.'
     },
     {
         q: 'How does the 7-day free trial work?',
@@ -21,11 +21,11 @@ const faqItems = [
     },
     {
         q: 'How are digital products delivered to buyers?',
-        a: 'Once a customer completes checkout on your storefront, your PDF guide, ebook, or digital asset is emailed to them instantly and automatically.'
+        a: 'Once a customer completes checkout on your creator store, your PDF guide, ebook, or digital asset is emailed to them instantly and automatically.'
     },
     {
         q: 'Is Creators Blueprint only for GCC creators?',
-        a: 'While our platform features regional Arab creator optimization and GCC currency handling, creators worldwide can use Creators Blueprint to launch their storefront.'
+        a: 'While our platform features regional Arab creator optimization and GCC currency handling, creators worldwide can use Creators Blueprint to launch their creator store.'
     }
 ];
 
