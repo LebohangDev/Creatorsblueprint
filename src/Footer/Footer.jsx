@@ -39,16 +39,6 @@ export default function Footer() {
                             >
                                 <i className="ri-tiktok-line"></i>
                             </a>
-                            <a 
-                                href="https://www.facebook.com/creatorsblueprint.io" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                className={styles.socialIconBtn}
-                                title="Follow Creators Blueprint on Facebook"
-                                aria-label="Facebook"
-                            >
-                                <i className="ri-facebook-circle-line"></i>
-                            </a>
                         </div>
                     </div>
 
@@ -90,7 +80,11 @@ export default function Footer() {
                     </div>
                     <div className={styles.footerLegalLinks}>
                         <a href="https://www.instagram.com/creatorsblueprint.io" target="_blank" rel="noopener noreferrer" className={styles.inlineInstaLink}>
-                            <i className="ri-instagram-line"></i> @creatorsblueprint.io
+                            <i className="ri-instagram-line"></i> Instagram
+                        </a>
+                        <span>·</span>
+                        <a href="https://www.tiktok.com/@creatorsblueprint.io" target="_blank" rel="noopener noreferrer" className={styles.inlineInstaLink}>
+                            <i className="ri-tiktok-line"></i> TikTok
                         </a>
                         <span>·</span>
                         <Link to="/legal/privacy">{t.footer.privacy}</Link>
