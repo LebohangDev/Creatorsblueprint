@@ -1,41 +1,84 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Readex+Pro:wght@400;500;600;700;800&display=swap');
 
 :root {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  background-color: #0c0c0e;
-  color: #f4f4f5;
+  --font-display: 'Plus Jakarta Sans', 'Readex Pro', sans-serif;
+  --font-body:    'Inter', 'Readex Pro', sans-serif;
 
-  /* Stan/Apple/Linear Inspired Warm Premium Color Palette */
-  --bg-primary: #0c0c0e;
-  --bg-surface-warm: #141417;
-  --bg-stone: #1a191e;
-  --bg-charcoal: #18181b;
+  /* Canvas & Surfaces */
+  --bg-page:           #FAF8F5;   /* Warm cream primary canvas */
+  --bg-surface:        #FFFFFF;   /* Pure white cards */
+  --bg-surface-subtle: #F3EFEA;   /* Soft warm cream surface */
+  --bg-dark-section:   #0F1B3D;   /* Deep Navy (No pure black) */
+  --bg-dark-card:      #0F1B3D;   /* Deep Navy surface */
 
-  --accent-action: #00b4d8;
-  --accent-action-hover: #0077b6;
-  --accent-bronze: #c59b6c;
-  --accent-gold: #d4af37;
-  --accent-cream: #f5eedc;
+  /* Legacy aliases */
+  --bg-primary:      #FAF8F5;
+  --bg-surface-warm: #FFFFFF;
+  --bg-stone:        #F3EFEA;
+  --bg-charcoal:     #0F1B3D;
 
-  --text-primary: #ffffff;
-  --text-secondary: #a1a1aa;
-  --text-muted: #71717a;
+  /* Typography */
+  --text-primary:        #101828;  /* Primary dark slate text */
+  --text-secondary:      #475569;  /* Slate descriptions */
+  --text-muted:          #64748B;  /* Muted captions */
+  --text-on-dark:        #FFFFFF;  /* White on dark backgrounds */
+  --text-on-dark-subtle: #94A3B8;  /* Muted on dark backgrounds */
 
-  --card-bg: rgba(255, 255, 255, 0.025);
-  --card-border: rgba(255, 255, 255, 0.08);
-  --card-border-hover: rgba(255, 255, 255, 0.2);
+  /* Brand Accents */
+  --accent-blue:        #1D4ED8;   /* Electric Royal Blue */
+  --accent-blue-hover:  #1E40AF;
+  --accent-blue-subtle: #EFF6FF;
+
+  --accent-orange:        #FF4D00; /* Vibrant Electric Orange */
+  --accent-orange-hover:  #E04400;
+  --accent-orange-subtle: #FFF0EB;
+
+  --accent-lime:        #D4FF00;   /* Acid Lime */
+  --accent-lime-dark:   #AACC00;
+  --accent-lime-subtle: #F7FFD1;
+
+  --accent-purple:        #8B5CF6; /* Royal Purple */
+  --accent-purple-subtle: #F3E8FF;
+
+  /* Legacy aliases */
+  --accent-action:       var(--accent-blue);
+  --accent-action-hover: var(--accent-blue-hover);
+  --accent-bronze:       var(--accent-orange);
+  --accent-gold:         var(--accent-lime);
+  --accent-cream:        #FAF8F5;
+
+  /* Borders & Shadows */
+  --border-light:       #E2DCD5;   /* Warm border */
+  --border-strong:      #CBD5E1;
+  --border-dark:        #1E293B;
+  --card-bg:            #FFFFFF;
+  --card-border:        #E2DCD5;
+  --card-border-hover:  #CBD5E1;
+
+  --shadow-sm:          0 2px 8px rgba(10, 15, 29, 0.04);
+  --shadow-md:          0 10px 30px rgba(10, 15, 29, 0.08);
+  --shadow-lg:          0 20px 40px rgba(10, 15, 29, 0.12);
+  --shadow-lime-glow:   0 12px 32px rgba(212, 255, 0, 0.35);
+  --shadow-orange-glow: 0 12px 32px rgba(255, 77, 0, 0.25);
+  --shadow-glow:        0 0 0 3px rgba(29, 78, 216, 0.18);
+
+  /* Radius */
+  --radius-sm:   10px;
+  --radius-md:   16px;
+  --radius-lg:   24px;
+  --radius-pill: 9999px;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-color: #0c0c0e;
+  background-color: var(--bg-page);
   color: var(--text-primary);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
 }
@@ -46,7 +89,7 @@ html, body {
   min-height: 100vh;
   width: 100%;
   margin: 0;
-  background: #0c0c0e;
+  background: var(--bg-page);
 }
 
 .content {
@@ -56,20 +99,19 @@ html, body {
   flex-direction: column;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-page); }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
 
-::-webkit-scrollbar-track {
-  background: #0c0c0e;
+/* RTL Arabic Rules */
+html[dir="rtl"] {
+  font-family: 'Readex Pro', 'Plus Jakarta Sans', sans-serif;
 }
-
-::-webkit-scrollbar-thumb {
-  background: #27272a;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] button {
+  font-family: 'Readex Pro', 'Plus Jakarta Sans', sans-serif;
 }

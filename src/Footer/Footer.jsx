@@ -1,49 +1,52 @@
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function Footer() {
+    const { t } = useLanguage();
+
     return (
         <footer className={styles.footer}>
             <div className={styles.footerContainer}>
                 
                 <div className={styles.footerTop}>
                     <div className={styles.footerBrand}>
-                        <img src="/Images/CB_Logos/logo_new.png" alt="Creators Blueprint" className={styles.footerLogo} />
+                        <img src="/Images/CB_Logos/logo_new_black.png" alt="Creators Blueprint" className={styles.footerLogo} />
                         <p className={styles.footerTagline}>
-                            The creator operating system built for GCC creators. Turn your audience into a high-margin digital business.
+                            {t.footer.tagline}
                         </p>
                         <p className={styles.footerSeoSnippet}>
-                            Empowering GCC creators across UAE, KSA, Qatar, Kuwait, Bahrain, and Oman with custom creator stores, digital product pipelines, and Stripe payments.
+                            {t.footer.seo}
                         </p>
                     </div>
 
                     <div className={styles.footerNavCols}>
                         <div className={styles.footerCol}>
-                            <h5>Product</h5>
+                            <h5>{t.footer.product}</h5>
                             <ul>
                                 <li><a href="#features">Custom Creator Store</a></li>
                                 <li><a href="#features">Ebook Builder</a></li>
                                 <li><a href="#features">Stripe Payouts</a></li>
-                                <li><a href="#pricing">Pricing</a></li>
+                                <li><a href="#features">Pricing</a></li>
                             </ul>
                         </div>
 
                         <div className={styles.footerCol}>
-                            <h5>Creators</h5>
+                            <h5>{t.footer.creators}</h5>
                             <ul>
-                                <li><a href="#spotlight">Creator Showcase</a></li>
-                                <li><a href="#how-it-works">How It Works</a></li>
-                                <li><a href="https://app.creatorsblueprint.io/login">Log In</a></li>
-                                <li><a href="https://app.creatorsblueprint.io">Start Free Trial</a></li>
+                                <li><a href="#spotlight">{t.nav.creatorStories}</a></li>
+                                <li><a href="#how-it-works">{t.nav.howItWorks}</a></li>
+                                <li><a href="https://app.creatorsblueprint.io/login">{t.nav.logIn}</a></li>
+                                <li><a href="https://app.creatorsblueprint.io">{t.nav.startFreeTrial}</a></li>
                             </ul>
                         </div>
 
                         <div className={styles.footerCol}>
-                            <h5>Legal & Trust</h5>
+                            <h5>{t.footer.legal}</h5>
                             <ul>
-                                <li><Link to="/legal/privacy">Privacy Policy</Link></li>
-                                <li><Link to="/legal/terms">Terms of Service</Link></li>
-                                <li><a href="mailto:support@creatorsblueprint.io">Contact Support</a></li>
+                                <li><Link to="/legal/privacy">{t.footer.privacy}</Link></li>
+                                <li><Link to="/legal/terms">{t.footer.terms}</Link></li>
+                                <li><a href="mailto:help@creatorsblueprint.io">{t.footer.support}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -51,12 +54,12 @@ export default function Footer() {
 
                 <div className={styles.footerBottom}>
                     <div>
-                        © {new Date().getFullYear()} Creators Blueprint (Creatorsblueprint LLC). All rights reserved.
+                        © {new Date().getFullYear()} Creators Blueprint (Creatorsblueprint LLC). {t.footer.rights}
                     </div>
                     <div className={styles.footerLegalLinks}>
-                        <Link to="/legal/privacy">Privacy Policy</Link>
+                        <Link to="/legal/privacy">{t.footer.privacy}</Link>
                         <span>·</span>
-                        <Link to="/legal/terms">Terms of Service</Link>
+                        <Link to="/legal/terms">{t.footer.terms}</Link>
                     </div>
                 </div>
 

@@ -1,15 +1,16 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import styles from './Pricing.module.css';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function Pricing() {
-    const [annualBilling, setAnnualBilling] = useState(false);
+    const { t } = useLanguage();
+    const [isAnnual, setIsAnnual] = useState(false);
 
-    const handlePricingCTAClick = (e) => {
+    const handleCTAClick = (e) => {
         if (e && e.preventDefault) e.preventDefault();
         if (window.fbq) {
             window.fbq('track', 'InitiateCheckout', {
-                content_name: 'Start My 7-Day Free Trial',
+                content_name: 'Start Your 7-Day Free Trial',
                 content_category: 'SaaS Signup Start',
                 section: 'Pricing Section'
             });
@@ -33,19 +34,19 @@ export default function Pricing() {
                     Simple, transparent <span>pricing</span>
                 </h2>
                 <p className={styles.sectionSubtitle}>
-                    7 days free · $0 charged today · Cancel anytime
+                    Everything you need to launch your creator store and sell digital products.
                 </p>
 
-                <div className={styles.billingToggleWrapper}>
+                <div className={styles.billingToggle}>
                     <button 
-                        className={`${styles.toggleBtn} ${!annualBilling ? styles.billingActive : ''}`}
-                        onClick={() => setAnnualBilling(false)}
+                        className={`${styles.toggleBtn} ${!isAnnual ? styles.billingActive : ''}`}
+                        onClick={() => setIsAnnual(false)}
                     >
                         Monthly
                     </button>
                     <button 
-                        className={`${styles.toggleBtn} ${annualBilling ? styles.billingActive : ''}`}
-                        onClick={() => setAnnualBilling(true)}
+                        className={`${styles.toggleBtn} ${isAnnual ? styles.billingActive : ''}`}
+                        onClick={() => setIsAnnual(true)}
                     >
                         Annual <span className={styles.discountBadge}>Save 20%</span>
                     </button>
@@ -53,46 +54,28 @@ export default function Pricing() {
             </div>
 
             <div className={styles.pricingCardWrapper}>
-                <motion.div 
-                    className={styles.pricingCard}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                >
+                <div className={styles.pricingCard}>
                     <div className={styles.pricingCardHeader}>
-                        <span className={styles.pricingPlanName}>Creator Pro</span>
-                        <div className={styles.priceDisplay}>
-                            <span className={styles.currency}>$</span>
-                            <span className={styles.amount}>0</span>
-                            <span className={styles.period}>/ 7 days free</span>
+                        <h3 className={styles.planName}>Creator Pro</h3>
+                        <p className={styles.planDesc}>Full access to build, sell, and grow your creator business.</p>
+                        <div className={styles.priceRow}>
+                            <span className={styles.priceAmount}>{isAnnual ? '$22' : '$27'}</span>
+                            <span className={styles.pricePeriod}>/ month {isAnnual ? '(billed annually)' : ''}</span>
                         </div>
-                        <p className={styles.thenPrice}>
-                            Then {annualBilling ? '$21.60' : '$27'}/month. Card required. Cancel anytime in one click.
-                        </p>
                     </div>
 
-                    <ul className={styles.pricingFeatureList}>
-                        <li><i className="ri-checkbox-circle-fill"></i> <span>Custom Creator Store</span></li>
-                        <li><i className="ri-checkbox-circle-fill"></i> <span>Unlimited Digital Products & Ebooks</span></li>
-                        <li><i className="ri-checkbox-circle-fill"></i> <span>Stripe Payouts (0% Commission)</span></li>
-                        <li><i className="ri-checkbox-circle-fill"></i> <span>Automatic Email File Delivery</span></li>
-                        <li><i className="ri-checkbox-circle-fill"></i> <span>Creator Store Views & Clicks</span></li>
+                    <ul className={styles.featuresList}>
+                        <li className={styles.featureItem}><i className="ri-checkbox-circle-fill"></i> <span>Custom Creator Store</span></li>
+                        <li className={styles.featureItem}><i className="ri-checkbox-circle-fill"></i> <span>Unlimited Digital Products & Ebooks</span></li>
+                        <li className={styles.featureItem}><i className="ri-checkbox-circle-fill"></i> <span>Stripe Payouts (0% Commission)</span></li>
+                        <li className={styles.featureItem}><i className="ri-checkbox-circle-fill"></i> <span>Automatic Email File Delivery</span></li>
+                        <li className={styles.featureItem}><i className="ri-checkbox-circle-fill"></i> <span>Creator Store Views & Clicks</span></li>
                     </ul>
 
-                    <button 
-                        className={styles.pricingCtaButton}
-                        onClick={handlePricingCTAClick}
-                    >
-                        Start My 7-Day Free Trial <i className="ri-arrow-right-line"></i>
-                    </button>
-
-                    <div className={styles.pricingGuarantees}>
-                        <span><i className="ri-shield-check-line"></i> Full platform access</span>
-                        <span><i className="ri-flashlight-line"></i> Set up in minutes</span>
-                        <span><i className="ri-close-circle-line"></i> Cancel before day 7 and pay nothing</span>
-                    </div>
-                </motion.div>
+                    <a href="https://app.creatorsblueprint.io" className={styles.ctaBtn} onClick={handleCTAClick}>
+                        {t.hero.cta} <i className="ri-arrow-right-line"></i>
+                    </a>
+                </div>
             </div>
         </section>
     );

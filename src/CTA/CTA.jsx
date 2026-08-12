@@ -1,7 +1,9 @@
-import { motion } from 'framer-motion';
 import styles from './CTA.module.css';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function CTA() {
+    const { t } = useLanguage();
+
     const handleCTAClick = (e) => {
         if (e && e.preventDefault) e.preventDefault();
         if (window.fbq) {
@@ -25,13 +27,7 @@ export default function CTA() {
 
     return (
         <section className={styles.finalCtaSection}>
-            <motion.div 
-                className={styles.finalCtaBox}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-            >
+            <div className={styles.finalCtaBox}>
                 <h2 className={styles.finalCtaTitle}>
                     Ready to turn your link in bio into a <span>creator business?</span>
                 </h2>
@@ -45,15 +41,15 @@ export default function CTA() {
                         className={styles.primaryButtonLarge}
                         onClick={handleCTAClick}
                     >
-                        Start Your 7-Day Free Trial <i className="ri-arrow-right-line"></i>
+                        {t.hero.cta} <i className="ri-arrow-right-line"></i>
                     </a>
                 </div>
 
                 <div className={styles.finalCtaAssurance}>
                     <i className="ri-shield-check-fill"></i>
-                    <span>$0 today · Card required · Cancel anytime</span>
+                    <span>{t.hero.trialNote}</span>
                 </div>
-            </motion.div>
+            </div>
         </section>
     );
 }

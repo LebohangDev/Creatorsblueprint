@@ -1,41 +1,22 @@
-import { motion } from 'framer-motion';
 import styles from './HowItWorks.module.css';
-
-const steps = [
-    {
-        number: '01',
-        title: 'Step 1: Claim your link in bio handle',
-        desc: 'Choose your custom username and create your creator account.',
-        icon: 'ri-user-add-line'
-    },
-    {
-        number: '02',
-        title: 'Step 2: Build your offer',
-        desc: 'Add existing digital products or create new ones using our platform.',
-        icon: 'ri-add-circle-line'
-    },
-    {
-        number: '03',
-        title: 'Step 3: Put link in bio & start selling',
-        desc: 'Place your Creators Blueprint link in your Instagram, TikTok, or YouTube bio and monetize your audience.',
-        icon: 'ri-rocket-line'
-    }
-];
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function HowItWorks() {
+    const { t } = useLanguage();
+
     const handleCTAClick = (e) => {
         if (e && e.preventDefault) e.preventDefault();
         if (window.fbq) {
             window.fbq('track', 'InitiateCheckout', {
-                content_name: 'Start Building for Free',
+                content_name: 'Start Your 7-Day Free Trial',
                 content_category: 'SaaS Signup Start',
-                section: 'How It Works'
+                section: 'How It Works Section'
             });
         }
         if (window.gtag) {
             window.gtag('event', 'begin_checkout', {
                 event_category: 'SaaS Signup Start',
-                event_label: 'How It Works',
+                event_label: 'How It Works Section',
                 value: 0
             });
         }
@@ -46,46 +27,61 @@ export default function HowItWorks() {
 
     return (
         <section className={styles.howItWorksSection} id="how-it-works">
-            <div className={styles.howItWorksHeader}>
-                <h2 className={styles.sectionTitle}>
-                    How it <span>works</span>
-                </h2>
-                <p className={styles.sectionSubtitle}>
-                    Launch your creator store and start selling in 3 simple steps.
-                </p>
-            </div>
+            <div className={styles.howItWorksContainer}>
+                <div className={styles.howItWorksHeader}>
+                    <h2 className={styles.sectionTitle}>
+                        {t.howItWorks.title}
+                    </h2>
+                    <p className={styles.sectionSubtitle}>
+                        {t.howItWorks.subtitle}
+                    </p>
+                </div>
 
-            <div className={styles.stepsGrid}>
-                {steps.map((step, idx) => (
-                    <motion.div 
-                        key={idx}
-                        className={styles.stepCard}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1, duration: 0.5 }}
-                    >
-                        <div className={styles.stepCardHeader}>
-                            <span className={styles.stepNumber}>{step.number}</span>
-                            <div className={styles.stepIconWrap}>
-                                <i className={step.icon}></i>
+                <div className={styles.stepsGrid}>
+                    
+                    {/* Step 1: Claim your link */}
+                    <div className={`${styles.stepCard} ${styles.stepCardBlue}`}>
+                        <div className={styles.stepBadgeRow}>
+                            <span className={styles.stepNumPill}>01</span>
+                            <div className={styles.stepIconCircle}>
+                                <i className="ri-user-add-line"></i>
                             </div>
                         </div>
-                        <h3>{step.title}</h3>
-                        <p>{step.desc}</p>
-                    </motion.div>
-                ))}
-            </div>
+                        <h3 className={styles.stepTitle}>{t.howItWorks.step1Title}</h3>
+                        <p className={styles.stepDesc}>{t.howItWorks.step1Desc}</p>
+                    </div>
 
-            <div className={styles.howItWorksCtaWrapper}>
-                <p className={styles.easyLabel}>Yeah, we know... it's that easy.</p>
-                <a 
-                    href="https://app.creatorsblueprint.io" 
-                    className={styles.primaryButton}
-                    onClick={handleCTAClick}
-                >
-                    Start Building for Free <i className="ri-arrow-right-line"></i>
-                </a>
+                    {/* Step 2: Add what you sell */}
+                    <div className={`${styles.stepCard} ${styles.stepCardPurple}`}>
+                        <div className={styles.stepBadgeRow}>
+                            <span className={styles.stepNumPill}>02</span>
+                            <div className={styles.stepIconCircle}>
+                                <i className="ri-shopping-bag-3-line"></i>
+                            </div>
+                        </div>
+                        <h3 className={styles.stepTitle}>{t.howItWorks.step2Title}</h3>
+                        <p className={styles.stepDesc}>{t.howItWorks.step2Desc}</p>
+                    </div>
+
+                    {/* Step 3: Share & sell */}
+                    <div className={`${styles.stepCard} ${styles.stepCardEmerald}`}>
+                        <div className={styles.stepBadgeRow}>
+                            <span className={styles.stepNumPill}>03</span>
+                            <div className={styles.stepIconCircle}>
+                                <i className="ri-share-forward-fill"></i>
+                            </div>
+                        </div>
+                        <h3 className={styles.stepTitle}>{t.howItWorks.step3Title}</h3>
+                        <p className={styles.stepDesc}>{t.howItWorks.step3Desc}</p>
+                    </div>
+
+                </div>
+
+                <div className={styles.howItWorksCtaBox}>
+                    <a href="https://app.creatorsblueprint.io" className={styles.howItWorksCtaBtn} onClick={handleCTAClick}>
+                        {t.howItWorks.cta || t.hero.cta} <i className="ri-arrow-right-line"></i>
+                    </a>
+                </div>
             </div>
         </section>
     );

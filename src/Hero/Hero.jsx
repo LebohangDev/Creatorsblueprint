@@ -1,13 +1,12 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
 import styles from './Hero.module.css';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 const CTA_URL = "https://app.creatorsblueprint.io";
 
 export default function Hero() {
-    const [handleInput, setHandleInput] = useState('');
+    const { t } = useLanguage();
 
-    const handleCTAClick = (e, sectionName, customHandle = null) => {
+    const handleCTAClick = (e, sectionName) => {
         if (e && e.preventDefault) e.preventDefault();
 
         if (window.fbq) {
@@ -25,65 +24,31 @@ export default function Hero() {
             });
         }
 
-        const handleToUse = customHandle !== null ? customHandle : handleInput;
-        const cleanHandle = handleToUse ? handleToUse.trim().replace(/^@/, '') : '';
-        const targetUrl = cleanHandle 
-            ? `${CTA_URL}?handle=${encodeURIComponent(cleanHandle)}`
-            : CTA_URL;
-
         setTimeout(() => {
-            window.location.href = targetUrl;
+            window.location.href = CTA_URL;
         }, 150);
-    };
-
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        handleCTAClick(e, 'Hero Handle Claim', handleInput);
     };
 
     return (
         <section className={styles.heroSection}>
             <div className={styles.heroGrid}>
                 
-                {/* Left Column: Headline, Subtitle, Handle Form & CTAs */}
-                <motion.div 
-                    className={styles.heroTextCol}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                >
+                {/* Left Column: Headline, Subtitle, CTAs & Microcopy */}
+                <div className={styles.heroTextCol}>
                     <h1 className={styles.heroTitle}>
-                        The{' '}
+                        {t.hero.titlePart1}
                         <span className={styles.brushHighlight}>
-                            link in bio
-                            <svg className={styles.brushStroke} viewBox="0 0 280 20" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                                <defs>
-                                    <linearGradient id="heroBrushGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" stopColor="#ffee32" />
-                                        <stop offset="50%" stopColor="#ffd100" />
-                                        <stop offset="100%" stopColor="#ff9e00" />
-                                    </linearGradient>
-                                </defs>
-                                {/* Stylish hand-drawn double-pass scribble underline with animated draw */}
-                                <motion.path 
-                                    d="M 4 5 C 70 3, 170 3, 272 5 C 190 10, 90 12, 14 14 C 90 13, 180 12, 276 13" 
-                                    stroke="url(#heroBrushGradient)" 
-                                    strokeWidth="2.2" 
-                                    strokeLinecap="round" 
-                                    strokeLinejoin="round" 
-                                    initial={{ pathLength: 0, opacity: 0 }}
-                                    animate={{ pathLength: 1, opacity: 1 }}
-                                    transition={{ duration: 1.2, delay: 0.3, ease: [0.33, 1, 0.68, 1] }}
-                                />
+                            {t.hero.titleHighlight}
+                            <svg className={styles.brushStroke} viewBox="0 0 250 20" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                <path d="M3 14C50 4 150 3 247 11" stroke="var(--accent-blue)" strokeWidth="6" strokeLinecap="round" />
                             </svg>
-                        </span>{' '}
-                        for your <span>creator business.</span>
+                        </span>
+                        {t.hero.titlePart2}
                     </h1>
 
                     <p className={styles.heroSubText}>
-                        Build your creator store, sell digital products, accept direct payouts, and manage your creator business, all from one high-converting link in bio.
+                        {t.hero.subtitle}
                     </p>
-
 
                     {/* Primary & Secondary Buttons */}
                     <div className={styles.heroButtonGroup}>
@@ -92,7 +57,7 @@ export default function Hero() {
                             className={styles.primaryButtonLarge}
                             onClick={(e) => handleCTAClick(e, 'Hero Main Button')}
                         >
-                            Start Your 7-Day Free Trial <i className="ri-arrow-right-line"></i>
+                            {t.hero.cta} <i className="ri-arrow-right-line"></i>
                         </a>
                         <a
                             href="#how-it-works"
@@ -102,7 +67,7 @@ export default function Hero() {
                                 document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
                             }}
                         >
-                            See How It Works
+                            {t.nav.howItWorks}
                         </a>
                     </div>
 
@@ -110,22 +75,33 @@ export default function Hero() {
                     <div className={styles.heroMicrocopyBox}>
                         <div className={styles.heroAssuranceText}>
                             <i className="ri-shield-check-fill"></i>
-                            <span>$0 today · Card required · Cancel anytime</span>
-                        </div>
-                        <div className={styles.heroPricingNotice}>
-                            Full access for 7 days. Then $27/month.
+                            <span>{t.hero.trialNote}</span>
                         </div>
                     </div>
-                </motion.div>
+                </div>
 
-                {/* Right Column: Hajira Dual Stacked iPhone Mockup */}
-                <motion.div 
-                    className={styles.heroVisualCol}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2, duration: 0.5 }}
-                >
+                {/* Right Column: Hajira Dual Stacked iPhone Mockup + Total Revenue Card */}
+                <div className={styles.heroVisualCol}>
                     <div className={styles.stackedPhonesStage}>
+
+                        {/* Hajira Total Revenue Floating Card beside Left Phone */}
+                        <div className={styles.heroRevenueCard}>
+                            <div className={styles.revenueCardHeader}>
+                                <span className={styles.revenueLabel}>{t.hero.totalRevenue}</span>
+                                <span className={styles.revenueBadge}>{t.hero.thisMonth}</span>
+                            </div>
+                            <div className={styles.revenueAmountRow}>
+                                <span className={styles.revenueAmount}>AED 5,480</span>
+                                <svg className={styles.sparklineSvg} viewBox="0 0 60 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M 2 20 Q 15 18, 25 12 T 42 10 T 58 3" stroke="#0F1B3D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </div>
+                            <div className={styles.revenueCardFooter}>
+                                <span>{t.hero.successfulSales}</span>
+                                <i className="ri-arrow-up-line"></i>
+                            </div>
+                        </div>
+
                         {/* Back iPhone: Instagram Profile */}
                         <div className={`${styles.iphoneFrame} ${styles.backPhoneIG}`}>
                             <img 
@@ -144,7 +120,7 @@ export default function Hero() {
                             />
                         </div>
                     </div>
-                </motion.div>
+                </div>
 
             </div>
         </section>

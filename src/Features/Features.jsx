@@ -1,292 +1,128 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
 import styles from './Features.module.css';
+import { useLanguage } from '../context/LanguageContext.jsx';
+
+const SVG_ICONS = {
+    linktree: (
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="#43E660">
+            <path d="M13.511 5.853l3.699-3.699A1.472 1.472 0 0 1 19.29 4.23l-3.699 3.699h5.232a1.472 1.472 0 0 1 0 2.944h-5.232l3.699 3.699a1.472 1.472 0 0 1-2.08 2.081L13.51 12.95v7.88a1.472 1.472 0 0 1-2.944 0v-7.88l-3.699 3.699a1.472 1.472 0 1 1-2.081-2.081l3.699-3.699H3.253a1.472 1.472 0 0 1 0-2.944h5.232L4.786 4.23a1.472 1.472 0 0 1 2.081-2.081l3.699 3.699V0h2.945v5.853z"/>
+        </svg>
+    ),
+    canva: (
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="#00C4CC">
+            <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm-1.8 15.6c-2.4 0-4.2-1.8-4.2-4.2s1.8-4.2 4.2-4.2c1.2 0 2.2.5 3 1.3l-1.4 1.4c-.4-.4-1-.7-1.6-.7-1.4 0-2.4 1-2.4 2.4s1 2.4 2.4 2.4c.6 0 1.2-.3 1.6-.7l1.4 1.4c-.8.8-1.8 1.3-3 1.3z"/>
+        </svg>
+    ),
+    calendly: (
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="#006BFF">
+            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
+        </svg>
+    ),
+    mailchimp: (
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="#D97706">
+            <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/>
+        </svg>
+    ),
+    teachable: (
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="#FF5A5F">
+            <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z M5 13.18v4l7 3.82 7-3.82v-4L12 17l-7-3.82z"/>
+        </svg>
+    )
+};
+
+function ToolItem({ tool }) {
+    const [imgFailed, setImgFailed] = useState(false);
+
+    return (
+        <div className={styles.toolItemRow}>
+            <div className={styles.toolItemLeft}>
+                <div className={styles.toolLogoWrapper}>
+                    {!imgFailed && tool.logoUrl ? (
+                        <img 
+                            src={tool.logoUrl} 
+                            alt={`${tool.name} Logo`} 
+                            className={styles.toolLogoImg} 
+                            onError={() => setImgFailed(true)}
+                        />
+                    ) : (
+                        SVG_ICONS[tool.key]
+                    )}
+                </div>
+                <span className={styles.toolName}>{tool.name}</span>
+            </div>
+            <span className={styles.toolCost}>{tool.cost}</span>
+        </div>
+    );
+}
 
 export default function Features() {
+    const { t } = useLanguage();
+
+    const receiptTools = [
+        { key: 'linktree', name: 'Linktree Pro', cost: '$15/mo', logoUrl: 'https://cdn.simpleicons.org/linktree/43E660' },
+        { key: 'canva', name: 'Canva Pro', cost: '$13/mo', logoUrl: 'https://cdn.simpleicons.org/canva/00C4CC' },
+        { key: 'calendly', name: 'Calendly Pro', cost: '$16/mo', logoUrl: 'https://cdn.simpleicons.org/calendly/006BFF' },
+        { key: 'mailchimp', name: 'Mailchimp', cost: '$20/mo', logoUrl: 'https://cdn.simpleicons.org/mailchimp/D97706' },
+        { key: 'teachable', name: 'Teachable', cost: '$39/mo', logoUrl: 'https://cdn.simpleicons.org/teachable/FF5A5F' },
+    ];
+
     return (
         <section className={styles.featuresSection} id="features">
             <div className={styles.featuresHeader}>
                 <h2 className={styles.sectionTitle}>
-                    Everything your <span>link in bio</span> needs
+                    {t.features.title}
                 </h2>
                 <p className={styles.sectionSubtitle}>
-                    Turn your link in bio into a high-converting creator store with all the tools built into one place.
+                    {t.features.subtitle}
                 </p>
             </div>
 
-            <div className={styles.bentoGrid}>
-                
-                {/* 1. Creator Store (Large Featured Card) */}
-                <motion.div 
-                    className={`${styles.bentoCard} ${styles.bentoCardLarge}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <div>
-                        <div className={styles.cardHeaderRow}>
-                            <div className={styles.featureIconCircle}>
-                                <i className="ri-store-2-line"></i>
-                            </div>
-                            <span className={styles.statusPillLive}>
-                                <i className="ri-pulse-fill"></i> Live v1.4
-                            </span>
+            <div className={styles.unifiedCardWrapper}>
+                <div className={styles.unifiedCard}>
+                    
+                    {/* Top Section: Itemized 5 Separate Monthly Tools */}
+                    <div className={styles.receiptTopSection}>
+                        <div className={styles.receiptHeaderRow}>
+                            <span className={styles.receiptBadge}>{t.features.receiptTag}</span>
+                            <h3 className={styles.receiptTitle}>{t.features.receiptTitle}</h3>
                         </div>
-                        <h3 className={styles.cardTitle}>Custom Link-in-Bio Creator Store</h3>
-                        <p className={styles.cardDescription}>
-                            Keep your digital products, links, and creator brand identity in one high-converting link in bio page.
-                        </p>
-                        <ul className={styles.featureChecklist}>
-                            <li><i className="ri-checkbox-circle-fill"></i> Link-in-bio creator store</li>
-                            <li><i className="ri-checkbox-circle-fill"></i> Mobile-first design</li>
-                            <li><i className="ri-checkbox-circle-fill"></i> Custom handle & bio</li>
-                        </ul>
+
+                        <div className={styles.toolsListGrid}>
+                            {receiptTools.map((tool) => (
+                                <ToolItem key={tool.key} tool={tool} />
+                            ))}
+                        </div>
+
+                        <div className={styles.receiptTotalRow}>
+                            <span className={styles.receiptTotalLabel}>{t.features.estTotal}</span>
+                            <div className={styles.receiptTotalAmountGroup}>
+                                <span className={styles.receiptTotalCrossed}>{t.features.estAmount}</span>
+                                <span className={styles.receiptAnnualNote}>{t.features.annualNote}</span>
+                            </div>
+                        </div>
                     </div>
 
-                </motion.div>
-
-                {/* 2. Ebook & Digital Product Builder */}
-                <motion.div 
-                    className={styles.bentoCard}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1, duration: 0.5 }}
-                >
-                    <div>
-                        <div className={styles.cardHeaderRow}>
-                            <div className={styles.featureIconCircle}>
-                                <i className="ri-book-read-line"></i>
-                            </div>
-                            <span className={styles.statusPillLive}>
-                                <i className="ri-pulse-fill"></i> Live v1.4
-                            </span>
+                    {/* Bridge VS Divider */}
+                    <div className={styles.vsBridgeContainer}>
+                        <div className={styles.vsCircle}>
+                            <span>{t.features.vsText}</span>
                         </div>
-                        <h3 className={styles.cardTitle}>Ebook & Digital Product Builder</h3>
-                        <p className={styles.cardDescription}>
-                            Turn your notes into ready-to-sell PDFs and digital products in minutes.
-                        </p>
                     </div>
-                    <ul className={styles.featureChecklist}>
-                        <li><i className="ri-checkbox-circle-fill"></i> Instant PDF generation</li>
-                        <li><i className="ri-checkbox-circle-fill"></i> Automated cover art</li>
-                    </ul>
-                </motion.div>
 
-                {/* 3. Direct Stripe Payouts */}
-                <motion.div 
-                    className={styles.bentoCard}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2, duration: 0.5 }}
-                >
-                    <div>
-                        <div className={styles.cardHeaderRow}>
-                            <div className={styles.featureIconCircle}>
-                                <i className="ri-bank-card-line"></i>
+                    {/* Bottom Section: Minimal Clean Creators Blueprint Card */}
+                    <div className={styles.cbBottomSection}>
+                        <div className={styles.cbMinimalRow}>
+                            <div className={styles.cbLogoGroup}>
+                                <img src="/Images/CB_Logos/logo_new_black.png" alt="Creators Blueprint" className={styles.cbLogoImg} />
                             </div>
-                            <span className={styles.statusPillLive}>
-                                <i className="ri-pulse-fill"></i> Live v1.4
-                            </span>
-                        </div>
-                        <h3 className={styles.cardTitle}>Stripe Payouts (0% Fee)</h3>
-                        <p className={styles.cardDescription}>
-                            Get paid directly to your bank account with zero platform commission on sales.
-                        </p>
-                    </div>
-                    <ul className={styles.featureChecklist}>
-                        <li><i className="ri-checkbox-circle-fill"></i> Direct bank payouts</li>
-                        <li><i className="ri-checkbox-circle-fill"></i> 0% platform fee</li>
-                    </ul>
-                </motion.div>
-
-                {/* 4. Automatic File Delivery */}
-                <motion.div 
-                    className={styles.bentoCard}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3, duration: 0.5 }}
-                >
-                    <div>
-                        <div className={styles.cardHeaderRow}>
-                            <div className={styles.featureIconCircle}>
-                                <i className="ri-mail-send-line"></i>
+                            <div className={styles.cbPriceBadge}>
+                                <span className={styles.cbPriceAmount}>$27 / mo</span>
+                                <span className={styles.cbZeroFeeBadge}>{t.features.zeroFeeBadge}</span>
                             </div>
-                            <span className={styles.statusPillLive}>
-                                <i className="ri-pulse-fill"></i> Live v1.4
-                            </span>
                         </div>
-                        <h3 className={styles.cardTitle}>Automatic File Delivery</h3>
-                        <p className={styles.cardDescription}>
-                            Instant email fulfillment sent directly to buyers upon checkout completion.
-                        </p>
                     </div>
-                    <ul className={styles.featureChecklist}>
-                        <li><i className="ri-checkbox-circle-fill"></i> Instant email delivery</li>
-                        <li><i className="ri-checkbox-circle-fill"></i> Secure file hosting</li>
-                    </ul>
-                </motion.div>
 
-                {/* 5. Live Affiliate Partner Program */}
-                <motion.div 
-                    className={styles.bentoCard}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4, duration: 0.5 }}
-                >
-                    <div>
-                        <div className={styles.cardHeaderRow}>
-                            <div className={styles.featureIconCircle}>
-                                <i className="ri-share-forward-line"></i>
-                            </div>
-                            <span className={styles.statusPillLive}>
-                                <i className="ri-pulse-fill"></i> Live v1.4
-                            </span>
-                        </div>
-                        <h3 className={styles.cardTitle}>Live Affiliate System</h3>
-                        <p className={styles.cardDescription}>
-                            Earn 35% recurring commissions on all referred subscribers you bring on board.
-                        </p>
-                    </div>
-                    <ul className={styles.featureChecklist}>
-                        <li><i className="ri-checkbox-circle-fill"></i> 35% recurring payout</li>
-                        <li><i className="ri-checkbox-circle-fill"></i> Automated referral tracking</li>
-                    </ul>
-                </motion.div>
-
-                {/* 6. Phase 2: Marketing Guides */}
-                <motion.div 
-                    className={`${styles.bentoCard} ${styles.bentoCardDisabled}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5, duration: 0.5 }}
-                >
-                    <div>
-                        <div className={styles.cardHeaderRow}>
-                            <div className={`${styles.featureIconCircle} ${styles.featureIconCirclePhase2}`}>
-                                <i className="ri-book-read-line"></i>
-                            </div>
-                            <span className={styles.statusPillSoon}>
-                                <i className="ri-time-line"></i> Coming Soon · Phase 2
-                            </span>
-                        </div>
-                        <h3 className={styles.cardTitle}>Marketing Guides</h3>
-                        <p className={styles.cardDescription}>
-                            Step-by-step playbooks and guides to help you launch your ebooks, grow your email list, and boost your sales.
-                        </p>
-                    </div>
-                    <ul className={styles.featureChecklist}>
-                        <li><i className="ri-checkbox-circle-fill"></i> Simple launch plans for your digital products</li>
-                        <li><i className="ri-checkbox-circle-fill"></i> Proven tips to convert followers into buyers</li>
-                        <li><i className="ri-checkbox-circle-fill"></i> Easy guides to build and grow your email list</li>
-                    </ul>
-                </motion.div>
-
-                {/* 7. Phase 2: Content Calendar */}
-                <motion.div 
-                    className={`${styles.bentoCard} ${styles.bentoCardDisabled}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.6, duration: 0.5 }}
-                >
-                    <div>
-                        <div className={styles.cardHeaderRow}>
-                            <div className={`${styles.featureIconCircle} ${styles.featureIconCirclePhase2}`}>
-                                <i className="ri-calendar-event-line"></i>
-                            </div>
-                            <span className={styles.statusPillSoon}>
-                                <i className="ri-time-line"></i> Coming Soon · Phase 2
-                            </span>
-                        </div>
-                        <h3 className={styles.cardTitle}>Content Calendar</h3>
-                        <p className={styles.cardDescription}>
-                            Plan out your social media posts, product launches, and promotional announcements in one clean visual calendar.
-                        </p>
-                    </div>
-                    <ul className={styles.featureChecklist}>
-                        <li><i className="ri-checkbox-circle-fill"></i> Organize your post ideas and launch dates visually</li>
-                        <li><i className="ri-checkbox-circle-fill"></i> Keep track of upcoming product drops and sales</li>
-                        <li><i className="ri-checkbox-circle-fill"></i> Stay consistent with your content every week</li>
-                    </ul>
-                </motion.div>
-
-                {/* 8. Phase 2: Real-Time Analytics */}
-                <motion.div 
-                    className={`${styles.bentoCard} ${styles.bentoCardDisabled}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.7, duration: 0.5 }}
-                >
-                    <div>
-                        <div className={styles.cardHeaderRow}>
-                            <div className={`${styles.featureIconCircle} ${styles.featureIconCirclePhase2}`}>
-                                <i className="ri-line-chart-line"></i>
-                            </div>
-                            <span className={styles.statusPillSoon}>
-                                <i className="ri-time-line"></i> Coming Soon · Phase 2
-                            </span>
-                        </div>
-                        <h3 className={styles.cardTitle}>Real-Time Analytics</h3>
-                        <p className={styles.cardDescription}>
-                            Monitor creator store views, product clicks, and conversion rates from your dashboard.
-                        </p>
-                    </div>
-                </motion.div>
-
-                {/* 9. Phase 2: Email Funnels */}
-                <motion.div 
-                    className={`${styles.bentoCard} ${styles.bentoCardDisabled}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.8, duration: 0.5 }}
-                >
-                    <div>
-                        <div className={styles.cardHeaderRow}>
-                            <div className={`${styles.featureIconCircle} ${styles.featureIconCirclePhase2}`}>
-                                <i className="ri-chat-3-line"></i>
-                            </div>
-                            <span className={styles.statusPillSoon}>
-                                <i className="ri-time-line"></i> Coming Soon · Phase 2
-                            </span>
-                        </div>
-                        <h3 className={styles.cardTitle}>Email Funnels & Sequences</h3>
-                        <p className={styles.cardDescription}>
-                            Automated subscriber welcome sequences and abandoned cart recovery automation.
-                        </p>
-                    </div>
-                </motion.div>
-
-                {/* 10. Phase 2: 1-on-1 Booking System */}
-                <motion.div 
-                    className={`${styles.bentoCard} ${styles.bentoCardDisabled}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.9, duration: 0.5 }}
-                >
-                    <div>
-                        <div className={styles.cardHeaderRow}>
-                            <div className={`${styles.featureIconCircle} ${styles.featureIconCirclePhase2}`}>
-                                <i className="ri-contacts-book-line"></i>
-                            </div>
-                            <span className={styles.statusPillSoon}>
-                                <i className="ri-time-line"></i> Coming Soon · Phase 2
-                            </span>
-                        </div>
-                        <h3 className={styles.cardTitle}>1-on-1 Booking System</h3>
-                        <p className={styles.cardDescription}>
-                            Integrated consultation scheduling, calendar sync, and paid coaching appointments.
-                        </p>
-                    </div>
-                </motion.div>
-
+                </div>
             </div>
         </section>
     );

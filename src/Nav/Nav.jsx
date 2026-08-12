@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./Nav.module.css";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 function Nav() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
+    const { lang, toggleLanguage, t } = useLanguage();
 
     const handleNavCTAClick = (type) => {
         if (window.fbq) {
@@ -49,24 +51,36 @@ function Nav() {
         >
             <div className={styles.navContainer}>
                 <div className={styles.logo} onClick={() => navigate('/')}>
-                    <img src="/Images/CB_Logos/logo_new.png" alt="Creators Blueprint" />
+                    <img src="/Images/CB_Logos/logo_new_black.png" alt="Creators Blueprint" />
                 </div>
                 
                 <div className={styles.links}>
-                    <span className={styles.linkItem} onClick={() => handleScrollTo('spotlight')}>Creator Stories</span>
-                    <span className={styles.linkItem} onClick={() => handleScrollTo('features')}>Features</span>
-                    <span className={styles.linkItem} onClick={() => handleScrollTo('how-it-works')}>How It Works</span>
-                    <span className={styles.linkItem} onClick={() => handleScrollTo('pricing')}>Pricing</span>
+                    <span className={styles.linkItem} onClick={() => handleScrollTo('spotlight')}>{t.nav.creatorStories}</span>
+                    <span className={styles.linkItem} onClick={() => handleScrollTo('features')}>{t.nav.features}</span>
+                    <span className={styles.linkItem} onClick={() => handleScrollTo('how-it-works')}>{t.nav.howItWorks}</span>
                 </div>
                 
                 <div className={styles.navActionRight}>
-                    <a href="https://app.creatorsblueprint.io/login" className={styles.loginLink}>Log In</a>
+                    <button className={styles.langToggleBtn} onClick={toggleLanguage} title="Switch Language">
+                        <span className={lang === 'en' ? styles.langActive : ''}>EN</span>
+                        <span className={styles.langDivider}>|</span>
+                        <span className={lang === 'ar' ? styles.langActive : ''}>العربية</span>
+                    </button>
+
+                    <a href="https://app.creatorsblueprint.io/login" className={styles.loginLink}>{t.nav.logIn}</a>
                     <div 
                         onClick={() => handleNavCTAClick('Desktop')} 
                         className={styles.ctaButton}
                     >
-                        Start Free Trial
+                        {t.nav.startFreeTrial}
                     </div>
+                </div>
+
+                {/* Mobile-only: lang toggle always visible beside hamburger */}
+                <div className={styles.mobileLangPill} onClick={toggleLanguage}>
+                    <span className={lang === 'en' ? styles.langActive : ''}>EN</span>
+                    <span className={styles.langDivider}>|</span>
+                    <span className={lang === 'ar' ? styles.langActive : ''}>AR</span>
                 </div>
 
                 <div 
@@ -85,11 +99,17 @@ function Nav() {
                             exit={{ opacity: 0, scale: 0.95, y: -10 }}
                             transition={{ duration: 0.2 }}
                         >
-                            <span className={styles.mobileLink} onClick={() => handleScrollTo('spotlight')}>Creator Stories</span>
-                            <span className={styles.mobileLink} onClick={() => handleScrollTo('features')}>Features</span>
-                            <span className={styles.mobileLink} onClick={() => handleScrollTo('how-it-works')}>How It Works</span>
-                            <span className={styles.mobileLink} onClick={() => handleScrollTo('pricing')}>Pricing</span>
-                            <a href="https://app.creatorsblueprint.io/login" className={styles.mobileLoginLink}>Log In</a>
+                            <span className={styles.mobileLink} onClick={() => handleScrollTo('spotlight')}>{t.nav.creatorStories}</span>
+                            <span className={styles.mobileLink} onClick={() => handleScrollTo('features')}>{t.nav.features}</span>
+                            <span className={styles.mobileLink} onClick={() => handleScrollTo('how-it-works')}>{t.nav.howItWorks}</span>
+                            
+                            <button className={styles.mobileLangToggleBtn} onClick={toggleLanguage}>
+                                <span className={lang === 'en' ? styles.langActive : ''}>EN</span>
+                                <span className={styles.langDivider}>|</span>
+                                <span className={lang === 'ar' ? styles.langActive : ''}>العربية</span>
+                            </button>
+
+                            <a href="https://app.creatorsblueprint.io/login" className={styles.mobileLoginLink}>{t.nav.logIn}</a>
                             <div 
                                 className={styles.mobileCtaButton}
                                 onClick={() => {
@@ -97,7 +117,7 @@ function Nav() {
                                     handleNavCTAClick('Mobile');
                                 }}
                             >
-                                Start Free Trial
+                                {t.nav.startFreeTrial}
                             </div>
                         </motion.div>
                     )}

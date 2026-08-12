@@ -1,44 +1,49 @@
 .finalCtaSection {
   width: 100%;
-  padding: 120px 24px;
-  background: #141417;
+  padding: 80px 24px 100px 24px;
+  background: var(--bg-page);
   display: flex;
   justify-content: center;
 }
 
 .finalCtaBox {
-  max-width: 800px;
   width: 100%;
+  max-width: 1140px;
+  background: var(--bg-surface-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: 28px;
+  padding: 60px 40px;
   text-align: center;
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(0, 180, 216, 0.3);
-  border-radius: 36px;
-  padding: 60px 32px;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .finalCtaTitle {
+  font-family: var(--font-display);
   font-size: 2.8rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--text-primary);
   line-height: 1.15;
   letter-spacing: -1px;
   margin: 0 0 16px 0;
+  max-width: 720px;
 }
 
 .finalCtaTitle span {
-  color: #f5eedc;
+  color: var(--accent-blue);
 }
 
 .finalCtaSub {
   font-size: 1.1rem;
-  color: #a1a1aa;
-  margin-bottom: 32px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 32px 0;
+  max-width: 600px;
 }
 
 .finalCtaBtnGroup {
-  display: flex;
-  justify-content: center;
   margin-bottom: 20px;
 }
 
@@ -47,40 +52,34 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+  background: var(--accent-orange);
   color: #ffffff;
   font-size: 1.05rem;
   font-weight: 700;
-  padding: 16px 32px;
+  padding: 16px 36px;
   border-radius: 16px;
   text-decoration: none;
   border: none;
   cursor: pointer;
-  box-shadow: 0 8px 25px rgba(0, 180, 216, 0.25);
+  box-shadow: var(--shadow-orange-glow);
   transition: all 0.2s ease;
 }
 
 .primaryButtonLarge:hover {
   transform: translateY(-2px);
-  background: linear-gradient(135deg, #0096c7 0%, #48cae4 100%);
+  background: var(--accent-orange-hover);
+  box-shadow: 0 12px 32px rgba(255, 77, 0, 0.4);
 }
 
 .finalCtaAssurance {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 6px;
-  color: #a1a1aa;
-  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
   font-weight: 500;
 }
 
 .finalCtaAssurance i {
-  color: #00b4d8;
-}
-
-@media (max-width: 768px) {
-  .finalCtaTitle {
-    font-size: 2.1rem;
-  }
+  color: var(--accent-blue);
 }

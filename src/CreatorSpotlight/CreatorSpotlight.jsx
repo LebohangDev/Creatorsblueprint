@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext.jsx';
 import styles from './CreatorSpotlight.module.css';
 
 const creatorShowcaseData = [
@@ -41,6 +41,7 @@ const creatorShowcaseData = [
 ];
 
 export default function CreatorSpotlight() {
+    const { t } = useLanguage();
     const scrollRef = useRef(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
@@ -72,10 +73,10 @@ export default function CreatorSpotlight() {
             <div className={styles.spotlightHeaderRow}>
                 <div className={styles.spotlightTitleGroup}>
                     <h2 className={styles.sectionTitle}>
-                        See how creators are building with <span>Creators Blueprint</span>
+                        {t.spotlight.title}
                     </h2>
                     <p className={styles.sectionSubtitle}>
-                        From their social profile to their own creator store, Creators Blueprint gives creators one place to turn attention into ownership.
+                        {t.spotlight.subtitle}
                     </p>
                 </div>
 
@@ -101,16 +102,11 @@ export default function CreatorSpotlight() {
                 className={styles.carouselContainer}
                 ref={scrollRef}
             >
-                {creatorShowcaseData.map((creator, idx) => (
-                    <motion.div 
+                {creatorShowcaseData.map((creator) => (
+                    <div 
                         key={creator.id}
                         className={styles.singlePhoneCarouselCard}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1, duration: 0.5 }}
                     >
-                        {/* Name, Handle, and Followers directly above the single iPhone screen */}
                         <div className={styles.cardCreatorHeader}>
                             <h3 className={styles.cardCreatorName}>
                                 {creator.name} <i className={`ri-checkbox-circle-fill ${styles.verifiedIcon}`}></i>
@@ -120,7 +116,6 @@ export default function CreatorSpotlight() {
                             </span>
                         </div>
 
-                        {/* Single iPhone Mockup Frame displaying creator store screen */}
                         <div className={styles.singleIphoneFrame}>
                             <img 
                                 src={creator.posterImage} 
@@ -130,7 +125,7 @@ export default function CreatorSpotlight() {
                                 loading="lazy"
                             />
                         </div>
-                    </motion.div>
+                    </div>
                 ))}
             </div>
         </section>

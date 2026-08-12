@@ -16,15 +16,15 @@
     justify-content: space-between;
     width: 100%;
     max-width: 1140px;
-    background: rgba(18, 18, 22, 0.85);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(250, 248, 245, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-light);
     border-radius: 20px;
     padding: 12px 24px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--shadow-md);
     pointer-events: auto;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-body);
     position: relative;
 }
 
@@ -45,7 +45,7 @@
 }
 
 .linkItem {
-    color: #a1a1aa;
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;
@@ -54,7 +54,7 @@
 }
 
 .linkItem:hover {
-    color: #ffffff;
+    color: var(--accent-blue);
 }
 
 .navActionRight {
@@ -63,26 +63,71 @@
     gap: 12px;
 }
 
+.langToggleBtn {
+    display: none !important;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.langToggleBtn:hover {
+    border-color: var(--accent-blue);
+    background: var(--bg-surface-subtle);
+}
+
+.mobileLangToggleBtn {
+    display: none !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    padding: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+.langActive {
+    color: var(--accent-blue);
+    font-weight: 800;
+}
+
+.langDivider {
+    opacity: 0.3;
+}
+
 .loginLink {
-    color: #f4f4f5;
+    color: var(--text-primary);
     text-decoration: none;
     font-size: 0.88rem;
     font-weight: 600;
     padding: 8px 16px;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-light);
+    background: var(--bg-surface);
     transition: all 0.2s ease;
 }
 
 .loginLink:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.25);
-    color: #ffffff;
+    background: var(--bg-surface-subtle);
+    border-color: var(--border-strong);
+    color: var(--accent-blue);
 }
 
 .ctaButton {
-    background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+    background: var(--accent-blue);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -92,19 +137,19 @@
     cursor: pointer;
     transition: all 0.2s ease;
     text-decoration: none;
-    box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+    box-shadow: 0 6px 20px rgba(29, 78, 216, 0.25);
     white-space: nowrap;
 }
 
 .ctaButton:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 22px rgba(0, 180, 216, 0.5);
-    background: linear-gradient(135deg, #0096c7 0%, #48cae4 100%);
+    box-shadow: 0 8px 25px rgba(29, 78, 216, 0.35);
+    background: var(--accent-blue-hover);
 }
 
 .mobileMenuToggle {
     display: none;
-    color: white;
+    color: var(--text-primary);
     font-size: 1.4rem;
     cursor: pointer;
 }
@@ -115,44 +160,44 @@
     left: 0;
     right: 0;
     margin-top: 12px;
-    background: rgba(18, 18, 22, 0.95);
+    background: rgba(250, 248, 245, 0.96);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-light);
     border-radius: 20px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    box-shadow: var(--shadow-lg);
 }
 
 .mobileLink, .mobileLoginLink {
-    color: #a1a1aa;
+    color: var(--text-secondary);
     font-size: 0.95rem;
     font-weight: 500;
     text-align: center;
     padding: 10px;
     text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-light);
     cursor: pointer;
     transition: color 0.2s ease;
 }
 
 .mobileLink:hover, .mobileLoginLink:hover {
-    color: #ffffff;
+    color: var(--accent-blue);
 }
 
 .mobileLoginLink {
-    color: #ffffff;
+    color: var(--text-primary);
     font-weight: 600;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid var(--border-strong);
     border-radius: 12px;
     margin-top: 4px;
 }
 
 .mobileCtaButton {
-    background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+    background: var(--accent-blue);
     color: white;
     text-align: center;
     padding: 14px;
@@ -160,7 +205,7 @@
     font-weight: 700;
     text-decoration: none;
     margin-top: 6px;
-    box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+    box-shadow: 0 6px 20px rgba(29, 78, 216, 0.25);
     cursor: pointer;
 }
 
@@ -171,4 +216,11 @@
     .mobileMenuToggle {
         display: block;
     }
+    .mobileLangPill {
+        display: inline-flex;
+    }
+}
+
+.mobileLangPill {
+    display: none !important;
 }

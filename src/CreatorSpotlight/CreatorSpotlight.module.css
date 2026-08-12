@@ -1,18 +1,20 @@
 .spotlightSection {
   width: 100%;
-  padding: 100px 24px;
-  background: #0c0c0e;
+  padding: 100px 0;
+  background: var(--bg-page);
   overflow: hidden;
+  position: relative;
 }
 
 .spotlightHeaderRow {
   width: 100%;
   max-width: 1140px;
   margin: 0 auto 40px auto;
+  padding: 0 24px;
   display: flex;
-  justify-content: space-between;
   align-items: flex-end;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 24px;
 }
 
 .spotlightTitleGroup {
@@ -20,48 +22,53 @@
 }
 
 .sectionTitle {
+  font-family: var(--font-display);
   font-size: 2.6rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--text-primary);
   line-height: 1.15;
   letter-spacing: -1px;
   margin: 0 0 12px 0;
 }
 
 .sectionTitle span {
-  color: #f5eedc;
+  color: var(--accent-blue);
 }
 
 .sectionSubtitle {
   font-size: 1.05rem;
-  color: #a1a1aa;
+  color: var(--text-secondary);
   line-height: 1.6;
   margin: 0;
 }
 
 .carouselArrowControls {
   display: flex;
-  gap: 10px;
+  gap: 12px;
+  align-items: center;
 }
 
 .carouselArrowBtn {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
   cursor: pointer;
+  box-shadow: var(--shadow-sm);
   transition: all 0.2s ease;
 }
 
 .carouselArrowBtn:hover:not(.arrowDisabled) {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.25);
+  background: var(--bg-surface-subtle);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: scale(1.05);
 }
 
 .arrowDisabled {
@@ -71,14 +78,15 @@
 
 .carouselContainer {
   display: flex;
-  gap: 32px;
+  gap: 28px;
   overflow-x: auto;
-  padding-bottom: 80px;
   scroll-behavior: smooth;
-  scrollbar-width: none;
+  padding-left: max(24px, calc((100vw - 1140px) / 2));
+  padding-right: 24px;
+  padding-bottom: 20px;
+
   -ms-overflow-style: none;
-  max-width: 1140px;
-  margin: 0 auto;
+  scrollbar-width: none;
 }
 
 .carouselContainer::-webkit-scrollbar {
@@ -86,57 +94,57 @@
 }
 
 .singlePhoneCarouselCard {
-  flex: 0 0 340px;
+  flex: 0 0 280px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.singlePhoneCarouselCard:hover {
-  transform: translateY(-6px);
+  pointer-events: auto;
 }
 
 .cardCreatorHeader {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 16px;
+  width: 100%;
 }
 
 .cardCreatorName {
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: #ffffff;
-  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 4px;
 }
 
 .verifiedIcon {
-  color: #00b4d8;
-  font-size: 1rem;
+  color: var(--accent-blue);
+  font-size: 0.95rem;
 }
 
 .cardCreatorSub {
-  font-size: 0.85rem;
-  color: #a1a1aa;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  font-weight: 500;
 }
 
-/* Single iPhone Screen Frame Shell */
 .singleIphoneFrame {
-  width: 280px;
-  height: 560px;
-  background: #000000;
-  border-radius: 42px;
-  border: 4px solid #27272a;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  width: 260px;
+  height: 520px;
+  background: #FFFFFF;
+  border-radius: 36px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-md);
   overflow: hidden;
   position: relative;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.singleIphoneFrame:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
 }
 
 .singleIphoneFrame::before {
@@ -145,25 +153,19 @@
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
+  width: 74px;
   height: 18px;
   background: #000000;
   border-radius: 20px;
   z-index: 10;
 }
 
-.singleIphoneFrame:hover {
-  border-color: rgba(0, 180, 216, 0.4);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 180, 216, 0.2);
-}
-
 .iphoneScreenImg {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: top center;
   display: block;
-  background: #0a0a0a;
 }
 
 @media (max-width: 768px) {
@@ -171,15 +173,14 @@
     flex-direction: column;
     align-items: flex-start;
   }
-  .sectionTitle {
-    font-size: 2rem;
+  .carouselContainer {
+    padding-left: 24px;
   }
   .singlePhoneCarouselCard {
-    flex: 0 0 280px;
+    flex: 0 0 240px;
   }
   .singleIphoneFrame {
-    width: 240px;
-    height: 480px;
-    border-radius: 34px;
+    width: 230px;
+    height: 460px;
   }
 }

@@ -1,33 +1,39 @@
 .howItWorksSection {
   width: 100%;
+  background: linear-gradient(to bottom, var(--accent-orange) 55%, var(--bg-page) 55%);
+  padding: 90px 24px 70px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.howItWorksContainer {
+  width: 100%;
   max-width: 1140px;
-  padding: 100px 24px;
   margin: 0 auto;
-  text-align: center;
 }
 
 .howItWorksHeader {
+  text-align: center;
   margin-bottom: 50px;
 }
 
 .sectionTitle {
-  font-size: 2.6rem;
+  font-family: var(--font-display);
+  font-size: 2.8rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #FFFFFF;
   line-height: 1.15;
   letter-spacing: -1px;
   margin: 0 0 12px 0;
 }
 
-.sectionTitle span {
-  color: #f5eedc;
-}
-
 .sectionSubtitle {
   font-size: 1.05rem;
-  color: #a1a1aa;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 500;
   line-height: 1.6;
   margin: 0 auto;
+  max-width: 600px;
 }
 
 .stepsGrid {
@@ -38,96 +44,124 @@
 }
 
 .stepCard {
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 28px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
   padding: 36px 28px;
   text-align: left;
   position: relative;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 35px rgba(15, 27, 61, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.stepCardHeader {
+.stepCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(15, 27, 61, 0.12);
+}
+
+.stepCardBlue {
+  border-top: 4px solid var(--accent-blue);
+}
+
+.stepCardPurple {
+  border-top: 4px solid var(--accent-purple);
+}
+
+.stepCardEmerald {
+  border-top: 4px solid #10B981;
+}
+
+.stepBadgeRow {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
-.stepNumber {
-  font-size: 3.2rem;
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.15);
-  line-height: 1;
-}
-
-.stepIconWrap {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(0, 180, 216, 0.1);
-  border: 1px solid rgba(0, 180, 216, 0.25);
-  color: #00b4d8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-}
-
-.stepCard h3 {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: #ffffff;
-  margin: 0 0 8px 0;
-}
-
-.stepCard p {
-  font-size: 0.92rem;
-  color: #a1a1aa;
-  line-height: 1.5;
-  margin: 0;
-}
-
-.howItWorksCtaWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-}
-
-.easyLabel {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: -0.5px;
-  margin: 0;
-  opacity: 0.9;
-}
-
-.primaryButton {
+.stepNumPill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
-  color: #ffffff;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  font-family: var(--font-display);
+}
+
+.stepCardBlue .stepNumPill {
+  background: var(--accent-blue-subtle);
+  color: var(--accent-blue);
+}
+
+.stepCardPurple .stepNumPill {
+  background: var(--accent-purple-subtle);
+  color: var(--accent-purple);
+}
+
+.stepCardEmerald .stepNumPill {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+}
+
+.stepIconCircle {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.stepTitle {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #101828;
+  margin: 0 0 12px 0;
+}
+
+.stepDesc {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.howItWorksCtaBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  margin-top: 24px;
+}
+
+.howItWorksCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--accent-blue);
+  color: #FFFFFF;
   font-size: 1rem;
   font-weight: 700;
-  padding: 14px 28px;
+  padding: 16px 36px;
   border-radius: 16px;
   text-decoration: none;
   border: none;
   cursor: pointer;
-  box-shadow: 0 8px 25px rgba(0, 180, 216, 0.25);
+  box-shadow: 0 10px 25px rgba(29, 78, 216, 0.25);
   transition: all 0.2s ease;
 }
 
-.primaryButton:hover {
-  transform: translateY(-2px);
-  background: linear-gradient(135deg, #0096c7 0%, #48cae4 100%);
+.howItWorksCtaBtn:hover {
+  transform: translateY(-3px);
+  background: var(--accent-blue-hover);
+  box-shadow: 0 16px 32px rgba(29, 78, 216, 0.35);
 }
 
 @media (max-width: 900px) {
+  .howItWorksSection {
+    background: linear-gradient(to bottom, var(--accent-orange) 300px, var(--bg-page) 300px);
+  }
   .stepsGrid {
     grid-template-columns: 1fr;
   }
