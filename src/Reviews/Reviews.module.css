@@ -1,7 +1,7 @@
 .reviewsSection {
   width: 100%;
-  background: var(--accent-orange);
-  padding: 100px 24px;
+  background: linear-gradient(170deg, var(--accent-orange) 50%, var(--bg-page) 50.1%);
+  padding: 90px 24px 70px 24px;
   position: relative;
   overflow: hidden;
 }
