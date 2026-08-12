@@ -114,6 +114,7 @@ export default function Features() {
                         <div className={styles.cbMinimalRow}>
                             <div className={styles.cbLogoGroup}>
                                 <img src="/Images/CB_Logos/logo_new_black.png" alt="Creators Blueprint" className={styles.cbLogoImg} />
+                                <span className={styles.cbFamilyTitle}>{t.features.cbFamily || 'Join Creators Blueprint Family'}</span>
                             </div>
                             <div className={styles.cbPriceBadge}>
                                 <span className={styles.cbPriceAmount}>$27 / mo</span>
@@ -123,6 +124,31 @@ export default function Features() {
                     </div>
 
                 </div>
+            </div>
+
+            <div className={styles.stackCtaWrapper}>
+                <a 
+                    href="https://app.creatorsblueprint.io" 
+                    className={styles.stackCtaBtn}
+                    onClick={() => {
+                        if (window.fbq) {
+                            window.fbq('track', 'InitiateCheckout', {
+                                content_name: 'Start Your 7-Day Free Trial',
+                                content_category: 'SaaS Signup Start',
+                                section: 'Creator Stack CTA'
+                            });
+                        }
+                        if (window.gtag) {
+                            window.gtag('event', 'begin_checkout', {
+                                event_category: 'SaaS Signup Start',
+                                event_label: 'Creator Stack CTA',
+                                value: 0
+                            });
+                        }
+                    }}
+                >
+                    Start My Free Trial <i className="ri-arrow-right-line"></i>
+                </a>
             </div>
         </section>
     );

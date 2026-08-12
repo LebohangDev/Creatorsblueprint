@@ -168,6 +168,39 @@
   display: block;
 }
 
+.spotlightCtaWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+  width: 100%;
+}
+
+.spotlightCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--accent-blue);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 16px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(29, 78, 216, 0.3);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.spotlightCtaBtn:hover {
+  transform: translateY(-2px);
+  background: var(--accent-blue-hover);
+  box-shadow: 0 14px 32px rgba(29, 78, 216, 0.4);
+}
+
 @media (max-width: 768px) {
   .spotlightHeaderRow {
     flex-direction: column;

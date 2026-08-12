@@ -203,8 +203,24 @@
   justify-content: space-between;
 }
 
+.cbLogoGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
 .cbLogoImg {
-  height: 28px;
+  height: 26px;
+  width: auto;
+}
+
+.cbFamilyTitle {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  letter-spacing: -0.2px;
 }
 
 .cbPriceBadge {
@@ -227,6 +243,39 @@
   font-weight: 800;
   padding: 4px 10px;
   border-radius: 8px;
+}
+
+.stackCtaWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.stackCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--accent-orange);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 16px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-orange-glow);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.stackCtaBtn:hover {
+  transform: translateY(-2px);
+  background: var(--accent-orange-hover);
+  box-shadow: 0 14px 32px rgba(255, 77, 0, 0.4);
 }
 
 @media (max-width: 640px) {
