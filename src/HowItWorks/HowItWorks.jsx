@@ -78,6 +78,7 @@ export default function HowItWorks() {
                 </div>
 
                 <div className={styles.howItWorksCtaBox}>
+                    <span className={styles.easyNoticeLabel}>{t.howItWorks.easyLabel}</span>
                     <a href="https://app.creatorsblueprint.io" className={styles.howItWorksCtaBtn} onClick={handleCTAClick}>
                         {t.howItWorks.cta || t.hero.cta} <i className="ri-arrow-right-line"></i>
                     </a>
