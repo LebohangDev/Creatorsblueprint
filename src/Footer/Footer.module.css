@@ -43,6 +43,36 @@
   margin: 0;
 }
 
+.footerSocialRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.socialIconBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.socialIconBtn:hover {
+  background: var(--accent-blue-subtle);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: translateY(-2px);
+}
+
 .footerNavCols {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -101,6 +131,18 @@
 
 .footerLegalLinks a:hover {
   color: var(--text-primary);
+}
+
+.inlineInstaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  color: var(--text-secondary) !important;
+}
+
+.inlineInstaLink:hover {
+  color: var(--accent-blue) !important;
 }
 
 @media (max-width: 900px) {

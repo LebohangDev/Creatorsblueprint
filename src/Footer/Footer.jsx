@@ -18,6 +18,18 @@ export default function Footer() {
                         <p className={styles.footerSeoSnippet}>
                             {t.footer.seo}
                         </p>
+                        <div className={styles.footerSocialRow}>
+                            <a 
+                                href="https://www.instagram.com/creatorsblueprint.io" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className={styles.socialIconBtn}
+                                title="Follow Creators Blueprint on Instagram"
+                                aria-label="Instagram"
+                            >
+                                <i className="ri-instagram-line"></i>
+                            </a>
+                        </div>
                     </div>
 
                     <div className={styles.footerNavCols}>
@@ -57,6 +69,10 @@ export default function Footer() {
                         © {new Date().getFullYear()} Creators Blueprint (Creatorsblueprint LLC). {t.footer.rights}
                     </div>
                     <div className={styles.footerLegalLinks}>
+                        <a href="https://www.instagram.com/creatorsblueprint.io" target="_blank" rel="noopener noreferrer" className={styles.inlineInstaLink}>
+                            <i className="ri-instagram-line"></i> @creatorsblueprint.io
+                        </a>
+                        <span>·</span>
                         <Link to="/legal/privacy">{t.footer.privacy}</Link>
                         <span>·</span>
                         <Link to="/legal/terms">{t.footer.terms}</Link>
