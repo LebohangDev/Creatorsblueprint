@@ -100,10 +100,31 @@ const Event = () => {
             window.location.href = data.url || data.redirect_url;
           }, 800);
         } else {
+          setMessage({ text: data.message || 'Registration successful.', type: 'success' });
           setSearchParams({ issuccess: 'true' });
         }
       } else {
-        setMessage({ text: data.message || 'Registration failed. Please try again.', type: 'error' });
+        let errorMsg = data.message || data.error;
+
+        switch (data.code) {
+          case 'FULLY_BOOKED':
+            errorMsg = 'Sorry, the event is fully booked.';
+            break;
+          case 'EMAIL_EXISTS':
+            errorMsg = 'Email is already registered.';
+            break;
+          case 'INSTAGRAM_EXISTS':
+            errorMsg = 'Instagram username is already registered.';
+            break;
+          case 'DATA_NOT_FOUND':
+            errorMsg = 'No data found please try again or refresh page.';
+            break;
+          default:
+            errorMsg = errorMsg || 'Registration failed. Please try again.';
+            break;
+        }
+
+        setMessage({ text: errorMsg, type: 'error' });
       }
     } catch (err) {
       console.warn('Backend offline:', err);

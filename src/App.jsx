@@ -9,6 +9,8 @@ import Terms from './Terms/Terms.jsx';
 
 
 import Event from './Event/Event.jsx';
+import AdminLogin from './Event/admin/loginForm/login.jsx';
+import Checkin from './Event/admin/Checkin/Checkin.jsx';
 
 function App() {
 
@@ -25,10 +27,11 @@ function App() {
 
   const isWaitlist = location.pathname.startsWith('/waitlist');
   const isEvent = location.pathname.startsWith('/event');
+  const isAdmin = location.pathname.includes('/admin');
 
   return (
     <>
-      {!isWaitlist && navActive && (
+      {!isWaitlist && !isAdmin && navActive && (
         <Nav />
       )}
 
@@ -37,26 +40,36 @@ function App() {
         <Routes>
           {/* Main SaaS Landing Page */}
           <Route path="/" element={<Home setNavActive={setNavActive} />} />
-          
+
           {/* Proof page route */}
           <Route path="/proof" element={<Home setNavActive={setNavActive} />} />
-          
+
           {/* Legacy Waitlist */}
           <Route path="/waitlist" element={<Waitlist />} />
 
           {/* Flow & Fortune Event Route */}
           <Route path="/event" element={<Event />} />
 
+          {/* Admin Login Routes */}
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/event/admin" element={<AdminLogin />} />
+          <Route path="/event/admin/login" element={<AdminLogin />} />
+
+          {/* Admin Checkin / Scanner Routes */}
+          <Route path="/admin/Checkin" element={<Checkin />} />
+
+
           {/* Legal routes */}
           <Route path="/legal/privacy" element={<Privacy />} />
           <Route path="/legal/terms" element={<Terms />} />
-          
+
           {/* Redirect all other obsolete routes to Home */}
           <Route path="*" element={<Home setNavActive={setNavActive} />} />
         </Routes>
       </div>
 
-      {!isWaitlist && (
+      {!isWaitlist && !isAdmin && (
         <Footer />
       )}
     </>

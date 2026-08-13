@@ -97,7 +97,6 @@ export default function Features() {
                             <span className={styles.receiptTotalLabel}>{t.features.estTotal}</span>
                             <div className={styles.receiptTotalAmountGroup}>
                                 <span className={styles.receiptTotalCrossed}>{t.features.estAmount}</span>
-                                <span className={styles.receiptAnnualNote}>{t.features.annualNote}</span>
                             </div>
                         </div>
                     </div>
@@ -113,12 +112,10 @@ export default function Features() {
                     <div className={styles.cbBottomSection}>
                         <div className={styles.cbMinimalRow}>
                             <div className={styles.cbLogoGroup}>
-                                <img src="/Images/CB_Logos/logo_new_black.png" alt="Creators Blueprint" className={styles.cbLogoImg} />
-                                <span className={styles.cbFamilyTitle}>{t.features.cbFamily || 'Join Creators Blueprint Family'}</span>
+                                <span className={styles.cbFamilyTitle}>{t.features.cbFamily || 'Join Creators Blueprint Family 🤩'}</span>
                             </div>
                             <div className={styles.cbPriceBadge}>
                                 <span className={styles.cbPriceAmount}>$27 / mo</span>
-                                <span className={styles.cbZeroFeeBadge}>{t.features.zeroFeeBadge}</span>
                             </div>
                         </div>
                     </div>
