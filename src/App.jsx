@@ -8,6 +8,8 @@ import Privacy from './Privacy/Privacy.jsx';
 import Terms from './Terms/Terms.jsx';
 
 
+import Event from './Event/Event.jsx';
+
 function App() {
 
   const [navActive, setNavActive] = useState(true);
@@ -22,6 +24,7 @@ function App() {
 
 
   const isWaitlist = location.pathname.startsWith('/waitlist');
+  const isEvent = location.pathname.startsWith('/event');
 
   return (
     <>
@@ -40,6 +43,9 @@ function App() {
           
           {/* Legacy Waitlist */}
           <Route path="/waitlist" element={<Waitlist />} />
+
+          {/* Flow & Fortune Event Route */}
+          <Route path="/event" element={<Event />} />
 
           {/* Legal routes */}
           <Route path="/legal/privacy" element={<Privacy />} />
