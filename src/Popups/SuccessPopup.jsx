@@ -19,8 +19,17 @@ const SuccessPopup = ({ onClose }) => {
         </div>
 
         <p className={styles.description}>
-          Your spot has been reserved. A confirmation email with event details has been sent to your inbox.
+          Spot reserved! Confirmation and entry pass sent.
         </p>
+
+        <div className={styles.qrNoticeBlock}>
+          <div className={styles.qrNoticeHeader}>
+            <span>🎟️ Entry QR Code Emailed</span>
+          </div>
+          <p className={styles.qrNoticeText}>
+            Scan your QR code at entry. Check <strong>spam folder</strong> if missing, or contact <a href="mailto:help@creatorsblueprint.io">help@creatorsblueprint.io</a>.
+          </p>
+        </div>
 
         <button className={styles.actionBtn} onClick={onClose}>
           Return Back

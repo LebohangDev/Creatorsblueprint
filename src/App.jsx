@@ -57,7 +57,10 @@ function App() {
           <Route path="/event/admin/login" element={<AdminLogin />} />
 
           {/* Admin Checkin / Scanner Routes */}
+          <Route path="/admin/checkin" element={<Checkin />} />
           <Route path="/admin/Checkin" element={<Checkin />} />
+          <Route path="/event/admin/checkin" element={<Checkin />} />
+          <Route path="/event/admin/Checkin" element={<Checkin />} />
 
 
           {/* Legal routes */}

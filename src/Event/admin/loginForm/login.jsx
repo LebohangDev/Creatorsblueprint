@@ -13,7 +13,7 @@ const AdminLogin = () => {
     e.preventDefault();
 
     if (!email.trim() || !password) {
-      setMessage({ text: 'Please enter both email and password.', type: 'error' });
+      setMessage({ text: "Hold on boss! 🛑 Can't sneak in without your email and password.", type: 'error' });
       return;
     }
 
@@ -38,24 +38,26 @@ const AdminLogin = () => {
       const data = await response.json().catch(() => ({}));
 
       if (response.ok && data.success) {
-        setMessage({ text: data.message || 'Login successful! Redirecting...', type: 'success' });
-        window.location.href = "/admin/Checkin";
+        setMessage({ text: data.message || "Boom, you're in! 🚀 Rolling out the red carpet...", type: 'success' });
+        setTimeout(() => {
+          window.location.href = "/admin/Checkin";
+        }, 800);
 
       } else {
         let errorText = data.message || data.error;
 
         switch (data.code) {
           case 'INVALID_CREDENTIALS':
-            errorText = 'Invalid email address or password.';
+            errorText = data.message || "Nice try sneaky! 🕵️ That email or password didn't match our VIP guestlist.";
             break;
           case 'MISSING_CREDENTIALS':
-            errorText = 'Please provide both email and password.';
+            errorText = data.message || "Ghost logins aren't allowed 👻 Please drop both email and password.";
             break;
           case 'DATA_NOT_FOUND':
-            errorText = 'Account not found. Please verify your admin credentials.';
+            errorText = data.message || "Account not found in the matrix 🤖 Double check your admin credentials!";
             break;
           default:
-            errorText = errorText || 'Authentication failed. Please try again.';
+            errorText = errorText || "Authentication took a detour 🗺️ Let's try that one more time.";
             break;
         }
 
@@ -63,7 +65,7 @@ const AdminLogin = () => {
       }
     } catch (err) {
       console.error('Admin login request failed:', err);
-      setMessage({ text: 'Unable to connect to login server. Please try again.', type: 'error' });
+      setMessage({ text: "Servers taking a matcha latte break 🍵 Couldn't connect, give it another spin!", type: 'error' });
     } finally {
       setLoading(false);
     }
@@ -171,10 +173,10 @@ const AdminLogin = () => {
             {loading ? (
               <>
                 <span className={styles.spinner}></span>
-                <span>Authenticating...</span>
+                <span>Checking VIP Credentials... 🕵️‍♂️</span>
               </>
             ) : (
-              'Sign In to Dashboard'
+              'Sign In to Dashboard 🚀'
             )}
           </button>
 
@@ -187,7 +189,7 @@ const AdminLogin = () => {
         </form>
 
         <div className={styles.cardFooter}>
-          🔒 Authorized personnel only. All login attempts are monitored.
+          🔒 Authorized crew only. Trespassers will be assigned 100 burpees.
         </div>
       </div>
     </div>

@@ -60,7 +60,7 @@ const Event = () => {
     setInstaTouched(true);
 
     if (!isValidFirstName || !isValidLastName || !isValidEmail || !isValidInsta) {
-      setMessage({ text: 'Please complete all required fields.', type: 'error' });
+      setMessage({ text: "Don't leave us hanging! 📝 Please fill out all required fields.", type: 'error' });
       return;
     }
 
@@ -95,12 +95,12 @@ const Event = () => {
 
       if (response.ok) {
         if (data.url || data.redirect_url) {
-          setMessage({ text: 'Redirecting to Stripe...', type: 'success' });
+          setMessage({ text: "Securing your mat... teleporting to checkout! 🚀", type: 'success' });
           setTimeout(() => {
             window.location.href = data.url || data.redirect_url;
           }, 800);
         } else {
-          setMessage({ text: data.message || 'Registration successful.', type: 'success' });
+          setMessage({ text: data.message || "Boom, you're registered! See you on the mat 🎉", type: 'success' });
           setSearchParams({ issuccess: 'true' });
         }
       } else {
@@ -108,19 +108,19 @@ const Event = () => {
 
         switch (data.code) {
           case 'FULLY_BOOKED':
-            errorMsg = 'Sorry, the event is fully booked.';
+            errorMsg = data.message || "Holy matcha! 🍵 We're completely sold out!";
             break;
           case 'EMAIL_EXISTS':
-            errorMsg = 'Email is already registered.';
+            errorMsg = data.message || "Looks like you're already on the VIP list with this email! Check your inbox 💌";
             break;
           case 'INSTAGRAM_EXISTS':
-            errorMsg = 'Instagram username is already registered.';
+            errorMsg = data.message || "This Instagram handle is already registered! Sneaking in twice? 😉";
             break;
           case 'DATA_NOT_FOUND':
-            errorMsg = 'No data found please try again or refresh page.';
+            errorMsg = data.message || "Data vanished into thin air 💨 Please refresh and try once more.";
             break;
           default:
-            errorMsg = errorMsg || 'Registration failed. Please try again.';
+            errorMsg = errorMsg || "Registration hit a roadblock 🚧 Let's try that one more time.";
             break;
         }
 
@@ -303,6 +303,9 @@ const Event = () => {
                     className={styles.inputField}
                     required
                   />
+                </div>
+                <div className={styles.emailNoticeHighlight}>
+                  ⚠️ Double-check email spelling for your entry QR pass.
                 </div>
               </div>
 
