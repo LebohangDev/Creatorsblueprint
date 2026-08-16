@@ -44,18 +44,51 @@
   display: inline-block;
   color: var(--accent-orange) !important;
   white-space: nowrap;
-  padding-bottom: 3px;
+  padding-bottom: 4px;
 }
 
 .brushStroke {
   position: absolute;
   bottom: -6px;
-  left: -1%;
-  width: 102%;
-  height: 18px;
+  left: -2%;
+  width: 104%;
+  height: 20px;
   overflow: visible;
   pointer-events: none;
   filter: drop-shadow(0 2px 8px rgba(29, 78, 216, 0.35));
+}
+
+.brushStroke path {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 320;
+  animation: drawUnderline 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.35s forwards;
+}
+
+@keyframes drawUnderline {
+  0% {
+    stroke-dashoffset: 320;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.brushHighlight:hover .brushStroke path {
+  animation: redrawUnderline 0.75s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes redrawUnderline {
+  0% {
+    stroke-dashoffset: 320;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
 
 .heroSubText {
@@ -89,14 +122,43 @@
   border: none;
   cursor: pointer;
   box-shadow: 0 10px 28px rgba(29, 78, 216, 0.3);
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.primaryButtonLarge::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: rotate(30deg);
+  animation: heroBtnShine 5s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes heroBtnShine {
+  0% { left: -60%; }
+  20% { left: 140%; }
+  100% { left: 140%; }
 }
 
 .primaryButtonLarge:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.02);
   background: var(--accent-blue-hover);
-  box-shadow: 0 12px 32px rgba(29, 78, 216, 0.4);
+  box-shadow: 0 14px 36px rgba(29, 78, 216, 0.45);
+}
+
+.primaryButtonLarge:hover i {
+  transform: translateX(3px);
+}
+
+.primaryButtonLarge i {
+  transition: transform 0.2s ease;
 }
 
 .secondaryButton {
@@ -121,6 +183,7 @@
   background: var(--bg-surface-subtle);
   border-color: var(--accent-blue);
   color: var(--accent-blue);
+  transform: translateY(-2px);
 }
 
 .heroMicrocopyBox {
@@ -173,14 +236,22 @@
   padding: 14px 18px;
   box-shadow: var(--shadow-lime-glow);
   transform: rotate(-3deg);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: heroFloatRevenue 5s ease-in-out infinite alternate;
+  transition: box-shadow 0.3s ease;
   pointer-events: auto;
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
+@keyframes heroFloatRevenue {
+  0% { transform: rotate(-3deg) translateY(0px); }
+  50% { transform: rotate(-2deg) translateY(-8px); }
+  100% { transform: rotate(-4deg) translateY(2px); }
+}
+
 .heroRevenueCard:hover {
-  transform: rotate(0deg) translateY(-4px);
-  box-shadow: 0 16px 36px rgba(212, 255, 0, 0.45);
+  animation-play-state: paused;
+  transform: rotate(0deg) translateY(-6px) scale(1.03);
+  box-shadow: 0 18px 40px rgba(212, 255, 0, 0.5);
 }
 
 .revenueCardHeader {
@@ -207,6 +278,10 @@
   color: #D4FF00;
   padding: 2px 8px;
   border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 8px rgba(15, 27, 61, 0.2);
 }
 
 .revenueAmountRow {
@@ -250,7 +325,7 @@
   border: 4px solid #1E293B;
   box-shadow: 0 25px 60px rgba(10, 15, 29, 0.25), inset 0 0 0 2px rgba(255, 255, 255, 0.1);
   overflow: hidden;
-  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .iphoneFrame::before {
@@ -281,6 +356,12 @@
   transform: rotate(-6deg) scale(0.95);
   opacity: 0.95;
   filter: brightness(0.96);
+  animation: heroFloatBack 6s ease-in-out infinite alternate;
+}
+
+@keyframes heroFloatBack {
+  0% { transform: rotate(-6deg) scale(0.95) translateY(0px); }
+  100% { transform: rotate(-7.5deg) scale(0.95) translateY(8px); }
 }
 
 .frontPhoneStorefront {
@@ -289,16 +370,24 @@
   z-index: 2;
   transform: rotate(4deg);
   box-shadow: -20px 30px 70px rgba(10, 15, 29, 0.25), 0 0 30px rgba(29, 78, 216, 0.12);
+  animation: heroFloatFront 5.5s ease-in-out infinite alternate;
+}
+
+@keyframes heroFloatFront {
+  0% { transform: rotate(4deg) translateY(0px); }
+  100% { transform: rotate(2.5deg) translateY(-10px); }
 }
 
 .stackedPhonesStage:hover .backPhoneIG {
-  transform: rotate(-8deg) scale(0.97) translateX(-10px);
+  animation-play-state: paused;
+  transform: rotate(-9deg) scale(0.97) translateX(-14px);
   opacity: 1;
   filter: brightness(1);
 }
 
 .stackedPhonesStage:hover .frontPhoneStorefront {
-  transform: rotate(2deg) translateY(-8px);
+  animation-play-state: paused;
+  transform: rotate(1deg) translateY(-12px) scale(1.02);
 }
 
 @media (max-width: 1024px) {

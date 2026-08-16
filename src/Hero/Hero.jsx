@@ -39,8 +39,8 @@ export default function Hero() {
                         {t.hero.titlePart1}
                         <span className={styles.brushHighlight}>
                             {t.hero.titleHighlight}
-                            <svg className={styles.brushStroke} viewBox="0 0 250 20" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                                <path d="M3 14C50 4 150 3 247 11" stroke="var(--accent-blue)" strokeWidth="6" strokeLinecap="round" />
+                            <svg className={styles.brushStroke} viewBox="0 0 260 22" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                <path d="M 4 15 C 65 3, 175 4, 256 14" stroke="var(--accent-blue)" strokeWidth="6" strokeLinecap="round" />
                             </svg>
                         </span>
                         {t.hero.titlePart2}

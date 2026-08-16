@@ -3,29 +3,118 @@
   background: var(--bg-surface-subtle);
   border-top: 1px solid var(--border-light);
   border-bottom: 1px solid var(--border-light);
-  padding: 20px 24px;
+  padding: 28px 24px;
+  overflow: hidden;
+}
+
+.trustWrapper {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  position: relative;
 }
 
 .trustContainer {
-  max-width: 1140px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 20px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
 }
 
-.trustItem {
+.trustCard {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: 18px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.trustCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-blue);
+  box-shadow: 0 10px 24px rgba(29, 78, 216, 0.12);
+}
+
+.iconCircle {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(29, 78, 216, 0.08);
+  color: var(--accent-blue);
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.trustCard:hover .iconCircle {
+  background: var(--accent-blue);
+  color: #FFFFFF;
+  transform: scale(1.08);
+}
+
+.cardText {
+  font-family: var(--font-body);
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin: 0;
 }
 
-.trustItem i {
-  color: var(--accent-blue);
-  font-size: 1.1rem;
+@media (max-width: 1024px) {
+  .trustContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
+
+@media (max-width: 768px) {
+  .trustSection {
+    padding: 22px 0;
+  }
+  
+  .trustContainer {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    padding: 6px 20px 14px 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .trustContainer::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .trustCard {
+    flex: 0 0 210px;
+    scroll-snap-align: center;
+    padding: 18px 16px;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(15, 27, 61, 0.06);
+  }
+  
+  .cardText {
+    font-size: 0.84rem;
+    line-height: 1.38;
+  }
+  
+  .iconCircle {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    border-radius: 12px;
+  }
+}
+
+

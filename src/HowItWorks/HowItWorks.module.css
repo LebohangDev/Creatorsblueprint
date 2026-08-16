@@ -51,12 +51,12 @@
   text-align: left;
   position: relative;
   box-shadow: 0 15px 35px rgba(15, 27, 61, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .stepCard:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(15, 27, 61, 0.12);
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px rgba(15, 27, 61, 0.14);
 }
 
 .stepCardBlue {
@@ -88,6 +88,11 @@
   font-size: 1.1rem;
   font-weight: 800;
   font-family: var(--font-display);
+  transition: transform 0.25s ease;
+}
+
+.stepCard:hover .stepNumPill {
+  transform: scale(1.1);
 }
 
 .stepCardBlue .stepNumPill {
@@ -108,6 +113,12 @@
 .stepIconCircle {
   font-size: 1.5rem;
   color: var(--text-secondary);
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.stepCard:hover .stepIconCircle {
+  transform: scale(1.15) rotate(6deg);
+  color: var(--accent-blue);
 }
 
 .stepTitle {
@@ -129,9 +140,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   text-align: center;
-  margin-top: 24px;
+  margin-top: 28px;
 }
 
 .easyNoticeLabel {
@@ -157,20 +168,40 @@
   border: none;
   cursor: pointer;
   box-shadow: 0 10px 25px rgba(29, 78, 216, 0.25);
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.howItWorksCtaBtn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: rotate(30deg);
+  animation: heroBtnShine 5s infinite ease-in-out;
+  pointer-events: none;
 }
 
 .howItWorksCtaBtn:hover {
-  transform: translateY(-3px);
+  transform: translateY(-3px) scale(1.02);
   background: var(--accent-blue-hover);
-  box-shadow: 0 16px 32px rgba(29, 78, 216, 0.35);
+  box-shadow: 0 16px 36px rgba(29, 78, 216, 0.4);
 }
 
 @media (max-width: 900px) {
   .howItWorksSection {
     background: linear-gradient(to bottom, var(--accent-orange) 300px, var(--bg-page) 300px);
+    padding: 70px 20px 60px 20px;
   }
   .stepsGrid {
     grid-template-columns: 1fr;
+  }
+  .easyNoticeLabel {
+    color: var(--text-primary);
+    font-size: 1.25rem;
   }
 }

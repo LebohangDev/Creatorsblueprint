@@ -7,14 +7,21 @@ export default function TrustStrip() {
 
     return (
         <section className={styles.trustSection}>
-            <div className={styles.trustContainer}>
-                {items.map((item, idx) => (
-                    <div key={idx} className={styles.trustItem}>
-                        <i className={item.icon}></i>
-                        <span>{item.text}</span>
-                    </div>
-                ))}
+            <div className={styles.trustWrapper}>
+                <div className={styles.trustContainer}>
+                    {items.map((item, idx) => (
+                        <div key={idx} className={styles.trustCard}>
+                            <div className={styles.iconCircle}>
+                                <i className={item.icon}></i>
+                            </div>
+                            <span className={styles.cardText}>{item.text}</span>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );
 }
+
+
+

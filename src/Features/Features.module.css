@@ -94,6 +94,13 @@
   background: var(--bg-surface);
   border: 1px solid var(--border-light);
   border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.toolItemRow:hover {
+  transform: translateX(4px);
+  border-color: rgba(239, 68, 68, 0.35);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.08);
 }
 
 .toolItemLeft {
@@ -109,6 +116,11 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.toolItemRow:hover .toolLogoWrapper {
+  transform: scale(1.15);
 }
 
 .toolLogoImg {
@@ -184,10 +196,16 @@
   font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 800;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 14px rgba(15, 27, 61, 0.25);
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  border: 2px solid var(--bg-page);
+  transition: transform 0.25s ease;
+}
+
+.unifiedCard:hover .vsCircle {
+  transform: translateX(-50%) rotate(180deg) scale(1.08);
 }
 
 .cbBottomSection {
@@ -195,6 +213,12 @@
   background: var(--bg-surface);
   border: 2px solid var(--accent-blue);
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(29, 78, 216, 0.08);
+  transition: box-shadow 0.3s ease;
+}
+
+.unifiedCard:hover .cbBottomSection {
+  box-shadow: 0 15px 40px rgba(29, 78, 216, 0.15);
 }
 
 .cbMinimalRow {
@@ -211,7 +235,7 @@
 }
 
 .cbLogoImg {
-  height: 26px;
+  height: 36px;
   width: auto;
 }
 
@@ -243,6 +267,7 @@
   font-weight: 800;
   padding: 4px 10px;
   border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(212, 255, 0, 0.3);
 }
 
 .stackCtaWrapper {
@@ -268,14 +293,29 @@
   border: none;
   cursor: pointer;
   box-shadow: var(--shadow-orange-glow);
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.stackCtaBtn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: rotate(30deg);
+  animation: heroBtnShine 5s infinite ease-in-out;
+  pointer-events: none;
 }
 
 .stackCtaBtn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.02);
   background: var(--accent-orange-hover);
-  box-shadow: 0 14px 32px rgba(255, 77, 0, 0.4);
+  box-shadow: 0 16px 36px rgba(255, 77, 0, 0.45);
 }
 
 @media (max-width: 640px) {

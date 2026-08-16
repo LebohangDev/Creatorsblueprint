@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import styles from './CreatorSpotlight.module.css';
 
@@ -43,30 +43,6 @@ const creatorShowcaseData = [
 export default function CreatorSpotlight() {
     const { t } = useLanguage();
     const scrollRef = useRef(null);
-    const [canScrollLeft, setCanScrollLeft] = useState(false);
-    const [canScrollRight, setCanScrollRight] = useState(true);
-
-    const checkScroll = () => {
-        if (!scrollRef.current) return;
-        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-        setCanScrollLeft(scrollLeft > 10);
-        setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-    };
-
-    useEffect(() => {
-        const el = scrollRef.current;
-        if (el) {
-            el.addEventListener('scroll', checkScroll);
-            checkScroll();
-        }
-        return () => el?.removeEventListener('scroll', checkScroll);
-    }, []);
-
-    const scrollByAmount = (distance) => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollBy({ left: distance, behavior: 'smooth' });
-        }
-    };
 
     return (
         <section className={styles.spotlightSection} id="spotlight">
@@ -78,23 +54,6 @@ export default function CreatorSpotlight() {
                     <p className={styles.sectionSubtitle}>
                         {t.spotlight.subtitle}
                     </p>
-                </div>
-
-                <div className={styles.carouselArrowControls}>
-                    <button 
-                        className={`${styles.carouselArrowBtn} ${!canScrollLeft ? styles.arrowDisabled : ''}`}
-                        onClick={() => scrollByAmount(-370)}
-                        aria-label="Previous Creator"
-                    >
-                        <i className="ri-arrow-left-line"></i>
-                    </button>
-                    <button 
-                        className={`${styles.carouselArrowBtn} ${!canScrollRight ? styles.arrowDisabled : ''}`}
-                        onClick={() => scrollByAmount(370)}
-                        aria-label="Next Creator"
-                    >
-                        <i className="ri-arrow-right-line"></i>
-                    </button>
                 </div>
             </div>
 
@@ -131,3 +90,4 @@ export default function CreatorSpotlight() {
         </section>
     );
 }
+

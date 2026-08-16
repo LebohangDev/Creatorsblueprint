@@ -1,6 +1,6 @@
 .reviewsSection {
   width: 100%;
-  background: linear-gradient(170deg, var(--accent-orange) 50%, var(--bg-page) 50.1%);
+  background: var(--accent-orange);
   padding: 90px 24px 70px 24px;
   position: relative;
   overflow: hidden;
@@ -32,7 +32,7 @@
 
 .sectionSubtitle {
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   font-weight: 500;
   line-height: 1.6;
   margin: 0 auto;
@@ -55,14 +55,15 @@
 /* Pure White Cards on Orange Background */
 .feedbackCard {
   background: #FFFFFF;
-  border: 1px solid var(--border-light);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 24px;
   padding: 28px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;
+  box-sizing: border-box;
 }
 
 .feedbackCard:hover {
@@ -78,8 +79,14 @@
 
 .cardStars {
   color: #F59E0B;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   letter-spacing: 2px;
+}
+
+.quoteBadge {
+  color: var(--accent-orange);
+  font-size: 1.3rem;
+  opacity: 0.7;
 }
 
 .feedbackText {
@@ -87,6 +94,7 @@
   line-height: 1.65;
   color: #101828;
   margin: 0 0 20px 0;
+  font-weight: 500;
 }
 
 .feedbackHeader {
@@ -106,7 +114,7 @@
   font-size: 0.88rem;
   font-weight: 800;
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   flex-shrink: 0;
 }
 
@@ -141,16 +149,17 @@
 }
 
 .ugcReelFrameCard {
-  background: #0F1B3D;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #1E293B;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 24px;
   overflow: hidden;
   position: relative;
   display: block;
   text-decoration: none;
   aspect-ratio: 9 / 16;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease;
+  box-sizing: border-box;
 }
 
 .ugcReelFrameCard:hover {
@@ -177,10 +186,10 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: rgba(15, 27, 61, 0.75);
+  background: rgba(15, 27, 61, 0.82);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -202,7 +211,7 @@
   left: 0;
   right: 0;
   padding: 20px;
-  background: linear-gradient(to top, rgba(15, 27, 61, 0.95) 0%, rgba(15, 27, 61, 0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 100%);
   z-index: 4;
 }
 
@@ -223,11 +232,46 @@
 
 .reelCreatorInfo span {
   font-size: 0.78rem;
-  color: #94A3B8;
+  color: #CBD5E1;
 }
 
 .desktopOnly { display: grid; }
 .mobileOnly  { display: none; }
+
+/* Mobile Full-Bleed Carousel */
+.mobileCarouselTrack {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 10px 24px 20px 24px;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.mobileCarouselTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.mobileCarouselSlide {
+  flex: 0 0 280px;
+  width: 280px;
+  height: 420px;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.carouselCardEqual {
+  height: 100% !important;
+  width: 100% !important;
+  aspect-ratio: auto !important;
+  border-radius: 24px;
+}
 
 @media (max-width: 1024px) {
   .mixedGrid {
@@ -238,43 +282,35 @@
 @media (max-width: 768px) {
   .desktopOnly { display: none; }
   .mobileOnly  { display: block; }
-  .sectionTitle { font-size: 2.2rem; }
+  
+  .reviewsSection {
+    padding: 60px 0 50px 0;
+  }
+  
+  .reviewsHeader {
+    margin-bottom: 24px;
+    padding: 0 20px;
+  }
+  
+  .sectionTitle {
+    font-size: 1.95rem;
+    line-height: 1.2;
+  }
+  
+  .sectionSubtitle {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+  
+  .feedbackCard {
+    padding: 24px 20px;
+  }
+  
+  .feedbackText {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin: auto 0;
+  }
 }
 
-.mobileStack {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 16px;
-}
 
-.showMoreBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  padding: 14px 20px;
-  margin-top: 4px;
-  background: rgba(255,255,255,0.15);
-  border: 1.5px solid rgba(255,255,255,0.35);
-  border-radius: 16px;
-  color: #ffffff;
-  font-size: 0.95rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.showMoreBtn:hover {
-  background: rgba(255,255,255,0.25);
-}
-
-.showMoreChevron {
-  font-size: 1.1rem;
-  transition: transform 0.25s ease;
-}
-
-.chevronUp {
-  transform: rotate(180deg);
-}

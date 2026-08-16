@@ -29,7 +29,7 @@
 }
 
 .logo img {
-    height: 30px;
+    height: 38px;
     cursor: pointer;
     transition: transform 0.2s ease;
 }
@@ -130,20 +130,35 @@
     background: var(--accent-blue);
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 22px;
     border-radius: 14px;
     font-weight: 700;
     font-size: 0.88rem;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     text-decoration: none;
     box-shadow: 0 6px 20px rgba(29, 78, 216, 0.25);
     white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+.ctaButton::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.35);
+    transform: rotate(30deg);
+    animation: heroBtnShine 5s infinite ease-in-out;
+    pointer-events: none;
 }
 
 .ctaButton:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(29, 78, 216, 0.35);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 28px rgba(29, 78, 216, 0.4);
     background: var(--accent-blue-hover);
 }
 

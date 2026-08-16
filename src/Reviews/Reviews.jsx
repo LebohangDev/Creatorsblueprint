@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import styles from './Reviews.module.css';
 
@@ -17,11 +15,12 @@ const UGC_REELS = [
     { href: 'https://www.instagram.com/reel/DbH351LIT-7/', src: '/Images/ugc/ugc_creator3.png', name: 'Sena Bayram',         handle: '@dubaiwithsena', alt: 'Sena Bayram Video Screenshot' },
 ];
 
-function TextFeedbackCard({ review, text }) {
+function TextFeedbackCard({ review, text, isMobileCarousel }) {
     return (
-        <div className={styles.feedbackCard}>
+        <div className={`${styles.feedbackCard} ${isMobileCarousel ? styles.carouselCardEqual : ''}`}>
             <div className={styles.cardTopRow}>
                 <div className={styles.cardStars}>★★★★★</div>
+                <div className={styles.quoteBadge}><i className="ri-double-quotes-r"></i></div>
             </div>
             <p className={styles.feedbackText}>{text}</p>
             <div className={styles.feedbackHeader}>
@@ -35,9 +34,9 @@ function TextFeedbackCard({ review, text }) {
     );
 }
 
-function UGCReelCard({ reel }) {
+function UGCReelCard({ reel, isMobileCarousel }) {
     return (
-        <a href={reel.href} target="_blank" rel="noopener noreferrer" className={styles.ugcReelFrameCard}>
+        <a href={reel.href} target="_blank" rel="noopener noreferrer" className={`${styles.ugcReelFrameCard} ${isMobileCarousel ? styles.carouselCardEqual : ''}`}>
             <div className={styles.playButtonOverlay}><i className="ri-play-fill"></i></div>
             <img src={reel.src} alt={reel.alt} className={styles.ugcScreenshotImg} />
             <div className={styles.reelOverlayFooter}>
@@ -52,7 +51,17 @@ function UGCReelCard({ reel }) {
 
 export default function Reviews() {
     const { t } = useLanguage();
-    const [showMore, setShowMore] = useState(false);
+
+    const mobileItems = [
+        { type: 'text', review: TEXT_REVIEWS[0], key: 'hajira' },
+        { type: 'reel', reel: UGC_REELS[0] },
+        { type: 'text', review: TEXT_REVIEWS[1], key: 'sena' },
+        { type: 'reel', reel: UGC_REELS[1] },
+        { type: 'text', review: TEXT_REVIEWS[2], key: 'caroline' },
+        { type: 'reel', reel: UGC_REELS[2] },
+        { type: 'text', review: TEXT_REVIEWS[3], key: 'rena' },
+        { type: 'text', review: TEXT_REVIEWS[4], key: 'oyeyinka' },
+    ];
 
     return (
         <section className={styles.reviewsSection} id="reviews">
@@ -80,44 +89,30 @@ export default function Reviews() {
                     </div>
                 </div>
 
-                {/* Mobile single column stack + Show More */}
+                {/* Mobile Full-Bleed Horizontal Carousel (Not enclosed in container) */}
                 <div className={styles.mobileOnly}>
-                    <div className={styles.mobileStack}>
-                        <TextFeedbackCard review={TEXT_REVIEWS[0]} text={t.reviews.items?.hajira} />
-                        <TextFeedbackCard review={TEXT_REVIEWS[1]} text={t.reviews.items?.sena} />
+                    <div className={styles.mobileCarouselTrack}>
+                        {mobileItems.map((item, idx) => (
+                            <div key={idx} className={styles.mobileCarouselSlide}>
+                                {item.type === 'text' ? (
+                                    <TextFeedbackCard 
+                                        review={item.review} 
+                                        text={t.reviews.items?.[item.key]} 
+                                        isMobileCarousel 
+                                    />
+                                ) : (
+                                    <UGCReelCard 
+                                        reel={item.reel} 
+                                        isMobileCarousel 
+                                    />
+                                )}
+                            </div>
+                        ))}
                     </div>
-
-                    <AnimatePresence>
-                        {showMore && (
-                            <motion.div
-                                className={styles.mobileStack}
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.35, ease: 'easeInOut' }}
-                                style={{ overflow: 'hidden' }}
-                            >
-                                <UGCReelCard reel={UGC_REELS[0]} />
-                                <UGCReelCard reel={UGC_REELS[1]} />
-                                <UGCReelCard reel={UGC_REELS[2]} />
-                                <TextFeedbackCard review={TEXT_REVIEWS[2]} text={t.reviews.items?.caroline} />
-                                <TextFeedbackCard review={TEXT_REVIEWS[3]} text={t.reviews.items?.rena} />
-                                <TextFeedbackCard review={TEXT_REVIEWS[4]} text={t.reviews.items?.oyeyinka} />
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-
-                    <button
-                        className={styles.showMoreBtn}
-                        onClick={() => setShowMore(v => !v)}
-                    >
-                        {showMore
-                            ? (t.reviews.showLess || 'Show less')
-                            : (t.reviews.showMore || 'Show more reviews')}
-                        <i className={`ri-chevron-down-line ${styles.showMoreChevron} ${showMore ? styles.chevronUp : ''}`}></i>
-                    </button>
                 </div>
             </div>
         </section>
     );
 }
+
+

@@ -123,14 +123,10 @@ export const translations = {
       ]
     },
     footer: {
-      tagline: 'The creator operating system built for GCC creators. Turn your audience into a high-margin digital business.',
-      seo: 'Empowering GCC creators across UAE, KSA, Qatar, Kuwait, Bahrain, and Oman with custom creator stores, digital product pipelines, and Stripe payments.',
-      product: 'Product',
-      creators: 'Creators',
-      legal: 'Legal & Trust',
-      privacy: 'Privacy Policy',
-      terms: 'Terms of Service',
-      support: 'Contact Support',
+      tagline: 'The link in bio for your creator business in the GCC.',
+      privacy: 'Privacy',
+      terms: 'Terms',
+      support: 'Support',
       rights: 'All rights reserved.',
     }
   },
@@ -254,14 +250,10 @@ export const translations = {
       ]
     },
     footer: {
-      tagline: 'منصة التشغيل الأولى لمنشئي المحتوى في الخليج. حوّل جمهورك إلى مشروع رقمي مربح.',
-      seo: 'تمكين منشئي المحتوى في الإمارات، السعودية، قطر، الكويت، البحرين، وعُمان بمتاجر رقمية مخصصة، وبيع الكتب، ومدفوعات مباشرة عبر سترايب.',
-      product: 'المنتج',
-      creators: 'منشئو المحتوى',
-      legal: 'الشروط والأمان',
-      privacy: 'سياسة الخصوصية',
-      terms: 'شروط الخدمة',
-      support: 'الدعم الفني',
+      tagline: 'منصة الرابط في البايو لمشروعك الرقمي في الخليج.',
+      privacy: 'الخصوصية',
+      terms: 'الشروط',
+      support: 'الدعم',
       rights: 'جميع الحقوق محفوظة.',
     }
   }
