@@ -6,11 +6,9 @@ const TEXT_REVIEWS = [
     { key: 'sena',     name: 'Sena Bayram',          handle: '@dubaiwithsena',      initials: 'SB', gradient: 'linear-gradient(135deg, #8B5CF6, #A78BFA)' },
     { key: 'caroline', name: 'Caroline Labouchere',  handle: '@carolinelabouchere', initials: 'CL', gradient: 'linear-gradient(135deg, #10B981, #34D399)' },
     { key: 'rena',     name: 'Rena Sibaei',          handle: '@rena_sibaei',        initials: 'RS', gradient: 'linear-gradient(135deg, #F59E0B, #FBBF24)' },
-    { key: 'oyeyinka', name: 'Oyeyinka Oyerinde',    handle: '@heyoyeyinka',        initials: 'OO', gradient: 'linear-gradient(135deg, #EC4899, #F472B6)' },
 ];
 
 const UGC_REELS = [
-    { href: 'https://www.instagram.com/reel/DazvtP6MjQk/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', src: '/Images/ugc/ugc_creator2.png', name: 'Oyeyinka Oyerinde', handle: '@heyoyeyinka', alt: 'Oyeyinka Oyerinde Video Screenshot' },
     { href: 'https://www.instagram.com/reel/DbBVIRVS5jZ/', src: '/Images/ugc/ugc_creator1.png', name: 'Rena Sibaei',         handle: '@rena_sibaei',   alt: 'Rena Sibaei Video Screenshot' },
     { href: 'https://www.instagram.com/reel/DbH351LIT-7/', src: '/Images/ugc/ugc_creator3.png', name: 'Sena Bayram',         handle: '@dubaiwithsena', alt: 'Sena Bayram Video Screenshot' },
 ];
@@ -58,9 +56,7 @@ export default function Reviews() {
         { type: 'text', review: TEXT_REVIEWS[1], key: 'sena' },
         { type: 'reel', reel: UGC_REELS[1] },
         { type: 'text', review: TEXT_REVIEWS[2], key: 'caroline' },
-        { type: 'reel', reel: UGC_REELS[2] },
         { type: 'text', review: TEXT_REVIEWS[3], key: 'rena' },
-        { type: 'text', review: TEXT_REVIEWS[4], key: 'oyeyinka' },
     ];
 
     return (
@@ -75,17 +71,15 @@ export default function Reviews() {
                 <div className={`${styles.mixedGrid} ${styles.desktopOnly}`}>
                     <div className={styles.gridCol}>
                         <TextFeedbackCard review={TEXT_REVIEWS[0]} text={t.reviews.items?.hajira} />
-                        <TextFeedbackCard review={TEXT_REVIEWS[1]} text={t.reviews.items?.sena} />
                         <UGCReelCard reel={UGC_REELS[0]} />
                     </div>
                     <div className={styles.gridCol}>
+                        <TextFeedbackCard review={TEXT_REVIEWS[1]} text={t.reviews.items?.sena} />
                         <UGCReelCard reel={UGC_REELS[1]} />
-                        <UGCReelCard reel={UGC_REELS[2]} />
                     </div>
                     <div className={styles.gridCol}>
                         <TextFeedbackCard review={TEXT_REVIEWS[2]} text={t.reviews.items?.caroline} />
                         <TextFeedbackCard review={TEXT_REVIEWS[3]} text={t.reviews.items?.rena} />
-                        <TextFeedbackCard review={TEXT_REVIEWS[4]} text={t.reviews.items?.oyeyinka} />
                     </div>
                 </div>
 

@@ -25,13 +25,6 @@ const creatorShowcaseData = [
         posterImage: '/Images/creators/rena_storefront.png'
     },
     {
-        id: 'oyeyinka',
-        name: 'Oyeyinka Oyerinde',
-        handle: '@heyoyeyinka',
-        followers: '359 Followers',
-        posterImage: '/Images/creators/oyeyinka_storefront.png'
-    },
-    {
         id: 'sena',
         name: 'Sena Bayram',
         handle: '@dubaiwithsena',
@@ -80,7 +73,7 @@ export default function CreatorSpotlight() {
                                 src={creator.posterImage} 
                                 alt={`${creator.name} Creator Store Showcase`} 
                                 className={styles.iphoneScreenImg}
-                                style={['caroline', 'sena', 'oyeyinka', 'hajira', 'rena'].includes(creator.id) ? { objectFit: 'cover', objectPosition: 'top center' } : {}}
+                                style={['caroline', 'sena', 'hajira', 'rena'].includes(creator.id) ? { objectFit: 'cover', objectPosition: 'top center' } : {}}
                                 loading="lazy"
                             />
                         </div>

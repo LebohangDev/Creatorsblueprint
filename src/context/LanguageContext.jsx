@@ -88,8 +88,7 @@ export const translations = {
         hajira: '800+ playlist sales later, I couldn\'t love @creatorsblueprint more! It took me 5 minutes to set up my creator store. ✨',
         sena: 'I created an ebook all about my experiences in Dubai in literally 10 minutes! @creatorsblueprint is amazing. 💖',
         caroline: 'Hosting and selling my 2 ebooks about my surgeries and modeling has been a game changer! @creatorsblueprint makes it so easy. ✨',
-        rena: 'I went from having no online presence to having my own creator store live in one afternoon. @creatorsblueprint made it so simple! ✨',
-        oyeyinka: 'As a UGC creator in Dubai, I needed something that actually works here. @creatorsblueprint lets me manage my links and get paid seamlessly! 🙌'
+        rena: 'I went from having no online presence to having my own creator store live in one afternoon. @creatorsblueprint made it so simple! ✨'
       }
     },
     faq: {
@@ -215,8 +214,7 @@ export const translations = {
         hajira: 'بعد أكثر من 800 مبيعة لقوائم التشغيل، أنشأت متجري في 5 دقائق فقط عبر @creatorsblueprint! ✨',
         sena: 'أنشأت كتابي الرقمي حول تجاربي في دبي في 10 دقائق فقط! المنصة رائعة حقاً. 💖',
         caroline: 'نشر وبيع كتابيّ الرقميين حول العمليات عروض الأزياء كان تحولاً جذرياً! المنصة تسهل كل شيء. ✨',
-        rena: 'انتقلت من عدم وجود متجر إلى إطلاق متجري بالكامل في ظهيرة يوم واحد! تجربة سهلة جداً. ✨',
-        oyeyinka: 'كصانع محتوى UGC في دبي، كنت بحاجة لمنصة تعمل بسلاسة في الخليج. تمكنني المنصة من إدارة روابطي واستلام مدفوعاتي بسهولة! 🙌'
+        rena: 'انتقلت من عدم وجود متجر إلى إطلاق متجري بالكامل في ظهيرة يوم واحد! تجربة سهلة جداً. ✨'
       }
     },
     faq: {

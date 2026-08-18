@@ -12,16 +12,6 @@ const ugcVideosData = [
         bgImage: '/Images/ugc/ugc_creator1.png'
     },
     {
-        id: 'video-5',
-        creatorName: 'Oyeyinka Oyerinde',
-        initials: 'OO',
-        avatarBg: 'linear-gradient(135deg, #2d6a4f, #52b788)',
-        creatorHandle: '@heyoyeyinka',
-        niche: 'UGC & Lifestyle',
-        embedUrl: 'https://www.instagram.com/reel/DazvtP6MjQk/?utm_source=ig_embed&utm_campaign=loading',
-        bgImage: '/Images/ugc/ugc_creator2.png'
-    },
-    {
         id: 'video-6',
         creatorName: 'Sena Bayram',
         initials: 'SB',
