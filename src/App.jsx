@@ -26,7 +26,7 @@ function App() {
 
 
   const isWaitlist = location.pathname.startsWith('/waitlist');
-  const isEvent = location.pathname.startsWith('/event');
+  const isEvent = location.pathname.startsWith('/event') || location.pathname.startsWith('/events');
   const isAdmin = location.pathname.includes('/admin');
 
   return (
@@ -49,6 +49,7 @@ function App() {
 
           {/* Flow & Fortune Event Route */}
           <Route path="/event" element={<Event />} />
+          <Route path="/events" element={<Event />} />
 
           {/* Admin Login Routes */}
           <Route path="/admin" element={<AdminLogin />} />
