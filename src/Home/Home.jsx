@@ -1,5 +1,4 @@
 import Hero from '../Hero/Hero';
-import TrustStrip from '../TrustStrip/TrustStrip';
 import CreatorSpotlight from '../CreatorSpotlight/CreatorSpotlight';
 import Reviews from '../Reviews/Reviews';
 import Features from '../Features/Features';
@@ -10,7 +9,6 @@ export default function Home() {
     return (
         <main style={{ width: '100%', background: 'var(--bg-page)', overflowX: 'hidden' }}>
             <Hero />
-            <TrustStrip />
             <CreatorSpotlight />
             <Reviews />
             <Features />

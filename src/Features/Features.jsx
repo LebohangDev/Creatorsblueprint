@@ -83,7 +83,6 @@ export default function Features() {
                     {/* Top Section: Itemized 5 Separate Monthly Tools */}
                     <div className={styles.receiptTopSection}>
                         <div className={styles.receiptHeaderRow}>
-                            <span className={styles.receiptBadge}>{t.features.receiptTag}</span>
                             <h3 className={styles.receiptTitle}>{t.features.receiptTitle}</h3>
                         </div>
 

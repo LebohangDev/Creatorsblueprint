@@ -127,8 +127,11 @@ const Event = () => {
         setMessage({ text: errorMsg, type: 'error' });
       }
     } catch (err) {
-      console.warn('Backend offline:', err);
-      setSearchParams({ issuccess: 'true' });
+      console.error('Registration request failed:', err);
+      setMessage({
+        text: "Unable to connect to the checkout server. Please try again in a moment.",
+        type: 'error'
+      });
     } finally {
       setLoading(false);
     }

@@ -1,6 +1,6 @@
 .heroSection {
   width: 100%;
-  padding: 140px 24px 80px 24px;
+  padding: 125px 24px 60px 24px;
   display: flex;
   justify-content: center;
   position: relative;
@@ -8,35 +8,42 @@
   overflow: hidden;
 }
 
-.heroGrid {
+.heroContainer {
   width: 100%;
-  max-width: 1180px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
   gap: 48px;
-  align-items: center;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
-.heroTextCol {
+.heroMainGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 44px;
+  align-items: center;
+}
+
+/* Left Column */
+.heroContentCol {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
 }
 
+/* Headline & Highlight */
 .heroTitle {
   font-family: var(--font-display);
-  font-size: 3.5rem;
+  font-size: 3.35rem;
   font-weight: 800;
   color: var(--text-primary);
   line-height: 1.12;
   letter-spacing: -1.5px;
-  margin: 0 0 20px 0;
-}
-
-.heroTitle span {
-  color: var(--accent-blue);
+  margin: 0 0 18px 0;
 }
 
 .brushHighlight {
@@ -94,41 +101,105 @@
 .heroSubText {
   font-size: 1.12rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0 0 32px 0;
-  max-width: 560px;
+  line-height: 1.55;
+  margin: 0 0 28px 0;
+  max-width: 580px;
 }
 
-.heroButtonGroup {
+.subtextDesktop {
+  display: inline;
+}
+
+.subtextMobile {
+  display: none;
+}
+
+/* ⚡ Streamlined Luxury Link Action */
+.claimActionWrapper {
+  width: 100%;
+  max-width: 580px;
   display: flex;
-  gap: 16px;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 24px;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.primaryButtonLarge {
+/* Sleek URL Link Capsule */
+.urlCapsulePill {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1.5px solid #E2DCD5;
+  border-radius: var(--radius-pill);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 18px rgba(15, 27, 61, 0.05);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.urlCapsulePill:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(29, 78, 216, 0.12);
+}
+
+.capsuleDomain {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0F1B3D;
+  letter-spacing: -0.2px;
+}
+
+.capsuleHandle {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: #FF5500;
+  letter-spacing: -0.2px;
+}
+
+.typewriterCursor {
+  display: inline-block;
+  width: 2px;
+  height: 18px;
+  background-color: #FF5500;
+  margin-left: 2px;
+  animation: blinkCursor 0.85s infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Primary CTA Button */
+.claimSubmitBtn {
+  width: 100%;
+  height: 52px;
+  background: var(--accent-blue);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 1.04rem;
+  font-weight: 750;
+  border: none;
+  border-radius: 16px;
+  padding: 0 24px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: var(--accent-blue);
-  color: #ffffff;
-  font-size: 1.05rem;
-  font-weight: 700;
-  padding: 16px 32px;
-  border-radius: 16px;
-  text-decoration: none;
-  border: none;
   cursor: pointer;
-  box-shadow: 0 10px 28px rgba(29, 78, 216, 0.3);
+  box-shadow: 0 10px 28px rgba(29, 78, 216, 0.32);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  white-space: nowrap;
   position: relative;
   overflow: hidden;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
 }
 
-.primaryButtonLarge::after {
+.claimSubmitBtn::after {
   content: '';
   position: absolute;
   top: -50%;
@@ -137,7 +208,7 @@
   height: 200%;
   background: rgba(255, 255, 255, 0.35);
   transform: rotate(30deg);
-  animation: heroBtnShine 5s infinite ease-in-out;
+  animation: heroBtnShine 4.5s infinite ease-in-out;
   pointer-events: none;
 }
 
@@ -147,65 +218,84 @@
   100% { left: 140%; }
 }
 
-.primaryButtonLarge:hover {
-  transform: translateY(-3px) scale(1.02);
+.claimSubmitBtn:hover {
   background: var(--accent-blue-hover);
-  box-shadow: 0 14px 36px rgba(29, 78, 216, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(29, 78, 216, 0.45);
 }
 
-.primaryButtonLarge:hover i {
-  transform: translateX(3px);
+.claimSubmitBtn:hover i {
+  transform: translateX(4px);
 }
 
-.primaryButtonLarge i {
+.claimSubmitBtn i {
+  font-size: 1.15rem;
   transition: transform 0.2s ease;
 }
 
-.secondaryButton {
+/* Form Footer Row */
+.formFooterRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  padding: 4px 2px 0 2px;
+  width: 100%;
+}
+
+.footerDividerDot {
+  color: var(--text-muted);
+  opacity: 0.6;
+  font-weight: 700;
+  margin: 0 1px;
+}
+
+.trustSubtext {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--bg-surface);
-  color: var(--text-primary);
-  font-size: 0.98rem;
+  gap: 5px;
+  font-size: 0.76rem;
   font-weight: 600;
-  padding: 16px 26px;
-  border-radius: 16px;
-  text-decoration: none;
-  border: 1px solid var(--border-strong);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: var(--shadow-sm);
-}
-
-.secondaryButton:hover {
-  background: var(--bg-surface-subtle);
-  border-color: var(--accent-blue);
-  color: var(--accent-blue);
-  transform: translateY(-2px);
-}
-
-.heroMicrocopyBox {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-}
-
-.heroAssuranceText {
-  display: flex;
-  align-items: center;
-  gap: 6px;
   color: var(--text-secondary);
-  font-size: 0.88rem;
-  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.heroAssuranceText i {
+.trustSubtext i {
+  color: #10B981;
+  font-size: 0.9rem;
+}
+
+.signInLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.76rem;
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.signInPrompt {
+  color: var(--text-muted);
+}
+
+.signInAction {
+  color: #0F1B3D;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.signInLink:hover .signInAction {
   color: var(--accent-blue);
 }
 
+/* Right Column: Visual Stage */
 .heroVisualCol {
   display: flex;
   flex-direction: column;
@@ -216,28 +306,37 @@
 
 .stackedPhonesStage {
   position: relative;
-  width: 460px;
-  height: 520px;
+  width: 440px;
+  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Floating Total Revenue Card beside Left Phone */
+.visualAmbientGlow {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(29, 78, 216, 0.12) 0%, rgba(212, 255, 0, 0.08) 50%, transparent 70%);
+  filter: blur(40px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Floating Revenue Card */
 .heroRevenueCard {
   position: absolute;
-  top: 14%;
-  left: -28px;
-  right: auto;
+  top: 12%;
+  left: -20px;
   z-index: 10;
   background: var(--accent-lime);
   color: #0F1B3D;
   border-radius: 18px;
-  padding: 14px 18px;
+  padding: 12px 16px;
   box-shadow: var(--shadow-lime-glow);
   transform: rotate(-3deg);
   animation: heroFloatRevenue 5s ease-in-out infinite alternate;
-  transition: box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   pointer-events: auto;
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
@@ -258,42 +357,37 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   margin-bottom: 4px;
 }
 
 .revenueLabel {
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   color: #0F1B3D;
   opacity: 0.85;
-  text-transform: uppercase;
 }
 
 .revenueBadge {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
   background: #0F1B3D;
   color: #D4FF00;
-  padding: 2px 8px;
+  padding: 2px 7px;
   border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  box-shadow: 0 2px 8px rgba(15, 27, 61, 0.2);
 }
 
 .revenueAmountRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 14px;
 }
 
 .revenueAmount {
   font-family: var(--font-display);
-  font-size: 1.75rem;
+  font-size: 1.55rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: #0F1B3D;
@@ -301,44 +395,37 @@
 }
 
 .sparklineSvg {
-  width: 52px;
-  height: 22px;
+  width: 46px;
+  height: 20px;
 }
 
 .revenueCardFooter {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
   color: #0F1B3D;
   opacity: 0.85;
   margin-top: 4px;
 }
 
+.revenueCardFooter i {
+  color: #059669;
+  font-weight: 800;
+}
+
+/* iPhone Frames */
 .iphoneFrame {
   position: absolute;
-  width: 240px;
-  height: 480px;
+  width: 230px;
+  height: 460px;
   background: #000000;
-  border-radius: 38px;
+  border-radius: 36px;
   border: 4px solid #1E293B;
   box-shadow: 0 25px 60px rgba(10, 15, 29, 0.25), inset 0 0 0 2px rgba(255, 255, 255, 0.1);
   overflow: hidden;
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.iphoneFrame::before {
-  content: '';
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 74px;
-  height: 18px;
-  background: #000000;
-  border-radius: 20px;
-  z-index: 10;
 }
 
 .iphoneScreenImg {
@@ -369,7 +456,7 @@
   top: 30px;
   z-index: 2;
   transform: rotate(4deg);
-  box-shadow: -20px 30px 70px rgba(10, 15, 29, 0.25), 0 0 30px rgba(29, 78, 216, 0.12);
+  box-shadow: -20px 30px 70px rgba(10, 15, 29, 0.25), 0 0 30px rgba(29, 78, 216, 0.15);
   animation: heroFloatFront 5.5s ease-in-out infinite alternate;
 }
 
@@ -390,45 +477,395 @@
   transform: rotate(1deg) translateY(-12px) scale(1.02);
 }
 
-@media (max-width: 1024px) {
-  .heroGrid {
-    grid-template-columns: 1fr;
-    gap: 60px;
+/* =========================================================
+   💎 MINIMALIST EDITORIAL VALUE PROPOSITION STRIP
+   ========================================================= */
+
+.editorialPillarsSection {
+  width: 100%;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-light);
+  margin-top: 4px;
+}
+
+.desktopPillarsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  width: 100%;
+}
+
+.mobilePillarsCarousel {
+  display: none;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
   }
-  .heroTextCol {
-    align-items: center;
-    text-align: center;
-  }
-  .heroSubText {
-    max-width: 640px;
-  }
-  .heroButtonGroup {
-    justify-content: center;
-  }
-  .heroMicrocopyBox {
-    align-items: center;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 640px) {
+.editorialPillarItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.editorialPillarItem:hover {
+  transform: translateY(-2px);
+}
+
+.pillarEyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.pillarAccentDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dotColor1 { background: #FF5500; }
+.dotColor2 { background: #10B981; }
+.dotColor3 { background: #8B5CF6; }
+.dotColor4 { background: #1D4ED8; }
+
+.pillarEyebrow {
+  font-size: 0.72rem;
+  font-weight: 750;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.pillarHeadline {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
+}
+
+.pillarSummary {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.48;
+  margin: 0;
+}
+
+/* =========================================================
+   RESPONSIVE BREAKPOINTS (MOBILE FIRST ZERO-SCROLL)
+   ========================================================= */
+
+@media (max-width: 1080px) {
+  .heroMainGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .heroContentCol {
+    align-items: center;
+    text-align: center;
+  }
+
+  .claimActionWrapper {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .desktopPillarsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .editorialPillarItem {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 124px 18px 44px 18px;
+  }
+
+  .heroContainer {
+    gap: 32px;
+  }
+
+  .heroMainGrid {
+    gap: 26px;
+  }
+
+  .heroContentCol {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
   .heroTitle {
-    font-size: 2.3rem;
+    font-size: clamp(1.85rem, 6.8vw, 2.35rem);
+    line-height: 1.15;
+    letter-spacing: -0.8px;
+    margin-bottom: 12px;
+    text-align: center;
   }
-  .stackedPhonesStage {
-    width: 320px;
-    height: 460px;
-  }
-  .heroRevenueCard {
-    position: relative;
-    top: auto;
-    left: auto;
+
+  .heroSubText {
+    display: block;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
     margin: 0 auto 16px auto;
-    transform: rotate(-1deg);
-    width: 260px;
+    max-width: 320px;
+    text-align: center;
   }
-  .iphoneFrame {
-    width: 200px;
+
+  .subtextDesktop {
+    display: none;
+  }
+
+  .subtextMobile {
+    display: inline;
+  }
+
+  .claimActionWrapper {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .urlCapsulePill {
+    height: 46px;
+    padding: 0 16px;
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .capsuleDomain {
+    font-size: 0.95rem;
+  }
+
+  .capsuleHandle {
+    font-size: 0.98rem;
+  }
+
+  .claimSubmitBtn {
+    height: 48px;
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+    font-size: 0.92rem;
+    font-weight: 700;
+    padding: 0 14px;
+    border-radius: 14px;
+    white-space: nowrap;
+    gap: 6px;
+  }
+
+  .claimSubmitBtn i {
+    font-size: 1rem;
+  }
+
+  .formFooterRow {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .trustSubtext {
+    font-size: 0.74rem;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .signInLink {
+    font-size: 0.74rem;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .stackedPhonesStage {
+    width: 310px;
     height: 400px;
-    border-radius: 32px;
   }
+
+  .heroRevenueCard {
+    left: -10px;
+    top: 5%;
+    padding: 10px 14px;
+    transform: rotate(-2deg) scale(0.9);
+  }
+
+  .iphoneFrame {
+    width: 185px;
+    height: 370px;
+    border-radius: 30px;
+  }
+
+  .editorialPillarsSection {
+    padding-top: 20px;
+  }
+
+  .desktopPillarsGrid {
+    display: none;
+  }
+
+  .mobilePillarsCarousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    gap: 12px;
+    min-height: 105px;
+    user-select: none;
+  }
+
+  .carouselSlideCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 6px;
+    width: 100%;
+    animation: fadeInSlide 0.3s ease-out;
+  }
+
+  .pillarEyebrowRowCentered {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 2px;
+  }
+
+  .pillarHeadlineCentered {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.3px;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .pillarSummaryCentered {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+    margin: 0;
+    text-align: center;
+    max-width: 320px;
+  }
+
+  .carouselDotsTrack {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .carouselDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #CBD5E1;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .carouselDotActive {
+    width: 18px;
+    border-radius: 999px;
+    background: var(--accent-blue);
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    padding: 114px 16px 36px 16px;
+  }
+
+  .heroTitle {
+    font-size: 1.85rem;
+    line-height: 1.15;
+  }
+
+  .claimActionWrapper {
+    max-width: 320px;
+  }
+
+  .urlCapsulePill {
+    height: 44px;
+    max-width: 320px;
+    padding: 0 14px;
+  }
+
+  .capsuleDomain {
+    font-size: 0.9rem;
+  }
+
+  .capsuleHandle {
+    font-size: 0.92rem;
+  }
+
+  .claimSubmitBtn {
+    height: 46px;
+    max-width: 320px;
+    font-size: 0.88rem;
+    padding: 0 12px;
+  }
+
+  .claimSubmitBtn i {
+    font-size: 0.95rem;
+  }
+}
+
+/* RTL Support */
+html[dir="rtl"] .heroContentCol {
+  text-align: right;
+  align-items: flex-start;
+}
+
+html[dir="rtl"] .editorialPillarItem {
+  align-items: flex-start;
+  text-align: right;
+}
+
+html[dir="rtl"] .claimSubmitBtn:hover i {
+  transform: translateX(-4px);
 }

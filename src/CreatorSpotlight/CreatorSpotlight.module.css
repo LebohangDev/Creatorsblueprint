@@ -53,7 +53,7 @@
   scroll-behavior: smooth;
   padding-left: max(24px, calc((100vw - 1140px) / 2));
   padding-right: 24px;
-  padding-bottom: 20px;
+  padding-bottom: 24px;
   -ms-overflow-style: none;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
@@ -100,33 +100,37 @@
   font-weight: 500;
 }
 
+/* Sleek Black iPhone Bezel Frame without box shadow */
 .singleIphoneFrame {
   width: 260px;
   height: 520px;
-  background: #FFFFFF;
-  border-radius: 36px;
-  border: 1px solid var(--border-light);
-  box-shadow: var(--shadow-md);
+  background: #000000;
+  border-radius: 38px;
+  border: 4px solid #181E2C;
+  outline: 2px solid rgba(15, 27, 61, 0.08);
+  box-shadow: none;
   overflow: hidden;
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .singleIphoneFrame:hover {
   transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: none;
 }
 
+/* Compact iPhone 14 Plus Top Notch (attached at top) */
 .singleIphoneFrame::before {
   content: '';
   position: absolute;
-  top: 10px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 74px;
-  height: 18px;
-  background: #000000;
-  border-radius: 20px;
+  width: 66px;
+  height: 13px;
+  background: #181E2C;
+  border-bottom-left-radius: 11px;
+  border-bottom-right-radius: 11px;
   z-index: 10;
 }
 
@@ -136,6 +140,13 @@
   object-fit: cover;
   object-position: top center;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Zoomed-in and moved up for seamless edge-to-edge coverage */
+.zoomedScreenImg {
+  transform: scale(1.14) translateY(-8px);
+  transform-origin: top center;
 }
 
 .spotlightCtaWrapper {
@@ -196,6 +207,9 @@
   .singleIphoneFrame {
     width: 230px;
     height: 460px;
+    border-radius: 32px;
+  }
+  .zoomedScreenImg {
+    transform: scale(1.14) translateY(-8px);
   }
 }
-

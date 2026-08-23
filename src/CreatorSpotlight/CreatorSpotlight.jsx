@@ -18,6 +18,20 @@ const creatorShowcaseData = [
         posterImage: '/Images/creators/caroline_storefront.png'
     },
     {
+        id: 'yasmine',
+        name: 'Yasmine Chelly',
+        handle: '@yasminechelly',
+        followers: '185K Followers',
+        posterImage: '/Images/creators/yasmine_storefront.png'
+    },
+    {
+        id: 'ayesha',
+        name: 'Ayesha',
+        handle: '@ayesha',
+        followers: '10.5K Followers',
+        posterImage: '/Images/creators/ayesha_storefront.png'
+    },
+    {
         id: 'rena',
         name: 'Rena Sibaei',
         handle: '@rena_sibaei',
@@ -28,7 +42,7 @@ const creatorShowcaseData = [
         id: 'sena',
         name: 'Sena Bayram',
         handle: '@dubaiwithsena',
-        followers: '1,135 Followers',
+        followers: '2,179 Followers',
         posterImage: '/Images/creators/sena_storefront.png'
     }
 ];
@@ -72,8 +86,7 @@ export default function CreatorSpotlight() {
                             <img 
                                 src={creator.posterImage} 
                                 alt={`${creator.name} Creator Store Showcase`} 
-                                className={styles.iphoneScreenImg}
-                                style={['caroline', 'sena', 'hajira', 'rena'].includes(creator.id) ? { objectFit: 'cover', objectPosition: 'top center' } : {}}
+                                className={`${styles.iphoneScreenImg} ${creator.id !== 'hajira' ? styles.zoomedScreenImg : ''}`}
                                 loading="lazy"
                             />
                         </div>
@@ -83,4 +96,3 @@ export default function CreatorSpotlight() {
         </section>
     );
 }
-
