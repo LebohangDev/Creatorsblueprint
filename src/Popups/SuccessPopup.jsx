@@ -15,7 +15,7 @@ const SuccessPopup = ({ onClose }) => {
 
         <div className={styles.detailsBlock}>
           <div>Reshaped Studio, Marina, Dubai</div>
-          <div>Saturday, Sept 5 • 11:00 AM</div>
+          <div>Saturday, Sept 5 • 2:00 PM</div>
         </div>
 
         <p className={styles.description}>

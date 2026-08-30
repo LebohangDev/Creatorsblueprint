@@ -182,7 +182,7 @@ const Event = () => {
                     <circle cx="9" cy="12" r="2" />
                   </svg>
                 </div>
-                <span>Light pilates session to open the morning</span>
+                <span>Light pilates session to open the afternoon</span>
               </li>
 
               <li className={styles.compactItem}>
@@ -216,7 +216,7 @@ const Event = () => {
             </ul>
 
             <div className={styles.logisticsLine}>
-              📍 Reshaped Studio, Dubai Marina • Sat, Sept 5 @ 11 AM
+              📍 Reshaped Studio, Dubai Marina • Sat, Sept 5 @ 2 PM
             </div>
           </div>
 
@@ -237,7 +237,7 @@ const Event = () => {
                 />
               </div>
               <p className={styles.subTagline}>
-                An intimate morning of movement, matcha, and money talk.
+                An intimate afternoon of movement, matcha, and money talk.
               </p>
             </div>
 
