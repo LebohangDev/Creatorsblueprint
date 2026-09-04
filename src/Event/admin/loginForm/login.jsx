@@ -27,7 +27,6 @@ const AdminLogin = () => {
 
       const response = await fetch(backendUrl, {
         method: 'POST',
-        credentials: "include", // required for cross origin assigment of cookies 
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: email.trim(),
@@ -38,6 +37,13 @@ const AdminLogin = () => {
       const data = await response.json().catch(() => ({}));
 
       if (response.ok && data.success) {
+
+
+        if (!data.token) {
+          throw new Error("Login succeeded but no token was returned");
+        }
+        // Storing token in session storage instead of cookies 
+        sessionStorage.setItem('event_admin_token', data.token);
         setMessage({ text: data.message || "Boom, you're in! 🚀 Rolling out the red carpet...", type: 'success' });
         setTimeout(() => {
           window.location.href = "/admin/Checkin";

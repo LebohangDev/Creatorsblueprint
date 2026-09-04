@@ -58,14 +58,28 @@ const Checkin = () => {
 
     const checkSession = async () => {
       try {
+        const token = sessionStorage.getItem("event_admin_token");
+
+        if (!token) {
+          setAuthenticated(false);
+          setCheckingSession(false);
+
+          setTimeout(() => {
+            window.location.href = '/admin/login';
+          }, 2000);
+
+          return;
+        }
+
         const backendUrl = window.location.hostname === 'localhost'
           ? 'http://localhost:8080/api/admin/session'
           : 'https://creatorsblueprintbackend-648711352735.me-west1.run.app/api/admin/session';
 
         const res = await fetch(backendUrl, {
           method: 'GET',
-          headers: { 'Content-Type': 'application/json' },
-          credentials: 'include',
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
         });
 
         const data = await res.json().catch(() => ({}));
@@ -77,19 +91,30 @@ const Checkin = () => {
           setCheckingSession(false);
         } else {
           console.warn('Admin session invalid or expired:', data);
+
+          sessionStorage.removeItem("event_admin_token");
+
           setAuthenticated(false);
-          setStatusMessage(data.message || "Whoa there! Not logged in. Teleporting you to the front door 🚪");
+          setStatusMessage(
+            data.message ||
+            "Whoa there! Not logged in. Teleporting you to the front door 🚪"
+          );
           setCheckingSession(false);
+
           setTimeout(() => {
             window.location.href = '/admin/login';
           }, 2000);
         }
+
       } catch (err) {
         console.error('Session check failed:', err);
+
         if (!isMounted) return;
+
         setAuthenticated(false);
         setStatusMessage("Admin radar offline 📡 Teleporting to login...");
         setCheckingSession(false);
+
         setTimeout(() => {
           window.location.href = '/admin/login';
         }, 2000);
@@ -113,6 +138,8 @@ const Checkin = () => {
       setProcessing(true);
       setStatusMessage(`Consulting the guestlist gods for ${code}... ✨`);
 
+      const token = sessionStorage.getItem('event_admin_token');
+
       const backendUrl = window.location.hostname === 'localhost'
         ? 'http://localhost:8080/api/admin/checkin'
         : 'https://creatorsblueprintbackend-648711352735.me-west1.run.app/api/admin/checkin';
@@ -120,7 +147,9 @@ const Checkin = () => {
       const res = await fetch(backendUrl, {
         method: 'POST',
         credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
         body: JSON.stringify({ uuid: code })
       });
 
