@@ -140,20 +140,52 @@ const Checkin = () => {
 
       const token = sessionStorage.getItem('event_admin_token');
 
+      if (!token) {
+        setResult({
+          type: 'error',
+          icon: '🔒',
+          title: 'Session Expired',
+          message: 'Please log in again.'
+        });
+
+        setTimeout(() => {
+          window.location.href = '/admin/login';
+        }, 1500);
+
+        return;
+      }
+
       const backendUrl = window.location.hostname === 'localhost'
         ? 'http://localhost:8080/api/admin/checkin'
         : 'https://creatorsblueprintbackend-648711352735.me-west1.run.app/api/admin/checkin';
 
       const res = await fetch(backendUrl, {
         method: 'POST',
-        credentials: 'include',
         headers: {
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`
         },
         body: JSON.stringify({ uuid: code })
       });
 
       const data = await res.json().catch(() => ({}));
+
+      if (res.status === 401) {
+        sessionStorage.removeItem('event_admin_token');
+
+        setResult({
+          type: 'error',
+          icon: '🔒',
+          title: 'Session Expired',
+          message: data.message || 'Please log in again.'
+        });
+
+        setTimeout(() => {
+          window.location.href = '/admin/login';
+        }, 1500);
+
+        return;
+      }
 
       if (res.ok && data.success) {
         if (navigator.vibrate) navigator.vibrate([100]);
@@ -166,6 +198,7 @@ const Checkin = () => {
           message: data.message || "Ticket verified! Go grab your matcha and let's get moving 🧘‍♀️✨",
           attendee: data.attendee
         });
+
       } else if (data.code === 'ALREADY_CHECKED_IN') {
         if (navigator.vibrate) navigator.vibrate([60, 60, 60]);
         playFeedbackSound('warning');
@@ -177,6 +210,7 @@ const Checkin = () => {
           message: data.message || "This ticket was already scanned earlier! Sneaking in a clone? 😉",
           attendee: data.attendee
         });
+
       } else if (data.code === 'NOT_REGISTERED') {
         if (navigator.vibrate) navigator.vibrate([150]);
         playFeedbackSound('error');
@@ -187,6 +221,7 @@ const Checkin = () => {
           title: "Imposter Alert! 🕵️",
           message: data.message || "This QR code isn't in our system. Did someone draw this with crayons? 🖍️"
         });
+
       } else {
         if (navigator.vibrate) navigator.vibrate([100]);
         playFeedbackSound('error');
@@ -198,17 +233,20 @@ const Checkin = () => {
           message: data.message || "Check-in hit a bump. Please check with the front desk boss!"
         });
       }
+
     } catch (err) {
       console.error('Check-in error:', err);
+
       if (navigator.vibrate) navigator.vibrate([100]);
       playFeedbackSound('error');
 
       setResult({
         type: 'error',
         icon: '🧘‍♂️',
-        title: "Server Tripped Over a Mat!",
+        title: 'Server Tripped Over a Mat!',
         message: "Couldn't reach the mother-ship. Give that QR code another flash!"
       });
+
     } finally {
       setProcessing(false);
     }
